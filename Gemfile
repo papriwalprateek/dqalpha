@@ -11,7 +11,6 @@ group :production do
   gem 'pg'
 end
 gem 'calc'
-gem 'asset_sync'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'json'
