@@ -14,7 +14,8 @@ class PagesController < ApplicationController
   @title = "search"  end
 
   def home
- @title = params[:q]
+ @title = params[:q] 
+ #asd
 
 end
 
