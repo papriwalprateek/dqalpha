@@ -29,10 +29,19 @@ Quesers in this Quest:
   <%= submit_tag("Add") %>
 <% end %>
 </div>
+<hr>
 <%end%>
 
 <%end%>
+<%= image_tag("wiki.png", :alt => "Wikipedia") %>
 
+<form accept-charset="UTF-8" method="get">
+  <label for="q"></label>
+  <input id="q" name="q" type="text" />
+  <input name="commit" type="submit" value="Search" />
+</form>
+<%@content = wiki_content%>
+<%=raw@content%>
 </div>
 
 	

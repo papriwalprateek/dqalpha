@@ -9,7 +9,7 @@ body { background: #fff; margin: 0px; padding: 0px;
 }
 #content img{float: right; 
 }
-#content { background: #fff; width: 800px; padding: 1em;  float: left;
+#content { background: #fff; width: 600px; padding: 1em;  float: left;
 }
 
 div.post { font-size: 120%; padding: 5px; background: #cef; 
@@ -72,8 +72,9 @@ padding: 20px;
 
 #rightcontent{
 float: right;
-width: 200px;
+width: 300px;
 min-height: 400px;
+padding-right: 20px;
 }
 #rightcontent img{
 	padding:3px;
