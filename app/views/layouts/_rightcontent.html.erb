@@ -1,8 +1,10 @@
 <div id = "rightcontent">
+quest id<%=params[:quest_id]%>
+id <%=params[:id]%>
 
 <%if current_user%>
-<%if params[:id]%>
-<%quest=Quest.find(params[:id])%>
+<%if params[:quest_id]%>
+<%quest=Quest.find(params[:quest_id])%>
 <%if quest%>
 Quesers in this Quest:
 </br>
@@ -36,8 +38,8 @@ Quesers in this Quest:
 <%= image_tag("wiki.png", :alt => "Wikipedia") %>
 
 <form accept-charset="UTF-8" method="get">
-  <label for="q"></label>
-  <input id="q" name="q" type="text" />
+  <label for="q" ></label>
+  <input id="q" name="q" type="text" value="<%=params[:q]%>" />
   <input name="commit" type="submit" value="Search" />
 </form>
 <%@content = wiki_content%>
