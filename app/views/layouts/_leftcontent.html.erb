@@ -1,7 +1,7 @@
 <div id = "leftcontent">
 <%if current_user%>
 
-<button class="button"  onclick = "window.location.href = <%=users_path%>" >  
+<button class="button"  onclick = "window.location.href = <%=users_path%>" id = "AddQ">  
 
 New Quest</button>
 
@@ -19,4 +19,54 @@ New Quest</button>
 
 <%end%>
 </font>
+
+<div id="dialog-formQ">
+<h2>Add a Quest:</h2>
+<%= form_for([current_user, current_user.quests.build]) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
+	</div>
 </div>
+
+
+	<script>
+	$(function() {
+		
+		
+		//dialog box for adding user
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var name = $( "#name" );
+
+		$( "#dialog-formQ" ).dialog({
+			autoOpen: false,
+			
+			modal: true,
+			buttons: {
+				
+			},
+			close: function() {
+				
+			}
+		});
+
+		$( "#AddQ" )
+			.button()
+			.click(function() {
+				$( "#dialog-formQ" ).dialog( "open");
+			});
+	});
+	</script>
+
+

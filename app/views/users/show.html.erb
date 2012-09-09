@@ -1,16 +1,4 @@
-
- <h2>Add a Quest:</h2>
-<%= form_for([@user, @user.quests.build]) do |f| %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-<% end %>
+<%= link_to h(image_tag(Gravatar.new(@user.email).image_url, :size => "120x120",:align=>"left")), @user %>
+<h2><%=@user.name%></h2>
+<%=@user.email%>
+ 
