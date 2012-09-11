@@ -16,11 +16,7 @@ New Quest</button>
  </br>
 
  <% end %>
-
-<%end%>
-</font>
-
-<div id="dialog-formQ">
+<div id="dialog-formQ" class="dialog">
 <h2>Add a Quest:</h2>
 <%= form_for([current_user, current_user.quests.build]) do |f| %>
   <div class="field">
@@ -37,6 +33,10 @@ New Quest</button>
   
 <% end %>
 	</div>
+<%end%>
+</font>
+
+
 </div>
 
 
@@ -51,7 +51,9 @@ New Quest</button>
 
 		$( "#dialog-formQ" ).dialog({
 			autoOpen: false,
-			
+			dialogClass: 'ui-dialog-shadow',
+			height: 600,
+			width: 600,
 			modal: true,
 			buttons: {
 				

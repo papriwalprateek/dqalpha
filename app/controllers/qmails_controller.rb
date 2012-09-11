@@ -43,7 +43,12 @@ class QmailsController < ApplicationController
      @q = Q.find(params[:q_id])
     @qmail = @q.qmails.create(params[:qmail])
     current_user.qmails << @qmail
-    redirect_to q_path(@q)
+      respond_to do |format|
+     
+        format.html { redirect_to q_path(@q)}
+        format.js
+     
+    end
   end
 
   # PUT /qmails/1
@@ -67,9 +72,10 @@ class QmailsController < ApplicationController
   def destroy
     @qmail = Qmail.find(params[:id])
     @qmail.destroy
-
+    @q = @qmail.q
     respond_to do |format|
-      format.html { redirect_to qmails_url }
+      format.html { redirect_to q_path(@q) }
+      format.js {render action: "create" }
       format.json { head :no_content }
     end
   end

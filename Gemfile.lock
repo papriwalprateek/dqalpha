@@ -46,6 +46,9 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     expression_parser (0.9.0)
+    gon (4.0.0)
+      actionpack (>= 2.3.0)
+      json
     google_visualr (2.1.3)
     gravatar-ultimate (1.0.3)
     has_mailbox (1.5.5)
@@ -143,6 +146,7 @@ DEPENDENCIES
   authlogic
   calc
   coffee-rails (~> 3.2.1)
+  gon
   google_visualr
   gravatar-ultimate
   has_mailbox
