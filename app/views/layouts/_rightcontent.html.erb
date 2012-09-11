@@ -42,29 +42,16 @@ Quesers in this Quest:
   <input id="q" name="q" type="text" value="<%=params[:q]%>" />
   <input name="commit" type="submit" value="Search" />
 </form>
+<%@content=wiki_content%>
+	<%=@content%>
 
-<div class="wiki">
-
-asdfasf
 </div>
-<button id="wiki"type="button">Display Date</button>
-</div>
-
-<p class= "a"></p>
 	<script>
+	
 	
 		
 	$(function() {
 
-		$( "#wiki" )
-			.button()
-			.click(function() {
-				 $("input").keyup(function () {
-      		var value = $(this).val();
-      		$("div.wiki").replaceWith(" ");
-    		}).keyup();
-			});
-		
 		//autocomplete for user names
 		var availableTags = [<% for user in User.all -%>
 		"<%= user.name %>"

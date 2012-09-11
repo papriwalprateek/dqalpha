@@ -7,14 +7,14 @@ module ApplicationHelper
             "#{base_title} | #{@title}" 
         end
     end
-    def wiki_content( a )
+    def wiki_content
     
-    if a
+    if params[:q]
     require 'rubygems'
     require 'wikicloth'
     require 'media_wiki'
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
-    wiki =  mw.render(a) 
+    wiki =  mw.render(params[:q]) 
     @doc = Nokogiri::HTML(wiki)
     wiki = @doc.xpath('//p[1]')
     
