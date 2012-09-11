@@ -38,12 +38,25 @@ Quesers in this Quest:
 <%= image_tag("wiki.png", :alt => "Wikipedia") %>
 
 <form accept-charset="UTF-8" method="get">
-  <label for="q" ></label>
-  <input id="q" name="q" type="text" value="<%=params[:q]%>" />
+  <label for="q"></label>
+  <input id="q" name="q" type="text" />
   <input name="commit" type="submit" value="Search" />
 </form>
-<%@content=wiki_content%>
-	<%=@content%>
+<%@content = wiki_content%>
+</br>
+
+
+<div id = "wikiimage" style="width:130px;float:left;">
+<img src = "<%=raw@introimage%>" alt = "No photo available" height = "130" width = "110" >
+<h4 ><%=raw@name%></h4>
+</div>
+
+<div id = "wikiinfo" style = "width:320px;float:left;">
+<%=raw@info%>
+</br>
+</br>
+<%=raw@image%>
+</div>
 
 </div>
 	<script>

@@ -2,7 +2,12 @@ class QsController < ApplicationController
 def create
     @quest = Quest.find(params[:quest_id])
     @q = @quest.qs.create(params[:q])
-    redirect_to quest_path(@quest)
+    
+  respond_to do |format|
+     
+        format.html { redirect_to quest_path(@quest)}
+        format.js
+  end
   end
   def index
     
