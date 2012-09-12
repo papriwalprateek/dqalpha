@@ -1,0 +1,4 @@
+<% unless @qmails.empty? %>
+$("#com").html("<%=raw escape_javascript(render(@qmails)) %>");
+
+<% end %>

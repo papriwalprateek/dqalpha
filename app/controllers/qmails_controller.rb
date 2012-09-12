@@ -2,11 +2,12 @@ class QmailsController < ApplicationController
   # GET /qmails
   # GET /qmails.json
   def index
-    @qmails = Qmail.all
+     @qmails = Qmail.where("q_id = ? and created_at > ?", params[:q_id], Time.at(params[:after].to_i + 1))
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @qmails }
+      format.js
     end
   end
 

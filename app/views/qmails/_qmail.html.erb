@@ -1,5 +1,5 @@
 
-<div class ="post">
+<div class ="post" data-time="<%=qmail.created_at.to_i%>">
   <b><%= qmail.user.name%>:</b>
    <%= qmail.content %>
     <%= link_to 'X', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %>

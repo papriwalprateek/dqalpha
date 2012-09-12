@@ -9,7 +9,7 @@ Quesers in this Quest:
 </br>
 <table>
 <% quest.users.each do |user| %>
-<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30",:align=>"left")), user %></tr>
+<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "50x40",:align=>"left")), user %></tr>
 
 <%end%>
 <%end%>
@@ -32,21 +32,27 @@ Quesers in this Quest:
 <%end%>
 
 <%end%>
-<%= image_tag("wiki.png", :alt => "Wikipedia") %>
+<table>
+<tr><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "40", :width => "50") %></tr>
+<tr><%= image_tag("gist.png", :alt => "Gist", :height => "40", :width => "50") %></tr>
+<tr><%= image_tag("so.png", :alt => "Stack_Of", :height => "40", :width => "50") %></tr>
+</table>
 
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
-  <%= label_tag(:ad)%>
+  <%= label_tag(:ad, "Search")%>
   <%= text_field_tag :ad %>
-  <%= submit_tag("Add") %>
+  <%= submit_tag("Wiki") %>
 <% end %>
 
 </br>
+
 
 <div id ="wik">
 
 <%= render 'layouts/wiki' %> 
 </div>
+
 </div>
 	<script>
 	
@@ -91,6 +97,8 @@ Quesers in this Quest:
 			.click(function() {
 				$( "#dialog-form" ).dialog( "open");
 			});
+	// hide it first
+	
 	});
 	</script>
 

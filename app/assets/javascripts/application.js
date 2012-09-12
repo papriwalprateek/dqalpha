@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree .
+$(function() {
+  if ($("#com").length > 0) {
+    setTimeout(updateComments, 5000);
+  }
+});
+
+function updateComments () {
+  var q_id = $("#q").attr("data-id");
+  if ($(".post").length > 0) {
+    var after = $(".post:last-child").attr("data-time");
+  } else {
+    var after = "0";
+  }
+  $.getScript("/qs/"+ q_id +"/qmails.js?q_id=" + q_id + "&after=" + after)
+  setTimeout(updateComments, 5000);
+}
