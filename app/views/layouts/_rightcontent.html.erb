@@ -1,20 +1,17 @@
 <div id = "rightcontent">
-quest id<%=params[:quest_id]%>
-id <%=params[:id]%>
-
 <%if current_user%>
-<%if params[:quest_id]%>
-<%quest=Quest.find(params[:quest_id])%>
+<%if controller.controller_name =="quests"%>
+
+<%if params[:id]%>
+<%quest=Quest.find(params[:id])%>
 <%if quest%>
 Quesers in this Quest:
 </br>
 <table>
-
 <% quest.users.each do |user| %>
-
 <tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30",:align=>"left")), user %></tr>
 
-
+<%end%>
 <%end%>
 <tr>
 <button class="button1" id="Add" >  
@@ -37,27 +34,19 @@ Quesers in this Quest:
 <%end%>
 <%= image_tag("wiki.png", :alt => "Wikipedia") %>
 
-<form accept-charset="UTF-8" method="get">
-  <label for="q"></label>
-  <input id="q" name="q" type="text" />
-  <input name="commit" type="submit" value="Search" />
-</form>
-<%@content = wiki_content%>
+
+<%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
+  <%= label_tag(:ad)%>
+  <%= text_field_tag :ad %>
+  <%= submit_tag("Add") %>
+<% end %>
+
 </br>
 
+<div id ="wik">
 
-<div id = "wikiimage" style="width:130px;float:left;">
-<img src = "<%=raw@introimage%>" alt = "No photo available" height = "130" width = "110" >
-<h4 ><%=raw@name%></h4>
+<%= render 'layouts/wiki' %> 
 </div>
-
-<div id = "wikiinfo" style = "width:320px;float:left;">
-<%=raw@info%>
-</br>
-</br>
-<%=raw@image%>
-</div>
-
 </div>
 	<script>
 	

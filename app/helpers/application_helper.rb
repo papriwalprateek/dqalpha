@@ -7,15 +7,15 @@ module ApplicationHelper
             "#{base_title} | #{@title}" 
         end
     end
-def wiki_content
+def wiki_content(a)
     
 
- if params[:q] 
+ if a
     require 'rubygems'
     require 'wikicloth'
     require 'media_wiki'
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
-    wiki =  mw.render(params[:q])
+    wiki =  mw.render(a)
     @doc = Nokogiri::HTML(wiki)
     
     note = @doc.search("sup")
@@ -31,7 +31,7 @@ def wiki_content
     note = @doc.css("table.infobox a.image")
     note.remove
     
-    name = params[:q]
+    name = a
     
     note = @doc.at_css("table.infobox tr")
     note.remove
@@ -67,6 +67,8 @@ def wiki_content
 #    @seealso = seealso
 #    @content = "This is a dummy text about your query which is auto generated, it will be soon replaced by wikipedia text which will be fetched through mediawiki"
     end
+  
+
   end
  
 end

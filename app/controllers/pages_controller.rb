@@ -18,7 +18,12 @@ class PagesController < ApplicationController
  #asd
 
 end
-
+def wik
+    @content = wiki_content(params[:ad])
+    respond_to do |format|
+      format.js { render "layouts/wiki"  }
+     end
+  end
 
   def contact
   @title = "contact"

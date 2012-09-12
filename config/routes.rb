@@ -6,6 +6,7 @@ Blog::Application.routes.draw do
   match '' => 'pages#home'
     #get "pages/search"
   match '/search' => 'pages#search'
+  match '/wik' => 'pages#wik'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
  
@@ -34,7 +35,7 @@ Blog::Application.routes.draw do
   resources :involvements
   resources :lifespans 
   resources :posts
- 
+
     # get "home/index"
 
   # The priority is based upon order of creation:
