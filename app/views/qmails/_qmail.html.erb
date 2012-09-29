@@ -1,8 +1,8 @@
-
-<div class ="post" data-time="<%=qmail.created_at.to_i%>">
-  <b><%= qmail.user.name%>:</b>
-   <%= qmail.content %>
-    <%= link_to 'X', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-
- </div>
- </br>
+ <div class ="post" data-time="<%=qmail.created_at.to_i%>"> 
+ 	<div style="color: #32CD32"><%= qmail.user.name%> 
+ 	<div style="float:right">
+ 		<%= image_tag(Gravatar.new(qmail.user.email).image_url, :size => "40x40") %></div> 
+ 	</div> 
+ 		</br> 
+ 	<%= markdown(qmail.content) %> 
+ 	<%= link_to 'x', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </div> </br> <hr>

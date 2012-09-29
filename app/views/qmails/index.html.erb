@@ -12,12 +12,9 @@
   <tr>
     <td><%= qmail.content %></td>
     <td><%= link_to 'Show', qmail %></td>
-    <td><%= link_to 'Edit', edit_qmail_path(qmail) %></td>
     <td><%= link_to 'Destroy', qmail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Qmail', new_qmail_path %>

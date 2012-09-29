@@ -1,17 +1,53 @@
 <div id = "rightcontent">
-<%if current_user%>
-<%if controller.controller_name =="quests"%>
 
-<%if params[:id]%>
-<%quest=Quest.find(params[:id])%>
-<%if quest%>
-Quesers in this Quest:
-</br>
 <table>
-<% quest.users.each do |user| %>
-<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "50x40",:align=>"left")), user %></tr>
+<tr><a href="#" id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "40", :width => "50") %></a></tr>
+<tr><a href="#" id="link_2"><%= image_tag("link.png", :alt => "Gist", :height => "40", :width => "50") %></a></tr>
+<tr><a href="#" id="link_3"><%= image_tag("irc.png", :alt => "IRC", :height => "40", :width => "50") %></a></tr>
+<tr><a href="#" id="link_4"><%= image_tag("gist.png", :alt => "Gist", :height => "40", :width => "50") %></a></tr>
+<tr><a href="#" id="link_5"><%= image_tag("so.png", :alt => "Stack_Of", :height => "40", :width => "50") %></a></tr>
+</table>
 
-<%end%>
+<div id ="wiki_vm">
+
+<%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
+  <%= label_tag(:ad, "Search")%>
+  <%= text_field_tag :ad %>
+  <%= submit_tag("Wiki") %>
+<% end %>
+
+</br>
+
+<div id ="wik">
+
+<%= render 'layouts/wiki' %> 
+</div>
+
+</div>
+<div id="irc_vm">
+<iframe src="http://webchat.freenode.net?channels=rubyonrails&uio=d4" width="100%" height="400"></iframe>
+	
+</div>
+<%if current_user%>
+<%if controller.controller_name=="qs" or controller.controlle_name=="quests"%>
+<div id="link_vm">
+  <div  id="link_field">
+<%= render "links/form" %>
+  </div>
+  <div id='l' >
+ 
+    <%= render @quest.links %>
+
+</div>
+</div>
+
+</br>
+<hr>
+
+<table>
+
+<% @quest.users.each do |user| %>
+<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "50x40",:align=>"left")), user %></tr>
 <%end%>
 <tr>
 <button class="button1" id="Add" >  
@@ -20,7 +56,7 @@ Quesers in this Quest:
 
 </tr>
 </table>
-<%end%>
+
 <div id="dialog-form" >
 <%= form_tag(:controller=> "quests",:action => "show") do %>
   <%= label_tag(:add_user) %>
@@ -32,28 +68,9 @@ Quesers in this Quest:
 <%end%>
 
 <%end%>
-<table>
-<tr><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "40", :width => "50") %></tr>
-<tr><%= image_tag("gist.png", :alt => "Gist", :height => "40", :width => "50") %></tr>
-<tr><%= image_tag("so.png", :alt => "Stack_Of", :height => "40", :width => "50") %></tr>
-</table>
-
-
-<%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
-  <%= label_tag(:ad, "Search")%>
-  <%= text_field_tag :ad %>
-  <%= submit_tag("Wiki") %>
-<% end %>
-
-</br>
-
-
-<div id ="wik">
-
-<%= render 'layouts/wiki' %> 
-</div>
 
 </div>
+
 	<script>
 	
 	
@@ -98,6 +115,25 @@ Quesers in this Quest:
 				$( "#dialog-form" ).dialog( "open");
 			});
 	// hide it first
+	
+	$('#link_vm').hide();
+	$('#irc_vm').hide();
+  $('#link_2').click(function(){ 
+      $('#wiki_vm').hide();
+      $('#irc_vm').hide();
+      $('#link_vm').show();
+  });
+
+  $('#link_1').click(function(){ 
+      $('#link_vm').hide();
+      $('#irc_vm').hide();
+      $('#wiki_vm').show();
+  }); 
+	$('#link_3').click(function(){ 
+      $('#link_vm').hide();
+      $('#wiki_vm').hide();
+      $('#irc_vm').show();
+  }); 
 	
 	});
 	</script>

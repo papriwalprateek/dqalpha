@@ -16,7 +16,7 @@
 //= require_tree .
 $(function() {
   if ($("#com").length > 0) {
-    setTimeout(updateComments, 5000);
+    setTimeout(updateComments, 10000);
   }
 });
 
@@ -28,5 +28,5 @@ function updateComments () {
     var after = "0";
   }
   $.getScript("/qs/"+ q_id +"/qmails.js?q_id=" + q_id + "&after=" + after)
-  setTimeout(updateComments, 5000);
+  setTimeout(updateComments, 10000);
 }

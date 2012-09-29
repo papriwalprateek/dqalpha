@@ -17,6 +17,10 @@ Blog::Application.routes.draw do
     resources :quests do
       resources :qs
     end
+    resources :quests do
+      resources :links
+    end
+  
    resources :qs do
       resources :qmails
     end

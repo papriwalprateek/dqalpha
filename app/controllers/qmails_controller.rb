@@ -44,6 +44,17 @@ class QmailsController < ApplicationController
      @q = Q.find(params[:q_id])
     @qmail = @q.qmails.create(params[:qmail])
     current_user.qmails << @qmail
+        options = [:hard_wrap, :filter_html, :autolink]
+   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
+        :autolink => true)
+  
+       doc = Nokogiri::HTML(markdown.render(@qmail.content))
+       doc.xpath('//a[@href]').each do |l|
+          @quest = @q.quest
+           @link = @quest.links.create(:body => l['href'])
+       # @link = @quest.links.create(:body => "<a href="+l['href']+">"+l.text.strip+"</a>")#if we want the tag also to be displayed in future
+        end
+ 
       respond_to do |format|
      
         format.html { redirect_to q_path(@q)}
@@ -74,9 +85,11 @@ class QmailsController < ApplicationController
     @qmail = Qmail.find(params[:id])
     @qmail.destroy
     @q = @qmail.q
+    
     respond_to do |format|
       format.html { redirect_to q_path(@q) }
       format.js {render action: "create" }
+      
       format.json { head :no_content }
     end
   end

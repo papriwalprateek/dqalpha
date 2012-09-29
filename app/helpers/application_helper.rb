@@ -7,6 +7,21 @@ module ApplicationHelper
             "#{base_title} | #{@title}" 
         end
     end
+    def markdown(text)
+  options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
+        :autolink => true, :fenced_code => true, :no_intraemphasis => true,:gh_blockcode=> true,:strikethrough=>true)
+#  markdown.render(text).html_safe;
+ raw syntax_highlighter(markdown.render(text))
+end
+
+def syntax_highlighter(html)
+  doc = Nokogiri::HTML(html)
+  doc.search("//pre[@lang]").each do |pre|
+    pre.replace Albino.colorize(pre.text.rstrip, pre[:lang])
+  end
+  doc.to_s
+end
 def wiki_content(a)
     
 

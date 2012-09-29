@@ -11,6 +11,8 @@ group :production do
   gem 'pg'
 end
 gem 'calc'
+gem 'redcarpet'
+gem 'albino'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'json'
@@ -26,6 +28,7 @@ gem 'wikicloth'
 gem 'openurl'
 gem 'google_visualr'
 gem 'jquery-ui-rails'
+gem 'ace-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

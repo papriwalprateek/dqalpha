@@ -1,0 +1,4 @@
+<% unless @links.empty? %>
+$("#l").html("<%=raw escape_javascript(render(@links)) %>");
+
+<% end %>
