@@ -43,6 +43,7 @@ class QmailsController < ApplicationController
   def create
      @q = Q.find(params[:q_id])
     @qmail = @q.qmails.create(params[:qmail])
+    @quest = @q.quest
     current_user.qmails << @qmail
         options = [:hard_wrap, :filter_html, :autolink]
    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
@@ -85,6 +86,7 @@ class QmailsController < ApplicationController
     @qmail = Qmail.find(params[:id])
     @qmail.destroy
     @q = @qmail.q
+    @quest = @q.quest
     
     respond_to do |format|
       format.html { redirect_to q_path(@q) }
