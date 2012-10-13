@@ -7,11 +7,14 @@ body { width:100%;background: #fff; margin: 0px; padding: 0px;
 } 
 #header img { padding-right: 5px; background: #F5F5DC; float: left; 
 }
-#content img{float: right; 
+#content img{float: right; margin-bottom: 5px;
 }
 #content { background: #fff; width: 35%; padding: 1em;  float: left;
 }
-
+div.quests_tiles{
+	margin-right: auto; margin-top: auto; display: block; 
+color: #fff; background: #09c; padding: 10px; width: 70%;
+}
 div.post { font-size: 120%; padding: 5px;
 }
 div.users { float: left; width: 850px;

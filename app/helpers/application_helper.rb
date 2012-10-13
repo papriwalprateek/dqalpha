@@ -35,8 +35,8 @@ def wiki_content(a)
     
     note = @doc.search("sup")
     note.remove
-    note = @doc.search("a.external")
-    note.remove
+#    note = @doc.search("a.external")
+#   note.remove
     note = @doc.search("span")
     note.remove
 

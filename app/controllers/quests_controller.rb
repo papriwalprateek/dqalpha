@@ -18,6 +18,7 @@ class QuestsController < ApplicationController
    
       format.html # show.html.erb
       format.json { render :json => @quest }
+      format.js
     end
   end
   def add_user

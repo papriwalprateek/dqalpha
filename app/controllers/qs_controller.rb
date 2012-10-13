@@ -18,7 +18,7 @@ def create
  respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @q }
-     
+      format.js
     end
   end
 def destroy

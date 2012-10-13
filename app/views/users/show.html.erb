@@ -1,4 +1,6 @@
 <%= link_to h(image_tag(Gravatar.new(@user.email).image_url, :size => "120x120",:align=>"left")), @user %>
 <h2><%=@user.name%></h2>
 <%=@user.email%>
- 
+<%=render @user.quests%>
+
+<!--<%=render @user.qmails%>>

@@ -15,11 +15,25 @@
 //= require jquery.ui.all
 //= require_tree .
 $(function() {
+  $(".post a").live("click", function() {
+    $.getScript(this.href);
+    window.history.pushState(null, document.title, this.href);
+     return false;
+  });
+  $("#leftcontent a").live("click", function() {
+    $.getScript(this.href);
+    window.history.pushState(null, document.title, this.href);
+     return false;
+  });
+  
+   $(window).bind("popstate", function() {
+      $.getScript(location.href);
+    });
+
   if ($("#com").length > 0) {
     setTimeout(updateComments, 10000);
   }
 });
-
 function updateComments () {
   var q_id = $("#q").attr("data-id");
   if ($(".post").length > 0) {
