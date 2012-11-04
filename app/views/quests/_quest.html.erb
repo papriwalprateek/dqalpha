@@ -1,3 +1,18 @@
+ <div class="content_header">
+ <table>
+
+<% @quest.users.each do |user| %>
+<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "50x40",:align=>"left")), user %></tr>
+<%end%>
+<tr>
+<button class="button1" id="Add" >  
+
++</button>
+
+</tr>
+</table>
+<hr>
+</div>
   <h2 style="font-family:times;"><%= @quest.title %></h2>
   
  
@@ -30,4 +45,62 @@
   </div>
   
 <% end %>
+<div id="dialog-form" >
+<%= form_tag(:controller=> "quests",:action => "show") do %>
+  <%= label_tag(:add_user) %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
+</div>
+	<script>
+	
+	
+		
+	$(function() {
+
+		//autocomplete for user names
+		var availableTags = [<% for user in User.all -%>
+		"<%= user.name %>"
+		<%if user==User.last%>
+		<%else%>
+		,<%end%>
+		<% end -%>];
+		$( "#add_user" ).autocomplete({
+			source: availableTags
+			});
+		
+		
+		//dialog box for adding user
+		$( "#dialog:ui-dialog" ).dialog( "destroy" );
+		
+		var name = $( "#name" );
+
+		$( "#dialog-form" ).dialog({
+			dialogClass: 'ui-dialog-shadow',
+			autoOpen: false,
+			height: 100,
+			width: 200,
+	
+			modal: true,
+			buttons: {
+				
+			},
+			close: function() {
+				
+			}
+		});
+
+		$( "#Add" )
+			.button()
+			.click(function() {
+				$( "#dialog-form" ).dialog( "open");
+			});
+	// hide it first
+	
+	
+	});
+	</script>
+
+
+
  

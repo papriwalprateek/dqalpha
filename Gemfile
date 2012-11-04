@@ -11,6 +11,7 @@ group :production do
   gem 'pg'
 end
 gem 'calc'
+gem 'timeline_fu'
 gem 'redcarpet'
 gem 'albino'
 gem 'authlogic'

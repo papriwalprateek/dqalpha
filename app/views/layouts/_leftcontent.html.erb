@@ -1,21 +1,23 @@
 <div id = "leftcontent">
 <%if current_user%>
 
+
+
+<font color="#000000" size="4.0">
+<% current_user.quests.each do |quest| %>
+ <a href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<div class ="quest_blocks">
+
+	  <%= quest.title %>
+ </div>
+
+ </a>
+ <hr>
+ <% end %>
 <button class="button"  onclick = "window.location.href = <%=users_path%>" id = "AddQ">  
 
 New Quest</button>
 
-</br>
-
-<font color="#ff0000" size="3.5">
-<% current_user.quests.each do |quest| %>
- 
-<a href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
-	  <%= quest.title %>
- </a>
- </br>
-
- <% end %>
 <div id="dialog-formQ" class="dialog">
 <h2>Add a Quest:</h2>
 <%= form_for([current_user, current_user.quests.build]) do |f| %>
@@ -53,8 +55,8 @@ New Quest</button>
 		$( "#dialog-formQ" ).dialog({
 			autoOpen: false,
 			dialogClass: 'ui-dialog-shadow',
-			height: 600,
-			width: 600,
+			height: 400,
+			width: 450,
 			modal: true,
 			buttons: {
 				
