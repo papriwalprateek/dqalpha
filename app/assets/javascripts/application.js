@@ -11,11 +11,29 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.hovercard
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree .
 $(function() {
-  $(".post a").live("click", function() {
+	//on hover profile
+		var myProfile = {
+    "name": "My profie name",
+    "image": "", 
+    "link": "http://www.aboutmelink.com/", 
+    "bio": "My bio or short description here",
+    "website": "http://mywebsite.com", 
+    "email": "me@email.com"
+}
+
+$('.hoverme').hovercard({
+    showCustomCard: true, 
+    customCardJSON: myProfile
+});
+
+	
+ //git browse repo
+  $(".content_middle a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
@@ -31,7 +49,7 @@ $(function() {
     });
 
   if ($("#com").length > 0) {
-    setTimeout(updateComments, 10000);
+    setTimeout(updateComments, 100000);
   }
 });
 function updateComments () {
@@ -42,5 +60,5 @@ function updateComments () {
     var after = "0";
   }
   $.getScript("/qs/"+ q_id +"/qmails.js?q_id=" + q_id + "&after=" + after)
-  setTimeout(updateComments, 10000);
+  setTimeout(updateComments, 100000);
 }

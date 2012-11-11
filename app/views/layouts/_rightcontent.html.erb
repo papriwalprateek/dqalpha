@@ -1,13 +1,14 @@
 <div id = "rightcontent">
-
+<div id ="rightcontent_head">
+VM's
 <table>
-<tr><a href="#" id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "40", :width => "50") %></a></tr>
-<tr><a href="#" id="link_2"><%= image_tag("link.png", :alt => "Gist", :height => "40", :width => "50") %></a></tr>
-<tr><a href="#" id="link_3"><%= image_tag("irc.png", :alt => "IRC", :height => "40", :width => "50") %></a></tr>
-<tr><a href="#" id="link_4"><%= image_tag("gist.png", :alt => "Gist", :height => "40", :width => "50") %></a></tr>
-<tr><a href="#" id="link_5"><%= image_tag("so.png", :alt => "Stack_Of", :height => "40", :width => "50") %></a></tr>
+<tr><a href="#" id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "30", :width => "30") %></a></tr>
+<tr><a href="#" id="link_2"><%= image_tag("link.png", :alt => "Gist", :height => "30", :width => "30") %></a></tr>
+<tr><a href="#" id="link_3"><%= image_tag("irc.png", :alt => "IRC", :height => "30", :width => "30") %></a></tr>
+<tr><a href="#" id="link_4"><%= image_tag("gist.png", :alt => "Gist", :height => "30", :width => "30") %></a></tr>
+<tr><a href="#" id="link_5"><%= image_tag("so.png", :alt => "Stack_Of", :height => "30", :width => "30") %></a></tr>
 </table>
-
+</div>
 <div id ="wiki_vm">
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>

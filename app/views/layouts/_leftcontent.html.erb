@@ -1,50 +1,56 @@
 <div id = "leftcontent">
+<div class="leftcontent_head">
 <%if current_user%>
+Quests
+<button class="button"  onclick = "window.location.href = <%=users_path%>" id = "AddQ" >
+	 
+
+New Quest</button>
 
 
-
-<font color="#000000" size="4.0">
+</div>
+<font color="#000000" size="2.0">
 <% current_user.quests.each do |quest| %>
  <a href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <div class ="quest_blocks">
 
 	  <%= quest.title %>
+	  <div class="time"> <%= quest.created_at.strftime("%b,%d")%>
+  </div>
  </div>
 
  </a>
  <hr>
  <% end %>
-<button class="button"  onclick = "window.location.href = <%=users_path%>" id = "AddQ">  
-
-New Quest</button>
+</font>
 
 <div id="dialog-formQ" class="dialog">
 <h2>Add a Quest:</h2>
 <%= form_for([current_user, current_user.quests.build]) do |f| %>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title,"Give it a title:" %><br />
+    <%= f.text_field :title, :style=>'width: 310px;border:0px;'  %>
   </div>
+  <hr>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.label :description,"Provide a description:" %><br />
+    <%= f.text_area :description, :style=>'width: 300px;border:0px;font-family:arial;' %>
   </div>
+  <hr>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Start the Quest", :class => "button_new_quest"%>
+    or press "Esc" to cancel
   </div>
   
 <% end %>
-	</div>
 <%end%>
-</font>
-
+	</div>
 
 </div>
 
 
 	<script>
 	$(function() {
-		
 		
 		//dialog box for adding user
 		$( "#dialog:ui-dialog" ).dialog( "destroy" );
@@ -56,8 +62,10 @@ New Quest</button>
 			autoOpen: false,
 			dialogClass: 'ui-dialog-shadow',
 			height: 400,
-			width: 450,
+			width: 420,
 			modal: true,
+			position:[140,10],
+
 			buttons: {
 				
 			},
