@@ -20,6 +20,14 @@ box-shadow: 0 0 5px 0px #888;
 	background: #FFFFFF;
 font-family: sans-serif;
 }
+#examplePadBasic{
+	height: 400px;
+	width: 96%;
+	border:2px solid #a1a1a1;
+padding:2px 10px; 
+border-radius:10px;
+-moz-border-radius:10px; /* Firefox 3.6 and earlier */
+}
 #add_q{
 background: #f5dff5;
 }
@@ -35,6 +43,7 @@ div.content_header{
 	 background:#f7b3da;
 	margin: 0px;
 	color: #FFFFFF;
+	height: 30px;
 	}
 div.quests_tiles{
 	margin-right: auto; margin-top: auto; display: block; 

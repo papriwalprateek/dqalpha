@@ -15,22 +15,10 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree .
+//= require etherpad
 $(function() {
-	//on hover profile
-		var myProfile = {
-    "name": "My profie name",
-    "image": "", 
-    "link": "http://www.aboutmelink.com/", 
-    "bio": "My bio or short description here",
-    "website": "http://mywebsite.com", 
-    "email": "me@email.com"
-}
-
-$('.hoverme').hovercard({
-    showCustomCard: true, 
-    customCardJSON: myProfile
-});
-
+	
+	
 	
  //git browse repo
   $(".content_middle a").live("click", function() {

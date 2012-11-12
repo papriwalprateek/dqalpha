@@ -1,8 +1,10 @@
 
-<div id="q" data-id="<%=@q.id%>">
 
-<b>    <%= @q.title %></b>
-  </p>
+<div id="q" data-id="<%=@q.id%>" >
+<div class="content_header">
+<%=@quest.title%> <%= @q.title %>
+</div>
+<div id="examplePadBasic"></div>
  
 
 
@@ -18,3 +20,14 @@
 </div>
 
 </div>
+<script>
+	
+	
+		
+	$(function() {
+	$('#examplePadBasic').pad({'padId':'<%=@quest.title+@q.id.to_s+@q.title%>'});
+	
+		});
+	</script>
+
+

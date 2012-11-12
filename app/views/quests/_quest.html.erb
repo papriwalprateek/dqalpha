@@ -51,7 +51,7 @@
 <%= form_for([@quest, @quest.qs.build]) do |f| %>
   <div class="field">
    <%f.label :title %>
-    <%= f.text_field :title ,:style=>'border:0px;'%>
+    <%= f.text_field :title ,:style=>'border:0px; width:60%'%>
     <%= f.submit "Add new Q"%>
   
   </div>  
@@ -64,7 +64,7 @@
 	
 		
 	$(function() {
-
+	
 		//autocomplete for user names
 		var availableTags = [<% for user in User.all -%>
 		"<%= user.name %>"
@@ -89,7 +89,21 @@
    	$('#form_addq').show();
   	$('#add_q').hide(); 
   });
-	
+	//on hover profile
+		var myProfile = {
+    "name": "My profie name",
+    "image": "", 
+    "link": "http://www.aboutmelink.com/", 
+    "bio": "My bio or short description here",
+    "website": "http://mywebsite.com", 
+    "email": "me@email.com"
+}
+
+$('.hoverme').hovercard({
+    showCustomCard: true, 
+    customCardJSON: myProfile
+});
+
 	});
 	</script>
 
