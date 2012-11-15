@@ -20,6 +20,14 @@ box-shadow: 0 0 5px 0px #888;
 	background: #FFFFFF;
 font-family: sans-serif;
 }
+.ui-layout-center{
+	padding:0px;
+}
+.ui-layout-west{
+	padding:0px;
+}.ui-layout-east{
+	padding:0px;
+}
 #examplePadBasic{
 	height: 400px;
 	width: 96%;
@@ -136,9 +144,6 @@ float: left;
 width: 18%;
 height: 620px;
 
-margin-top:10px;
-margin-left:10px;
-margin-right:7px;
 background:#FFFFFF;
 -moz-box-shadow: 0 0 5px 0px #888;
 -webkit-box-shadow: 0 0 0px 5px#888;

@@ -16,10 +16,22 @@
 //= require jquery.ui.all
 //= require_tree .
 //= require etherpad
+//= require jquery.layout
 $(function() {
 	
 	
-	
+	//for wiki selection
+    	 $(document.body).bind('mouseup', function(e){
+        var selection;
+        
+        if (window.getSelection) {
+          selection = window.getSelection();
+          
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        $.getScript("/wik?ad=Bill_Gates");
+    	}); 
  //git browse repo
   $(".content_middle a").live("click", function() {
     $.getScript(this.href);
