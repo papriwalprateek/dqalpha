@@ -30,7 +30,7 @@ $(function() {
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
-        $.getScript("/wik?ad=Bill_Gates");
+        $.getScript("/wik?ad="+selection.toString());
     	}); 
  //git browse repo
   $(".content_middle a").live("click", function() {
