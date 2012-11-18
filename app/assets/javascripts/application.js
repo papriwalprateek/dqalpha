@@ -36,22 +36,19 @@ $(function() {
          mousePos = {left: e.pageX , top: e.pageY};   
         
         if(selection.toString() != ''&& !$("#onselection_list").is(":visible")) {
-
+            
             $('#onselection_list').css("position","fixed");
             $('#onselection_list').css("top",mousePos.top);
             $('#onselection_list').css("left",mousePos.left);
-  
             $('#onselection_list').show();
-           $("#onselection_list button").show();   
+            $("#onselection_list button").show();   
     		
-         
+        
         } 
         else if(selection.toString()!=""){
         	
         }
         else {
-                   $("#onselection_list p").replaceWith( "" );
-
             $('#onselection_list').hide();
         }
     });
@@ -98,7 +95,6 @@ function updateComments () {
         }
         
     		   $.getScript("/wik?ad="+selection.toString());
-    		$("#onselection_list button").hide();   
     		    $( "#onselection_list" ).animate({
   				left: 50, opacity: 1,
     	
