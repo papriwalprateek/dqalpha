@@ -1,8 +1,21 @@
 
 
 <div id="q" data-id="<%=@q.id%>" >
-<div class="content_header">
-<%=@quest.title%> <%= @q.title %>
+ <div class="content_header">
+ <%= @quest.title %>><%=@q.title%>
+<% @quest.users.each do |user| %>
+<label class ="hoverme" data-hovercard= <%= root_url[0...-1]+user_path( :id => user.id, :format => :json )%>><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30")), user %></label>
+<%end%>
+<button class="button1" id="Add" >  
++</button>
+<div id="dialog-form">
+<%= form_tag({:controller=> "quests",:action => "show"}, :id => "borderless") do %>
+  <%= label_tag(:add_user, " ") %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
+</div>
+
 </div>
 <div id="examplePadBasic"></div>
  
@@ -20,12 +33,51 @@
 </div>
 
 </div>
+<div id="onselection_list">
+		<p></p>
+
+<button onclick="search_wiki()" >Wiki</button>
+</div>
+
 <script>
 	
 	
 		
 	$(function() {
+		$('#onselection_list').hide();
+	
 	$('#examplePadBasic').pad({'padId':'<%=@quest.title+@q.id.to_s+@q.title%>'});
+			//autocomplete for user names
+		var availableTags = [<% for user in User.all -%>
+		"<%= user.name %>"
+		<%if user==User.last%>
+		<%else%>
+		,<%end%>
+		<% end -%>];
+		$( "#add_user" ).autocomplete({
+			source: availableTags
+			});
+     $('#dialog-form').hide();
+ 		
+		$('#Add').click(function(){ 
+      $('#dialog-form').show();
+      $("#Add").hide();
+  }); 
+	
+		//dialog box for adding user
+	 	$('#form_addq').hide();
+  
+	$('#add_q').click(function(){ 
+   	$('#form_addq').show();
+  	$('#add_q').hide(); 
+  });
+	//on hover profile
+
+
+$('.hoverme').hovercard({
+    showCustomCard: true,
+});
+
 	
 		});
 	</script>

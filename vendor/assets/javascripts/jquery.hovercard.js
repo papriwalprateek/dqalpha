@@ -315,7 +315,7 @@
                                         (profileData.link ? ('<a class="s-loc" href="' + profileData.link + '">' + profileData.link + '</a><br/>') : '') +
                                         (profileData.bio ? ('<p class="s-desc">' + profileData.bio + '</p>') : '') +
                                         (profileData.website ? ('<p class="s-desc"><span class="s-strong">Web:</span><br/><a href="' + profileData.website + '">' + profileData.website + '</a></p>') : '') +
-                                        (profileData.email ? ('<p class="s-desc"><span class="s-strong">Email:</span><br/><a href="' + profileData.email + '">' + profileData.email + '</a></p>') : '') +
+                                        (profileData.email ? ('<p class="s-desc"><span class="s-strong">Email:</span><br/>'  + profileData.email + '</p>') : '') +
                                         '</div>';
                             };
                             loadingHTML = "Loading...";
@@ -330,7 +330,7 @@
                     $.ajax({
                         url: urlToRequest,
                         type: 'GET',
-                        dataType: 'jsonp', //jsonp for cross domain request
+                        dataType: 'json', //jsonp for cross domain request......    vinay raj choudhary made a change here now it's no longe cross domain
                         timeout: 4000, //timeout if cross domain request didn't respond, or failed silently
                         beforeSend: function () {
                             curHCDetails.find('.s-message').remove();

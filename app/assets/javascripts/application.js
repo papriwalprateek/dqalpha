@@ -17,9 +17,11 @@
 //= require_tree .
 //= require etherpad
 //= require jquery.layout
+//= require jquery.layout.pseudoClose
 $(function() {
-	
-	
+		
+
+
 	//for wiki selection
     	 $(document.body).bind('mouseup', function(e){
         var selection;
@@ -30,8 +32,30 @@ $(function() {
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
-        $.getScript("/wik?ad="+selection.toString());
-    	}); 
+         var mousePos;
+         mousePos = {left: e.pageX , top: e.pageY};   
+        
+        if(selection.toString() != ''&& !$("#onselection_list").is(":visible")) {
+
+            $('#onselection_list').css("position","fixed");
+            $('#onselection_list').css("top",mousePos.top);
+            $('#onselection_list').css("left",mousePos.left);
+  
+            $('#onselection_list').show();
+           $("#onselection_list button").show();   
+    		
+         
+        } 
+        else if(selection.toString()!=""){
+        	
+        }
+        else {
+                   $("#onselection_list p").replaceWith( "" );
+
+            $('#onselection_list').hide();
+        }
+    });
+     	
  //git browse repo
   $(".content_middle a").live("click", function() {
     $.getScript(this.href);
@@ -51,7 +75,7 @@ $(function() {
   if ($("#com").length > 0) {
     setTimeout(updateComments, 100000);
   }
-});
+	});
 function updateComments () {
   var q_id = $("#q").attr("data-id");
   if ($(".post").length > 0) {
@@ -62,3 +86,25 @@ function updateComments () {
   $.getScript("/qs/"+ q_id +"/qmails.js?q_id=" + q_id + "&after=" + after)
   setTimeout(updateComments, 100000);
 }
+//send for search to wiki
+    	function search_wiki () {
+    		 var selection;
+        
+        if (window.getSelection) {
+          selection = window.getSelection();
+          
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        
+    		   $.getScript("/wik?ad="+selection.toString());
+    		$("#onselection_list button").hide();   
+    		    $( "#onselection_list" ).animate({
+  				left: 50, opacity: 1,
+    	
+          	top:  $("#rightcontent").position().top,
+    		   	left:$("#rightcontent").position().left
+    		    
+			}, 500 );
+    	     
+    	}

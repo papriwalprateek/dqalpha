@@ -16,7 +16,7 @@ def create
     @q = Q.find(params[:id])
     @quest = @q.quest
  respond_to do |format|
-      format.html # show.html.erb
+      format.html {render "_q"}# show.html.erb
       format.json { render :json => @q }
       format.js
     end

@@ -7,7 +7,7 @@ body { width:100%;background: #FFFFFF; margin: 0px; padding: 0px;height: 100%;
 } 
 #header img { padding-right: 5px; background: #F5F5DC; float: left; 
 }
-#content img{float: right; margin-bottom: 0px;
+#content img{ margin-bottom: 0px;
 }
 #content { background:#FFFFFF;
 	 width: 47%;  float: left; height:620px; overflow-y:auto;margin-top:10px;
@@ -27,6 +27,9 @@ font-family: sans-serif;
 	padding:0px;
 }.ui-layout-east{
 	padding:0px;
+}
+.ui-layout-toggler{
+	background: #e1fb86;
 }
 #examplePadBasic{
 	height: 400px;
@@ -53,6 +56,13 @@ div.content_header{
 	color: #FFFFFF;
 	height: 30px;
 	}
+.content_header label{
+	display: inline;
+	float: right;
+}
+.content_header .hc-preview{
+	float: right;
+}
 div.quests_tiles{
 	margin-right: auto; margin-top: auto; display: block; 
 color: #fff; background: #09c; padding: 10px; width: 70%;
@@ -80,6 +90,14 @@ hr{
 #boldhr{
 	height: 5px;
 }
+#onselection_list{
+position: absolute;
+
+background:#FFFFFF;
+ z-index:99;
+ box-shadow: 5px 5px 3px #888888;
+ }
+
 
 /* Links */
 a{color: #09c; text-decoration: none;
@@ -202,13 +220,15 @@ float: right;
 }
 #dialog-formQ{background-color:#d7fab9;
 }
-textarea{
-	
-	border: 0px;
-}
+
 #borderless{
 	
 	border: 0px;
+}
+.qmail_field textarea{
+	width: 85%;
+	margin: 10px;
+	height: 40px;
 }
 
 #dialog-form{

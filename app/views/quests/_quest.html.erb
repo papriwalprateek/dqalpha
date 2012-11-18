@@ -1,14 +1,10 @@
  <div class="content_header">
  <%= @quest.title %>
- <table>
 <% @quest.users.each do |user| %>
-<tr><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30")), user %></tr>
+<label class ="hoverme" data-hovercard= <%= root_url[0...-1]+user_path( :id => user.id, :format => :json )%>><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30")), user %></label>
 <%end%>
-<tr>
 <button class="button1" id="Add" >  
 +</button>
-</tr>
-<tr >
 <div id="dialog-form">
 <%= form_tag({:controller=> "quests",:action => "show"}, :id => "borderless") do %>
   <%= label_tag(:add_user, " ") %>
@@ -16,9 +12,7 @@
   <%= submit_tag("Add") %>
 <% end %>
 </div>
-</tr>
 
-</table>
 </div>
 
 
@@ -59,11 +53,19 @@
 <% end %>
 </div>
 </div>
+
+<div id="onselection_list">
+	<p></p>
+<button onclick="search_wiki()" >Wiki</button>
+</div>
+
 	<script>
 	
 	
 		
 	$(function() {
+	//hiding wiki list
+		$('#onselection_list').hide();
 	
 		//autocomplete for user names
 		var availableTags = [<% for user in User.all -%>
@@ -90,18 +92,10 @@
   	$('#add_q').hide(); 
   });
 	//on hover profile
-		var myProfile = {
-    "name": "My profie name",
-    "image": "", 
-    "link": "http://www.aboutmelink.com/", 
-    "bio": "My bio or short description here",
-    "website": "http://mywebsite.com", 
-    "email": "me@email.com"
-}
+
 
 $('.hoverme').hovercard({
-    showCustomCard: true, 
-    customCardJSON: myProfile
+    showCustomCard: true,
 });
 
 	});
