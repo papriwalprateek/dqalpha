@@ -31,25 +31,27 @@ VM's
 <iframe src="http://webchat.freenode.net?channels=rubyonrails&uio=d4" width="100%" height="400"></iframe>
 	
 </div>
-<%if current_user%>
-<%if controller.controller_name=="qs" or controller.controller_name=="quests"%>
 <div id="link_vm">
+
   <div  id="link_field">
+<%if controller.controller_name=="qs" or controller.controller_name=="quests"%>
+
 <%= render "links/form" %>
+<%end%>
   </div>
   <div id='l' >
- 
-    <%= render @quest.links %>
+ <%if controller.controller_name=="qs" or controller.controller_name=="quests"%>
 
+    <%= render @quest.links %>
+<%end%>
 </div>
-</div>
+
 
 </br>
 
-<%end%>
 
-<%end%>
 
+</div>
 </div>
 <%end%>
 	<script>

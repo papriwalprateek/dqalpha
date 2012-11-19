@@ -9,7 +9,10 @@ p{margin:0px;}
 #header img { padding-right: 5px; background: #F5F5DC; float: left; 
 }
 .signin_form{color: #333333;
-font-family: Georgia, Serif;	margin: auto;
+margin-top: 30px;
+font-family: Georgia, Serif;	
+margin-right: auto;
+margin-left: auto;
 	width: 40%;
 box-shadow: 0 0 5px 0px #888;
 }
