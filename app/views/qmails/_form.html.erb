@@ -1,6 +1,6 @@
 
 <%= form_for([@q, @q.qmails.build], :remote => true, :update => "qmails_list", :position => :bottom) do |f| %>
-  <div style="float:right">
+  <div style="float:right;padding:10px;">
  		<%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div> 
   
   <div class="qmail_field" id="qmail_field">

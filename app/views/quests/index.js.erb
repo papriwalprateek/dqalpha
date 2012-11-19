@@ -1,0 +1,4 @@
+<% unless @quests.empty? %>
+$("#content").html("<%=raw escape_javascript(render(@quests)) %>");
+
+<% end %>

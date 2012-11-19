@@ -1,3 +1,5 @@
+<%if current_user%>
+
 <div id = "rightcontent" class ="ui-layout-east">
 <div id ="rightcontent_head">
 VM's
@@ -43,14 +45,13 @@ VM's
 </div>
 
 </br>
-<hr>
 
 <%end%>
 
 <%end%>
 
 </div>
-
+<%end%>
 	<script>
 	
 	
@@ -65,18 +66,18 @@ VM's
   $('#link_2').click(function(){ 
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
-      $('#link_vm').show("slide", { direction: "right" }, 300);
+      $('#link_vm').fadeIn( 300);
   });
 
   $('#link_1').click(function(){ 
       $('#link_vm').hide();
       $('#irc_vm').hide();
-      $('#wiki_vm').show("slide", { direction: "right" }, 300);
+      $('#wiki_vm').fadeIn(300);
   }); 
 	$('#link_3').click(function(){ 
       $('#link_vm').hide();
       $('#wiki_vm').hide();
-      $('#irc_vm').show();
+      $('#irc_vm').fadeIn(300);
   }); 
 	
 	

@@ -1,4 +1,6 @@
 class QsController < ApplicationController
+before_filter :require_user
+  
 def create
     @quest = Quest.find(params[:quest_id])
     @q = @quest.qs.create(params[:q])
@@ -15,6 +17,10 @@ def create
   def show
     @q = Q.find(params[:id])
     @quest = @q.quest
+    if params[:add_user] 
+      @user = User.find_by_name(params[:add_user])
+      @quest.users << @user
+    end
  respond_to do |format|
       format.html {render "_q"}# show.html.erb
       format.json { render :json => @q }

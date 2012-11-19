@@ -1,0 +1,9 @@
+<%= form_for([@quest, @quest.qs.build], :remote => true) do |f| %>
+  <div class="field">
+   <%f.label :title %>
+    <%= f.text_field :title ,:style=>'border:0px; width:60%'%>
+    <%= f.submit "Add new Q"%>
+  
+  </div>  
+  
+<% end %>

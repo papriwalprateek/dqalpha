@@ -3,12 +3,13 @@ Blog::Application.routes.draw do
  
 
     #get "pages/home"
-  match '' => 'pages#home'
+  match '' => 'user_sessions#new'
     #get "pages/search"
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
+  match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
  
   resources :users do
     resources :quests

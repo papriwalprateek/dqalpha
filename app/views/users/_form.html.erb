@@ -1,4 +1,7 @@
 <%= form_for(@user) do |f| %>
+ <div class ="signin_form">
+ <h1>New user</h1>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -29,5 +32,8 @@
     </div>
   <div class="actions">
     <%= f.submit %>
+  </div>
+  Already a member... <%= link_to 'Signin', signin_path %>
+
   </div>
 <% end %>

@@ -1,8 +1,9 @@
+<%if current_user%>
+
 <div id = "leftcontent" class="ui-layout-west">
 <div class="leftcontent_head">
-<%if current_user%>
 Quests
-<button class="button"  onclick = "window.location.href = <%=users_path%>" id = "AddQ" >
+<button class="button"   id = "AddQ" >
 	 
 
 New Quest</button>
@@ -43,18 +44,15 @@ New Quest</button>
   </div>
   
 <% end %>
-<%end%>
 
 	</div>
 
 </div>
 
 
+<%end%>
 	<script>
 	$(function() {
-		
-		//dialog box for adding user
-		$( "#dialog:ui-dialog" ).dialog( "destroy" );
 		
 		
 		var name = $( "#name" );
@@ -65,14 +63,8 @@ New Quest</button>
 			height: 400,
 			width: 420,
 			modal: true,
-			position:[140,10],
-
-			buttons: {
-				
-			},
-			close: function() {
-				
-			}
+			position:[10,10]
+			
 		});
 
 		$( "#AddQ" )

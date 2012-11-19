@@ -1,5 +1,13 @@
-<h1>Signin</h1>
+<% if !current_user %>
+<p></p>
+
+<div class ="signin_form">
+
+<h2>Signin</h2>
 
 <%= render 'form' %>
 </br>
-New Here <%= link_to 'Sign-up', signup_path %>
+
+<%= link_to "Sign up now!", 'signup', :class => "signup_button round" %>
+</div>
+<% end %>

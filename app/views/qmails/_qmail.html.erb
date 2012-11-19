@@ -1,6 +1,6 @@
  <div class ="post" data-time="<%=qmail.created_at.to_i%>"> 
  	<div style="float:right">
- 		<%= image_tag(Gravatar.new(qmail.user.email).image_url, :size => "30x30") %></div> 
+ 	<label class ="hoverme" data-hovercard= <%= root_url[0...-1]+user_path( :id => qmail.user.id, :format => :json )%>>	<%= image_tag(Gravatar.new(qmail.user.email).image_url, :size => "30x30") %></div> </label>
   
  	<%= markdown(qmail.content) %> 
  	<%= link_to 'x', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </div> <hr>

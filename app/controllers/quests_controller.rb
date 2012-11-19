@@ -1,8 +1,16 @@
 class QuestsController < ApplicationController
+  before_filter :require_user
+  
   def create
     @user = current_user
     @quest = @user.quests.create(params[:quest])
-    redirect_to user_path(@user)
+ 
+    respond_to do |format|
+   
+    format.html {   redirect_to quest_path(@quest)}# show.html.erb
+    format.js
+    end
+ 
   end
   def index
     

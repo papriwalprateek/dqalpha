@@ -40,15 +40,18 @@ $(function() {
             $('#onselection_list').css("position","fixed");
             $('#onselection_list').css("top",mousePos.top);
             $('#onselection_list').css("left",mousePos.left);
+            $('#onselection_list p').html(selection.toString());
             $('#onselection_list').show();
             $("#onselection_list button").show();   
     		
         
         } 
         else if(selection.toString()!=""){
-        	
+            
         }
         else {
+            	 $('#onselection_list p').html("");
+        
             $('#onselection_list').hide();
         }
     });
@@ -95,12 +98,15 @@ function updateComments () {
         }
         
     		   $.getScript("/wik?ad="+selection.toString());
-    		    $( "#onselection_list" ).animate({
+    		  	 $('#onselection_list button').hide(400,function(){   $( "#onselection_list" ).animate({
   				left: 50, opacity: 1,
     	
           	top:  $("#rightcontent").position().top,
     		   	left:$("#rightcontent").position().left
     		    
-			}, 500 );
+			}, 800 );});
+        
+    		 
+			$("#link_1").click();
     	     
     	}
