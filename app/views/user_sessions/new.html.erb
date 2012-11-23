@@ -1,6 +1,4 @@
 <% if !current_user %>
-
-
 <div class ="signin_form">
 
 <h2>Signin</h2>
@@ -11,3 +9,41 @@
 <%= link_to "Sign up now!", 'signup', :class => "signup_button round" %>
 </div>
 <% end %>
+<%if current_user%>
+<div class="dashboard">
+<h2>
+	<%=current_user.name%>
+</h2>
+<div class="dashboard_right">
+<div class="user_image">
+<%= image_tag(Gravatar.new(current_user.email).image_url, :height => "162", :width => "162") %>
+</div>
+</br>
+<div>
+Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
+</div>
+</div>
+<div class="quests_show">
+<% current_user.quests.each do |quest| %>
+<a href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<div class = "quests_tiles">
+<div class="time">
+<%=quest.created_at.strftime("%b, %d")%>
+</div>
+<h2><%=quest.title%></h2>
+<%=quest.description%>
+</br>
+<div class="quests_tiles_img">
+<%quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url, :size => "30x30") %>
+<%end%>
+</div>
+</div>
+</a>
+<%end%>
+<div class="quests_tiles">
+	<h2>New Quest</h2>
+</div>
+</div>
+</div>
+<%end%>

@@ -73,10 +73,54 @@ div.content_header{
 .content_header .hc-preview{
 	float: right;
 }
-div.quests_tiles{
-	margin-right: auto; margin-top: auto; display: block; 
-color: #fff; background: #09c; padding: 10px; width: 70%;
+.quests_tiles_img{
+	float: right;
+	margin-top: auto;
 }
+.quests_tiles_img img{
+	margin:1px;
+}
+div.quests_tiles{
+	display:inline-table;
+opacity:0.6;border-width:0px;
+background-color:#F3f3f3;
+margin: 5px;
+color:#232323;
+
+width:300px;height:162px;
+}
+.quests_tiles h2{
+	color:#000000;
+}
+.quests_tiles:hover{
+	box-shadow: 0 0 0px 0px #888;
+background:#FFFFFF;
+opacity:0.8;
+}
+.quests_show{
+	display:inline-block;
+	width:75%;
+	float:right;
+		margin-top:10px;
+}
+.user_image{
+	padding:5px;
+	border:1px solid;
+	display:inline-block;
+	border-color:#DEDEDE;
+	margin-top:10px;
+}
+.dashboard{
+	margin-left:40px;
+		margin-top:10px;
+}
+.dashboard_right{
+	width:20%;
+	float:left;
+	height:100%;
+	
+}
+
 div.post { font-size: 120%; padding: 10px;
 }
 div.users { float: left; width: 850px;
@@ -128,12 +172,7 @@ ul{
 	list-style-type: none;
 }
 /* Links */
-a{color: #09c; text-decoration: none;
-}
-a:hover {color: #069; 
-}
-a:visited { color: #069;
-}
+
 .navigation { background-color: #F5F5DC; white-space: nowrap;
 }
 ul.navigation { float: right;}
@@ -243,7 +282,7 @@ float: right;
 .time{
 	float:right;
 	font-size:10px;
-	color : #000000;
+	color : #BBBBBB;
 	
 }
 #dialog-formQ{background-color:#d7fab9;
@@ -343,4 +382,7 @@ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5
 .button_new_quest:active {
 	position:relative;
 	top:1px;
+}
+h2{
+	margin:0px;
 }
