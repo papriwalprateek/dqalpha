@@ -417,4 +417,12 @@ a.block{
 .grey{
 	color:#CCCCCC;
 }
-
+#wikiimage {
+padding:5px;float:left;
+-moz-box-shadow: 0 0 5px 0px #888;
+-webkit-box-shadow: 0 0 0px 5px#888;
+box-shadow: 0 0 5px 0px #888;
+border:1px solid;
+border-color:#DEDEDE;
+	
+}

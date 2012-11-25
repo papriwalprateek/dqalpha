@@ -2,14 +2,15 @@
 <h3><%=raw@name%></h3>
 <hr>
 <%end%>
-<div id = "wikiimage" style="width:130px;float:left;">
+<div id = "wikiimage" >
 <%if @introimage%>
-<img src = "<%=raw@introimage%>" alt = "india" height = "130" width = "110" >
+<img src = "<%=raw@introimage%>" alt = "india" height = "110" width = "110" >
 <%end%>
 </div>
 
 <div id = "wikiinfo" style = "width:320px;float:left;">
 <%=raw@info%>
 </br>
+
 <%=raw@image%>
 </div>
