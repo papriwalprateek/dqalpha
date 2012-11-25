@@ -1,3 +1,6 @@
+
+	  	 $('.dashboard').fadeOut(400,function(){     
 $("#content").html("<%= escape_javascript(render("quest")) %>");
 $('#l').html("<%=j render @quest.links %>");
-$('#link_field').html("<%=j render 'links/form' %>");
+$('#link_field').html("<%=j render 'links/form' %>");});
+      

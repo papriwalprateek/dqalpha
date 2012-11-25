@@ -15,6 +15,7 @@
       //layout settings resizable draggable
         $('body').layout({ 
         	   togglerLength_open:         50
+        	   ,  initClosed:            true
         	   ,   togglerLength_closed:       "100%"
 	        ,	 east__onclose_start: $.layout.callbacks.pseudoClose
          ,  east__pseudoClose:    {
@@ -33,7 +34,6 @@
 <%= content_tag(:div, value, :class => "flash #{key}") %>
 <% end %>
 </div>
-<%= render 'layouts/leftcontent'%>
 
 <div id="content" class="ui-layout-center">
 

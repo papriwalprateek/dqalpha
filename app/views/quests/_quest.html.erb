@@ -1,101 +1,31 @@
- <div class="content_header">
- <%= @quest.title %>
-<% @quest.users.each do |user| %>
-<label class ="hoverme" data-hovercard= <%= root_url[0...-1]+user_path( :id => user.id, :format => :json )%>><%= link_to h(image_tag(Gravatar.new(user.email).image_url, :size => "30x30")), user %></label>
+ <div class="dashboard">
+<div class="dashboard_right">
+<h2><%=@quest.title%></h2>
+<%=@quest.description%>
+</br>
+<div>
+Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<div>
+<%@quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
 <%end%>
-<button class="button1" id="Add" >  
-+</button>
-<div id="dialog-form">
-<%= form_tag({:controller=> "quests",:action => "show"}, :id => "borderless") do %>
-  <%= label_tag(:add_user, " ") %>
-  <%= text_field_tag :add_user %>
-  <%= submit_tag("Add") %>
-<% end %>
 </div>
 
 </div>
-
-
-<div class="content_middle">
-   <p>
-
-    <%= @quest.description %>
-  </p>
-
-<div id="com">
-
+</div>
+<div class="quests_show">
 <% @quest.qs.each do |q| %>
+<a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
+<span><div class = "qs_tiles">
+<div class="time">
+<%=q.created_at.strftime("%b %d, %Y")%>
+</div>
+<h2><%=q.title%></h2>
+</br>
+</div>
+</span></a>
+<%end%>
 
-<a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>> 
-<div class ="post">
-  
-   <%= q.title %>
-  <div class="time"> <%= q.created_at.strftime("%b,%d")%>
-  </div>
- </div></a>
-<hr class = "line">
-</hr>
- <% end %>
 </div>
 </div>
-<div >
-<div id ="add_q">
-	Add a new Q
-	</div>
-<div id="form_addq">
-<%=render "qs/form"%>
 </div>
-</div>
-
-<div id="onselection_list">
-	<p></p>
-<button onclick="search_wiki()" >Wiki</button>
-</div>
-
-	<script>
-	
-	
-		
-	$(function() {
-	//hiding wiki list
-		$('#onselection_list').hide();
-	
-		//autocomplete for user names
-		var availableTags = [<% for user in User.all -%>
-		"<%= user.name %>"
-		<%if user==User.last%>
-		<%else%>
-		,<%end%>
-		<% end -%>];
-		$( "#add_user" ).autocomplete({
-			source: availableTags
-			});
-     $('#dialog-form').hide();
- 		
-		$('#Add').click(function(){ 
-      $('#dialog-form').show();
-      $("#Add").hide();
-  }); 
-	
-		//dialog box for adding user
-	 	$('#form_addq').hide();
-  
-	$('#add_q').click(function(){ 
-   	$('#form_addq').show();
-  	$('#add_q').hide(); 
-  });
-
-
-	//on hover profile
-
-
-$('.hoverme').hovercard({
-    showCustomCard: true,
-});
-
-	});
-	</script>
-
-
-
- 

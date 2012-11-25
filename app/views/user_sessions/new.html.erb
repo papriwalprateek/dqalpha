@@ -16,7 +16,7 @@
 </h2>
 <div class="dashboard_right">
 <div class="user_image">
-<%= image_tag(Gravatar.new(current_user.email).image_url, :height => "162", :width => "162") %>
+<%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162") %>
 </div>
 </br>
 <div>
@@ -25,25 +25,63 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 <div class="quests_show">
 <% current_user.quests.each do |quest| %>
-<a href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
-<div class = "quests_tiles">
+<a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<span><div class = "quests_tiles">
 <div class="time">
 <%=quest.created_at.strftime("%b, %d")%>
 </div>
 <h2><%=quest.title%></h2>
-<%=quest.description%>
+<%=truncate(quest.description, :length => 85, :separator => ' ')%>
 </br>
 <div class="quests_tiles_img">
 <%quest.users.each do |user|%>
-<%= image_tag(Gravatar.new(user.email).image_url, :size => "30x30") %>
+<%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
 </div>
 </div>
-</a>
+</span></a>
 <%end%>
 <div class="quests_tiles">
-	<h2>New Quest</h2>
+	<div class="new_quest">
+<%= form_for([current_user, current_user.quests.build]) do |f| %>
+   <%= f.text_field :title,:value=>"A name for the Quest", :style=>'height:33px;width: 300px;border:0px;background:#666;color:#ddd;font-size:2em;font-weight:normal;margin-top:0px;'  %>
+    <%= f.text_area :description,:value=>"Provide a description", :style=>'width: 300px;height:100px;border:0px;font-family:"Helvetica Neue";background:#666;color:#ccc' %>
+    <%= f.submit "Start the Quest", :class => "button_new_quest"%>
+   
+    
+<% end %>
+
+	</div>
+
 </div>
 </div>
 </div>
+
 <%end%>
+
+<script>
+$(document).ready(function(){
+    $("textarea#quest_description").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Provide a description");
+            
+        }
+    }).focus(function() {
+        if ($(this).val() == "Provide a description") {
+            $(this).val("");
+              
+        }
+    });
+      $("input#quest_title").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("A name for the Quest");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "A name for the Quest") {
+            $(this).val("");
+              
+        }
+    });
+});
+</script>

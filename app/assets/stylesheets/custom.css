@@ -43,10 +43,10 @@ font-family: sans-serif;
 #examplePadBasic{
 	height: 400px;
 	width: 96%;
-	border:2px solid #a1a1a1;
-padding:2px 10px; 
-border-radius:10px;
--moz-border-radius:10px; /* Firefox 3.6 and earlier */
+	border:0px solid #a1a1a1;
+-moz-box-shadow: 0 0 5px 0px #888;
+-webkit-box-shadow: 0 0 0px 5px#888;
+box-shadow: 0 0 5px 0px #888;
 }
 #add_q{
 background: #f5dff5;
@@ -60,7 +60,7 @@ table{
 	margin:0px;
 }
 div.content_header{
-	 background:#f7b3da;
+	 background:#09c;
 	margin: 0px;
 	color: #FFFFFF;
 	height: 30px;
@@ -73,20 +73,21 @@ div.content_header{
 .content_header .hc-preview{
 	float: right;
 }
+.quests_tiles_img img{ float:right;
+margin:1px;}
 .quests_tiles_img{
-	float: right;
-	margin-top: auto;
-}
-.quests_tiles_img img{
-	margin:1px;
-}
+	top:124px;
+	right:0;
+	padding:0px;
+	position:absolute;}
+
 div.quests_tiles{
 	display:inline-table;
 opacity:0.6;border-width:0px;
-background-color:#F3f3f3;
+background-color:#EFEFEF;
 margin: 5px;
 color:#232323;
-
+position:relative;
 width:300px;height:162px;
 }
 .quests_tiles h2{
@@ -96,6 +97,20 @@ width:300px;height:162px;
 	box-shadow: 0 0 0px 0px #888;
 background:#FFFFFF;
 opacity:0.8;
+}
+.qs_tiles {display:block;
+opacity:0.6;
+border-width:0px;
+background-color:#EFEFEF;
+margin: 5px;
+color:#232323;
+position:relative;
+
+}
+.qs_tiles:hover{
+	background:#FFFFFF;
+opacity:0.8;
+
 }
 .quests_show{
 	display:inline-block;
@@ -120,7 +135,13 @@ opacity:0.8;
 	height:100%;
 	
 }
-
+.user_image{
+margin-bottom: 5px;
+-moz-box-shadow: 0 0 5px 0px #888;
+-webkit-box-shadow: 0 0 0px 5px#888;
+box-shadow: 0 0 5px 0px #888;
+}
+.user_image img{margin:0px;}
 div.post { font-size: 120%; padding: 10px;
 }
 div.users { float: left; width: 850px;
@@ -210,7 +231,10 @@ float: right;
 width: 1200px;
 }
 textarea {	width: 400px;
-	height: 120px;}
+	height: 120px;
+	padding:0px;
+	resize:none;
+	}
 .ui-dialog-shadow{
 
          -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);  
@@ -361,14 +385,15 @@ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5
 	background-color:#66c319;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
+	float:right;
 	border-radius:6px;
 	border:1px solid #268a16;
 	display:inline-block;
 	color:#FFFFFF;
 	font-family:arial;
-	font-size:20px;
+	font-size:10px;
 	font-weight:bold;
-	padding:6px 24px;
+	padding:2px 8px;
 	text-decoration:none;
 	
 	
@@ -386,3 +411,10 @@ background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f5
 h2{
 	margin:0px;
 }
+a.block{
+	display:inline-block;
+}
+.grey{
+	color:#CCCCCC;
+}
+
