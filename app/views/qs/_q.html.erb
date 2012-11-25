@@ -2,7 +2,8 @@
 
 <div id="q" data-id="<%=@q.id%>" >
 <h2 >
-	<text class="grey"><%= @quest.title%>/</text>
+	<a class="grey", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
+<%= @quest.title%></a>/
 <%=@q.title%>
 </h2>
  <div id="examplePadBasic"></div>

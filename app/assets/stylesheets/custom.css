@@ -417,6 +417,8 @@ a.block{
 .grey{
 	color:#CCCCCC;
 }
+.grey:hover{	color:#CCCCCC;
+}
 #wikiimage {
 padding:5px;float:left;
 -moz-box-shadow: 0 0 5px 0px #888;
@@ -424,5 +426,5 @@ padding:5px;float:left;
 box-shadow: 0 0 5px 0px #888;
 border:1px solid;
 border-color:#DEDEDE;
-	
+margin: 3px;	
 }
