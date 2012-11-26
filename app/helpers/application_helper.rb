@@ -37,20 +37,23 @@ def wiki_content(a)
     note.remove
 #    note = @doc.search("a.external")
 #   note.remove
-    note = @doc.search("span")
-    note.remove
-
+#    note = @doc.search("span")
+ #   note.remove
+begin #handling no image exceptions 
     introimage = @doc.css('table.infobox a.image')[0]['href']
     @introimage = introimage 
-    
+rescue
+  @introimage = "nothing_here"
+end  
     note = @doc.css("table.infobox a.image")
     note.remove
     
     name = a
-    
+begin    #handling no table exceptions
     note = @doc.at_css("table.infobox tr")
     note.remove
-    
+rescue 
+end   
     image = @doc.css('table.infobox')[0]
 
 #@infobox = Nokogiri::HTML(image)
@@ -62,21 +65,26 @@ def wiki_content(a)
     if image == nil
       image = @doc.css('a.image')[0]  
     end
-
+begin
     info = @doc.xpath('//p')[0].text
-  
+rescue
+info = "sorry no data found"
+end
     return @content if defined?(@content)
     @image = image
     @info = info
     @name = name
-    if @introimage
+    if @introimage !="nothing_here"
     @stringurl = "http://en.wikipedia.org" + @introimage
+    else 
+      @stringurl = "nothing_here"
     end 
+    if @stringurl !="nothing_here"
     @doc1 = Nokogiri::HTML(open(@stringurl))
     introimage = @doc1.css('div.fullImageLink > a')[0]['href']
     @introimage = introimage
-    
-    if @introimage
+    end
+    if @introimage !="nothing_here"
     @introimage = "http:" + @introimage
     end 
 #    @seealso = seealso

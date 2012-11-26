@@ -102,7 +102,6 @@ $(function() {
   });
   $("#wikiinfo a").live("click", function() {
     $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
      return false;
   });
   
