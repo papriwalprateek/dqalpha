@@ -30,7 +30,7 @@ def wiki_content(a)
     require 'wikicloth'
     require 'media_wiki'
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
-    wiki =  mw.render(a,:linkbase=> "/wik?ad=")
+    wiki =  mw.render(a)
     @doc = Nokogiri::HTML(wiki)
     
     note = @doc.search("sup")

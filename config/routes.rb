@@ -4,6 +4,7 @@ Blog::Application.routes.draw do
 
     #get "pages/home"
   match '' => 'user_sessions#new'
+  match "/wiki/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
     #get "pages/search"
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'

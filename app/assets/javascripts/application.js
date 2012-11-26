@@ -100,6 +100,13 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
+  $("#wikiinfo a").live("click", function() {
+    $.getScript(this.href);
+    window.history.pushState(null, document.title, this.href);
+     return false;
+  });
+  
+  
    $(window).bind("popstate", function() {
       $.getScript(location.href);
     });

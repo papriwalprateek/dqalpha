@@ -1,18 +1,14 @@
 <% if !current_user %>
 <div class ="signin_form">
-
 <h2>Signin</h2>
-
 <%= render 'form' %>
 </br>
-
 <%= link_to "Sign up now!", 'signup', :class => "signup_button round" %>
 </div>
 <% end %>
+
+
 <%if current_user%>
 <%= render "users/dashboard"%>
 <%end%>
 
-<script>
-
-</script>

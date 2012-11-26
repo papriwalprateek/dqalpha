@@ -429,3 +429,16 @@ border-color:#DEDEDE;
 margin: 3px 10px 0px 3px;
 	
 }
+.black_transparent{background:#000;
+margin:auto;
+height:90%;
+width:95%;
+opacity:0.90;
+z-index:2;
+-webkit-box-shadow: 0px 0px 15px 5px rgba(10, 10, 60, .85);
+-moz-box-shadow: 0px 0px 15px 5px rgba(10, 10, 60, .85);
+box-shadow: 0px 0px 15px 5px rgba(10,10, 60, .85);
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
