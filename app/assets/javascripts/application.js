@@ -20,6 +20,29 @@
 //= require jquery.layout.pseudoClose
 $(function() {
 		
+//new quest text fields
+    $("textarea#quest_description").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Provide a description");
+            
+        }
+    }).focus(function() {
+        if ($(this).val() == "Provide a description") {
+            $(this).val("");
+              
+        }
+    });
+      $("input#quest_title").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("A name for the Quest");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "A name for the Quest") {
+            $(this).val("");
+              
+        }
+    });
 
 
 	//for wiki selection

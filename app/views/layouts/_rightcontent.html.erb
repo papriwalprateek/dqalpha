@@ -1,8 +1,6 @@
 <%if current_user%>
 
 <div id = "rightcontent" class ="ui-layout-east">
-<div id ="rightcontent_head">
-VM's
 <table>
 <tr><label id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "30", :width => "30") %></label></tr>
 <tr><label id="link_2"><%= image_tag("link.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
@@ -10,12 +8,10 @@ VM's
 <tr><label id="link_4"><%= image_tag("gist.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
 <tr><label id="link_5"><%= image_tag("so.png", :alt => "Stack_Of", :height => "30", :width => "30") %></label></tr>
 </table>
-</div>
 <div id ="wiki_vm">
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
-  <%= label_tag(:ad, "Search")%>
-  <%= text_field_tag :ad %>
+ <%= text_field_tag :ad %>
   <%= submit_tag("Wiki") %>
 <% end %>
 
