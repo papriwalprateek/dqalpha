@@ -1,9 +1,26 @@
-<%= form_for([@quest, @quest.qs.build], :remote => true) do |f| %>
+<%= form_for([@quest, @quest.qs.build]) do |f| %>
   <div class="field">
    <%f.label :title %>
-    <%= f.text_field :title ,:style=>'border:0px; width:60%'%>
-    <%= f.submit "Add new Q"%>
+    <%= f.text_field :title ,:value=>"Add a Q",:style=>'border:0px;width:90%;background:#666;color:#ddd;font-size:2em;font-weight:normal;margin-top:0px;'%>
+    <%= f.submit "+"%>
   
   </div>  
   
 <% end %>
+<script>
+ $(function() {
+
+ $("input#q_title").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Add a Q");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Add a Q") {
+            $(this).val("");
+              
+        }
+    });
+ });
+</script>
+

@@ -10,13 +10,21 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
 <%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
 <%end%>
 </div>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
+  <%= label_tag(:add_user, " ") %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
+</div>
 
 </div>
-</div>
+  
+
 <div class="quests_show">
 <% @quest.qs.each do |q| %>
 <a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
-<span><div class = "qs_tiles">
+<span>
+<div class = "qs_tiles">
 <div class="time">
 <%=q.created_at.strftime("%b %d, %Y")%>
 </div>
@@ -25,7 +33,25 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
 </div>
 </span></a>
 <%end%>
+<div class = "qs_tiles_form">
+<%= render "qs/form" %>
+</div>
 
 </div>
 </div>
-</div>
+
+<script>$(function() {
+	//	add users autocomplete	
+	var availableTags = [<% for user in User.all -%>
+		"<%= user.name %>"
+		<%if user==User.last%>
+		<%else%>
+		,<%end%>
+		<% end -%>];
+		$( "#add_user" ).autocomplete({
+			source: availableTags
+			});
+	
+	});
+	</script> 
+

@@ -66,7 +66,7 @@ end
       image = @doc.css('a.image')[0]  
     end
 begin
-    info = @doc.xpath('//p')[0].text
+    info = @doc.xpath('//p')[0]
 rescue
 info = "sorry no data found"
 end

@@ -19,7 +19,7 @@
 //= require jquery.layout
 //= require jquery.layout.pseudoClose
 $(function() {
-		
+	
 //new quest text fields
     $("textarea#quest_description").blur(function() {
         if ($(this).val() == "") {
@@ -44,6 +44,9 @@ $(function() {
         }
     });
 
+//new q text field
+
+ 
 
 	//for wiki selection
     	 $(document.body).bind('mouseup', function(e){
