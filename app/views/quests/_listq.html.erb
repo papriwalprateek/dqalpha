@@ -1,0 +1,15 @@
+<% @quest.qs.each do |q| %>
+<a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
+<span>
+<div class = "qs_tiles">
+<div class="time">
+<%=q.created_at.strftime("%b %d, %Y")%>
+</div>
+<h2><%=q.title%></h2>
+</br>
+</div>
+</span></a>
+<%end%>
+<div class = "qs_tiles_form">
+<%= render "qs/form" %>
+</div>

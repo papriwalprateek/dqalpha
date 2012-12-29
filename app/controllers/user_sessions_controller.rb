@@ -21,8 +21,9 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to '/', notice: 'Login successful. Hi, '+ current_user.name }
+       format.html {  redirect_back_or current_user }
         format.json { render json: @user_session, status: :created, location: @user_session }
+      
       else
         format.html { render action: "new" }
         format.json { render json: @user_session.errors, status: :unprocessable_entity }

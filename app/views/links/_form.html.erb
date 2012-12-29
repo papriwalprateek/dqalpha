@@ -1,5 +1,5 @@
 
-<%= form_for([@quest, @quest.links.build], :remote => true, :remote => true, :update => "links_list", :position => :top) do |f| %>
+<%= form_for([@quest, @quest.links.build], :remote => true,  :update => "links_list", :position => :top) do |f| %>
   
   <div class="link_field" id="link_field">
     <%= f.text_field :body %>
