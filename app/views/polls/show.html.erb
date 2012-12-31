@@ -11,7 +11,7 @@
     <%= question.content %>
      <ol class="answers">
       <% question.options.each do |option| %>
-        <li><%= option.content %></li>
+        <li><%=check_box_tag 'eula', 'accepted', false%><%= option.content %> => <%= option.votes_count%></li> 
       <% end %>
     </ol>
   </li>
