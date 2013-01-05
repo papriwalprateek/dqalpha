@@ -1,6 +1,9 @@
  <div class ="post" data-time="<%=qmail.created_at.to_i%>"> 
+ <span class= "bold">	<%=qmail.user.name%>
+ 	</span>
  	<div style="float:right">
  	<%begin%>
+ 	
  	<%= image_tag(Gravatar.new(qmail.user.email).image_url, :size => "30x30") %> 
   <%rescue%>
   <%end%>

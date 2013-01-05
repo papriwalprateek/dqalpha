@@ -1,18 +1,47 @@
-<div id="q" data-id="<%=@q.id%>">
-
-<b>    <%= @q.title %></b>
-  </p>
- 
-
-<hr id="boldhr">
-    <div id='com' >
-    <%if @q.qmails %>
-      <%= render @q.qmails %>
-   
+ <div class="dashboard">
+<div class="dashboard_right">
+<h2>
+	
+<a class="grey", href = "/">
+<=</a>
+	<%=@quest.title%></h2>
+<%=@quest.description%>
+</br>
+<div>
+Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<div>
+<%@quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
 <%end%>
- </div>
-  <div  id="qmail_field">
-<%= render "qmails/form" %>
+</div>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
+  <%= label_tag(:add_user, " ") %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
 </div>
 
 </div>
+  
+
+<div class="quests_show">
+
+<%= render "qs/q"%>
+</div>
+</div>
+
+<script>$(function() {
+	//	add users autocomplete	
+	var availableTags = [<% for user in User.all -%>
+		"<%= user.name %>"
+		<%if user==User.last%>
+		<%else%>
+		,<%end%>
+		<% end -%>];
+		$( "#add_user" ).autocomplete({
+			source: availableTags
+			});
+	
+	});
+	</script> 
+

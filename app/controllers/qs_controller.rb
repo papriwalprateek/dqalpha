@@ -22,7 +22,7 @@ def create
       @quest.users << @user
     end
  respond_to do |format|
-      format.html {render "_q"}# show.html.erb
+      format.html # show.html.erb
       format.json { render :json => @q }
       format.js
     end

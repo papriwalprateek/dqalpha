@@ -38,7 +38,6 @@ Blog::Application.routes.draw do
    mailboxes_for :users
     # get "pages/contact"
     match '/contact' => 'pages#contact'
-  match "/show_all_users" => "pages#show_all_users"
   resources :microposts
   resources :involvements
   resources :lifespans 
