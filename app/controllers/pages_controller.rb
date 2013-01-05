@@ -18,6 +18,10 @@ class PagesController < ApplicationController
  #asd
 
 end
+def show_all_users
+   
+
+end
 def wik
     @content = wiki_content(params[:ad])
     respond_to do |format|

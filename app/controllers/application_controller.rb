@@ -32,14 +32,21 @@ include ApplicationHelper
         return false
       end
     end
+   def require_vinay
+    if current_user then
+      redirect_to(root_path) unless current_user.name=="Vinay Raj Choudhary"
    
+    else 
+      redirect_to(root_path) unless current_user
+   end
+   end
   
   def store_location
     session[:return_to] = request.url
   end
   
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+  def redirect_back_or
+    redirect_to(session[:return_to] || "/")
     clear_return_to
   end
   def clear_return_to

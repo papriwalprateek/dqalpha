@@ -21,7 +21,7 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-       format.html {  redirect_back_or current_user }
+       format.html {  redirect_back_or  }
         format.json { render json: @user_session, status: :created, location: @user_session }
       
       else
