@@ -83,35 +83,35 @@ $(function() {
     });
      	
  //git browse repo
-  $(".dashboard_right a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
-  $(".content_middle a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
-   $(".quests_show a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
-  $("#leftcontent a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
-  $("#q text.grey a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
-  $("#wikiinfo a").live("click", function() {
-    $.getScript(this.href);
-     return false;
-  });
+ // $(".dashboard_right a").live("click", function() {
+ //   $.getScript(this.href);
+  //  window.history.pushState(null, document.title, this.href);
+   //  return false;
+  //});
+  //$(".content_middle a").live("click", function() {
+  //  $.getScript(this.href);
+  //  window.history.pushState(null, document.title, this.href);
+  //   return false;
+  //});
+  // $(".quests_show a").live("click", function() {
+   // $.getScript(this.href);
+    //window.history.pushState(null, document.title, this.href);
+   //  return false;
+  //});
+  //$("#leftcontent a").live("click", function() {
+   // $.getScript(this.href);
+   // window.history.pushState(null, document.title, this.href);
+  //   return false;
+  //});
+  //$("#q text.grey a").live("click", function() {
+  //  $.getScript(this.href);
+ //   window.history.pushState(null, document.title, this.href);
+   //  return false;
+  //});
+  //$("#wikiinfo a").live("click", function() {
+ //   $.getScript(this.href);
+  //   return false;
+ // });
   
   
    $(window).bind("popstate", function() {
