@@ -20,8 +20,7 @@ box-shadow: 0 0 5px 0px #888;
 }
 #content { background:#FFFFFF;
 	 width: 47%;  float: left; height:620px; overflow-y:auto;margin-top:10px;
--moz-box-shadow: 0 0 5px 0px #888;
--webkit-box-shadow: 0 0 0px 5px#888;
+	 -webkit-box-shadow: 0 0 0px 5px#888;
 box-shadow: 0 0 5px 0px #888;
 
 }
@@ -233,7 +232,6 @@ a.signup_button { margin-left: auto; margin-right: auto; display: block; text-al
 color: #fff; background: #09c; font-size: 150%; font-weight: bold; padding: 10px; 
 }
 .round {
--moz-border-radius: 10px;
 -webkit-border-radius: 10px;
 border-radius: 10px; }
 #footer {
@@ -343,9 +341,7 @@ float: right;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #f5dff5) );
 	background:-moz-linear-gradient( center top, #ededed 5%, #f5dff5 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#f5dff5');
-	background-color:#ededed;
-	-moz-border-radius:6px;
+		background-color:#ededed;
 	-webkit-border-radius:6px;
 	border-radius:6px;
 	border:1px solid #dcdcdc;

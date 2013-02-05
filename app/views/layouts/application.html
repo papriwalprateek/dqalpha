@@ -10,20 +10,17 @@
 
 <script>
    	
-    $(document).ready(function () {
+     $(document).ready(function () {
  
       //layout settings resizable draggable
         $('body').layout({ 
-        	  east__onclose_start: $.layout.callbacks.pseudoClose
+        	   togglerLength_open:         50
+        	   ,   togglerLength_closed:       "100%"
+	        ,	 east__onclose_start: $.layout.callbacks.pseudoClose
          ,  east__pseudoClose:    {
         skipIE:		false // can skip IE for iframes that do not contain media objects
     ,   hideObject:	""    // usually: "", "pane", "iframe" or "object" - element will be made 'invisible' to enhance illusion of pane being 'closed'
-    },
-     		togglerLength_open:         50
-        	   ,  initClosed:            true
-        	   ,   togglerLength_closed:       "100%"
-	        	 
-	          });
+    }  });
     });
 </script>
 </head>
