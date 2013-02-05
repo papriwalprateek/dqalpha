@@ -1,22 +1,91 @@
+
+<head>
+    <!-- load jQuery and the plugin -->
+
+<style>
+ul{font-family: Arial,Helvetica,sans-serif;font-size:14px;}
+ul.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:visible; display:none;}
+li.bjqs-slide{position:absolute; display:none;}
+ul.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
+ul.bjqs-controls.v-centered li a{position:absolute;}
+ul.bjqs-controls.v-centered li.bjqs-next a{right:0;top:10%;}
+ul.bjqs-controls.v-centered li.bjqs-prev a{left:0;}
+ol.bjqs-markers{list-style: none; padding: 0; margin: 0; width:100%;}
+ol.bjqs-markers.h-centered{text-align: center;}
+ol.bjqs-markers li{display:inline;}
+ol.bjqs-markers li a{display:inline-block;}
+p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+
+ul.bjqs-controls.v-centered li a{
+	display:block;
+	padding:5px;
+	background:#fff;
+	color:#000;
+	text-decoration: none;
+}
+ul.bjqs-controls.v-centered li a:hover{
+	background:#000;
+	color:#fff;
+}
+ol.bjqs-markers li a{
+	padding:5px 10px;
+	background:#000;
+	color:#fff;
+	margin:5px;
+	text-decoration: none;
+}
+
+ol.bjqs-markers li.active-marker a,
+ol.bjqs-markers li a:hover{
+	background: #999;
+}
+</style>
+
+</head>
+
 <%if @name%>
 <h3><%=raw@name%></h3>
-<hr>
 <%end%>
+
+<div id="banner-fade">
+<ul class="bjqs">
+
+<li>
+<br>
 <%if @introimage && @introimage!="nothing_here"%>
 <div id = "wikiimage" >
-
 <img src = "<%=raw@introimage%>" alt = "india" height = "110" width = "110" >
 </div>
 <%end%>
-
-<div id = "wikiinfo" style = "width:320px;float:left;">
+<div id = "wikiinfo" >
 <%if @info%>
-
 <%=raw@info%>
 <%end%>
 </br>
 <%if @image%>
-
 <%=raw@image%>
 <%end%>
+</div>
+</li>
+
+
+<%begin%>
+<%i = 0%>
+<% while i < @txtful.length %>
+<%j=0%>
+<li>
+<% while j < @txtful[i].length %>
+<br>
+<%@t = @txtful[i][j]%>
+<%=raw@t%>
+<%j=j+1%>
+<%end%>
+</li>
+<%i=i+1%>
+<% end %>
+</ul>
+
+<%rescue%>
+<%end%>
+
 </div>
