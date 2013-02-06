@@ -7,9 +7,12 @@ Blog::Application.routes.draw do
     #get "pages/home"
   match '' => 'user_sessions#new'
   match "/wiki/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
+  match "/so/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
+  
     #get "pages/search"
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
+  match '/so' => 'pages#so'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
   match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]

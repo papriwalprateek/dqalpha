@@ -5,7 +5,7 @@
 <tr><label id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "30", :width => "30") %></label></tr>
 <tr><label id="link_2"><%= image_tag("link.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
 <tr><label id="link_3"><%= image_tag("irc.png", :alt => "IRC", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_4"><%= image_tag("gist.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
+<tr><label id="link_4"><%= image_tag("so.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
 <tr><label id="link_5"><%= image_tag("poll.png", :alt => "poll", :height => "30", :width => "30") %></label></tr>
 </table>
 <div id ="wiki_vm">
@@ -23,6 +23,22 @@
 </div>
 
 </div>
+<div id ="so_vm">
+
+<%= form_tag({:controller=> "pages",:action => "so"},:remote =>true, :method => "get") do %>
+ <%= text_field_tag :ad %>
+  <%= submit_tag("So") %>
+<% end %>
+
+</br>
+
+<div id ="so">
+
+<%= render 'layouts/so' %> 
+</div>
+
+</div>
+
 <div id="irc_vm">
 <iframe src="http://webchat.freenode.net?channels=rubyonrails&uio=d4" width="100%" height="400"></iframe>
 	
@@ -58,24 +74,35 @@
 
 
 	// hide it first
-	
+	 $('#so_vm').hide();    
 	$('#link_vm').hide();
 	$('#irc_vm').hide();
   $('#link_2').click(function(){ 
+      $('#so_vm').hide();
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
       $('#link_vm').fadeIn( 300);
   });
 
   $('#link_1').click(function(){ 
+      $('#so_vm').hide();
+     
       $('#link_vm').hide();
       $('#irc_vm').hide();
       $('#wiki_vm').fadeIn(300);
   }); 
 	$('#link_3').click(function(){ 
+      $('#so_vm').hide();
       $('#link_vm').hide();
       $('#wiki_vm').hide();
       $('#irc_vm').fadeIn(300);
+  }); 
+ $('#link_4').click(function(){ 
+      $('#link_vm').hide();
+      
+      $('#wiki_vm').hide();
+      $('#irc_vm').hide();
+      $('#so_vm').fadeIn(300);
   }); 
 	
 	

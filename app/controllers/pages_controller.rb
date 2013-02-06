@@ -24,6 +24,12 @@ def wik
       format.js { render "layouts/wiki"  }
      end
   end
+def so
+    @content = so_content(params[:ad])
+    respond_to do |format|
+      format.js { render "layouts/so"  }
+     end
+  end
 
   def contact
   @title = "contact"
