@@ -1,5 +1,23 @@
 
 <head>
+<script>
+        jQuery(document).ready(function($) {
+
+          $('#banner-fade').bjqs({
+            width : 500,
+            height : 10,
+            automatic : false,
+            nexttext : '>>', // Text for 'next' button (can use HTML)	
+	    prevtext : '<<',
+            animtype : 'fade',
+            responsive  : true,
+            showmarkers : false,
+            centermarkers : false
+          });
+
+        });
+      </script>
+
     <!-- load jQuery and the plugin -->
 
 <style>
@@ -83,9 +101,9 @@ ol.bjqs-markers li a:hover{
 </li>
 <%i=i+1%>
 <% end %>
-</ul>
 
 <%rescue%>
 <%end%>
-
+</ul>
 </div>
+
