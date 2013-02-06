@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-migrate
 //= require jquery.hovercard
 //= require jquery_ujs
 //= require jquery.ui.all
@@ -84,32 +85,32 @@ $(function() {
     });
      	
  //git browse repo
-  $(".dashboard_right a").click( function() {
+  $(".dashboard_right a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $(".content_middle a").click( function() {
+  $(".content_middle a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-   $(".quests_show a").click( function() {
+   $(".quests_show a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("#leftcontent a").click( function() {
+  $("#leftcontent a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("#q text.grey a").click( function() {
+  $("#q text.grey a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("#wikiinfo a").click( function() {
+  $("#wikiinfo a").live("click", function() {
     $.getScript(this.href);
      return false;
  });
