@@ -26,12 +26,53 @@ def wiki_content(a)
     
 
  if a
+    
     require 'rubygems'
     require 'wikicloth'
     require 'media_wiki'
+    require 'nokogiri'
+    require 'open-uri'
+#    a = a.to_s
+#    a = a.gsub(/\s/,"_")
+#    @docm = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+
+#    @txtful = [] 
+#    j = 0
+
+#    while @docm.xpath("//h2/span")[j+1]!=nil
+#    @txt = [] 
+#    @node = @docm.xpath("//h2/span")[j].parent
+#    @stop = @docm.xpath("//h2/span")[j+1].parent
+#    while @node!=@stop
+#      @txt << @node
+#      @node = @node.next 
+#    end
+#    @txtful << @txt
+#    j = j + 1
+#    end
+    
+#    print @txtful.length
+    
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
     wiki =  mw.render(a)
     @doc = Nokogiri::HTML(wiki)
+    x = @doc.css("span.editsection")
+    x.remove
+    @txtful = [] 
+    j = 0
+   
+    while @doc.xpath("//h2/span")[j+1]!=nil
+    @txt = [] 
+    @node = @doc.xpath("//h2/span")[j].parent
+    @stop = @doc.xpath("//h2/span")[j+1].parent
+    while @node!=@stop
+      @txt << @node
+      @node = @node.next 
+    end
+    @txtful << @txt
+    j = j + 1
+    end
+    print @txtful.length
     
     note = @doc.search("sup")
     note.remove
@@ -89,9 +130,9 @@ end
     end 
 #    @seealso = seealso
 #    @content = "This is a dummy text about your query which is auto generated, it will be soon replaced by wikipedia text which will be fetched through mediawiki"
+
     end
   
-
   end
  def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
