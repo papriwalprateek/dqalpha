@@ -33,6 +33,7 @@ font-family: sans-serif;
 }
 .ui-layout-west{
 	padding:0px;
+	width: 800px;
 }.ui-layout-east{
 	padding:0px;
 }
@@ -318,9 +319,8 @@ float: right;
 	border: 0px;
 }
 .qmail_field textarea{
-	width: 85%;
-	margin: 10px;
-	height: 40px;
+	width: 99%;
+	
 }
 
 #dialog-form{
@@ -423,4 +423,23 @@ border-radius: 15px;
 }
 .bold{
 	font-weight: bold;
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+ ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(175,175,175,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(175,175,175,0.4); 
 }

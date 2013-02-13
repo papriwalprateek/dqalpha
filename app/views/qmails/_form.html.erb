@@ -4,11 +4,15 @@
  		<%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div> 
   
   <div class="qmail_field" id="qmail_field">
+  	<br />
     <%= f.label :content, "Say Something"%><br />
-    <%= f.text_area :content %>
-  </div>
-  
+  <%= f.cktext_area :content,:ckeditor => {:language => "en",:input_html => {:toolbar => 'MyToolbar'}} %>
+ 
+   </div>
+   <br/>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<script>
+</script>

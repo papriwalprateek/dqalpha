@@ -1,5 +1,3 @@
-
-
 <div id="q" data-id="<%=@q.id%>" >
 <h2 >
 	<a class="grey", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
@@ -31,7 +29,6 @@
 	$(function() {
 		$('#onselection_list').hide();
 	
-	$('#examplePadBasic').pad({'padId':'<%="DQ"+@quest.id.to_s+@q.id.to_s%>'});
 			//autocomplete for user names
 		var availableTags = [<% for user in User.all -%>
 		"<%= user.name %>"

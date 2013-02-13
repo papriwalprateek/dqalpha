@@ -15,15 +15,17 @@
 //= require jquery.hovercard
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require_tree .
 //= require etherpad
 //= require jquery.layout
 //= require jquery.layout.pseudoClose
 //= require bjqs
-$(function() {
-	
+//= require ckeditor/init
+//= require ckeditor/config
+//= require_tree .
+$(function() {	
+
 //new quest text fields
-    $("textarea#quest_description").blur(function() {
+       $("textarea#quest_description").blur(function() {
         if ($(this).val() == "") {
             $(this).val("Provide a description");
             
@@ -123,6 +125,7 @@ $(function() {
   if ($("#com").length > 0) {
     setTimeout(updateComments, 100000);
   }
+	
 	});
 function updateComments () {
   var q_id = $("#q").attr("data-id");
