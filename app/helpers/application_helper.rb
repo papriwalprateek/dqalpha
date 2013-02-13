@@ -128,30 +128,40 @@ end
     if @introimage !="nothing_here"
     @introimage = "http:" + @introimage
     end 
-#    @seealso = seealso
-#    @content = "This is a dummy text about your query which is auto generated, it will be soon replaced by wikipedia text which will be fetched through mediawiki"
 
     end
   
   end
   def so_content(a)
-   require "nokogiri"
-   require "open-uri"
+   
+   require 'pilha'
+
+   
+   StackExchange::StackOverflow::Client.config do |options|
+  options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
+   end
+   
+
    a = a.to_s
-   @doc = Nokogiri::HTML(open(a))
-   @ques = @doc.css("div#question-header")
-   @desc = @doc.css("div.post-text")[0]
+   a = a.split("/")
+   a = a[4].to_i
+    
+
+   @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} # this contains the whole content
+
+   @ques = @doc.title
+   @desc = @doc.body
+
+ 
    j=0
    @answers = []
-   while @doc.css("//td.answercell > div.post-text")[j]!=nil
-      @ans = @doc.css("//td.answercell > div.post-text")[j]
+   while j < @doc.answers.length
+      @ans = @doc.answers[j]["body"]
       @answers << @ans
       j = j + 1   
    end
   end
-
-  
-  
+ 
  def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id

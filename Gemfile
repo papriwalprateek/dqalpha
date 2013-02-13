@@ -31,6 +31,7 @@ gem 'google_visualr'
 gem 'jquery-ui-rails'
 gem 'ace-rails'
 gem 'ckeditor'
+gem 'pilha'
 
 # Gems used only for assets and not required
 # in production environments by default.

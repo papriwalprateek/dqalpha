@@ -38,7 +38,9 @@ font-family: sans-serif;
 	padding:0px;
 }
 .ui-layout-toggler{
-	background: #e1fb86;
+}
+.ui-layout-resizer{
+	background:#FFFFFF;
 }
 #examplePadBasic{
 	height: 400px;
