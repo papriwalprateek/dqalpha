@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214061135) do
+ActiveRecord::Schema.define(:version => 20130214104248) do
+
+  create_table "gists", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "involvements", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -68,6 +76,15 @@ ActiveRecord::Schema.define(:version => 20121214061135) do
   end
 
   create_table "mies", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.text     "content"
+    t.boolean  "has_read"
+    t.integer  "user_id"
+    t.integer  "sender_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -147,7 +147,7 @@ end
    a = a[4].to_i
     
 
-   @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} # this contains the whole content
+   @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
 
    @ques = @doc.title
    @desc = @doc.body

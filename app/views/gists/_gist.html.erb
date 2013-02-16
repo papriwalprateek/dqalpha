@@ -1,0 +1,13 @@
+
+<div  data-time="<%=gist.created_at.to_i%>">
+ 
+  <b><%= gist.title%>
+  </b>
+  <%if gist.content%>
+  <%=markdown(gist.content)%>
+ 
+ 	<%end%>
+<%= link_to 'X', [gist.user, gist], :remote => true, :method => :delete %>
+ <hr>
+ </div>
+ </br>

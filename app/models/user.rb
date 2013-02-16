@@ -1,5 +1,6 @@
   class User < ActiveRecord::Base
 	has_many :posts, :dependent => :destroy
+  has_many :gists
   has_mailbox 
   has_many :qmails
   has_many :involvements

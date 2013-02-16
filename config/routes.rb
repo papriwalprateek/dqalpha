@@ -2,6 +2,7 @@ Blog::Application.routes.draw do
 
  
 
+  
   resources :polls
 
     #get "pages/home"
@@ -21,6 +22,10 @@ Blog::Application.routes.draw do
     resources :quests
   
   end
+   resources :users do
+      resources :gists
+    end
+
     resources :quests do
       resources :qs
     end

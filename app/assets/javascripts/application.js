@@ -15,16 +15,18 @@
 //= require jquery.hovercard
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require etherpad
 //= require jquery.layout
 //= require jquery.layout.pseudoClose
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config
+//= require jquery.jscrollpane
+//= require jquery.mousewheel
 //= require_tree .
 $(function() {	
 
 //new quest text fields
+    
        $("textarea#quest_description").blur(function() {
         if ($(this).val() == "") {
             $(this).val("Provide a description");
@@ -137,6 +139,7 @@ function updateComments () {
   $.getScript("/qs/"+ q_id +"/qmails.js?q_id=" + q_id + "&after=" + after)
   setTimeout(updateComments, 100000);
 }
+
 //send for search to wiki
     	function search_wiki () {
     		 var selection;
