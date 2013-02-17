@@ -1,16 +1,15 @@
 
 <%= form_for([current_user, current_user.gists.build], :remote => true,  :update => "gists_list", :position => :top) do |f| %>
-  
-   <div class="field">
-    <%= f.label :title %><br />
+  <div class="gist_form">
+   <div class="gist_field">
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :content %><br />
+  <div class="gist_textarea">
     <%= f.text_area :content %>
   </div>
   
-  <div class="actions">
-    <%= f.submit %>
+  <div class="gist_actions">
+    <%= f.submit%>
+  </div>
   </div>
 <% end %>

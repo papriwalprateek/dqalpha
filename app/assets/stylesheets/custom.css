@@ -290,7 +290,7 @@ margin-right: 5px;
 height:620px; overflow-y:auto;
  background: #ffffff; margin-top:10px;
 box-shadow: 0 0 5px 0px #888;
-
+padding-left: 5px;
 
 
 }
@@ -560,4 +560,27 @@ margin: 0 -3px 0 0;
 }
 pre {
 	background: #eee;
+}
+.gist_form{
+	background:#E1E1E1;
+	padding:3px;
+	width: 80%;
+	-webkit-box-shadow: 0 0 0px 5px#888;
+box-shadow: 0 0 5px 0px #888;
+margin-left:5px;
+
+}
+.gist_field{
+		margin-bottom:3px;
+}
+.gist_field input{
+	
+	border: 0px;
+}
+.gist_textarea textarea{
+	margin:auto;
+	width:100%;
+	border: 0px;
+	resize:vertical;
+	
 }

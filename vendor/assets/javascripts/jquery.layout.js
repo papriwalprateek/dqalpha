@@ -813,8 +813,8 @@ $.layout.defaults = {
 	}
 ,	east: {
 		paneSelector:			".ui-layout-east"
-	,	size:					600
-	,	minSize: 				500
+	,	size:					500
+	,	minSize: 				450
 	,	maxSize:				700
 	,	resizerCursor:			"e-resize"
 	,	customHotkey:			""
