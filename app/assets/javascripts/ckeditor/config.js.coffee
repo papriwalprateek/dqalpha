@@ -4,11 +4,12 @@ CKEDITOR.editorConfig = (config) ->
   config.toolbar_Pure = [
     { name: 'styles',      items: [ 'Styles','Format','Font','FontSize' ] },
     { name: 'insert',      items: [ 'Image','Table','HorizontalRule' ] },
-    { name: 'links',       items: [ 'Link'] },
+    { name: 'links',       items: [ 'Link','Insert_wiki','Insert_gist','Insert_so'] },
    '/',
     { name: 'basicstyles', items: [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
     { name: 'paragraph',   items: [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] }
     
   ]
   config.toolbar = 'Pure'
+  config.extraPlugins = 'Insert_wiki,Insert_gist,Insert_so' 
   true
