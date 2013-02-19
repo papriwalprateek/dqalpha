@@ -9,8 +9,8 @@ CKEDITOR.plugins.add( 'Insert_gist',
             
             exec : function( editor )
             {    
-                              
-               editor.insertHtml( '!gist[label](query)' );
+               gist_url = prompt('Enter your gist id ');
+               editor.insertHtml( '<a href='+gist_url+'>here</a> ' ); 
             }
          });
       

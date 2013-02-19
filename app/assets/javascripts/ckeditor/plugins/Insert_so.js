@@ -9,8 +9,9 @@ CKEDITOR.plugins.add( 'Insert_so',
             
             exec : function( editor )
             {    
-                              
-               editor.insertHtml( '!so[label](query)' );
+               so_url = prompt('Enter your Stack Overflow url');
+               so_url = "/so?ad="+so_url;
+               editor.insertHtml( '<a href='+so_url+'>here</a> ' );
             }
          });
       

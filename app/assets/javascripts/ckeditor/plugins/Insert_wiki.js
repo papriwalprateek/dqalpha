@@ -9,8 +9,9 @@ CKEDITOR.plugins.add( 'Insert_wiki',
             
             exec : function( editor )
             {    
-                              
-               editor.insertHtml( '!wiki[label](query)' );
+                wiki_url = prompt('Enter your Wikipedia query');
+               wiki_url = "/wik?ad="+wiki_url;
+               editor.insertHtml( '<a id = "mashup_links"href='+wiki_url+'>here</a> ' );               
             }
          });
       
