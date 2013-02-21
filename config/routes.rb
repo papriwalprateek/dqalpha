@@ -16,7 +16,7 @@ Blog::Application.routes.draw do
   match '/wik' => 'pages#wik'
   match '/so' => 'pages#so'
   
-  match '/scilab' => 'pages#scilab_help'
+  match '/scilab' => 'pages#scilab'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
   match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]

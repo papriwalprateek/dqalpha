@@ -25,7 +25,7 @@ def wik
      end
   end
 
-def scilab_help
+def scilab
     @content = scilab_help(params[:ad])
     respond_to do |format|
       format.js { render "layouts/scilab"  }
