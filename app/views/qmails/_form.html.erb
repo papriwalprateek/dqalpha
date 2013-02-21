@@ -6,16 +6,15 @@
   <div class="qmail_field" id="qmail_field">
   	<br />
     <%= f.label :content, "Say Something"%><br />
-  <%begin%>
+  
   <%= f.cktext_area :content,:ckeditor => {:language => "en"} %>
- <%rescue%>
- <%= f.text_area :content %>
- <%end%>
    </div>
-   <br/>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 <script>
+$(function(){
+
+ });
 </script>

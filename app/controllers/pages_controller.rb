@@ -24,6 +24,13 @@ def wik
       format.js { render "layouts/wiki"  }
      end
   end
+
+def scilab_help
+    @content = scilab_help(params[:ad])
+    respond_to do |format|
+      format.js { render "layouts/scilab"  }
+     end
+  end
 def so
     @content = so_content(params[:ad])
     respond_to do |format|

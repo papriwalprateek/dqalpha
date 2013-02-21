@@ -11,5 +11,9 @@ CKEDITOR.editorConfig = (config) ->
     
   ]
   config.toolbar = 'Pure'
-  config.extraPlugins = 'Insert_wiki,Insert_gist,Insert_so' 
+  config.extraPlugins = 'Insert_wiki,Insert_gist,Insert_so,autogrow' 
+  config.toolbarStartupExpanded = false
+  config.toolbarCanCollapse = true
+  config.autoGrow_onStartup = true
+  config.autoGrow_maxHeight = 800
   true

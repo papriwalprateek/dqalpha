@@ -11,7 +11,7 @@ CKEDITOR.plugins.add( 'Insert_so',
             {    
                so_url = prompt('Enter your Stack Overflow url');
                so_url = "/so?ad="+so_url;
-               editor.insertHtml( '<a href='+so_url+'>here</a> ' );
+               editor.insertHtml( '<a id = "mashup_links" href='+so_url+'>here</a> ' );
             }
          });
       

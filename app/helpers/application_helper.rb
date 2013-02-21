@@ -32,27 +32,6 @@ def wiki_content(a)
     require 'media_wiki'
     require 'nokogiri'
     require 'open-uri'
-#    a = a.to_s
-#    a = a.gsub(/\s/,"_")
-#    @docm = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
-
-#    @txtful = [] 
-#    j = 0
-
-#    while @docm.xpath("//h2/span")[j+1]!=nil
-#    @txt = [] 
-#    @node = @docm.xpath("//h2/span")[j].parent
-#    @stop = @docm.xpath("//h2/span")[j+1].parent
-#    while @node!=@stop
-#      @txt << @node
-#      @node = @node.next 
-#    end
-#    @txtful << @txt
-#    j = j + 1
-#    end
-    
-#    print @txtful.length
-    
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
     wiki =  mw.render(a)
     @doc = Nokogiri::HTML(wiki)
@@ -62,97 +41,79 @@ def wiki_content(a)
     j = 0
    
     while @doc.xpath("//h2/span")[j+1]!=nil
-    @txt = [] 
-    @node = @doc.xpath("//h2/span")[j].parent
-    @stop = @doc.xpath("//h2/span")[j+1].parent
+      @txt = [] 
+      @node = @doc.xpath("//h2/span")[j].parent
+      @stop = @doc.xpath("//h2/span")[j+1].parent
     while @node!=@stop
       @txt << @node
       @node = @node.next 
     end
-    @txtful << @txt
-    j = j + 1
+      @txtful << @txt
+      j = j + 1
     end
-    print @txtful.length
+      print @txtful.length
     
     note = @doc.search("sup")
     note.remove
-#    note = @doc.search("a.external")
-#   note.remove
-#    note = @doc.search("span")
- #   note.remove
-begin #handling no image exceptions 
-    introimage = @doc.css('table.infobox a.image')[0]['href']
-    @introimage = introimage 
-rescue
-  @introimage = "nothing_here"
-end  
-    note = @doc.css("table.infobox a.image")
-    note.remove
+    begin #handling no image exceptions 
+      introimage = @doc.css('table.infobox a.image')[0]['href']
+      @introimage = introimage 
+    rescue
+      @introimage = "nothing_here"
+    end  
+      note = @doc.css("table.infobox a.image")
+      note.remove
     
-    name = a
-begin    #handling no table exceptions
-    note = @doc.at_css("table.infobox tr")
-    note.remove
-rescue 
-end   
-    image = @doc.css('table.infobox')[0]
+     name = a
+    begin    #handling no table exceptions
+      note = @doc.at_css("table.infobox tr")
+      note.remove
+    rescue 
+    end   
+      image = @doc.css('table.infobox')[0]
 
-#@infobox = Nokogiri::HTML(image)
-
-#introimage = @doc.css('table.infobox a.image')
-#a1 = @doc.css('table.infobox tr')[2]
-#a2 = @doc.css('table.infobox tr')[3]
-  
     if image == nil
       image = @doc.css('a.image')[0]  
     end
-begin
-    info = @doc.xpath('//p')[0]
-rescue
-info = "sorry no data found"
-end
+    begin
+      info = @doc.xpath('//p')[0]
+    rescue
+      info = "sorry no data found"
+    end
     return @content if defined?(@content)
-    @image = image
-    @info = info
-    @name = name
+      @image = image
+      @info = info
+      @name = name
     if @introimage !="nothing_here"
-    @stringurl = "http://en.wikipedia.org" + @introimage
+      @stringurl = "http://en.wikipedia.org" + @introimage
     else 
       @stringurl = "nothing_here"
     end 
     if @stringurl !="nothing_here"
-    @doc1 = Nokogiri::HTML(open(@stringurl))
-    introimage = @doc1.css('div.fullImageLink > a')[0]['href']
-    @introimage = introimage
+      @doc1 = Nokogiri::HTML(open(@stringurl))
+      introimage = @doc1.css('div.fullImageLink > a')[0]['href']
+      @introimage = introimage
     end
     if @introimage !="nothing_here"
-    @introimage = "http:" + @introimage
+      @introimage = "http:" + @introimage
     end 
 
     end
   
-  end
-  def so_content(a)
+end
+def so_content(a)
    
    require 'pilha'
-
-   
    StackExchange::StackOverflow::Client.config do |options|
-  options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
-   end
-   
-
+      options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
+   end   
    a = a.to_s
    a = a.split("/")
    a = a[4].to_i
     
-
    @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
-
    @ques = @doc.title
-   @desc = @doc.body
-
- 
+   @desc = @doc.body 
    j=0
    @answers = []
    while j < @doc.answers.length
@@ -160,9 +121,21 @@ end
       @answers << @ans
       j = j + 1   
    end
-  end
+end
+
+def scilab_help(a)
+   require "nokogiri"
+   require "open-uri"
+   
+   @doc = Nokogiri::HTML(open("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html"))
+
+   @title = @doc.css("div.refnamediv")
+   @callseq = @doc.css("div.refsynopsisdiv")
+   @refsec = @doc.css("div.refsection")
+
+end
  
- def link_to_add_fields(name, f, association)
+def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
     fields = f.fields_for(association, new_object, child_index: id) do |builder|

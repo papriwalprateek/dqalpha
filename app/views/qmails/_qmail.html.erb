@@ -8,5 +8,6 @@
   <%rescue%>
   <%end%>
   </div>
- 	<%= markdown(qmail.content) %> 
+  	<%= markdown(qmail.content) %> 
  	<%= link_to 'x', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </div> <hr>
+ 	

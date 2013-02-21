@@ -35,6 +35,9 @@ GEM
     authlogic (3.1.3)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (~> 3.1)
     builder (3.0.0)
     calc (1.0.0)
     ckeditor (4.0.2)
@@ -155,6 +158,7 @@ DEPENDENCIES
   ace-rails
   albino
   authlogic
+  best_in_place
   calc
   ckeditor
   coffee-rails (~> 3.2.1)
