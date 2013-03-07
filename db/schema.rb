@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214104248) do
+ActiveRecord::Schema.define(:version => 20130306064031) do
 
   create_table "gists", :force => true do |t|
     t.string   "title"
@@ -83,10 +83,12 @@ ActiveRecord::Schema.define(:version => 20130214104248) do
   create_table "notifications", :force => true do |t|
     t.text     "content"
     t.boolean  "has_read"
-    t.integer  "user_id"
     t.integer  "sender_id"
+    t.string   "url"
+    t.string   "of_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "options", :force => true do |t|

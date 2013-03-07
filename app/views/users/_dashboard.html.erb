@@ -10,6 +10,16 @@
 <div>
 Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
+<div class="notifications_block">
+Notifications
+</br>
+<%current_user.notifications.order('created_at desc').each do |notification|%>
+<a href=<%=notification.url%>><%=notification.content%>
+</a>
+<hr>
+<%end%>
+</div>
+
 </div>
 <div class="quests_show">
 <% current_user.quests.each do |quest| %>
@@ -32,8 +42,8 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <div class="quests_tiles">
 	<div class="new_quest">
 <%= form_for([current_user, current_user.quests.build], :remote => true) do |f| %>
-   <%= f.text_field :title,:value=>"A name for the Quest", :style=>'height:33px;width: 300px;border:0px;background:#666;color:#ddd;font-size:2em;font-weight:normal;margin-top:0px;'  %>
-    <%= f.text_area :description,:value=>"Provide a description", :style=>'width: 300px;height:100px;border:0px;font-family:"Helvetica Neue";background:#666;color:#ccc' %>
+   <%= f.text_field :title,:value=>"A name for the Quest", :style=>'height:33px;width: 100%;border:0px;background:#666;color:#ddd;font-size:2em;font-weight:normal;margin-top:0px;'  %>
+    <%= f.text_area :description,:value=>"Provide a description", :style=>'width: 100%;height:100px;border:0px;font-family:"Helvetica Neue";background:#666;color:#ccc' %>
     <%= f.submit "Start the Quest", :class => "button_new_quest"%>
    
     

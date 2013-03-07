@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  has_read: false
+  sender_id: 1
+  url: MyString
+  of_type: MyString
+
+two:
+  content: MyText
+  has_read: false
+  sender_id: 1
+  url: MyString
+  of_type: MyString
