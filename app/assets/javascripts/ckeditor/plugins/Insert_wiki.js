@@ -9,7 +9,10 @@ CKEDITOR.plugins.add( 'Insert_wiki',
             
             exec : function( editor )
             {    
-                wiki_url = prompt('Enter your Wikipedia query').toString();
+                wiki_url = prompt('Enter your Wikipedia query',"your query");
+				var replace = " ";
+				var re = new RegExp(replace, 'g');    
+				wiki_url = wiki_url.replace(re, '_');
                wiki_url = "/wik?ad="+wiki_url;
                editor.insertHtml( '<a id = "mashup_links" href='+wiki_url+'>here</a> ' );               
             }
