@@ -1,15 +1,10 @@
-
 <div id="q" data-id="<%=@q.id%>" >
-<h2>
-	<a class="grey" "live_link", href = "/">
+
+	<a class="grey", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
 <=</a>
+<%=@q.title%>
 
-
-	<a class="grey" "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
-	<%=@quest.title%></a>
-/<%=@q.title%>
-
- </h2>
+ 
     <div id='com' >
     <%if @q.qmails %>
       <%= render @q.qmails %>

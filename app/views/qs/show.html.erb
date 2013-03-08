@@ -1,6 +1,34 @@
+ <div class="dashboard">
+<div class="dashboard_right">
+<h2>
+	
+<a class="grey", href = "/">
+<=</a>
+	<%=@quest.title%></h2>
+<%=@quest.description%>
+</br>
+<div>
+Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<div>
+<%@quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
+<%end%>
+</div>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
+  <%= label_tag(:add_user, " ") %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
+</div>
+
+</div>
+  
+
+<div class="quests_show">
 
 <%= render "qs/q"%>
-
+</div>
+</div>
 
 <script>$(function() {
 	//	add users autocomplete	
