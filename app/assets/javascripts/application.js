@@ -125,7 +125,7 @@ $(function() {
     $.getScript(this.href);
      return false;
  });
-  $("a #mashup_links").live("click", function() {
+  $("a#mashup_links").live("click", function() {
     $.getScript(this.href);
      return false;
  });
