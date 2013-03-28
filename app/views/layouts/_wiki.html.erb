@@ -61,6 +61,19 @@ ol.bjqs-markers li a:hover{
 
 </head>
 
+<%if @catch%>
+<div>No such title exists in database of Wikipedia. There might be spelling error.</div>
+
+<%elsif @docR%>
+<h3><%=raw@name%></h3>
+<div><%=raw@content%></div>
+
+<%elsif @docdis%>
+<h3><%=raw@name%></h3>
+<div><%=raw@content%></div>
+
+<%else%>
+
 <%if @name%>
 <h3><%=raw@name%></h3>
 <%end%>
@@ -106,4 +119,4 @@ ol.bjqs-markers li a:hover{
 <%end%>
 </ul>
 </div>
-
+<%end%>

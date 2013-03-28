@@ -37,7 +37,10 @@
 <%= content_tag(:div, value, :class => "flash #{key}") %>
 <% end %>
 </div>
+<div class="ui-layout-north">
 
+<%= render 'layouts/header' %>
+</div>
 <div id="content" class="ui-layout-center">
 
 <%= yield %>

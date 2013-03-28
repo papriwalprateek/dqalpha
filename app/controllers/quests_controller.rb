@@ -13,7 +13,14 @@ class QuestsController < ApplicationController
  
   end
   def index
+    @inv = @quest.involvements.where("user_id=?",current_user)
+    @inv[0].destroy
+   respond_to do |format|
+         format.html {render "_quest" }# show.html.erb
+      format.json { render :json => @quest }
+      format.js   
     
+  end
   end
   
   def show
@@ -32,4 +39,16 @@ class QuestsController < ApplicationController
   def add_user
   
   end
+   def n
+    @inv = @quest.involvements.where("user_id=?",current_user)
+    @inv[0].destroy
+   respond_to do |format|
+         format.html {render "_quest" }# show.html.erb
+      format.json { render :json => @quest }
+      format.js   
+    
+  end
+
+  end
+
 end

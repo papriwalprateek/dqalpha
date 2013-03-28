@@ -19,11 +19,12 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
   <%= submit_tag("Add") %>
 <% end %>
 </div>
-
+<%= image_tag("leavebutton.png",:size => "100x25",:onClick=>"leave_quest()") %>
 </div>
   
 
 <div class="quests_show">
+
 <%= render "quests/listq"%>
 </div>
 </div>
@@ -40,6 +41,17 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
 			source: availableTags
 			});
 	
+   		
 	});
+		function leave_quest(){
+	<%@inv = @quest.involvements.where("user_id=?",current_user.id)%>
+   			<%if @inv[0]%>
+  			
+  			<%end%>
+    		 $.getScript("/");
+          	window.history.pushState(null, document.title,"/");
+ 
+
+	}
 	</script> 
 

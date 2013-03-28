@@ -1,4 +1,5 @@
-<% @quest.qs.each do |q| %>
+
+<% @quest.qs.order("created_at DESC").each do |q| %>
 <a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
 <span>
 <div class = "qs_tiles">
@@ -6,7 +7,6 @@
 <%=q.created_at.strftime("%b %d, %Y")%>
 </div>
 <h2><%=q.title%></h2>
-</br>
 </div>
 </span></a>
 <%end%>

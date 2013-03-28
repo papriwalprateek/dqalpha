@@ -4,9 +4,10 @@ margin-bottom: 0px; margin-top: 0px;
 body { width:100%;background: #FFFFFF; margin: 0px; padding: 0px;height: 100%;
 }
 p{margin:0px;}
-#header { height: 40px ;background-color: #F5F5DC;border-top:0px;
+#header { height: 40px ;background-color: #EEE;border-top:0px;background-image: linear-gradient(rgb(249, 249, 249), rgb(241, 241, 241));
+background-repeat: repeat-x;
 } 
-#header img { padding-right: 5px; background: #F5F5DC; float: left; 
+#header img { padding-right: 5px; background: #EEE; float: left; 
 }
 .signin_form{color: #333333;
 margin-top: 30px;
@@ -206,7 +207,7 @@ ul{
 }
 /* Links */
 
-.navigation { background-color: #F5F5DC; white-space: nowrap;
+.navigation {white-space: nowrap;
 }
 ul.navigation { float: right;}
 .navigation li { list-style-type: none; display: inline-block; 

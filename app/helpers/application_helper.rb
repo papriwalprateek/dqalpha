@@ -24,83 +24,124 @@ def syntax_highlighter(html)
 end
 def wiki_content(a)
     
-
  if a
     
     require 'rubygems'
-    require 'wikicloth'
+  require 'wikicloth'
     require 'media_wiki'
     require 'nokogiri'
     require 'open-uri'
+    
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
+    @catch = false
+    begin
     wiki =  mw.render(a)
+    rescue MediaWiki::APIError => e
+    begin
+      wiki = mw.render(a.to_s.titleize)
+    rescue MediaWiki::APIError => e
+    @catch = true
+    print "I am caught"
+    end
+    end
+    
     @doc = Nokogiri::HTML(wiki)
+
+    disam = @doc.css('p').text.split(' ').include? 'refer'
+# testing if there is a case of REDIRECT    
+    redirect = @doc.css('li').children.text.split(' ')
+    redirect = redirect[0]
+    if redirect == 'REDIRECT'
+    @name = a
+    a = a.to_s.gsub ' ', '_'
+    @docR = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+    x = @docR.css("table.metadata.mbox-small.plainlinks")
+    x.remove
+    y = @docR.css("table#disambigbox")
+    y.remove
+    @content = @docR.css('div.mw-content-ltr')
+
+# testing if there is a case of REDIRECT   
+    
+    elsif disam
+    @name = a
+    a = a.to_s.gsub ' ', '_'
+    @docdis = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+    y = @docdis.css("table#disambigbox")
+    y.remove
+    @content = @docdis.css('div.mw-content-ltr')
+
+    else
+   
     x = @doc.css("span.editsection")
     x.remove
     @txtful = [] 
     j = 0
    
     while @doc.xpath("//h2/span")[j+1]!=nil
-      @txt = [] 
-      @node = @doc.xpath("//h2/span")[j].parent
-      @stop = @doc.xpath("//h2/span")[j+1].parent
+    @txt = [] 
+    @node = @doc.xpath("//h2/span")[j].parent
+    @stop = @doc.xpath("//h2/span")[j+1].parent
     while @node!=@stop
       @txt << @node
       @node = @node.next 
     end
-      @txtful << @txt
-      j = j + 1
+    @txtful << @txt
+    j = j + 1
     end
-      print @txtful.length
+    print @txtful.length
     
     note = @doc.search("sup")
     note.remove
-    begin #handling no image exceptions 
-      introimage = @doc.css('table.infobox a.image')[0]['href']
-      @introimage = introimage 
-    rescue
-      @introimage = "nothing_here"
-    end  
-      note = @doc.css("table.infobox a.image")
-      note.remove
+
+begin #handling no image exceptions 
+    introimage = @doc.css('table.infobox a.image')[0]['href']
+    @introimage = introimage 
+rescue
+  @introimage = "nothing_here"
+end  
+    note = @doc.css("table.infobox a.image")
+    note.remove
     
-     name = a
-    begin    #handling no table exceptions
-      note = @doc.at_css("table.infobox tr")
-      note.remove
-    rescue 
-    end   
-      image = @doc.css('table.infobox')[0]
+    name = a
+begin    #handling no table exceptions
+    note = @doc.at_css("table.infobox tr")
+    note.remove
+rescue 
+end   
+    image = @doc.css('table.infobox')[0]
 
     if image == nil
       image = @doc.css('a.image')[0]  
     end
-    begin
-      info = @doc.xpath('//p')[0]
-    rescue
-      info = "sorry no data found"
-    end
+begin
+    info = @doc.xpath('//p')[0]
+rescue
+info = "sorry no data found"
+end
     return @content if defined?(@content)
-      @image = image
-      @info = info
-      @name = name
+    @image = image
+    @info = info
+    @name = name
     if @introimage !="nothing_here"
-      @stringurl = "http://en.wikipedia.org" + @introimage
+    @stringurl = "http://en.wikipedia.org" + @introimage
     else 
       @stringurl = "nothing_here"
     end 
     if @stringurl !="nothing_here"
-      @doc1 = Nokogiri::HTML(open(@stringurl))
-      introimage = @doc1.css('div.fullImageLink > a')[0]['href']
-      @introimage = introimage
+    @doc1 = Nokogiri::HTML(open(@stringurl))
+    introimage = @doc1.css('div.fullImageLink > a')[0]['href']
+    @introimage = introimage
     end
     if @introimage !="nothing_here"
-      @introimage = "http:" + @introimage
+    @introimage = "http:" + @introimage
     end 
-
-    end
-  
 end
+    end
+  end
+
+
+
 def so_content(a)
    
    require 'pilha'
