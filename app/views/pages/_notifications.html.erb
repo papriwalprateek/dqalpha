@@ -1,0 +1,14 @@
+<div class="notifications_all">
+<h2>Notifications</h2>
+</br>
+<%current_user.notifications.find(:all, :order=>'created_at desc').each do |notification|%>
+<div class="notification_tile">
+<a href=<%=notification.url%> class="live_link"><%=notification.content%>
+</a>
+<div class="time">
+<%=notification.created_at.strftime("%b, %d")%>
+</div>
+</div>
+<hr>
+<%end%>
+</div>
