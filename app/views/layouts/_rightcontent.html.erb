@@ -13,10 +13,9 @@
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
  <%= text_field_tag :ad %>
-  <%= submit_tag("Wiki") %>
 <% end %>
 
-</br>
+<hr>
 
 <div id ="wik">
 
@@ -28,8 +27,7 @@
 
 <%= form_tag({:controller=> "pages",:action => "scilab"},:remote =>true, :method => "get") do %>
  <%= text_field_tag :ad %>
-  <%= submit_tag("Help") %>
-<% end %>
+<hr><% end %>
 
 </br>
 
@@ -43,7 +41,7 @@
 
 <%= form_tag({:controller=> "pages",:action => "so"},:remote =>true, :method => "get") do %>
  <%= text_field_tag :ad %>
-  <%= submit_tag("So") %>
+<hr>
 <% end %>
 
 </br>

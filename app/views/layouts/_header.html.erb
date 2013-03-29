@@ -1,4 +1,4 @@
-<div id="header" ><a href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
+<div id="header" ><a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
  <li> <% if current_user %>
   <%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %>
     <%= current_user.name %>

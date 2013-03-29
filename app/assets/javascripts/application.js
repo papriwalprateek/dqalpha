@@ -89,18 +89,17 @@ $(function() {
     });
      	
  //git browse repo
-   $("a.grey").live("click", function() {
+   $("a.live_link").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $(".dashboard_right a").live("click", function() {
-  
+  $("a.live_link_noti").live("click", function() {
+   // <%notification.has_read = true%>
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  
   $(".content_middle a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);

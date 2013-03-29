@@ -13,10 +13,23 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <div class="notifications_block">
 Notifications
 </br>
-<%current_user.notifications.order('created_at desc').each do |notification|%>
-<a href=<%=notification.url%>><%=notification.content%>
-</a>
+<%current_user.notifications.find(:all, :order=>'created_at desc',:limit => 7).each do |notification|%>
+<%if notification.has_read%>
+<div>
+<%else%>
+<div class="unread_notification">
+<%end%>
+	<a href=<%=notification.url%> class="live_link_noti" ><%=notification.content%>
+	</a>
+</div>
+
 <hr>
+<%end%>
+<%x = current_user.notifications.count-7%>
+<%if x > 0%>
+<a href="/notifications" class= "live_link"><%=x%> older notifications
+
+</a>
 <%end%>
 </div>
 
@@ -39,6 +52,7 @@ Notifications
 </div>
 </span></a>
 <%end%>
+
 <div class="quests_tiles">
 	<div class="new_quest">
 <%= form_for([current_user, current_user.quests.build], :remote => true) do |f| %>
@@ -46,11 +60,9 @@ Notifications
     <%= f.text_area :description,:value=>"Provide a description", :style=>'width: 100%;height:100px;border:0px;font-family:"Helvetica Neue";background:#666;color:#ccc' %>
     <%= f.submit "Start the Quest", :class => "button_new_quest"%>
    
-    
 <% end %>
 
 	</div>
-
 </div>
 </div>
 </div>

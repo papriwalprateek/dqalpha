@@ -41,4 +41,11 @@ def so
   def contact
   @title = "contact"
   end
+   def notifications
+  @title = "notifications"
+  respond_to do |format|
+      format.html{render "pages/_notifications"}
+      format.js { render "pages/notifications"  }
+     end
+  end
 end

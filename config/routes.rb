@@ -13,7 +13,7 @@ Blog::Application.routes.draw do
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
   match '/so' => 'pages#so'
-  
+  match '/notifications' => 'pages#notifications'
   match '/scilab' => 'pages#scilab'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]

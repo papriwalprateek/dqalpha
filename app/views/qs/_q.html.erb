@@ -1,25 +1,42 @@
 
-<div id="q" data-id="<%=@q.id%>" >
+<div id="q" data-id="<%=@q.id%>" class="dashboard">
 <h2>
-	<a class="grey" "live_link", href = "/">
-<=</a>
 
 
-	<a class="grey" "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
+	<a class= "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
 	<%=@quest.title%></a>
-/<%=@q.title%>
+/<span class="grey"><%=@q.title%></span>
 
  </h2>
-    <div id='com' >
-    <%if @q.qmails %>
-      <%= render @q.qmails %>
-   
+ <div class="dashboard_right">
+<%=@quest.description%>
+</br>
+<div>
+Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<div>
+<%@quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
 <%end%>
- </div>
-  <div  id="qmail_field">
-<%= render "qmails/form" %>
 </div>
-
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
+  <%= label_tag(:add_user, " ") %>
+  <%= text_field_tag :add_user %>
+  <%= submit_tag("Add") %>
+<% end %>
+</div>
+<%= image_tag("leavebutton.png",:size => "100x25",:onClick=>"leave_quest()") %>
+</div>
+<div class="mails">
+    <div id='com'>
+    	<%if @q.qmails %>
+  	    <%= render @q.qmails %>
+   
+		<%end%>
+ 	</div>
+ 	<div  id="qmail_field">
+		<%= render "qmails/form" %>
+	</div>
+</div>
 </div>
 <div id="onselection_list">
 		<p></p>

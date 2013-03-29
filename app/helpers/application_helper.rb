@@ -35,10 +35,11 @@ def wiki_content(a)
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
     @catch = false
     begin
-    wiki =  mw.render(a)
+    wiki = mw.render(a.to_s.titleize)
+    print "i am here"
     rescue MediaWiki::APIError => e
     begin
-      wiki = mw.render(a.to_s.titleize)
+wiki =  mw.render(a)
     rescue MediaWiki::APIError => e
     @catch = true
     print "I am caught"
@@ -139,8 +140,6 @@ end
 end
     end
   end
-
-
 
 def so_content(a)
    

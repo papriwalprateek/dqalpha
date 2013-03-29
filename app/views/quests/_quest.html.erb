@@ -1,9 +1,8 @@
  <div class="dashboard">
-<div class="dashboard_right">
 <h2>
-<a class="grey" "live_link", href = "/">
-<=</a>
 <%=@quest.title%></h2>
+
+<div class="dashboard_right">
 <%=@quest.description%>
 </br>
 <div>
@@ -19,7 +18,7 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
   <%= submit_tag("Add") %>
 <% end %>
 </div>
-<%= image_tag("leavebutton.png",:size => "100x25",:onClick=>"leave_quest()") %>
+<button class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
 </div>
   
 
