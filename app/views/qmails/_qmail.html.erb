@@ -1,4 +1,4 @@
- <div class ="post" data-time="<%=qmail.created_at.to_i%>"> 
+ <div class ="post" style = "margin:10px;" data-time="<%=qmail.created_at.to_i%>"> 
  <span class= "bold">	<%=qmail.user.name%>
  	</span>
  	<div style="float:right">
@@ -8,6 +8,6 @@
   <%rescue%>
   <%end%>
   </div>
-  	<%= markdown(qmail.content) %> 
- 	<%= link_to 'x', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </div> <hr>
- 	
+  <%= markdown(qmail.content) %> 
+ 	<%= link_to 'x', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </div> 
+ 	<hr style="width:88%;margin-left:2%;">

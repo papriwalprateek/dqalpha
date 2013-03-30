@@ -150,11 +150,12 @@ position:relative;
 	margin-left:40px;
 }
 .dashboard_right{
-	width:20%;
-	float:left;
-	height:100%;
-	margin-top:10px;
-	
+width:20%;
+float:left;
+height:100%;
+margin-top:10px;
+font-size:120%;
+color:#888;
 }
 .user_image{
 margin-bottom: 5px;
@@ -597,10 +598,20 @@ a#mashup_links{
 	width:75%;
 		margin-top:10px;
 }
+
+h3.title{
+color:#888;
+margin-top:10px;
+}
+
+span.mw-headline{
+color:#888;
+}
+
 input#ad{
-	color:#888;font-size:1.5em;
-	border:0px;margin: 0px;
-	}
+color:black;font-size:2em;
+border:0px;margin-top: 10px;
+}
 .notifications_all{
 	margin-left:130px;
 	margin-top:20px;
