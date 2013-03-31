@@ -6,8 +6,9 @@ class UserSessionsController < ApplicationController
   # GET /user_sessions/new.json
   def new
     @user_session = UserSession.new
+    if current_user
     @unread_notifications = current_user.notifications.where(:has_read=>false).order("created_at DESC")
-
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.js
