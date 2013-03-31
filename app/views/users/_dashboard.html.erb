@@ -13,25 +13,25 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 <hr>
 <div class="notifications_block" style="margin-top:10px;margin-left:5px;margin-bottom:10px;">
-<div style="margin-bottom:10px;">Notifications</div>
-<%current_user.notifications.find(:all, :order=>'created_at desc',:limit => 7).each do |notification|%>
-<%if notification.has_read%>
-<div>
-<%else%>
-<div class="unread_notification">
-<%end%>
-<a href=<%=notification.url%> class="live_link_noti" ><%=notification.content%>
-</a>
+	
+	<div style="margin-bottom:10px;">Notifications
+		<div class="unread_notification_count"> <%=@unread_notifications.count%>
+		</div>
+	</div>
+	<%@unread_notifications.each do |notification|%>
+	
+	<% if !notification.has_read %>
+		<div class="unread_notification_left" >
+	<% else %>
+		<div >
+	<%end%>
+	<%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
 </div>
-
 <hr>
 <%end%>
-<%x = current_user.notifications.count-7%>
-<%if x > 0%>
-<a href="/notifications" class= "live_link"><%=x%> older notifications
-
+<a href="/notifications" class= "live_link"> See all
 </a>
-<%end%>
+
 </div>
 
 </div>
@@ -67,3 +67,5 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 </div>
 </div>
+<script>
+</script>

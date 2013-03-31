@@ -621,7 +621,19 @@ border:0px;margin-top: 10px;
 	font-size: 1.1em;
 }
 .unread_notification{
+	padding: 10px 0px;
+	font-size: 1.1em;
 	background:#D7FAB9;
+}
+.unread_notification_left{
+		background:#D7FAB9;
+}
+.unread_notification_count{
+float:right;
+font-size:15px;
+padding:2px;
+background-color:#CD0A0A;	
+color:#FFFFFF;
 }
 .join_quest {
 -moz-box-shadow:inset 0px 1px 0px 0px #fdfffc;

@@ -94,12 +94,7 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("a.live_link_noti").live("click", function() {
-   // <%notification.has_read = true%>
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
+  
   $(".content_middle a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);

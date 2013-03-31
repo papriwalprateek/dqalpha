@@ -12,6 +12,8 @@ Blog::Application.routes.draw do
     #get "pages/search"
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
+  match '/a' => 'pages#read_notification'
+ 
   match '/so' => 'pages#so'
   match '/notifications' => 'pages#notifications'
   match '/scilab' => 'pages#scilab'

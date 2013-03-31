@@ -37,7 +37,14 @@ def so
       format.js { render "layouts/so"  }
      end
   end
+def read_notification
+    @notification = Notification.find(params[:n_id])
+    @notification.read
+    respond_to do |format|
+      format.js 
+    end
 
+end
   def contact
   @title = "contact"
   end

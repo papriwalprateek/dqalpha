@@ -1,0 +1,4 @@
+  var url = "<%=@notification.url%>";  
+  $.getScript(url);
+  window.history.pushState(null, document.title, url);
+  

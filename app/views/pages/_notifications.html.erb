@@ -2,9 +2,14 @@
 <h2>Notifications</h2>
 </br>
 <%current_user.notifications.find(:all, :order=>'created_at desc').each do |notification|%>
-<div class="notification_tile">
-<a href=<%=notification.url%> class="live_link"><%=notification.content%>
-</a>
+
+	<% if !notification.has_read %>
+		<div class="unread_notification" >
+	<% else %>
+		<div class="notification_tile">
+	<%end%>
+
+<%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
 <div class="time">
 <%=notification.created_at.strftime("%b, %d")%>
 </div>
