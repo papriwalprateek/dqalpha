@@ -14,7 +14,6 @@ class UserSessionsController < ApplicationController
       format.json { render json: @user_session }
     end
   end
-
  
   # POST /user_sessions
   # POST /user_sessions.json
