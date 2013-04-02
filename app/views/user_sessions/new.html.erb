@@ -1,9 +1,8 @@
 <% if !current_user %>
 <div class ="signin_form">
-<h2>Signin</h2>
+<h3 style="margin-bottom:10px;">Sign in</h3>
 <%= render 'form' %>
 </br>
-<%= link_to "Sign up now!", 'signup', :class => "signup_button round" %>
 </div>
 <% end %>
 
@@ -11,4 +10,3 @@
 <%if current_user%>
 <%= render "users/dashboard"%>
 <%end%>
-

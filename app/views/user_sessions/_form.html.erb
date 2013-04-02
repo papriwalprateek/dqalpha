@@ -19,7 +19,10 @@
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
-  <div class="actions">
-    <%= f.submit "Sign-in"%>
+  <div class="actions" style="margin-top:5%;">
+    <%= f.submit "Sign in", :class => 'signin' %>
+  <%= link_to "Get started, Sign up now!", 'signup'%>
   </div>
+
 <% end %>
+

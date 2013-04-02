@@ -46,7 +46,6 @@ Blog::Application.routes.draw do
 #get "pages/about"
     match '/about' => 'pages#about'
    match '/google885d2aab83a9c566' => 'pages#google885d2aab83a9c566'
-   mailboxes_for :users
     # get "pages/contact"
     match '/contact' => 'pages#contact'
   resources :microposts

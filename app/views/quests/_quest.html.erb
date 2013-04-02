@@ -1,12 +1,20 @@
- <div class="dashboard">
-<h2>
-<%=@quest.title%></h2>
+<div class="dashboard">
 
 <div class="dashboard_right">
+<h2>
+<%=@quest.title%>
+ </h2>
+<p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
 </br>
-<div>
-Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+
+<div style="margin-top:10px;">
+<b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<hr style="margin-top:10px;">
+
+<button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
+
+<p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
@@ -18,7 +26,6 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
   <%= submit_tag("Add") %>
 <% end %>
 </div>
-<button class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
 </div>
   
 
@@ -29,28 +36,27 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
 </div>
 
 <script>$(function() {
-	//	add users autocomplete	
-	var availableTags = [<% for user in User.all -%>
-		"<%= user.name %>"
-		<%if user==User.last%>
-		<%else%>
-		,<%end%>
-		<% end -%>];
-		$( "#add_user" ).autocomplete({
-			source: availableTags
-			});
-	
-   		
-	});
-		function leave_quest(){
-	<%@inv = @quest.involvements.where("user_id=?",current_user.id)%>
-   			<%if @inv[0]%>
-  			
-  			<%end%>
-    		 $.getScript("/");
-          	window.history.pushState(null, document.title,"/");
+//	add users autocomplete	
+var availableTags = [<% for user in User.all -%>
+"<%= user.name %>"
+<%if user==User.last%>
+<%else%>
+,<%end%>
+<% end -%>];
+$( "#add_user" ).autocomplete({
+source: availableTags
+});
+   	
+});
+function leave_quest(){
+<%@inv = @quest.involvements.where("user_id=?",current_user.id)%>
+   	<%if @inv[0]%>
+ 
+  <%end%>
+    $.getScript("/");
+          window.history.pushState(null, document.title,"/");
  
 
-	}
-	</script> 
+}
+</script> 
 

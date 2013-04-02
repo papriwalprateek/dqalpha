@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery-migrate
-//= require jquery.hovercard
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.layout
@@ -20,8 +19,6 @@
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config
-//= require jquery.jscrollpane
-//= require jquery.mousewheel
 //= require_tree .
 $(function() {	
 

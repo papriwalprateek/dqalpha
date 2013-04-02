@@ -694,3 +694,95 @@ background-color:#ededed;
 position:relative;
 top:1px;
 }
+.signin_form{color: #666;
+margin-top: 100px;
+font-family: arial, helvetica, sans-serif;	
+margin-right: auto;
+margin-left: auto;
+width: 30%;
+border: none;
+background: #F1F1F1;
+padding: 20px 25px 15px;
+}
+input#user_name{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+
+input#user_email{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+
+input#user_password{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+
+input#user_password_confirmation{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+#user_session_email{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+
+#user_session_password{
+width: 80%;
+height: 32px;
+font-size: 15px;
+direction: ltr;
+border: none;
+}
+
+.field{
+font-size: 120%;
+margin-top: 5%;
+}
+
+
+.signin {
+-moz-box-shadow:inset -31px -50px 2px 0px #82cc42;
+-webkit-box-shadow:inset -31px -50px 2px 0px #82cc42;
+box-shadow:inset -31px -50px 2px 0px #82cc42;
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a0a899), color-stop(1, #8ac757) );
+background:-moz-linear-gradient( center top, #a0a899 5%, #8ac757 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a0a899', endColorstr='#8ac757');
+background-color:#a0a899;
+display:inline-block;
+color:#ffffff;
+font-family:arial;
+font-size:15px;
+font-weight:bold;
+padding:8px 5px;
+text-decoration:none;
+text-shadow:1px 1px 0px #757575;
+}.signin:hover {
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8ac757), color-stop(1, #a0a899) );
+background:-moz-linear-gradient( center top, #8ac757 5%, #a0a899 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ac757', endColorstr='#a0a899');
+background-color:#8ac757;
+}.signin:active {
+position:relative;
+top:1px;
+}
+.vm_icon{
+	display:inline-block;
+	margin-right: 25px;	
+}

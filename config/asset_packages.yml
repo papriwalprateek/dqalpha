@@ -1,0 +1,24 @@
+---
+javascripts:
+- base:
+  - prototype
+  - effects
+  - controls
+  - dragdrop
+  - jquery
+  - jquery-migrate
+  - jquery_ujs
+  - jquery.ui.all
+  - jquery.layout
+  - jquery.layout.pseudoClose
+  - bjqs
+  - ckeditor/init
+  - ckeditor/config
+  - jquery.jscrollpane
+  - jquery.mousewheel
+  - application
+stylesheets:
+- base:
+  - ace-rails
+  - mailboxes
+  - token-input-facebook

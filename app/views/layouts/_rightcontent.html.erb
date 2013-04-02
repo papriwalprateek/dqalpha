@@ -1,14 +1,15 @@
+
 <%if current_user%>
 
 <div id = "rightcontent" class ="ui-layout-east">
-<table>
-<tr><label id="link_1"><%= image_tag("wiki.png", :alt => "Wikipedia", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_2"><%= image_tag("link_vm.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_3"><%= image_tag("irc.png", :alt => "IRC", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_4"><%= image_tag("so.png", :alt => "Gist", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_5"><%= image_tag("gist.png", :alt => "gist", :height => "30", :width => "30") %></label></tr>
-<tr><label id="link_6"><%= image_tag("scilab_logo.gif", :alt => "scilab help", :height => "30", :width => "30") %></label></tr>
-</table>
+<label id="link_1" class="vm_icon">Wikipedia</label>
+<label id="link_2" class="vm_icon">Link</label>
+<label id="link_3" class="vm_icon">Irc</label>
+<label id="link_4" class="vm_icon">Stack Overflow</label>
+<label id="link_5" class="vm_icon">Gist</label>
+<label id="link_6" class="vm_icon">Scilab Help</label>
+
+<hr style="width:93%;height:5px;">
 <div id ="wiki_vm">
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
@@ -58,14 +59,14 @@
 <%= render "gists/form" %>
 
   </div>
+<%begin%>
 <div id = "g">
 <%= render current_user.gists %>
 </div>
-	
+<%rescue%><%end%>	
 </div>
 
 <div id="irc_vm">
-	
 </div>
 <div id="link_vm">
 
@@ -90,17 +91,14 @@
 </div>
 </div>
 <%end%>
-	<script>
-	
-	
-		
-	$(function() {
+<script>
+$(function() {
 
 
-	// hide it first
-	 $('#so_vm').hide();    
-	$('#link_vm').hide();
-	$('#gist_vm').hide();
+// hide it first
+$('#so_vm').hide();    
+$('#link_vm').hide();
+$('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
   $('#link_2').click(function(){ 
@@ -121,7 +119,7 @@
       $('#scilab_vm').hide();
       $('#wiki_vm').fadeIn(300);
   }); 
-	$('#link_3').click(function(){ 
+$('#link_3').click(function(){ 
       $('#so_vm').hide();
       $('#link_vm').hide();
       $('#wiki_vm').hide();
@@ -138,8 +136,7 @@
       $('#scilab_vm').hide();
       $('#so_vm').fadeIn(300);
   }); 
-	
-	$('#link_5').click(function(){ 
+$('#link_5').click(function(){ 
       $('#link_vm').hide();
       
       $('#wiki_vm').hide();
@@ -148,7 +145,7 @@
       $('#scilab_vm').hide();
       $('#gist_vm').fadeIn(300);
   }); 
-  	$('#link_6').click(function(){ 
+  $('#link_6').click(function(){ 
       $('#link_vm').hide();
       
       $('#wiki_vm').hide();
@@ -157,7 +154,5 @@
       $('#gist_vm').hide();
       $('#scilab_vm').fadeIn(300);
   }); 
-	});
-	</script>
-
-
+});
+</script>

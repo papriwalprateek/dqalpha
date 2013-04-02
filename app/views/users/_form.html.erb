@@ -1,6 +1,7 @@
+
 <%= form_for(@user) do |f| %>
  <div class ="signin_form">
- <h1>New user</h1>
+ <h3 style="margin-bottom:10px;">Sign up</h3>
 
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -30,10 +31,10 @@
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation %>
     </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions" style="margin-top:5%;">
+    <%= f.submit "Sign up", :class => 'signin' %>
+  <%= link_to 'Already a member... Sign in', signin_path %>
   </div>
-  Already a member... <%= link_to 'Signin', signin_path %>
 
   </div>
 <% end %>

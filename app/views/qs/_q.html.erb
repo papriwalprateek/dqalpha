@@ -1,18 +1,22 @@
-
 <div id="q" data-id="<%=@q.id%>" class="dashboard">
+<div class="dashboard_right">
+
 <h2>
-
-
-	<a class= "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
-	<%=@quest.title%></a>
-/<span class="grey"><%=@q.title%></span>
-
+<a class= "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
+<%=@quest.title%></a>
  </h2>
- <div class="dashboard_right">
+
+<p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
 </br>
-<div>
-Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
+
+<div style="margin-top:10px;">
+<b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<hr style="margin-top:10px;">
+
+<button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
+
+<p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
@@ -24,63 +28,57 @@ Started on <%=@quest.created_at.strftime("%b %d, %Y")%>
   <%= submit_tag("Add") %>
 <% end %>
 </div>
-<%= image_tag("leavebutton.png",:size => "100x25",:onClick=>"leave_quest()") %>
 </div>
 <div class="mails">
+<h2><span class="grey">
+	<a class= "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
+	<= </a></span><%=@q.title%></h2>
     <div id='com'>
-    	<%if @q.qmails %>
-  	    <%= render @q.qmails %>
+    <%if @q.qmails %>
+     <%= render @q.qmails %>
    
-		<%end%>
+<%end%>
  	</div>
  	<div  id="qmail_field">
-		<%= render "qmails/form" %>
-	</div>
+<%= render "qmails/form" %>
+</div>
 </div>
 </div>
 <div id="onselection_list">
-		<p></p>
+<p></p>
 
 <button onclick="search_wiki()" >Wiki</button>
 </div>
 
 <script>
-	
-	
-		
-	$(function() {
-		 
-		$('#onselection_list').hide();
-	
-			//autocomplete for user names
-		var availableTags = [<% for user in User.all -%>
-		"<%= user.name %>"
-		<%if user==User.last%>
-		<%else%>
-		,<%end%>
-		<% end -%>];
-		$( "#add_user" ).autocomplete({
-			source: availableTags
-			});
+$(function() {
+ 
+$('#onselection_list').hide();
+//autocomplete for user names
+var availableTags = [<% for user in User.all -%>
+"<%= user.name %>"
+<%if user==User.last%>
+<%else%>
+,<%end%>
+<% end -%>];
+$( "#add_user" ).autocomplete({
+source: availableTags
+});
      $('#dialog-form').hide();
- 		
-		$('#Add').click(function(){ 
+ 	
+$('#Add').click(function(){ 
       $('#dialog-form').show();
       $("#Add").hide();
   }); 
-	
-		//dialog box for adding user
-	 	$('#form_addq').hide();
+//dialog box for adding user
+$('#form_addq').hide();
   
-	$('#add_q').click(function(){ 
+$('#add_q').click(function(){ 
    	$('#form_addq').show();
-  	$('#add_q').hide(); 
+  $('#add_q').hide(); 
   });
-	//on hover profile
+//on hover profile
 
 
-	
-		});
-	</script>
-
-
+});
+</script>
