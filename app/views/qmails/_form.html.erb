@@ -1,15 +1,16 @@
 
 <%= form_for([@q, @q.qmails.build], :remote => true, :update => "qmails_list", :position => :bottom) do |f| %>
-  <div style="float:right;padding:10px;">
- 		<%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div> 
-  
+ 
+  <div style="margin-left:1%;margin-right:10px;padding:20px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#F8F8F8 ;">
+  <div style="float:right;">
+  <%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div>
+  <p style="color:#A0A0A0;font-size:1.3em;margin-bottom:1%;"><%= f.label :content, "Click here to add your post"%></p>
+  </div>
   <div class="qmail_field" id="qmail_field">
-  	<br />
-    <%= f.label :content, "Say Something"%><br />
-  
+  <br />   
   <%= f.cktext_area :content,:ckeditor => {:language => "en"} %>
    </div>
-  <div class="actions">
+  <div style="margin-left:3%;margin-top:1%;">
     <%= f.submit %>
   </div>
 <% end %>
