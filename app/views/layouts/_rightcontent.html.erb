@@ -9,11 +9,10 @@
 <label id="link_5" class="vm_icon">Gist</label>
 <label id="link_6" class="vm_icon">Scilab Help</label>
 
-<hr style="width:93%;height:5px;">
 <div id ="wiki_vm">
 
 <%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad %>
+ <%= text_field_tag :ad, "",:class => "wiki_input" %>
 <% end %>
 
 <hr>
@@ -27,7 +26,7 @@
 <div id ="scilab_vm">
 
 <%= form_tag({:controller=> "pages",:action => "scilab"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad %>
+ <%= text_field_tag :ad , "",:class => "sc_input" %>
 <hr><% end %>
 
 </br>
@@ -41,7 +40,7 @@
 <div id ="so_vm">
 
 <%= form_tag({:controller=> "pages",:action => "so"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad %>
+ <%= text_field_tag :ad , "",:class => "so_input" %>
 <hr>
 <% end %>
 
@@ -101,7 +100,12 @@ $('#link_vm').hide();
 $('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
+    $('#link_1').css('border-bottom', '3px solid navy');
+  
   $('#link_2').click(function(){ 
+     clear_borders();
+     $('#link_2').css('border-bottom', '3px solid navy');
+  
       $('#so_vm').hide();
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
@@ -111,6 +115,9 @@ $('#gist_vm').hide();
   });
 
   $('#link_1').click(function(){ 
+     clear_borders();
+     $('#link_1').css('border-bottom', '3px solid navy');
+  
       $('#so_vm').hide();
      
       $('#link_vm').hide();
@@ -120,6 +127,9 @@ $('#gist_vm').hide();
       $('#wiki_vm').fadeIn(300);
   }); 
 $('#link_3').click(function(){ 
+     clear_borders();
+     $('#link_3').css('border-bottom', '3px solid navy');
+  
       $('#so_vm').hide();
       $('#link_vm').hide();
       $('#wiki_vm').hide();
@@ -128,7 +138,11 @@ $('#link_3').click(function(){
       $('#irc_vm').fadeIn(300);
   }); 
  $('#link_4').click(function(){ 
+     clear_borders();
+     $('#link_4').css('border-bottom', '3px solid navy');
+  
       $('#link_vm').hide();
+    
       
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
@@ -137,7 +151,9 @@ $('#link_3').click(function(){
       $('#so_vm').fadeIn(300);
   }); 
 $('#link_5').click(function(){ 
-      $('#link_vm').hide();
+     clear_borders();
+    $('#link_5').css('border-bottom', '3px solid navy');
+       $('#link_vm').hide();
       
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
@@ -146,6 +162,9 @@ $('#link_5').click(function(){
       $('#gist_vm').fadeIn(300);
   }); 
   $('#link_6').click(function(){ 
+    clear_borders();
+    $('#link_6').css('border-bottom', '3px solid navy');
+  
       $('#link_vm').hide();
       
       $('#wiki_vm').hide();
@@ -154,5 +173,15 @@ $('#link_5').click(function(){
       $('#gist_vm').hide();
       $('#scilab_vm').fadeIn(300);
   }); 
+function clear_borders(){
+  $('#link_1').css('border', '0px');
+  $('#link_2').css('border', '0px');
+  $('#link_3').css('border', '0px');
+  $('#link_4').css('border', '0px');
+  $('#link_5').css('border', '0px');
+ $('#link_6').css('border', '0px');
+ 
+ 
+   }
 });
 </script>

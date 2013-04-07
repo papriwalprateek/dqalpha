@@ -332,8 +332,7 @@ float: right;
 	
 }
 .qmail_field {
-margin-left:3%;
-width: 95%;
+width: 100%;
 }
 #dialog-form{
 float:right;}
@@ -615,6 +614,7 @@ color:#888;
 input#ad{
 color:black;font-size:2em;
 border:0px;margin-top: 10px;
+width:100%
 }
 .notifications_all{
 	margin-left:130px;
@@ -788,5 +788,33 @@ top:1px;
 }
 .vm_icon{
 	display:inline-block;
-	margin-right: 25px;	
+	width:15%;	
+}
+
+.qmail_submit {
+-moz-box-shadow:inset 0px 1px 0px 0px #d2f0b7;
+-webkit-box-shadow:inset 0px 1px 0px 0px #d2f0b7;
+box-shadow:inset 0px 1px 0px 0px #d2f0b7;
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d7f2bd), color-stop(1, #bddba2) );
+background:-moz-linear-gradient( center top, #d7f2bd 5%, #bddba2 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d7f2bd', endColorstr='#bddba2');
+background-color:#D1E1AD;
+border:1px solid #e0f0dd;
+display:inline-block;
+color:#666;
+font-family:arial;
+font-size:15px;
+font-weight:bold;
+padding:5px 23px;
+text-decoration:none;
+text-shadow:1px 1px 0px #c4eb9f;
+}.qmail_submit:hover {
+background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddba2), color-stop(1, #d7f2bd) );
+background:-moz-linear-gradient( center top, #bddba2 5%, #d7f2bd 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddba2', endColorstr='#d7f2bd');
+background-color:#bddba2;
+}.qmail_submit:active {
+position:relative;
+top:1px;
+
 }

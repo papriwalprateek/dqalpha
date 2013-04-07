@@ -20,6 +20,7 @@ class PagesController < ApplicationController
 end
 def wik
     @content = wiki_content(params[:ad])
+    @query = params[:ad]
     respond_to do |format|
       format.js { render "layouts/wiki"  }
      end
@@ -27,12 +28,14 @@ def wik
 
 def scilab
     @content = scilab_help(params[:ad])
+        @query_sc = params[:ad]
     respond_to do |format|
       format.js { render "layouts/scilab"  }
      end
   end
 def so
     @content = so_content(params[:ad])
+        @query_so = params[:ad]
     respond_to do |format|
       format.js { render "layouts/so"  }
      end

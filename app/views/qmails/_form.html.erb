@@ -1,21 +1,33 @@
-
-<%= form_for([@q, @q.qmails.build], :remote => true, :update => "qmails_list", :position => :bottom) do |f| %>
+<div style="margin-left:1%;margin-right:10px;padding:20px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#F8F8F8 ;">
  
-  <div style="margin-left:1%;margin-right:10px;padding:20px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#F8F8F8 ;">
+  <p class = "click_to_reply"style="color:#A0A0A0;font-size:1.3em;margin-bottom:1%;"><b>Click here to add your post</b></p>
+  
+<%= form_for([@q, @q.qmails.build], :remote => true, :update => "qmails_list", :position => :bottom) do |f| %>
+<div class="reply_box"> 
+<span style= "font-weight:bold;font-size:1.2em;"><%= current_user.name %></span>
+ 
   <div style="float:right;">
   <%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div>
-  <p style="color:#A0A0A0;font-size:1.3em;margin-bottom:1%;"><%= f.label :content, "Click here to add your post"%></p>
-  </div>
+
   <div class="qmail_field" id="qmail_field">
   <br />   
   <%= f.cktext_area :content,:ckeditor => {:language => "en"} %>
    </div>
-  <div style="margin-left:3%;margin-top:1%;">
-    <%= f.submit %>
+  <div style="margin-top:1%;">
+    <%= f.submit "Add Your Post", :class => 'qmail_submit'%>
+  </div>
   </div>
 <% end %>
+</div>
+
 <script>
 $(function(){
-
+     $('.reply_box').hide();
+  
+  $('p.click_to_reply').click(function(){ 
+        $('p.click_to_reply').hide();
+  
+      $('.reply_box').fadeIn(300);
+  }); 
  });
 </script>
