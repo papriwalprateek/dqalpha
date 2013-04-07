@@ -3,7 +3,6 @@
 
 <div id = "rightcontent" class ="ui-layout-east">
 <label id="link_1" class="vm_icon">Wikipedia</label>
-<label id="link_2" class="vm_icon">Link</label>
 <label id="link_3" class="vm_icon">Irc</label>
 <label id="link_4" class="vm_icon">Stack Overflow</label>
 <label id="link_5" class="vm_icon">Gist</label>
@@ -67,27 +66,6 @@
 
 <div id="irc_vm">
 </div>
-<div id="link_vm">
-
-  <div  id="link_field">
-<%if controller.controller_name=="qs" or controller.controller_name=="quests"%>
-
-<%= render "links/form" %>
-<%end%>
-  </div>
-  <div id='l' >
- <%if controller.controller_name=="qs" or controller.controller_name=="quests"%>
-
-    <%= render @quest.links %>
-<%end%>
-</div>
-
-
-</br>
-
-
-
-</div>
 </div>
 <%end%>
 <script>
@@ -96,31 +74,17 @@ $(function() {
 
 // hide it first
 $('#so_vm').hide();    
-$('#link_vm').hide();
 $('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
     $('#link_1').css('border-bottom', '3px solid navy');
   
-  $('#link_2').click(function(){ 
-     clear_borders();
-     $('#link_2').css('border-bottom', '3px solid navy');
-  
-      $('#so_vm').hide();
-      $('#wiki_vm').hide();
-      $('#irc_vm').hide();
-      $('#gist_vm').hide();
-      $('#scilab_vm').hide();
-      $('#link_vm').fadeIn( 300);
-  });
-
   $('#link_1').click(function(){ 
      clear_borders();
      $('#link_1').css('border-bottom', '3px solid navy');
   
       $('#so_vm').hide();
      
-      $('#link_vm').hide();
       $('#irc_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').hide();
@@ -131,7 +95,6 @@ $('#link_3').click(function(){
      $('#link_3').css('border-bottom', '3px solid navy');
   
       $('#so_vm').hide();
-      $('#link_vm').hide();
       $('#wiki_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').hide();
@@ -141,9 +104,6 @@ $('#link_3').click(function(){
      clear_borders();
      $('#link_4').css('border-bottom', '3px solid navy');
   
-      $('#link_vm').hide();
-    
-      
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
       $('#gist_vm').hide();
@@ -153,8 +113,6 @@ $('#link_3').click(function(){
 $('#link_5').click(function(){ 
      clear_borders();
     $('#link_5').css('border-bottom', '3px solid navy');
-       $('#link_vm').hide();
-      
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
       $('#so_vm').hide();
@@ -164,9 +122,6 @@ $('#link_5').click(function(){
   $('#link_6').click(function(){ 
     clear_borders();
     $('#link_6').css('border-bottom', '3px solid navy');
-  
-      $('#link_vm').hide();
-      
       $('#wiki_vm').hide();
       $('#irc_vm').hide();
       $('#so_vm').hide();
@@ -175,7 +130,6 @@ $('#link_5').click(function(){
   }); 
 function clear_borders(){
   $('#link_1').css('border', '0px');
-  $('#link_2').css('border', '0px');
   $('#link_3').css('border', '0px');
   $('#link_4').css('border', '0px');
   $('#link_5').css('border', '0px');

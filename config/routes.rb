@@ -32,9 +32,7 @@ Blog::Application.routes.draw do
     resources :quests do
       resources :qs
     end
-    resources :quests do
-      resources :links
-    end
+
   
    resources :qs do
       resources :qmails
@@ -47,10 +45,7 @@ Blog::Application.routes.draw do
     match '/about' => 'pages#about'
    match '/google885d2aab83a9c566' => 'pages#google885d2aab83a9c566'
     # get "pages/contact"
-    match '/contact' => 'pages#contact'
-  resources :microposts
-  resources :involvements
-  resources :lifespans 
+    match '/contact' => 'pages#contact'  
   resources :posts
 
     # get "home/index"

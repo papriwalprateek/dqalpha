@@ -1,9 +1,0 @@
-
-<div  data-time="<%=link.created_at.to_i%>">
-  <%if link.body%>
-  <%=markdown(link.body)%>
- 	<%= link_to 'X', [link.quest, link], :remote => true, :method => :delete %>
-	<%end%>
- <hr>
- </div>
- </br>

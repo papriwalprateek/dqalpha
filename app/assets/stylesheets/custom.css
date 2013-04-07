@@ -614,7 +614,7 @@ color:#888;
 input#ad{
 color:black;font-size:2em;
 border:0px;margin-top: 10px;
-width:100%
+width:100%;
 }
 .notifications_all{
 	margin-left:130px;
@@ -788,7 +788,7 @@ top:1px;
 }
 .vm_icon{
 	display:inline-block;
-	width:15%;	
+	width:19%;	
 }
 
 .qmail_submit {
