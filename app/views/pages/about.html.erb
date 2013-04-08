@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+ <head>
+<title>
+<%= title %></title>
+<%= render 'layouts/stylesheets' %> 
+
+ 	<link rel="shortcut icon" href="/favicon.ico" />
+
+</head>
+<body >
+<div class="ui-layout-north">
+
+<%= render 'layouts/header' %>
+<div class="container ">
+
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+</div>
+
+</div>
+
+<div style="margin-left:15%;margin-right:25%;margin-top:2%">
+
+<ul>
+<a href="/about"style="display:inline;margin-right:20px;font-size:120%;border-bottom: 2px solid navy">About</a>
+<a href="/team" style="display:inline;margin-right:20px;font-size:120%;">Team</a>
+<a style="display:inline;font-size:120%;">Blog</a>
+</ul>
+<hr>
+<br>
+
+<h1 style="color:#690;font-size:35px;font-family: Georgia, FreeSerif, Times, serif;">Daqwest's goal is to create a powerful ecosphere for effective communication and collaboration.</h1>
+<div>
+<p style="font-size:1.2em;color:#808080;">Daqwest brings together <b>the idea of mailing-list, concept of discussion forums and information from important information sources</b> under one in-browser application.</p>
+</div>
+<br>
+<hr>
+<br>
+</div>
+<div style="background-color:#d8d8d8;margin-left:15%;margin-right:4%;">
+<div style ="padding:2%;"><%= image_tag("aboutdq.png", :alt => "DQ", :width => "1160px") %></div>
+</div>
+</div>
+</body>

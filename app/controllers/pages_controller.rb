@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def about
- 
+  render :layout => false
 @title = "about"
 
   end
@@ -50,6 +50,10 @@ def read_notification
 end
   def contact
   @title = "contact"
+  end
+    def team
+  @title = "team"
+  render :layout => false
   end
    def notifications
   @title = "notifications"

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+ <head>
+<title>
+<%= title %></title>
+<%= render 'layouts/stylesheets' %> 
+
+ 	<link rel="shortcut icon" href="/favicon.ico" />
+
+</head>
+<body >
+<div class="ui-layout-north">
+
+<%= render 'layouts/header' %>
+<div class="container ">
+
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+</div>
+
+</div>
+
+<div style="margin-left:15%;margin-right:25%;margin-top:2%">
+
+<ul>
+<a href="/about"style="display:inline;margin-right:20px;font-size:120%;">About</a>
+<a href="/team" style="display:inline;margin-right:20px;font-size:120%;border-bottom: 2px solid navy">Team</a>
+<a style="display:inline;font-size:120%;">Blog</a>
+</ul>
+
+<hr>
+<br>
+<br>
+<h1 style="color:#333;font-family: Georgia, FreeSerif, Times, serif;font-size:30px;">Our Team</h1>
+<div style="width:70%;">
+<p style="font-family: Open Sans,sans-serif;font-size:18px;">We are a team of engineering hackers who have a prior experience at Google Summer of Code, Scilab and few mobile app startups. Having worked at places where community collaboration is an important ingredient, we understand that there is a need to empower the ecosphere.</p>
+</div>
+</div>
+
+
+</body>
