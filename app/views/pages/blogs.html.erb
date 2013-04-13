@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+<title>
+<%= title %></title>
+<%= render 'layouts/stylesheets' %> 
+
+ 	<link rel="shortcut icon" href="/favicon.ico" />
+
+</head>
+<body style="background: #EEE;">
+<div class="ui-layout-north">
+
+<%= render 'layouts/header' %>
+<div class="container ">
+
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+</div>
+
+</div>
+
+
+<div style="margin-left:15%;margin-right:25%;margin-top:2%;float:right;">
+
+<div style="margin-bottom:1%;color:#666;font-family: Georgia, FreeSerif, Times, serif;font-size:30px;">dq blog</div>
+
+<hr>
+<br>
+<br>
+
+<div style="margin-bottom:7%;background:white;box-shadow: 0 1px 2px rgba(0,0,0,0.2);padding: 4% 3%;">
+<h1 style="color:#690;font-size:2.3em;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;";>Virtual Members</h1>
+<p id = "blog">There are certain gadgets and websites which are frequently required by mailing lists to fully create an ecosphere of effective communication and collaboration. They are like virtual members of the quest which help in their own way to make the development process more interactive and effective. The virtual members are integrated on the right side panel of website.
+    </p>
+    <br>
+    <p id = "blog">Currently there are 5 virtual members as follows.</p>
+<br>
+<p id = "blog"><strong>Wikipedia</strong> - Wikipedia is an amazing source of information. It contains information on virtually every topic imaginable.</p>
+<br>
+<p id = "blog">Below are the pics of wikipedia VM showing the scilab page. One can browse through the page using arrows on the top.</p>
+<br>
+<div style="background-color:#e8e8e8;">
+<div style ="padding:2%;"><div style="display:inline;margin-right:1%;"><%= image_tag("blog_wiki1.png", :alt => "DQ", :width => "260px") %></div><div style = "display:inline;margin-right:1%;"><%= image_tag("blog_wiki2.png", :alt => "DQ", :width => "260px") %></div><div style="display:inline;"><%= image_tag("blog_wiki3.png", :alt => "DQ", :width => "260px") %></div></div>
+</div>
+<br>
+<p id="blog"><strong>StackOverflow</strong> - Stackoverflow features question and answers on a wide range of topics in computer programming. Below are the pictures of 2 questions asked on stackoverflow.</p>
+
+</div>	
+
+<div style="margin-bottom:7%;background:white;box-shadow: 0 1px 2px rgba(0,0,0,0.2);padding: 4% 3%;">
+<h1 style="color:#690;font-size:2.3em;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;";>Virtual Members in Action !!!</h1>
+<h2 style ="font-size:1.5em;font-weight:bold;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;">Mahup Buttons in the Editor !!!</h2>
+<div style ="padding:2%;"><div style="display:inline;margin-right:1%;"><%= image_tag("blog_mashup.png", :alt => "DQ", :width => "600px") %></div></div>
+
+<p id = "blog" style="font-family: Georgia, FreeSerif, Times, serif;font-size:20px;line-height:25px;">The three buttons in the top left corner of the editor (W, G, So) can be used to empower the message with embedded information being shown on the right hand side panel.
+    </p>
+    <br>
+    <p id = "blog">Here we will see how we can use virtual members in mailing list to make it more interactive and informative. </p>
+<br>
+<h2 style ="font-size:1.5em;font-weight:bold;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;">Wikipedia</h2>
+<br>
+<p id = "blog">Wikipedia is an amazing source of information. It contains information on virtually every topic imaginable.</p>
+<br>
+<p id = "blog">Below is an example of how wikipedia VM can be used for embedding useful information within the message. The green colored text are powered by Wikipedia VM which on clicking generates the content on the right hand side panel.</p>
+<br>
+<div style="background-color:#e8e8e8;">
+<div style ="padding:2%;"><div style="display:inline;"><%= image_tag("blog_mashupwiki.png", :alt => "DQ", :width => "800px") %></div></div>
+</div>
+<br>
+<br>
+<h2 style ="font-size:1.5em;font-weight:bold;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;"><h2 style ="font-size:1.5em;font-weight:bold;line-height:1.3em;font-family: Georgia, FreeSerif, Times, serif;">Stackoverflow and ScilabHelp</h2>
+<br>
+<p id="blog">Stackoverflow features question and answers on a wide range of topics in computer programming.</p>
+<br>
+<p id="blog">This is a virtual member built specially for scilab community. This would empower the group members so that they can use it for their quick reference.</p>
+<br>
+<p id="blog">Now lets see how we can create a interactive mashup. </p>
+<br>
+<p id="blog">Below in the pic, the user has used stackoverflow VM to embed the information into the message. On clicking 'here', the SO VM generates the content on right hand side panel.</p>
+<br>
+<div style="background-color:#e8e8e8;">
+<div style ="padding:2%;"><div style="display:inline;"><%= image_tag("blog_soscilab.png", :alt => "DQ", :width => "800px") %></div></div>
+</div>
+<br>
+<p id="blog">Below in the pic, the user has used stackoverflow VM to embed the information into the message. On clicking 'here', the SO VM generates the content on right hand side panel.</p>
+<br>
+<div style="background-color:#e8e8e8;">
+<div style ="padding:2%;"><div style="display:inline;margin-right:1%;"><%= image_tag("blog_scilab1.png", :alt => "DQ", :width => "260px") %></div><div style = "display:inline;margin-right:1%;"><%= image_tag("blog_scilab2.png", :alt => "DQ", :width => "260px") %></div><div style="display:inline;"><%= image_tag("blog_scilab3.png", :alt => "DQ", :width => "260px") %></div></div>
+</div>
+
+</div>	
+</div>
+
+</body>

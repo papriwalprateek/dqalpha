@@ -9,12 +9,12 @@ CKEDITOR.plugins.add( 'Insert_sci_help',
             
             exec : function( editor )
             {    
-                sci_url = prompt('Enter your Wikipedia query',"your query");
+                sci_url_1 = prompt('Enter your Wikipedia query',"your query");
 				var replace = " ";
 				var re = new RegExp(replace, 'g');    
-				sci_url = sci_url.replace(re, '_');
-               sci_url = "/scilab?ad="+sci_url;
-               editor.insertHtml( '<a id = "mashup_links" href='+sci_url+'>here</a> ' );               
+				sci_url_1 = sci_url_1.replace(re, '_');
+               sci_url = "/scilab?ad="+sci_url_1;
+               editor.insertHtml( '<a id = "mashup_links" href='+sci_url+'>'+sci_url_1+'</a> ' );               
             }
          });
       

@@ -9,9 +9,9 @@ CKEDITOR.plugins.add( 'Insert_so',
             
             exec : function( editor )
             {    
-               so_url = prompt('Enter your Stack Overflow url');
-               so_url = "/so?ad="+so_url;
-               editor.insertHtml( '<a id = "mashup_links" href='+so_url+'>here</a> ' );
+               so_url_1 = prompt('Enter your Stack Overflow url');
+               so_url = "/so?ad="+so_url_1;
+               editor.insertHtml( '<a id = "mashup_links" href='+so_url+'>'+so_url_1+'</a> ' );
             }
          });
       

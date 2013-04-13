@@ -818,3 +818,10 @@ position:relative;
 top:1px;
 
 }
+
+
+#blog {
+font-family: Georgia, FreeSerif, Times, serif;
+font-size:20px;
+line-height:30px;
+}

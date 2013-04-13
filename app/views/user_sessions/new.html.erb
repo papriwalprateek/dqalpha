@@ -1,12 +1,31 @@
-<% if !current_user %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+ <head>
+<title>
+<%= title %></title><%= render 'layouts/stylesheets' %> 
+
+
+ 	<link rel="shortcut icon" href="/favicon.ico" />
+
+</head>
+<body >
+ <div class="ui-layout-north">
+
+<%= render 'layouts/header' %>
+<div class="container ">
+
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+</div>
+
+</div>
 <div class ="signin_form">
 <h3 style="margin-bottom:10px;">Sign in</h3>
 <%= render 'form' %>
 </br>
 </div>
-<% end %>
+ 
+</body>
 
-
-<%if current_user%>
-<%= render "users/dashboard"%>
-<%end%>

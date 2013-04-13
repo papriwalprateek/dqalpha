@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+ before_filter :require_user, :only => [:home] 
   def about
   render :layout => false
 @title = "about"
@@ -14,10 +15,14 @@ class PagesController < ApplicationController
   @title = "search"  end
 
   def home
- @title = params[:q] 
- #asd
+    @unread_notifications = current_user.notifications.where(:has_read=>false).order("created_at DESC")
+    respond_to do |format|
+      format.html # new.html.erb
+      format.js
+    end
 
-end
+ #asd
+  end
 def wik
     @content = wiki_content(params[:ad])
     @query = params[:ad]
@@ -53,6 +58,10 @@ end
   end
     def team
   @title = "team"
+  render :layout => false
+  end
+  def blogs
+  @title = "blogs"
   render :layout => false
   end
    def notifications

@@ -5,7 +5,7 @@ Blog::Application.routes.draw do
   
   resources :polls
     #get "pages/home"
-  match '' => 'user_sessions#new'
+  match '' => 'pages#home'
   match "/wiki/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
   match "/so/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
   match "/scilab/:search" => redirect("/scilab?ad=%{search}&commit=Wiki")
@@ -44,6 +44,7 @@ Blog::Application.routes.draw do
 #get "pages/about"
     match '/about' => 'pages#about'
    match '/team'  => 'pages#team'
+   match '/blogs'  => 'pages#blogs'
    match '/google885d2aab83a9c566' => 'pages#google885d2aab83a9c566'
     # get "pages/contact"
     match '/contact' => 'pages#contact'  

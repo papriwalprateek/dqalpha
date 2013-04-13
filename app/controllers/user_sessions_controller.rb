@@ -1,19 +1,13 @@
 class UserSessionsController < ApplicationController
    before_filter :require_user, :only => [:destroy]
- 
+  before_filter :require_no_user, :only => [:new]
  
    # GET /user_sessions/new
   # GET /user_sessions/new.json
   def new
     @user_session = UserSession.new
-    if current_user
-    @unread_notifications = current_user.notifications.where(:has_read=>false).order("created_at DESC")
-    end
-    respond_to do |format|
-      format.html # new.html.erb
-      format.js
-      format.json { render json: @user_session }
-    end
+    render :layout => false
+ 
   end
  
   # POST /user_sessions
@@ -40,7 +34,7 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
 
     respond_to do |format|
-      format.html { redirect_to "/", notice: 'Goodbye!' }
+      format.html { redirect_to "/signin", notice: 'Goodbye!' }
       format.json { head :no_content }
     end
   end

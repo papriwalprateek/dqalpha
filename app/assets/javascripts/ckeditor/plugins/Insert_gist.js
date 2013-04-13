@@ -10,7 +10,7 @@ CKEDITOR.plugins.add( 'Insert_gist',
             exec : function( editor )
             {    
                gist_url = prompt('Enter your gist id ');
-               editor.insertHtml( '<a id = "mashup_links" href='+gist_url+'>here</a> ' ); 
+               editor.insertHtml( '<a id = "mashup_links" href='+gist_url+'>'+gist_url+'</a> ' ); 
             }
          });
       
