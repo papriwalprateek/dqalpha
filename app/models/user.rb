@@ -1,4 +1,9 @@
   class User < ActiveRecord::Base
+  after_create :deliver_signup_notification
+
+  def deliver_signup_notification
+   UserMailer.welcome_email(self)
+  end
 	has_many :posts, :dependent => :destroy
   has_many :gists
   has_many :notifications, :dependent => :destroy
