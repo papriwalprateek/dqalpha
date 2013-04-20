@@ -4,14 +4,10 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user.name %></h1>
+   New Post in thread <%= @qmail.q.title%> of <%=@qmail.q.quest.title%>
     <p>
-      You have successfully signed up to example.com,
-      your username is: .<br/>
+   <%=raw @qmail.content%>   
     </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+   Have a great day!
   </body>
 </html>
