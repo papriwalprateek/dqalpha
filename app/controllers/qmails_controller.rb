@@ -54,13 +54,14 @@ class QmailsController < ApplicationController
  #      doc.xpath('//a[@href]').each do |l|
  #       @link = @quest.links.create(:body => l['href'])
  #      end
- UserMailer.welcome_email(current_user, @qmail).deliver
       respond_to do |format|
      
         format.html { redirect_to q_path(@q)}
         format.js
      
     end
+ UserMailer.welcome_email(current_user, @qmail).deliver
+ 
   end
 
   # PUT /qmails/1
