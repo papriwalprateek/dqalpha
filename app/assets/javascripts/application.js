@@ -14,8 +14,6 @@
 //= require jquery-migrate
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require jquery.layout
-//= require jquery.layout.pseudoClose
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config

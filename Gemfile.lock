@@ -164,6 +164,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   json
+  mail
   mediacloth
   mediawiki-gateway
   newrelic_rpm

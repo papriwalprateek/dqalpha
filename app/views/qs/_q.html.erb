@@ -20,7 +20,7 @@
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
-<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30") %>
+<%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30", :title => user.name) %>
 <%end%>
 </div>
 <%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>

@@ -1,11 +1,10 @@
-
 <div class="dashboard">
 <h2>
 <%=current_user.name%>
 </h2>
 <div class="dashboard_right">
 <div class="user_image">
-<%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162") %>
+<a href="http://en.gravatar.com/emails/"><%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162", :title => "Change your avatar at gravatar.com") %></a>
 </div>
 </br>
 <div style="margin-top:5px;margin-left:5px;margin-bottom:10px;">
@@ -13,19 +12,17 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 <hr>
 <div class="notifications_block" style="margin-top:10px;margin-left:5px;margin-bottom:10px;">
-	
-	<div style="margin-bottom:10px;">Notifications
-		<div class="unread_notification_count"> <%=@unread_notifications.count%>
-		</div>
-	</div>
-	<%@unread_notifications.each do |notification|%>
-	
-	<% if !notification.has_read %>
-		<div class="unread_notification_left" >
-	<% else %>
-		<div >
-	<%end%>
-	<%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
+<div style="margin-bottom:10px;">Notifications
+<div class="unread_notification_count"> <%=@unread_notifications.count%>
+</div>
+</div>
+<%@unread_notifications.each do |notification|%>
+<% if !notification.has_read %>
+<div class="unread_notification_left" >
+<% else %>
+<div >
+<%end%>
+<%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
 </div>
 <hr>
 <%end%>
@@ -69,3 +66,4 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 <script>
 </script>
+
