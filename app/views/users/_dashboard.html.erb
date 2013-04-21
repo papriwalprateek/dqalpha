@@ -4,8 +4,8 @@
 </h2>
 <div class="dashboard_right">
 <div class="user_image">
-<a href="http://en.gravatar.com/emails/"><%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162", :title => "Change your avatar at gravatar.com") %></a>
-</div>
+
+<a href="http://en.gravatar.com/emails/"  target="_blank"><%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162", :title => "Change your avatar at gravatar.com") %></a></div>
 </br>
 <div style="margin-top:5px;margin-left:5px;margin-bottom:10px;">
 Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
