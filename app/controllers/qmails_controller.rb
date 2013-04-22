@@ -60,7 +60,7 @@ class QmailsController < ApplicationController
         format.js
      
     end
- UserMailer.welcome_email(current_user, @qmail).deliver
+ UserMailer.new_qmail_notification(current_user, @qmail).deliver
  
   end
 

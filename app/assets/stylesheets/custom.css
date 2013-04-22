@@ -4,8 +4,8 @@ margin-bottom: 0px; margin-top: 0px;
 body { width:100%;background: #FFFFFF; margin: 0px; padding: 0px;height: 100%;
 }
 p{margin:0px;}
-#header { height: 40px ;background-color: #EEE;border-top:0px;background-image: linear-gradient(rgb(249, 249, 249), rgb(241, 241, 241));
-background-repeat: repeat-x;padding-right:80px;padding-left: 40px;
+#header { width:92%;height: 40px ;background-color: #EEE;border-top:0px;background-image: linear-gradient(rgb(249, 249, 249), rgb(241, 241, 241));
+background-repeat: repeat-x;padding-right:80px;padding-left: 40px;position:fixed;
 } 
 #header img {  background: #EEE; float: left; 
 }
@@ -20,10 +20,7 @@ box-shadow: 0 0 5px 0px #888;
 #content img{ margin-bottom: 0px;
 }
 #content { background:#FFFFFF;
-	 width: 47%;  float: left; height:620px; overflow-y:auto;margin-top:10px;
-	 -webkit-box-shadow: 0 0 0px 5px#888;
-box-shadow: 0 0 5px 0px #888;
-
+	 width: 65%;  float: left; height:100%; overflow-y:auto;margin-top:4%;
 }
 .content_middle{
 	background: #FFFFFF;
@@ -297,12 +294,13 @@ box-shadow: 0 0 5px 0px #888;
 #rightcontent{
 float: right;
 width: 33%;
-margin-right: 5px;
-height:620px; overflow-y:auto;
- background: #ffffff; margin-top:10px;
-box-shadow: 0 0 5px 0px #888;
+margin-right: 0px;
+margin-left:67%;
+margin-top:60px;
+height:100%; overflow-y:auto;
+background: #ffffff; 
 padding-left: 5px;
-
+position:fixed;
 
 }
 #rightcontent_head{

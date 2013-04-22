@@ -53,6 +53,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    UserMailer.welcome_email(@user).deliver
   end
 
   # PUT /users/1
