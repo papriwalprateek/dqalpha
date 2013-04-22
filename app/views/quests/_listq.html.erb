@@ -1,3 +1,7 @@
+<div id = "start_thread"> 
+<a ><p id = "start_thread_button">Start a new thread</p></a>
+</div>
+<br>
 <% @quest.qs.order("created_at DESC").each do |q| %>
 <a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
 <span>
@@ -9,6 +13,6 @@
 </div>
 </span></a>
 <%end%>
-<div class = "qs_tiles_form">
+<div>
 <%= render "qs/form" %>
 </div>

@@ -33,7 +33,6 @@ gem 'ckeditor'
 gem 'pilha'
 gem 'newrelic_rpm'
 gem 'sendgrid'
-gem 'mail'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
