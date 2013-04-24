@@ -10,6 +10,9 @@
 	<%end%>
 
 <%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
+<%if notification.sender_id%>
+ 	<%= image_tag(Gravatar.new(User.find(notification.sender_id).email).image_url, :size => "30x30") %> 
+<%end%>
 <div class="time">
 <%=notification.created_at.strftime("%b, %d")%>
 </div>

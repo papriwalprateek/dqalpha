@@ -1,6 +1,6 @@
 class Qmail < ActiveRecord::Base
-
-  attr_accessible :content
+validates :content, :presence => true
+  attr_accessible :content, :user_id
   belongs_to :q
   belongs_to :user
 end

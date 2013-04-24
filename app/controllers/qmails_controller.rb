@@ -42,13 +42,11 @@ class QmailsController < ApplicationController
   # POST /qmails.json
   def create
      @q = Q.find(params[:q_id])
-    @qmail = @q.qmails.create(params[:qmail])
+    @qmail = @q.qmails.create(:content =>params[:qmail_content],:user_id => current_user.id)
     @quest = @q.quest
 
     current_user.qmails << @qmail
-        options = [:hard_wrap, :filter_html, :autolink]
-   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
-        :autolink => true)
+
   #links vm code here
  #      doc = Nokogiri::HTML(markdown.render(@qmail.content))
  #      doc.xpath('//a[@href]').each do |l|
@@ -60,7 +58,7 @@ class QmailsController < ApplicationController
         format.js
      
     end
- UserMailer.new_qmail_notification(current_user, @qmail).deliver
+ UserMailer.new_qmail_notification(@qmail).deliver
  
   end
 

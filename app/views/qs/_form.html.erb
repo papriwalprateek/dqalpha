@@ -1,25 +1,12 @@
 <%= form_for([@quest, @quest.qs.build], :remote => true) do |f| %>
   <div>
     <%= f.text_field :title ,:value=>"Subject For the Thread"%>
-     <%= f.submit "+"%>
+ 	<%=cktext_area_tag :qmail_content%>
+    <%= f.submit "Add New Thread", :class => 'qmail_submit'%>
   
   </div>  
   
 <% end %>
-<script>
- $(function() {
+    
 
- $("input#q_title").blur(function() {
-        if ($(this).val() == "") {
-            $(this).val("Subject For the Thread");
-              
-        }
-    }).focus(function() {
-        if ($(this).val() == "Subject For the Thread") {
-            $(this).val("");
-              
-        }
-    });
- });
-</script>
 

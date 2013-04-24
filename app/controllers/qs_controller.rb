@@ -4,7 +4,17 @@ before_filter :require_user
 def create
     @quest = Quest.find(params[:quest_id])
     @q = @quest.qs.create(params[:q])
-    
+     @qmail = @q.qmails.create(:content =>params[:qmail_content], :user_id => current_user.id)
+  
+    current_user.qmails << @qmail
+ #       options = [:hard_wrap, :filter_html, :autolink]
+  # markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
+   #     :autolink => true)
+  #links vm code here
+ #      doc = Nokogiri::HTML(markdown.render(@qmail.content))
+ #      doc.xpath('//a[@href]').each do |l|
+ #       @link = @quest.links.create(:body => l['href'])
+ #      end
   respond_to do |format|
      
         format.html { redirect_to quest_path(@quest)}

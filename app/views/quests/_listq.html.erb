@@ -13,6 +13,12 @@
 </div>
 </span></a>
 <%end%>
-<div>
-<%= render "qs/form" %>
-</div>
+<script>$(function() {
+  	$('p#start_thread_button').click(function(){ 
+  $(".quests_show").html("<%=escape_javascript(render"qs/form")%>");      
+        window.history.pushState(null, document.title,"#");
+ 
+  });
+});
+
+</script> 
