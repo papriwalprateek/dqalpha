@@ -20,6 +20,8 @@ def create
         format.html { redirect_to quest_path(@quest)}
         format.js
   end
+   UserMailer.new_qmail_notification(@qmail).deliver
+
   end
   def index
     

@@ -8,5 +8,20 @@
   
 <% end %>
     
+<script>
+ $(function() {
 
+ $("input#q_title").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Subject For the Thread");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Subject For the Thread") {
+            $(this).val("");
+              
+        }
+    });
+ });
+</script>
 
