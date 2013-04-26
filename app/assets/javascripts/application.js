@@ -110,7 +110,7 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("#wikiinfo a").live("click", function() {
+  $("#rightcontent a").live("click", function() {
     $.getScript(this.href);
      return false;
  });
