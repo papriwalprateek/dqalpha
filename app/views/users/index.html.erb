@@ -45,5 +45,5 @@
 <%= link_to 'New User', new_user_path %>
 
 <% @quests.each do |q|%>
-<%q.destroy%>
+<%=q.id%><%=q.title%>
 <%end%>
