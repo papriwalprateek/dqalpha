@@ -1,11 +1,15 @@
-<div id="header" ><a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
+<div id="header" ><a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> 
+<ul class="navigation ">
  <li> <% if current_user %>
-  <a class="live_link" href ="/notifications"><%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></a>
-    <%= current_user.name %>
+  <div style="float:left"><a class="live_link" href ="/notifications"><%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></a></div>
+    <div style="float:left;margin-top:5px;font-weight:bold;"><%= current_user.name %>
         <%= link_to "Sign-out", :signout%>
         <% else %>
         <%= link_to "Sign-in", :signin %>
-        <% end %></li>
-</ul> </div>
+        <% end %>
+        </div>
+        </li>
+</ul>	
+</div>
 
        
