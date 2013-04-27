@@ -1,13 +1,15 @@
+<%if current_user%>
 <div id = "start_thread"> 
 <a ><p id = "start_thread_button">Start a new thread</p></a>
 </div>
+<%end%>
 <br>
 <% @quest.qs.order("created_at DESC").each do |q| %>
 <a href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
 <span>
 <div class = "qs_tiles">
 <div class="time">
-<%=q.created_at.strftime("%b %d, %Y")%>
+<%=q.created_at.strftime("%b, %d")%>
 </div>
 <h2 style = "margin-left:3px;padding:5px;"><%=q.title%></h2>
 </div>

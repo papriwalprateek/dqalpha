@@ -53,6 +53,11 @@ def read_notification
     end
 
 end
+def clear_notification
+    @notification = Notification.find(params[:n_id])
+    @notification.read
+    
+end
   def contact
   @title = "contact"
   end

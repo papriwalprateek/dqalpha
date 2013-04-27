@@ -22,9 +22,12 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <% else %>
 <div >
 <%end%>
+<button class= "clear_notification"data-id="<%= notification.id %>">
+a </button>
 <%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
-</div>
 <hr>
+</div>
+
 <%end%>
 <a href="/notifications" class= "live_link"> See all
 </a>
@@ -35,17 +38,21 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <div class="quests_show">
 <% current_user.quests.each do |quest| %>
 <a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
-<span><div class = "quests_tiles">
-<div class="time">
+<span>
+
+<div class = "quests_tiles">
+<div class="time_quest">
 <%=quest.created_at.strftime("%b, %d")%>
 </div>
-<h2><%=quest.title%></h2>
+<div style="float:left;padding-top:15px;padding-left:20px;font-size:14px;">
+<h2 style="color:#693;font-weight:bold;position:relative;font-size:21px;line-height:1.5em;"><%=quest.title%></h2>
 <%=truncate(quest.description, :length => 85, :separator => ' ')%>
 </br>
 <div class="quests_tiles_img">
 <%quest.users.each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
+</div>
 </div>
 </div>
 </span></a>
@@ -65,5 +72,17 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 </div>
 <script>
+$(function() {
+   $('.clear_notification').click(function()
+   {
+   	$(this).parent().fadeOut(200);
+  	n_id = $(this).attr("data-id");
+ 
+$.post("/clear_notification", { n_id:n_id  } );
+var c = $('.unread_notification_count').html();
+$('.unread_notification_count').text(c-1);
+return false;
+   }
+   )	
+});
 </script>
-

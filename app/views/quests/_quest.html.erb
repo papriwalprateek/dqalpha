@@ -9,7 +9,7 @@
 </br>
 
 <div style="margin-top:10px;">
-<b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d, %Y")%>
+<b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d")%>
 <hr style="margin-top:10px;">
 
 <button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
@@ -49,10 +49,6 @@ source: availableTags
    	
 });
 function leave_quest(){
-<%@inv = @quest.involvements.where("user_id=?",current_user.id)%>
-   	<%if @inv[0]%>
- 
-  <%end%>
     $.getScript("/");
           window.history.pushState(null, document.title,"/");
  

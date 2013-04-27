@@ -3,7 +3,7 @@
 
 <div style="display: inline-block;font-size:2em;">
 <%= image_tag("list.png", :alt => "<=", :height => "20", :width => "20") %>
-<a class= "live_link", href = <%= '/users/'+current_user.id.to_s()+'/quests/'+@quest.id.to_s()%>>
+<a class= "live_link", href = <%= '/quests/'+@quest.id.to_s()%>>
 <%=@quest.title%></a>
 </div>
 
@@ -42,8 +42,14 @@
    
 <%end%>
  	</div>
- 	<div  id="qmail_field">
+<div  id="qmail_field">
+<%if current_user%>
+
 <%= render "qmails/form" %>
+<%else%>
+<p class = "click_to_reply"style="color:#A0A0A0;font-size:1.3em;margin-bottom:1%;"><b>Signin to post</b></p>
+  <%end%>
+
 </div>
 </div>
 </div>

@@ -75,36 +75,40 @@ div.content_header{
 .quests_tiles_img{
 float:left;
 margin-top:15px;
-width:20%;
+width:30%;
 }
-.quests_tiles_img img{ float:left;
+.quests_tiles_img img{ 
+float:left;
 margin:1px;}
-div.quests_tiles{
-height:130px;
-padding: 20px;
-opacity:0.8;
-background-color:#EFEFEF;
 
-color:#232323;
+div.quests_tiles{
+height:170px;
 position:relative;
+border-top: 1px solid #EEE;
+box-shadow: 0 2px 3px 0 #ccc;
+margin-bottom: 24px;
 }
 
+.time_quest{
+float:right;
+font-size:15px;
+margin-top:20px;
+margin-right:20px;
+color : #555;	
+font-weight: bold;	
+}
 .time{
 float:right;
 font-size:15px;
-margin:5px;
-color : #BBBBBB;	
+color : #555;	
 }
 
-.quests_tiles h2{
-	color:#000000;
+.quests_show:hover{
 }
+
 .quests_tiles:hover{
-	box-shadow: 0 0 0px 0px #888;
-background:#FFFFFF;
-opacity:0.8;
+border-bottom:1px solid #6c3;
 }
-
 .qs_tiles {display:block;
 opacity:0.8;
 border-width:0px;
@@ -398,6 +402,7 @@ h2{
 a.block{
 	display:block;
 	margin : 5px;
+	color:black;
 }
 .grey{
 	color:#CCCCCC;

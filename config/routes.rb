@@ -13,6 +13,7 @@ Blog::Application.routes.draw do
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
   match '/a' => 'pages#read_notification'
+  match '/clear_notification' => 'pages#clear_notification'
  
   match '/so' => 'pages#so'
   match '/notifications' => 'pages#notifications'

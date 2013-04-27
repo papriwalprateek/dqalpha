@@ -9,6 +9,8 @@
 		<div class="notification_tile">
 	<%end%>
 
+<button class= "clear_notification1"data-id="<%= notification.id %>">
+a </button>
 <%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
 <%if notification.sender_id%>
  	<%= image_tag(Gravatar.new(User.find(notification.sender_id).email).image_url, :size => "30x30") %> 
@@ -20,3 +22,16 @@
 <hr>
 <%end%>
 </div>
+<script>
+$(function() {
+   $('.clear_notification1').click(function()
+   {
+   	$(this).parent().css("background-color", "white");
+  	n_id = $(this).attr("data-id");
+ 
+$.post("/clear_notification", { n_id:n_id  } );
+return false;
+   }
+   )	
+});
+</script>
