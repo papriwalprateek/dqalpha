@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.search(params[:search])
+    @quests = Quest.where(:title => "A name for the Quest")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
