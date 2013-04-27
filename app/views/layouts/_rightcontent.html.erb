@@ -7,15 +7,11 @@
 <label id="link_4" class="vm_icon">Stack Overflow</label>
 <label id="link_5" class="vm_icon">Gist</label>
 <label id="link_6" class="vm_icon">Scilab Help</label>
-
-<div id ="wiki_vm">
-
-<%= form_tag({:controller=> "pages",:action => "wik"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad, "",:class => "wiki_input" %>
-<% end %>
-
+ 	<div id = "loading-fail"> There might be some error in your network connection </div>
+ 	<img id ="loading-image" src = "/assets/loading.gif">
+  <div id ="wiki_vm">
+      <input name="ad" class="wiki_input" type="text" id="ad" />
 <hr>
-
 <div id ="wik">
 
 <%= render 'layouts/wiki' %> 
@@ -23,13 +19,9 @@
 
 </div>
 <div id ="scilab_vm">
-
-<%= form_tag({:controller=> "pages",:action => "scilab"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad , "",:class => "sc_input" %>
-<hr><% end %>
-
+      <input name="ad" class="sc_input" type="text" id="ad" />
+</hr>
 </br>
-
 <div id ="scilab">
 
 <%= render 'layouts/scilab' %> 
@@ -37,11 +29,8 @@
 
 </div>
 <div id ="so_vm">
-
-<%= form_tag({:controller=> "pages",:action => "so"},:remote =>true, :method => "get") do %>
- <%= text_field_tag :ad , "",:class => "so_input" %>
+      <input name="ad" class="so_input" type="text" id="ad" />
 <hr>
-<% end %>
 
 </br>
 
@@ -69,11 +58,14 @@
 </div>
 <%end%>
 <script>
+
 $(function() {
 
-
 // hide it first
-$('#so_vm').hide();    
+    $("#loading-image").hide();
+    $("#loading-fail").hide();
+  
+    $('#so_vm').hide();    
 $('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
@@ -127,7 +119,78 @@ $('#link_5').click(function(){
       $('#so_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').fadeIn(300);
-  }); 
+	});
+ $('.wiki_input').keyup(function(event) {
+        if (event.keyCode == 13) {
+         $.ajax({
+			type: "GET",
+			url: "/wik",
+			data: { ad: $('.wiki_input').val() },
+           beforeSend: function() {
+              $("#loading-image").show();
+               $("#loading-fail").hide();
+  
+           },
+           success: function() {
+              $("#loading-image").hide();
+           },
+           error: function() {
+              $("#loading-fail").show();  
+              $("#loading-image").hide();
+               
+           }
+		});
+	     }
+     return false;
+});
+ $('.sc_input').keyup(function(event) {
+        if (event.keyCode == 13) {
+         $.ajax({
+		type: "GET",
+		url: "/scilab",
+		data: { ad: $('.sc_input').val() },
+           beforeSend: function() {
+              $("#loading-image").show();
+               $("#loading-fail").hide();
+  
+           },
+           success: function() {
+              $("#loading-image").hide();
+           },
+           error: function() {
+              $("#loading-fail").show();  
+              $("#loading-image").hide();
+               
+           }
+		});
+	     }
+     return false;
+});
+ $('.so_input').keyup(function(event) {
+        if (event.keyCode == 13) {
+         $.ajax({
+		type: "GET",
+		url: "/so",
+		data: { ad: $('.so_input').val() },
+           beforeSend: function() {
+              $("#loading-image").show();
+               $("#loading-fail").hide();
+  
+           },
+           success: function() {
+              $("#loading-image").hide();
+           },
+           error: function() {
+              $("#loading-fail").show();  
+              $("#loading-image").hide();
+               
+           }
+	});
+	}
+     return false;
+        
+    });
+
 function clear_borders(){
   $('#link_1').css('border', '0px');
   $('#link_3').css('border', '0px');

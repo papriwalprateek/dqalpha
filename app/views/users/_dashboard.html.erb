@@ -58,17 +58,6 @@ a </button>
 </span></a>
 <%end%>
 
-<div class="quests_tiles">
-<div class="new_quest">
-<%= form_for([current_user, current_user.quests.build], :remote => true) do |f| %>
-   <%= f.text_field :title,:value=>"A name for the Quest", :style=>'height:33px;width: 100%;border:0px;background:#666;color:#ddd;font-size:2em;font-weight:normal;margin-top:0px;'  %>
-    <%= f.text_area :description,:value=>"Provide a description", :style=>'width: 100%;height:100px;border:0px;font-family:"Helvetica Neue";background:#666;color:#ccc' %>
-    <%= f.submit "Start the Quest", :class => "button_new_quest"%>
-   
-<% end %>
-
-</div>
-</div>
 </div>
 </div>
 <script>
@@ -77,12 +66,14 @@ $(function() {
    {
    	$(this).parent().fadeOut(200);
   	n_id = $(this).attr("data-id");
- 
-$.post("/clear_notification", { n_id:n_id  } );
-var c = $('.unread_notification_count').html();
-$('.unread_notification_count').text(c-1);
-return false;
-   }
-   )	
+ 	$.ajax({
+		type: "POST",
+		url: "/clear_notification",
+		data: { n_id: n_id }
+	});
+	var c = $('.unread_notification_count').html();
+	$('.unread_notification_count').text(c-1);
+	return false;
+   });	
 });
 </script>

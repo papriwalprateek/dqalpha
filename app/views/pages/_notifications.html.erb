@@ -22,16 +22,19 @@ a </button>
 <hr>
 <%end%>
 </div>
+
 <script>
 $(function() {
    $('.clear_notification1').click(function()
    {
    	$(this).parent().css("background-color", "white");
   	n_id = $(this).attr("data-id");
- 
-$.post("/clear_notification", { n_id:n_id  } );
-return false;
-   }
-   )	
+ 	$.ajax({
+		type: "POST",
+		url: "/clear_notification",
+		data: { n_id: n_id }
+	});
+	return false;
+   });	
 });
 </script>
