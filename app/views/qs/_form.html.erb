@@ -1,27 +1,36 @@
+<div style="margin-left:1%;margin-right:10px;padding:20px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#F8F8F8 ;">
+
+<span style= "font-weight:bold;font-size:1.2em;"><%= current_user.name %></span>
+ 
+  <div style="float:right;">
+  <%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></div>
+
+
 <%= form_for([@quest, @quest.qs.build], :remote => true) do |f| %>
   <div>
-    <%= f.text_field :title ,:value=>"Subject For the Thread"%>
+    <%= f.text_field :title ,:value=>"Type Subject here"%>
+    <br>
  	<%=cktext_area_tag :qmail_content%>
-    <%= f.submit "Add New Thread", :class => 'qmail_submit'%>
+    <%= f.submit "Start New Thread", :class => 'qmail_submit'%>
   
   </div>  
   
 <% end %>
+</div>
     
 <script>
  $(function() {
 
  $("input#q_title").blur(function() {
         if ($(this).val() == "") {
-            $(this).val("Subject For the Thread");
+            $(this).val("Type Subject here");
               
         }
     }).focus(function() {
-        if ($(this).val() == "Subject For the Thread") {
+        if ($(this).val() == "Type Subject here") {
             $(this).val("");
               
         }
     });
  });
 </script>
-

@@ -5,6 +5,10 @@
 <title>
 <%= title %></title><%= render 'layouts/stylesheets' %> 
 
+<div style = "padding-left:5%;padding-right:5%;">
+<a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">	
+</div>
+
 
  	<link rel="shortcut icon" href="/favicon.ico" />
 
@@ -12,7 +16,6 @@
 <body >
  <div class="ui-layout-north">
 
-<%= render 'layouts/header' %>
 <div class="container ">
 
 <% flash.each do |key, value| %>

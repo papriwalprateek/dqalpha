@@ -36,13 +36,12 @@ def wiki_content(a)
     @catch = false
     begin
     wiki = mw.render(a.to_s.titleize)
-    print "i am here"
+  
     rescue MediaWiki::APIError => e
     begin
 wiki =  mw.render(a)
     rescue MediaWiki::APIError => e
     @catch = true
-    print "I am caught"
     end
     end
     
@@ -152,6 +151,10 @@ def so_content(a)
    a = a[4].to_i
     
    @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
+# something like below can be done if we can get a nokogiri instance of this @doc
+#    @doc.xpath('//a[@href]').each do |l|
+#  l.attributes["target"].value = "_blank"
+#  end
    @ques = @doc.title
    @desc = @doc.body 
    j=0
@@ -172,7 +175,9 @@ def scilab_help(a)
    @title = @doc.css("div.refnamediv")
    @callseq = @doc.css("div.refsynopsisdiv")
    @refsec = @doc.css("div.refsection")
-
+  @refsec.xpath('//a[@href]').each do |l|
+  l.attributes["href"].value = "/scilab/"+l.attributes["href"].value
+  end
 end
  
 def link_to_add_fields(name, f, association)

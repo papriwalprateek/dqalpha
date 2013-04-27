@@ -110,8 +110,24 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $("#rightcontent a").live("click", function() {
-    $.getScript(this.href);
+  $(".live_links_right a").live("click", function() {
+      $.ajax({
+			type: "GET",
+			url: this.href,
+		   beforeSend: function() {
+              $("#loading-image").show();
+               $("#loading-fail").hide();
+  
+           },
+           success: function() {
+              $("#loading-image").hide();
+           },
+           error: function() {
+              $("#loading-fail").show();  
+              $("#loading-image").hide();
+               
+           }
+		});
      return false;
  });
   $("a#mashup_links").live("click", function() {
