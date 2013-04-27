@@ -19,7 +19,8 @@ observe :q, :qmail
       @sender = @qmail.user_id
       @quest1.users.each do |user|
         if(user.id!=@sender)         
-         user.notifications.create(:content => (User.find(@sender).name+" Posted in thread "+@q.title+ " of "+@quest1.title),:sender_id => @sender, :has_read=>false, :url=>"/quests/"+@quest1.id.to_s()+"/qs/"+@q.id.to_s())
+        @n =  user.notifications.create(:qmail_id=>integer,:content => (User.find(@sender).name+" Posted in thread "+@q.title+ " of "+@quest1.title),:sender_id => @sender, :has_read=>false, :url=>"/quests/"+@quest1.id.to_s()+"/qs/"+@q.id.to_s()+"/?qmail_id="+integer.to_s())
+       
         end
       end
 

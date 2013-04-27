@@ -1,4 +1,3 @@
-
 <%if current_user%>
 
 <div id = "rightcontent" class ="ui-layout-east">
@@ -7,22 +6,20 @@
 <label id="link_4" class="vm_icon">Stack Overflow</label>
 <label id="link_5" class="vm_icon">Gist</label>
 <label id="link_6" class="vm_icon">Scilab Help</label>
- 	<div id = "loading-fail"> There might be some error in your network connection </div>
- 	<img id ="loading-image" src = "/assets/loading.gif">
 <div class ="live_links_right">
   <div id ="wiki_vm">
-      <input name="ad" class="wiki_input" type="text" id="ad" />
-
+<input name="ad" class="wiki_input" type="text" id="ad" />
+ <div style="float:right;margin-top:10px"><img id ="loading-image" src = "/assets/load.gif"></div>
 <div id ="wik">
-
+ 	<div id = "loading-fail"> There might be some error in your network connection </div>
 <%= render 'layouts/wiki' %> 
 </div>
 </div>
 <div id ="scilab_vm">
       <input name="ad" class="sc_input" type="text" id="ad" />
-
-</br>
+ <div style="float:right;margin-top:10px"><img id ="loading-image_sc" src = "/assets/load.gif"></div>
 <div id ="scilab">
+ 	<div id = "loading-fail_sc"> There might be some error in your network connection </div>
 
 <%= render 'layouts/scilab' %> 
 </div>
@@ -32,14 +29,14 @@
 </div>
 <div id ="so_vm">
       <input name="ad" class="so_input" type="text" id="ad" />
+ <div style="float:right;margin-top:10px"><img id ="loading-image_so" src = "/assets/load.gif"></div>
 
-</br>
-</div>
 <div id ="so">
+	<div id = "loading-fail_so"> There might be some error in your network connection </div>
 
 <%= render 'layouts/so' %> 
 </div>
-
+</div>
 <div id="gist_vm">
  <div  id="gist_field">
 
@@ -64,6 +61,10 @@ $(function() {
 // hide it first
     $("#loading-image").hide();
     $("#loading-fail").hide();
+    $("#loading-image_so").hide();
+    $("#loading-fail_so").hide();
+    $("#loading-image_sc").hide();
+    $("#loading-fail_sc").hide();
   
     $('#so_vm').hide();    
 $('#gist_vm').hide();
@@ -119,13 +120,13 @@ $('#link_5').click(function(){
       $('#so_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').fadeIn(300);
-	});
+});
  $('.wiki_input').keyup(function(event) {
         if (event.keyCode == 13) {
          $.ajax({
-			type: "GET",
-			url: "/wik",
-			data: { ad: $('.wiki_input').val() },
+type: "GET",
+url: "/wik",
+data: { ad: $('.wiki_input').val() },
            beforeSend: function() {
               $("#loading-image").show();
                $("#loading-fail").hide();
@@ -139,54 +140,54 @@ $('#link_5').click(function(){
               $("#loading-image").hide();
                
            }
-		});
-	     }
+});
+    }
      return false;
 });
  $('.sc_input').keyup(function(event) {
         if (event.keyCode == 13) {
          $.ajax({
-		type: "GET",
-		url: "/scilab",
-		data: { ad: $('.sc_input').val() },
+type: "GET",
+url: "/scilab",
+data: { ad: $('.sc_input').val() },
            beforeSend: function() {
-              $("#loading-image").show();
-               $("#loading-fail").hide();
+              $("#loading-image_sc").show();
+               $("#loading-fail_sc").hide();
   
            },
            success: function() {
-              $("#loading-image").hide();
+              $("#loading-image_sc").hide();
            },
            error: function() {
-              $("#loading-fail").show();  
-              $("#loading-image").hide();
+              $("#loading-fail_sc").show();  
+              $("#loading-image_sc").hide();
                
            }
-		});
-	     }
+});
+    }
      return false;
 });
  $('.so_input').keyup(function(event) {
         if (event.keyCode == 13) {
          $.ajax({
-		type: "GET",
-		url: "/so",
-		data: { ad: $('.so_input').val() },
+type: "GET",
+url: "/so",
+data: { ad: $('.so_input').val() },
            beforeSend: function() {
-              $("#loading-image").show();
-               $("#loading-fail").hide();
+              $("#loading-image_so").show();
+               $("#loading-fail_so").hide();
   
            },
            success: function() {
-              $("#loading-image").hide();
+              $("#loading-image_so").hide();
            },
            error: function() {
-              $("#loading-fail").show();  
-              $("#loading-image").hide();
+              $("#loading-fail_so").show();  
+              $("#loading-image_so").hide();
                
            }
-	});
-	}
+});
+}
      return false;
         
     });

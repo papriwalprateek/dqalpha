@@ -68,7 +68,7 @@ div.content_header{
 .quests_tiles_img{
 float:left;
 margin-top:15px;
-width:30%;
+width:250px;
 }
 .quests_tiles_img img{ 
 float:left;
@@ -602,7 +602,7 @@ input#ad{
 color:black;font-size:1.8em;
 padding:3px;
 border:0px;margin-top: 10px;
-width:92%;
+width:90%;
 color: #CCC;
 border-bottom:0px;
 }
@@ -611,12 +611,11 @@ input#ad:focus{
 color:black;font-size:1.8em;
 padding:3px;
 border:0px;margin-top: 10px;
-width:92%;
+width:90%;
 color: #CCC;
 border: solid 1px #9ecaed;
 box-shadow: 0 0 5px #9ecaed;
 }
-
 
 
 .notifications_all{

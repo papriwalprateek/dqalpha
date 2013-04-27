@@ -33,6 +33,10 @@ def create
       @user = User.find_by_name(params[:add_user])
       @quest.users << @user
     end
+     if params[:qmail_id] 
+      @qmail_id = params[:qmail_id]
+     end
+   
  respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @q }

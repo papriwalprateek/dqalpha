@@ -1,1 +1,8 @@
  $("#content").html("<%= escape_javascript(render("q")) %>");
+  var id = "<%= @qmail_id%>";
+  if(id)
+    $('div[data-id='+id+']').effect("highlight", {}, 3000);
+     $('html,body').animate({
+        scrollTop: $('div[data-id='+id+']').offset().top},
+        'slow');
+   end
