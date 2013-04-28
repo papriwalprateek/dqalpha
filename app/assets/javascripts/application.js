@@ -16,6 +16,8 @@
 //= require jquery.ui.all
 //= require bjqs
 //= require ckeditor/init
+//= require mousewheel
+//= require jscrollpane.min
 //= require ckeditor/config
 //= require_tree .
 $(function() {	

@@ -43,11 +43,13 @@
 <%= render "gists/form" %>
 
   </div>
-<%begin%>
 <div id = "g">
+
+<%begin%>
 <%= render current_user.gists %>
-</div>
 <%rescue%><%end%>	
+</div>
+
 </div>
 
 <div id="irc_vm">
@@ -57,6 +59,8 @@
 <script>
 
 $(function() {
+ 
+   $("#rightcontent").jScrollPane();
 
 // hide it first
     $("#loading-image").hide();
@@ -67,7 +71,7 @@ $(function() {
     $("#loading-fail_sc").hide();
   
     $('#so_vm').hide();    
-$('#gist_vm').hide();
+	$('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
     $('#link_1').css('border-bottom', '3px solid navy');

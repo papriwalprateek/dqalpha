@@ -8,11 +8,15 @@
 <%= javascript_include_tag "application" %>
 
  	<link rel="shortcut icon" href="/favicon.ico" />
+<script>
 
+$(function() {
+});
+</script>
 </head>
 <body >
 	
-
+<div class="full_page">
  <div class="ui-layout-north">
 
 <%= render 'layouts/header' %>
@@ -31,5 +35,6 @@
 <%= render 'layouts/rightcontent'%>
 <div class = "footer">
 <%= render 'layouts/footer'%>
+ </div>
  </div>
 </body>
