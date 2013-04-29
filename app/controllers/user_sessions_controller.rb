@@ -15,16 +15,15 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
 
-    respond_to do |format|
-      if @user_session.save
-       format.html {  redirect_back_or  }
+    if @user_session.save
+     respond_to do |format|
+      format.html {  redirect_back_or  }
         format.json { render json: @user_session, status: :created, location: @user_session }
-      
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user_session.errors, status: :unprocessable_entity }
-      end
+     end 
+    else
+        render :layout => false
     end
+    
   end
 
    # DELETE /user_sessions/1

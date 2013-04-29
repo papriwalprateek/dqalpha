@@ -3,6 +3,8 @@ Blog::Application.routes.draw do
  
 
   
+  match 'user_verifications/:id' => 'user_verifications_controller#show'
+
   resources :polls
     #get "pages/home"
   match '' => 'pages#home'

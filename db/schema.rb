@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427203315) do
+ActiveRecord::Schema.define(:version => 20130429162836) do
 
   create_table "gists", :force => true do |t|
     t.string   "title"
@@ -156,8 +156,12 @@ ActiveRecord::Schema.define(:version => 20130427203315) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "verified"
+    t.string   "perishable_token",  :default => "", :null => false
   end
+
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 
 end

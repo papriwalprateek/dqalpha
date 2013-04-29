@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+ <head>
+<title>
+<%= title %></title><%= render 'layouts/stylesheets' %> 
+
+
+ 	<link rel="shortcut icon" href="/favicon.ico" />
+
+</head>
+<body >
+ <div class="ui-layout-north">
+
+<div style = "padding-left:5%;padding-right:5%;">
+<a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
+</div>
+
+<div class="container ">
+
+<% flash.each do |key, value| %>
+<%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+</div>
+
+</div>
+<div class ="signin_form">
+<h3 style="margin-bottom:10px;">Sign in</h3>
+<%= render 'form' %>
+</br>
+</div>
+ 
+</body>

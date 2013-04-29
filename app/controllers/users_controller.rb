@@ -48,7 +48,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_back_or }
+       flash[:notice] = "Thanks for signing up, we've delivered an email to you with instructions on how to complete your registration!"
+      UserMailer.verification_instructions(@user).deliver
+        format.html { redirect_to "/about" }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
