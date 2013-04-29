@@ -124,11 +124,10 @@ opacity:0.8;
 		margin-top:10px;
 }
 .user_image{
-	padding:5px;
-	border:1px solid;
 	display:inline-block;
-	border-color:#DEDEDE;
 	margin-top:10px;
+	width: 100%;
+	margin-left:5%;
 }
 .dashboard{
 	margin-left:40px;
@@ -141,14 +140,7 @@ margin-top:10px;
 font-size:120%;
 color:#888;
 }
-.user_image{
-margin-bottom: 5px;
--webkit-box-shadow: 0 0 0px 5px#888;
-box-shadow: 0 0 5px 0px #888;
-}
-.user_image img{margin:0px;
-width: 100%;
-}
+
 div.post { font-size: 120%; padding: 10px;
 padding-top:0px;
 }
@@ -168,7 +160,8 @@ background: #f7b3da;
 }
 hr{
 	margin:0px;
-}
+	height:0px;
+	}
 /* bold line hr*/
 #boldhr{
 	height: 5px;
@@ -619,17 +612,20 @@ box-shadow: 0 0 5px #9ecaed;
 
 
 .notifications_all{
-	margin-left:130px;
-	margin-top:20px;
+	margin-left:25%;
+	margin-top:10px;
+	width:75%;
+	
 }
 .notification_tile{
-	padding: 10px 0px;
+	padding: 0px 0px;
 	font-size: 1.1em;
 }
 .unread_notification{
 	padding: 10px 0px;
 	font-size: 1.1em;
 	background:#D7FAB9;
+
 }
 .unread_notification_left{
 	background:#D7FAB9;
@@ -848,10 +844,11 @@ position:relative;
 top:1px;
 }
 .vm_icon{
-display:inline-block;
-width:19%;	
-cursor:pointer;
+	display:inline-block;
+	width:19%;	
+	cursor:pointer;
 }
+
 .qmail_submit {
 margin-top:10px;
 -moz-box-shadow:inset 0px 1px 0px 0px #d2f0b7;
@@ -911,6 +908,7 @@ box-shadow: 0 0 10px #9ecaed;
 
 .clear_notification1{
 	cursor: pointer;
+	margin-left:5px;
 }
 .clear_notification{
 	cursor: pointer;

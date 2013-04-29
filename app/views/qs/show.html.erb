@@ -3,17 +3,13 @@
 
 
 <script>$(function() {
-	//	add users autocomplete	
-	var availableTags = [<% for user in User.all -%>
-		"<%= user.name %>"
-		<%if user==User.last%>
-		<%else%>
-		,<%end%>
-		<% end -%>];
-		$( "#add_user" ).autocomplete({
-			source: availableTags
-			});
-	
+	var id = "<%= @qmail_id%>";
+  if(id){
+    $('div[data-id='+id+']').effect("highlight", {}, 3000);
+     $('html,body').animate({
+        scrollTop: $('div[data-id='+id+']').offset().top},
+        'slow');
+   }
 	});
 	</script> 
 

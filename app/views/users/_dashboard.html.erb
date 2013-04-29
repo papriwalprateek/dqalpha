@@ -1,18 +1,19 @@
 <div class="dashboard">
-<h2>
-<%=current_user.name%>
-</h2>
 <div class="dashboard_right">
 <div class="user_image">
 
 <a href="http://en.gravatar.com/emails/"  target="_blank"><%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162", :title => "Change your avatar at gravatar.com") %></a></div>
 </br>
-<div style="margin-top:5px;margin-left:5px;margin-bottom:10px;">
+<div style="font-size:20px;color: #495961;margin-top:10px;margin-left:10px;margin-bottom:10px;font-weight:bold">
+<%=current_user.name%>
+</div>
+<hr>
+<div style="margin-top:10px;margin-left:10px;margin-bottom:10px;font-size:16px;">
 Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 <hr>
 <div class="notifications_block" style="margin-top:10px;margin-left:5px;margin-bottom:10px;">
-<div style="margin-bottom:10px;">Notifications
+<div style="margin-bottom:10px;margin-left:5px;">Notifications
 <div class="unread_notification_count"> <%=@unread_notifications.count%>
 </div>
 </div>
@@ -29,7 +30,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 
 <%end%>
-<a href="/notifications" class= "live_link"> See all
+<a href="/notifications" class= "live_link" style="margin-left:5px;"> See all
 </a>
 
 </div>
@@ -65,15 +66,15 @@ $(function() {
    $('.clear_notification').click(function()
    {
    	$(this).parent().fadeOut(200);
-  	n_id = $(this).attr("data-id");
+  n_id = $(this).attr("data-id");
  	$.ajax({
-		type: "POST",
-		url: "/clear_notification",
-		data: { n_id: n_id }
-	});
-	var c = $('.unread_notification_count').html();
-	$('.unread_notification_count').text(c-1);
-	return false;
+type: "POST",
+url: "/clear_notification",
+data: { n_id: n_id }
+});
+var c = $('.unread_notification_count').html();
+$('.unread_notification_count').text(c-1);
+return false;
    });	
 });
 </script>

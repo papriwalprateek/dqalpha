@@ -35,7 +35,13 @@ def create
     end
      if params[:qmail_id] 
       @qmail_id = params[:qmail_id]
+      if params[:n_id]         
+        if Notification.find(params[:n_id]).qmail_id = params[:qmail_id]            
+          Notification.find(params[:n_id]).read
+        end
      end
+     end
+     
    
  respond_to do |format|
       format.html # show.html.erb

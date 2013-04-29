@@ -52,13 +52,11 @@ class QmailsController < ApplicationController
  #      doc.xpath('//a[@href]').each do |l|
  #       @link = @quest.links.create(:body => l['href'])
  #      end
-      respond_to do |format|
+   respond_to do |format|
      
         format.html { redirect_to q_path(@q)}
-        format.js
-     
+        format.js     
     end
- UserMailer.new_qmail_notification(@qmail).deliver
  
   end
 
