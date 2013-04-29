@@ -147,8 +147,8 @@ def so_content(a)
       options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
    end   
    a = a.to_s
-   a = a.split("/")
-   a = a[4].to_i
+   a = a.split("stackoverflow.com/questions/")
+   a = a[1].to_i
     
    @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
 # something like below can be done if we can get a nokogiri instance of this @doc

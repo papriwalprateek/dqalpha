@@ -1,3 +1,5 @@
+
+<%begin%>
 <%if current_user%>
 <%= form_for([current_user, current_user.gists.build], :remote => true,  :update => "gists_list", :position => :top) do |f| %>
   <div class="gist_form">
@@ -15,3 +17,5 @@
 <% end %>
 
 <% end %>
+<%rescue%>
+<%end%>

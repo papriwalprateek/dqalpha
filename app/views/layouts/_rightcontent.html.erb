@@ -8,15 +8,23 @@
 <label id="link_6" class="vm_icon">Scilab Help</label>
 <div class ="live_links_right">
   <div id ="wiki_vm">
-<input name="ad" class="wiki_input" type="text" id="ad" />
+<input name="ad" class="wiki_input" type="text" id="ad" value="Enter the Title of wikipedia article"/>
  <div style="float:right;margin-top:10px"><img id ="loading-image" src = "/assets/load.gif"></div>
 <div id ="wik">
  	<div id = "loading-fail"> There might be some error in your network connection </div>
+ 	<div style = "font-size:18px;margin-top:20px;margin-bottom:20px;font-color:#666;font-weight:bold;">How to create mashup links for embedding information </div>
+    <div style="display:inline;margin-right:1%;"><%= image_tag("blog_mashup.png", :alt => "DQ", :width => "100%") %></div>
+    <div style = "font-size:14px;">The mashup buttons can be used to create mashup links which will help to empower the mail with embedded information being displayed on this panel.</div>
+<div style = "font-size:18px;margin-top:20px;margin-bottom:20px;font-color:#666;font-weight:bold;">Mashup Links</div>
+<%= image_tag("blog_mashupwiki.png", :alt => "DQ", :width => "100%", :height => "50%") %><br>
+<div style = "font-size:14px;">Mashup buttons help create green colored mashup links which on clicking generates the content on this panel.</div>
+<br>
+<div style = "font-size:14px;">Learn more at <a href = "http://daqwest.com/blogs#virtualmembersinaction" target = "_blank">blogs#virtualmembersinaction</a></div>
 <%= render 'layouts/wiki' %> 
 </div>
 </div>
 <div id ="scilab_vm">
-      <input name="ad" class="sc_input" type="text" id="ad" />
+      <input name="ad" class="sc_input" type="text" id="ad" value = "Enter the scilab method here"/>
  <div style="float:right;margin-top:10px"><img id ="loading-image_sc" src = "/assets/load.gif"></div>
 <div id ="scilab">
  	<div id = "loading-fail_sc"> There might be some error in your network connection </div>
@@ -28,11 +36,11 @@
 
 </div>
 <div id ="so_vm">
-      <input name="ad" class="so_input" type="text" id="ad" />
+      <input name="ad" class="so_input" type="text" id="ad" value = "Paste the url of the stackoverflow question"/>
  <div style="float:right;margin-top:10px"><img id ="loading-image_so" src = "/assets/load.gif"></div>
 
 <div id ="so">
-	<div id = "loading-fail_so"> There might be some error in your network connection </div>
+<div id = "loading-fail_so"> There might be some error in your network connection </div>
 
 <%= render 'layouts/so' %> 
 </div>
@@ -71,7 +79,7 @@ $(function() {
     $("#loading-fail_sc").hide();
   
     $('#so_vm').hide();    
-	$('#gist_vm').hide();
+$('#gist_vm').hide();
       $('#irc_vm').hide();
       $('#scilab_vm').hide();
     $('#link_1').css('border-bottom', '3px solid navy');
@@ -206,4 +214,53 @@ function clear_borders(){
  
    }
 });
+
+
+ $(function() {
+
+ $("input.wiki_input").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Enter the Title of wikipedia article");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Enter the Title of wikipedia article") {
+            $(this).val("");
+              
+        }
+    });
+ });
+
+ $(function() {
+
+ $("input.so_input").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Paste the url of the stackoverflow question");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Paste the url of the stackoverflow question") {
+            $(this).val("");
+              
+        }
+    });
+ });
+
+ $(function() {
+
+ $("input.sc_input").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Enter the scilab method here");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Enter the scilab method here") {
+            $(this).val("");
+              
+        }
+    });
+ });
+
+
+
 </script>

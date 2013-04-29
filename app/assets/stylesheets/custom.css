@@ -848,10 +848,10 @@ position:relative;
 top:1px;
 }
 .vm_icon{
-	display:inline-block;
-	width:19%;	
+display:inline-block;
+width:19%;	
+cursor:pointer;
 }
-
 .qmail_submit {
 margin-top:10px;
 -moz-box-shadow:inset 0px 1px 0px 0px #d2f0b7;
