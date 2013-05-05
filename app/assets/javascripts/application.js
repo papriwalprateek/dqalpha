@@ -112,7 +112,7 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  $(".live_links_right a").live("click", function() {
+  $(".live_links_right a,a#mashup_links").live("click", function() {
       $.ajax({
 			type: "GET",
 			url: this.href,
@@ -130,10 +130,6 @@ $(function() {
                
            }
 		});
-     return false;
- });
-  $("a#mashup_links").live("click", function() {
-    $.getScript(this.href);
      return false;
  });
  

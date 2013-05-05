@@ -64,30 +64,18 @@ $(function() {
  
 $('#onselection_list').hide();
 //autocomplete for user names
-var availableTags = [<% for user in User.all -%>
+var availableTags = [<% for user in User.order("created_at DESC").all -%>
 "<%= user.name %>"
-<%if user==User.last%>
+<%if user==User.order("created_at DESC").last%>
 <%else%>
 ,<%end%>
 <% end -%>];
 $( "#add_user" ).autocomplete({
 source: availableTags
 });
-     $('#dialog-form').hide();
- 	
-$('#Add').click(function(){ 
-      $('#dialog-form').show();
-      $("#Add").hide();
-  }); 
-//dialog box for adding user
-$('#form_addq').hide();
-  
-$('#add_q').click(function(){ 
-   	$('#form_addq').show();
-  $('#add_q').hide(); 
-  });
-//on hover profile
+   	
 
+ 
 
 });
 </script>

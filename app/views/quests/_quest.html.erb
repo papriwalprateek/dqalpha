@@ -33,13 +33,16 @@
 
 <%= render "quests/listq"%>
 </div>
+
+
 </div>
+
 
 <script>$(function() {
 //	add users autocomplete	
-var availableTags = [<% for user in User.all -%>
+var availableTags = [<% for user in User.order("created_at DESC").all -%>
 "<%= user.name %>"
-<%if user==User.last%>
+<%if user==User.order("created_at DESC").last%>
 <%else%>
 ,<%end%>
 <% end -%>];
