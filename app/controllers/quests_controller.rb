@@ -29,6 +29,9 @@ class QuestsController < ApplicationController
       @user = User.find_by_name(params[:add_user])
       @quest.users << @user
     end
+      if params[:add_user_by_mail] 
+        UserMailer.invite_mail(@quest,current_user,params[:add_user_by_mail]).deliver
+    end
      respond_to do |format|
    
       format.html {render "_quest" }# show.html.erb

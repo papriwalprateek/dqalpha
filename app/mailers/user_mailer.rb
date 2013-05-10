@@ -18,5 +18,10 @@ class UserMailer < ActionMailer::Base
    mail(:to => user.email, :subject => "Activate your account on daqwest")
  
   end
+  def invite_mail(quest, user, invite_mail_id)
+  @quest = quest
+  @user = user
+  mail(:to => invite_mail_id, :subject => "Invited to Daqwest")
+  end
   
 end

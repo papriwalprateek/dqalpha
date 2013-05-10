@@ -38,6 +38,12 @@
   <%= text_field_tag :add_user %>
   <%= submit_tag("Add") %>
 <% end %>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
+  <%= label_tag(:add_user_by_mail, " ") %>
+  <%= text_field_tag :add_user_by_mail %>
+  <%= submit_tag("Add") %>
+<% end %>
+
 </div>
 </div>
   

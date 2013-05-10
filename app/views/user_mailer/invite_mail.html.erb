@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+ <table  style = "width:565px; border:none;padding:5px;">
+<tr valign="top">
+<td width="65px"><a href="www.daqwest.com" target="_blank"><%= image_tag("http://i33.tinypic.com/2hh2g5w.png", :alt => "DaQuest", :width => "60px", :height => "40px") %></a></td>
+<td width="485px"><div style="font-size:15px;margin-bottom: 10px;line-height: 1.2em;" ><strong>You are invited to join "<%=@quest.title%>" by "<%=@user.name%>"</strong></div><td>
+</tr> 
+
+<strong>Visit
+<br>
+<a href = "www.daqwest.com/quests/<%=@quest.id.to_s()%>" target="_blank">www.daqwest.com/quests/<%=@quest.id.to_s()%></a>
+</strong>
+<br>
+<br>
+Thanks,
+<br>
+Daqwest Team
+<hr>
+</table>    
+  </body>
+</html>
