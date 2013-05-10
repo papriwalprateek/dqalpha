@@ -433,9 +433,9 @@ border-radius: 15px;
 
 .jspContainer
 {
-overflow: scroll;
+overflow: auto;
 position: relative;
-height:4000px !important;
+height:8000px !important;
 }
 
 .jspPane

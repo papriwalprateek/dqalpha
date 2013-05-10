@@ -58,6 +58,20 @@ def clear_notification
     @notification.read
     
 end
+def leave_quest
+   Involvement.find(params[:i_id]).destroy
+   respond_to do |format|
+      format.js 
+    end  
+end
+def join_quest
+      @user = User.find(params[:join_quest_user_id])
+      @quest = Quest.find(params[:join_quest_quest_id])
+      @quest.users << @user
+respond_to do |format|
+      format.js 
+    end
+end
   def contact
   @title = "contact"
   end

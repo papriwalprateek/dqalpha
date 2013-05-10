@@ -11,9 +11,22 @@
 <div style="margin-top:10px;">
 <b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d")%>
 <hr style="margin-top:10px;">
+<div class ="join_leave_quest">
+<%i = Involvement.where("user_id =? AND quest_id =?",current_user.id,@quest.id)%>
+<% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
+<script>function leave_quest(){
+    $.ajax({
+			type: "GET",
+			url: "/leave_quest",
+			data: { i_id: <%=i[0].id%>}
+		 	
+		});
 
-<button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
-
+}</script>
+<%else%>
+<button style="margin-top:30px;" class="join_quest" onclick ="join_quest()">Join Quest</button>
+<%end%>
+</div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
@@ -51,10 +64,14 @@ source: availableTags
 });
    	
 });
-function leave_quest(){
-    $.getScript("/");
-          window.history.pushState(null, document.title,"/");
- 
+
+function join_quest(){
+    $.ajax({
+			type: "GET",
+			url: "/join_quest",
+			data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
+		
+		});
 
 }
 </script> 

@@ -8,6 +8,8 @@ Blog::Application.routes.draw do
   resources :polls
     #get "pages/home"
   match '' => 'pages#home'
+  match '/leave_quest' => 'pages#leave_quest'   
+  match '/join_quest' => 'pages#join_quest' 
   match "/wiki/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
   match "/so/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
   match "/scilab/:search" => redirect("/scilab?ad=%{search}&commit=Wiki")
