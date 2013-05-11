@@ -16,11 +16,10 @@
 <% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
 <script>function leave_quest(){
     $.ajax({
-			type: "GET",
-			url: "/leave_quest",
-			data: { i_id: <%=i[0].id%>}
-		 	
-		});
+type: "GET",
+url: "/leave_quest",
+data: { i_id: <%=i[0].id%>}
+});
 
 }</script>
 <%else%>
@@ -38,10 +37,11 @@
   <%= text_field_tag :add_user %>
   <%= submit_tag("Add") %>
 <% end %>
+<p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Send an invite</b></p>
 <%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
   <%= label_tag(:add_user_by_mail, " ") %>
   <%= text_field_tag :add_user_by_mail %>
-  <%= submit_tag("Add") %>
+  <%= submit_tag("Send") %>
 <% end %>
 
 </div>
@@ -73,11 +73,12 @@ source: availableTags
 
 function join_quest(){
     $.ajax({
-			type: "GET",
-			url: "/join_quest",
-			data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
-		
-		});
+type: "GET",
+url: "/join_quest",
+data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
+});
 
 }
+
+
 </script> 

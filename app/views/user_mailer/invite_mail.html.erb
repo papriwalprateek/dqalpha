@@ -7,10 +7,16 @@
  <table  style = "width:565px; border:none;padding:5px;">
 <tr valign="top">
 <td width="65px"><a href="www.daqwest.com" target="_blank"><%= image_tag("http://i33.tinypic.com/2hh2g5w.png", :alt => "DaQuest", :width => "60px", :height => "40px") %></a></td>
-<td width="485px"><div style="font-size:15px;margin-bottom: 10px;line-height: 1.2em;" ><strong>You are invited to join "<%=@quest.title%>" by "<%=@user.name%>"</strong></div><td>
+<td width="485px"><div style="font-size:15px;margin-bottom: 10px;line-height: 1.2em;margin-top:10px;" ><strong><%=@user.name%> has invited you to join the quest "<%=@quest.title%>"</strong></div><td>
 </tr> 
 
-<strong>Visit
+<tr>
+<td width="65px"></td>
+<td width="485px">
+<p>Hi,</p>
+<p>Prateek has sent an invitation to join quest "<%=@quest.title%>". </p>
+<p><strong>"<%=@quest.title%>" Quest</strong> - <%=@quest.description%></p>
+<strong>To experience the platform, check out
 <br>
 <a href = "www.daqwest.com/quests/<%=@quest.id.to_s()%>" target="_blank">www.daqwest.com/quests/<%=@quest.id.to_s()%></a>
 </strong>
@@ -19,7 +25,12 @@
 Thanks,
 <br>
 Daqwest Team
+<br>
+An innovative mailing platform
 <hr>
+</td>	
+
+</tr>
 </table>    
   </body>
 </html>

@@ -600,7 +600,7 @@ color:#888;
 }
 
 input#ad{
-color:black;font-size:1.8em;
+font-size:1.8em;
 padding:3px;
 border:0px;margin-top: 10px;
 width:90%;
@@ -609,7 +609,7 @@ border-bottom:0px;
 }
 
 input#ad:focus{
-color:black;font-size:1.8em;
+font-size:1.8em;
 padding:3px;
 border:0px;margin-top: 10px;
 width:90%;
@@ -1080,3 +1080,53 @@ box-shadow: 0 0 10px #9ecaed;
 .ui-menu .ui-menu-item a.ui-state-active {
         margin: -1px;
 }
+
+input#add_user{
+font-size:0.8em;
+padding:3px;
+margin-top: 5px;
+width:65%;
+color: #666;
+border: solid 1px #ccc;
+}
+
+input#add_user:focus{
+font-size:0.8em;
+padding:3px;
+margin-top: 5px;
+width:65%;
+color: #666;
+border: solid 1px #9ecaed;
+box-shadow: 0 0 5px #9ecaed;
+}
+
+input#add_user_by_mail{
+font-size:0.8em;
+padding:3px;
+margin-top: 5px;
+width:65%;
+color: #666;
+border: solid 1px #ccc;
+}
+
+input#add_user_by_mail:focus{
+font-size:0.8em;
+padding:3px;
+margin-top: 5px;
+width:65%;
+color: #666;
+border: solid 1px #9ecaed;
+box-shadow: 0 0 5px #9ecaed;
+}
+
+div.quests_tiles_explore{
+height:120px;
+position:relative;
+border-top: 1px solid #EEE;
+box-shadow: 0 2px 3px 0 #ccc;
+margin-bottom: 24px;
+}
+
+
+input {display:inline;}
+

@@ -36,7 +36,10 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 
 </div>
+
 <div class="quests_show">
+
+<p style="margin-left:3px;margin-top:5px;margin-bottom:5px;color:#666;font-size:1.4em;"><b>Your Quests</b></p>
 <% current_user.quests.each do |quest| %>
 <a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
@@ -58,8 +61,34 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 </span></a>
 <%end%>
+<br>
+<p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.2em;"><b>Explore more Quests<b></p>
+
+<% quest = Quest.find(26) %>
+<a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<span>
+
+<div class = "quests_tiles_explore">
+<div class="time_quest">
+<%=quest.created_at.strftime("%b, %d")%>
+</div>
+<div style="float:left;padding-top:15px;padding-left:20px;font-size:14px;">
+<h2 style="color:#666;font-weight:bold;position:relative;font-size:18px;line-height:1.5em;"><%=quest.title%></h2>
+
+<div class="quests_tiles_img">
+<%quest.users.each do |user|%>
+<%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
+<%end%>
+</div>
+</div>
+</div>
+</span></a>
+
+
 
 </div>
+
+
 </div>
 <script>
 $(function() {
