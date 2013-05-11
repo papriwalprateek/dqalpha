@@ -39,7 +39,14 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 
 <div class="quests_show">
 
-<p style="margin-left:3px;margin-top:5px;margin-bottom:5px;color:#666;font-size:1.4em;"><b>Your Quests</b></p>
+<p style="margin-left:3px;margin-top:5px;margin-bottom:5px;color:#666;font-size:1.4em;"><b>
+	
+	<% if current_user.quests.count!=0%>
+	Your Quests
+	<%else%>
+	You are not involved in any quests yet!
+	<%end%>
+	</b></p>
 <% current_user.quests.each do |quest| %>
 <a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
@@ -63,8 +70,9 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <%end%>
 <br>
 <p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.2em;"><b>Explore more Quests<b></p>
-
-<% quest = Quest.find(26) %>
+<%qrec = recommended_quests(current_user.id)%>
+<%qrec.each do |q|%>
+<% quest = Quest.find(q) %>
 <a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
 
@@ -83,7 +91,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </div>
 </div>
 </span></a>
-
+<%end%>
 
 
 </div>

@@ -7,6 +7,30 @@ module ApplicationHelper
             "#{base_title} | #{@title}" 
         end
     end
+    
+    def is_member_of(user_id,quest_id)
+      i = Involvement.where("user_id =? AND quest_id =?",user_id,quest_id)
+      if i[0].nil?
+        return false
+      else
+       return i[0].id
+      end
+    end
+    
+    def recommended_quests(user_id)
+      all_q = [26,42,177]
+      q = []       
+      all_q.each do |quest_id|
+        if Quest.where("id = ?",quest_id)[0]
+          i = Involvement.where("user_id =? AND quest_id =?",user_id,quest_id)
+          if i[0].nil? 
+            q<<quest_id
+          end      
+        end            
+      end
+    return q
+    end
+    
     def markdown(text)
   options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new( :hard_wrap => true),
