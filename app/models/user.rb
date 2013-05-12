@@ -14,7 +14,7 @@
   has_many :gists
   has_many :notifications, :dependent => :destroy
   has_many :qmails
-  has_many :involvements
+  has_many :involvements, :dependent => :destroy
   has_many :quests, :through => :involvements, :uniq => true
   def self.search(search)
     if search

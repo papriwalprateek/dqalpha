@@ -69,8 +69,10 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 </span></a>
 <%end%>
 <br>
-<p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.2em;"><b>Explore more Quests<b></p>
 <%qrec = recommended_quests(current_user.id)%>
+<%if qrec.count!=0%>
+<p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.2em;"><b>Explore more Quests<b></p>
+<%end%>
 <%qrec.each do |q|%>
 <% quest = Quest.find(q) %>
 <a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>

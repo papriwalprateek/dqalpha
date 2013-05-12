@@ -43,3 +43,6 @@
 <br />
 
 <%= link_to 'New User', new_user_path %>
+<%Involvement.all.each do |i|%>
+<%i.destroy%>
+<%end%>
