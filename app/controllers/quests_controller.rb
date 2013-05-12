@@ -25,12 +25,8 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
-    if params[:add_user] 
-      @user = User.find_by_name(params[:add_user])
-      @quest.users << @user
-    end
-      if params[:add_user_by_mail] 
-        UserMailer.invite_mail(@quest,current_user,params[:add_user_by_mail]).deliver
+    if params[:add_user]     
+      invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end
      respond_to do |format|
    

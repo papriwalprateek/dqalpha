@@ -1,4 +1,5 @@
 module ApplicationHelper
+    
     def title   
         base_title = "DaQuest" 
         if @title.nil?
@@ -6,6 +7,15 @@ module ApplicationHelper
         else
             "#{base_title} | #{@title}" 
         end
+    end
+    
+    def invite(user_name,user_id,quest_id,quest_title,invited_user_email)
+      user = User.where("email=?",invited_user_email)[0]
+      if user
+       user.notifications.create(:content => (user_name+" invited you to join "+quest_title),:sender_id => user_id, :has_read=>false, :url=>"/quests/"+quest_id.to_s())
+      else
+      end
+       UserMailer.invite_mail(quest_id,user_name,invited_user_email).deliver   
     end
     
     def is_member_of(user_id,quest_id)
