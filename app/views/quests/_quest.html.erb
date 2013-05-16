@@ -36,7 +36,7 @@ data: { i_id: <%=i%>}
 <%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless") do %>
   <%= label_tag(:add_user, " ") %>
   <%= text_field_tag :add_user %>
-  <%= submit_tag("Add") %>
+  <%= submit_tag("Send") %>
 <% end %>
 
 </div>

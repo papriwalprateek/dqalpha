@@ -7,11 +7,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => "vinayrajchoudhary@gmail.com", :subject => "Registered at Daqwest")
     
   end
- def new_qmail_notification(qmail, n_id)
+ def new_qmail_notification(mail_id,qmail, n_id)
     @url  = "http://www.daqwest.com/"
     @qmail = qmail
     @n_id = n_id
-    mail(:to => "vinayrajchoudhary@gmail.com", :subject => "New Post added to thread "+@qmail.q.title+ " in the quest "+@qmail.q.quest.title)
+    mail(:to => mail_id, :subject => "New Post added to thread "+@qmail.q.title+ " in the quest "+@qmail.q.quest.title)
   end
     def verification_instructions(user) 
    @verification_url =  "http://www.daqwest.com/user_verifications/#{user.perishable_token}"
