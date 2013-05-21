@@ -115,13 +115,13 @@ wiki =  mw.render(a)
     while @doc.xpath("//h2/span")[j+1]!=nil
     @txt = [] 
     @node = @doc.xpath("//h2/span")[j].parent
-    @stop = @doc.xpath("//h2/span")[j+1].parent
+    @stop = @doc.xpath("//h2/span")[j+3].parent
     while @node!=@stop
       @txt << @node
       @node = @node.next 
     end
     @txtful << @txt
-    j = j + 1
+    j = j + 3
     end
     print @txtful.length
     
