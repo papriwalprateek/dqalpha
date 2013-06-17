@@ -60,7 +60,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <%=truncate(quest.description, :length => 85, :separator => ' ')%>
 </br>
 <div class="quests_tiles_img">
-<%quest.users.each do |user|%>
+<%quest.users.limit(14).each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
 </div>
