@@ -17,3 +17,4 @@ CKEDITOR.editorConfig = (config) ->
   config.autoGrow_onStartup = true
   config.autoGrow_maxHeight = 800
   true
+
