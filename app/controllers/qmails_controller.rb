@@ -1,6 +1,8 @@
 class QmailsController < ApplicationController
   # GET /qmails
   # GET /qmails.json
+  require 'mashup'
+    include Mashup
   def index
      @qmails = Qmail.where("q_id = ? and created_at > ?", params[:q_id], Time.at(params[:after].to_i + 1))
 
@@ -42,9 +44,10 @@ class QmailsController < ApplicationController
   # POST /qmails.json
   def create
      @q = Q.find(params[:q_id])
-    @qmail = @q.qmails.create(:content =>params[:qmail_content],:user_id => current_user.id)
+    
+    temp_content = a(params[:qmail_content])
+    @qmail = @q.qmails.create(:content =>temp_content,:user_id => current_user.id)
     @quest = @q.quest
-
     current_user.qmails << @qmail
 
   #links vm code here
