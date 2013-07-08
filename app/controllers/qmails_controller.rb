@@ -1,8 +1,8 @@
 class QmailsController < ApplicationController
   # GET /qmails
   # GET /qmails.json
-  require 'mashup'
-    include Mashup
+  #require 'mashup'
+  #  include Mashup
   def index
      @qmails = Qmail.where("q_id = ? and created_at > ?", params[:q_id], Time.at(params[:after].to_i + 1))
 
