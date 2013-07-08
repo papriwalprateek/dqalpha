@@ -45,8 +45,8 @@ class QmailsController < ApplicationController
   def create
      @q = Q.find(params[:q_id])
     
-    temp_content = a(params[:qmail_content])
-    @qmail = @q.qmails.create(:content =>temp_content,:user_id => current_user.id)
+   #temp_content = a(params[:qmail_content])
+    @qmail = @q.qmails.create(:content =>params[:qmail_content],:user_id => current_user.id)
     @quest = @q.quest
     current_user.qmails << @qmail
 
