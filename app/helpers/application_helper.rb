@@ -1,7 +1,7 @@
 module ApplicationHelper
     
     def title   
-        base_title = "DaQuest" 
+        base_title = "DaQwest" 
         if @title.nil?
             base_title
         else

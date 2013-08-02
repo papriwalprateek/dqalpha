@@ -9,7 +9,7 @@ CKEDITOR.plugins.add( 'Insert_sci_help',
             
             exec : function( editor )
             {    
-                sci_url_1 = prompt('Enter your Wikipedia query',"your query");
+                sci_url_1 = prompt('Enter your Scilab query',"your query");
 				var replace = " ";
 				var re = new RegExp(replace, 'g');    
 				sci_url_1 = sci_url_1.replace(re, '_');
