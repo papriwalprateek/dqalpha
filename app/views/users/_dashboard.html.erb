@@ -86,7 +86,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <h2 style="color:#666;font-weight:bold;position:relative;font-size:18px;line-height:1.5em;"><%=quest.title%></h2>
 
 <div class="quests_tiles_img">
-<%quest.users.each do |user|%>
+<%quest.users.limit(14).each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
 </div>
