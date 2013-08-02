@@ -49,8 +49,7 @@
 <br>
 <div id='com'>
     <%if @q.qmails %>
-     <%= render @q.qmails %>
-   
+   <%= render partial: "qmails/qmail", collection: @q.qmails.sort_by { |obj| obj.created_at }%>
 <%end%>
  	</div>
 <div  id="qmail_field">
