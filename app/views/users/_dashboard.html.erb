@@ -48,7 +48,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 	<%end%>
 	</b></p>
 <% current_user.quests.each do |quest| %>
-<a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<a class="block live_link" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
 
 <div class = "quests_tiles">
@@ -75,7 +75,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <%end%>
 <%qrec.each do |q|%>
 <% quest = Quest.find(q) %>
-<a class="block" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
+<a class="block live_link" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
 
 <div class = "quests_tiles_explore">

@@ -96,11 +96,7 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-   $(".quests_show a").live("click", function() {
-    $.getScript(this.href);
-    window.history.pushState(null, document.title, this.href);
-     return false;
-  });
+ 
   $("#leftcontent a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);

@@ -73,7 +73,7 @@ def wiki_content(a)
   
     rescue MediaWiki::APIError => e
     begin
-wiki =  mw.render(a)
+  wiki =  mw.render(a)
     rescue MediaWiki::APIError => e
     @catch = true
     end
@@ -83,21 +83,23 @@ wiki =  mw.render(a)
 
     disam = @doc.css('p').text.split(' ').include? 'refer'
 # testing if there is a case of REDIRECT    
-    redirect = @doc.css('li').children.text.split(' ')
-    redirect = redirect[0]
-    if redirect == 'REDIRECT'
-    @name = a
-    a = a.to_s.gsub ' ', '_'
-    @docR = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
-    x = @docR.css("table.metadata.mbox-small.plainlinks")
-    x.remove
-    y = @docR.css("table#disambigbox")
-    y.remove
-    @content = @docR.css('div.mw-content-ltr')
+#    redirect = @doc.css('li').children.text.split(' ')
+#    redirect = redirect[0]
+#    if redirect == 'REDIRECT'
+# print "This is redirect case"
+#    @name = a
+#    a = a.to_s.gsub ' ', '_'
+#    @docR = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+#    x = @docR.css("table.metadata.mbox-small.plainlinks")
+#    x.remove
+#    y = @docR.css("table#disambigbox")
+#    y.remove
+#    @content = @docR.css('div.mw-content-ltr')
 
 # testing if there is a case of REDIRECT   
     
-    elsif disam
+    if disam
+  print "This is disambiguation case"
     @name = a
     a = a.to_s.gsub ' ', '_'
     @docdis = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
@@ -106,22 +108,32 @@ wiki =  mw.render(a)
     @content = @docdis.css('div.mw-content-ltr')
 
     else
-   
+    
+    redirect = @doc.css('li').children.text.split(' ')
+    redirect = redirect[0]
+    if redirect == 'REDIRECT'
+  print "This is redirect case"
+    a = a.to_s.gsub ' ', '_'
+    @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+  end
+  
     x = @doc.css("span.editsection")
     x.remove
+    x = @doc.css("span.mw-editsection")
+  x.remove
     @txtful = [] 
     j = 0
    
     while @doc.xpath("//h2/span")[j+1]!=nil
     @txt = [] 
     @node = @doc.xpath("//h2/span")[j].parent
-    @stop = @doc.xpath("//h2/span")[j+3].parent
+    @stop = @doc.xpath("//h2/span")[j+1].parent
     while @node!=@stop
       @txt << @node
       @node = @node.next 
     end
     @txtful << @txt
-    j = j + 3
+    j = j + 1
     end
     print @txtful.length
     
@@ -173,7 +185,6 @@ end
 end
     end
   end
-
 def so_content(a)
    
    require 'pilha'

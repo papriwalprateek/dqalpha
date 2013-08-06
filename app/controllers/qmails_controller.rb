@@ -60,9 +60,9 @@ class QmailsController < ApplicationController
         format.html { redirect_to q_path(@q)}
         format.js     
     end
- 
+ #   new_qmail_notify(@qmail)
   end
-
+ 
   # PUT /qmails/1
   # PUT /qmails/1.json
   def update
