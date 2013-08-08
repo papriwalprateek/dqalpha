@@ -7,11 +7,11 @@ CKEDITOR.editorConfig = (config) ->
       
    '/',
     { name: 'basicstyles', items: [ 'Bold','Italic','Underline','-','RemoveFormat' ] },
-    { name: 'insert',      items: [ 'Image','Link','Insert_wiki','Insert_gist','Insert_so','Insert_sci_help'] },
+    { name: 'insert',      items: [ 'Image','Link','Insert_wiki','Insert_gist','Insert_so','Insert_sci_help','InsertPre'] },
   
   ]
   config.toolbar = 'Pure'
-  config.extraPlugins = 'Insert_wiki,Insert_gist,Insert_so,Insert_sci_help,autogrow' 
+  config.extraPlugins = 'Insert_wiki,Insert_gist,Insert_so,Insert_sci_help,autogrow,insertpre' 
   config.toolbarStartupExpanded = false
   config.toolbarCanCollapse = false
   config.autoGrow_onStartup = true
