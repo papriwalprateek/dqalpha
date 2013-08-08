@@ -22,7 +22,7 @@
 $(function() {	
 
 //new quest text fields
-    
+ 
        $("textarea#quest_description").blur(function() {
         if ($(this).val() == "") {
             $(this).val("Provide a description");

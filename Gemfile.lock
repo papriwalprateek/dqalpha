@@ -37,7 +37,7 @@ GEM
       activesupport (>= 3.0.0)
     builder (3.0.0)
     calc (1.0.0)
-    ckeditor (4.0.2)
+    ckeditor (4.0.4)
       mime-types
       orm_adapter
     coffee-rails (3.2.2)
@@ -157,7 +157,7 @@ DEPENDENCIES
   albino
   authlogic
   calc
-  ckeditor
+  ckeditor (~> 4.0.4)
   coffee-rails (~> 3.2.1)
   google_visualr
   gravatar-ultimate
