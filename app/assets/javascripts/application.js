@@ -10,13 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
 //= require jquery-migrate
-//= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
+//= require jquery-ujs
 //= require bjqs
 //= require ckeditor/init
-//= require mousewheel
 //= require ckeditor/config
 //= require_tree .
 $(function() {	
@@ -90,7 +88,7 @@ $(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
-  
+
   $(".content_middle a").live("click", function() {
     $.getScript(this.href);
     window.history.pushState(null, document.title, this.href);

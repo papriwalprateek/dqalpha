@@ -23,7 +23,7 @@ Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
 <% else %>
 <div >
 <%end%>
-<span class= "clear_notification"data-id="<%= notification.id %>">
+<span class= "clear_notification" data-id="<%= notification.id %>">
 ✓ </span>
 <%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
 <hr>
