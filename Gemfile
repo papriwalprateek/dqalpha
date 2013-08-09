@@ -10,8 +10,6 @@ end
 group :production do
   gem 'pg'
 end
-gem 'calc'
-gem 'timeline_fu'
 gem 'redcarpet'
 gem 'albino'
 gem 'authlogic'
@@ -26,7 +24,6 @@ gem 'mediacloth'
 gem 'wikicloth'
 gem 'openurl'
 gem 'google_visualr'
-gem 'ace-rails'
 gem 'ckeditor', '~> 4.0.4'
 gem 'pilha'
 gem 'newrelic_rpm'
