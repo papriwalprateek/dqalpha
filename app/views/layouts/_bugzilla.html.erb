@@ -1,0 +1,21 @@
+<%begin%>
+<h2 style="margin-bottom: 0px;"><%=raw@ques%></h2>
+<% if @doc %>
+<hr>
+<br>
+<h3 style="margin-bottom: 0px;">Description</h4>
+<div style="background-color:#f8f8f8"><%=raw@desc%></div>
+<hr>
+<br>
+<%end%>
+<h3 style="margin-bottom: 0px;"><%=@answers.length%> Answers</h3>
+<%j=0%>
+<%while j < @answers.length%>
+<br>
+<h4 style="margin-bottom: 0px;">Answer <%=j+1%></h4>
+<hr>
+<%=raw@answers[j]%>
+<%j=j+1%>
+<%end%>
+<%rescue%>
+<%end%>

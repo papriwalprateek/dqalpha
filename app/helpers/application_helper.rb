@@ -224,7 +224,18 @@ def scilab_help(a)
   l.attributes["href"].value = "/scilab/"+l.attributes["href"].value
   end
 end
- 
+ def bugzilla_help(a)
+   require "nokogiri"
+   require "open-uri"
+   
+   @doc = Nokogiri::HTML(open(a))
+   
+   @ques = @doc.css("td.field_label")[1].parent.child.next.next.text
+   @desc = @doc.css("pre")[0]
+   j = 0
+   @answers = @doc.css("pre.bz_comment_text")
+   
+end
 def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id

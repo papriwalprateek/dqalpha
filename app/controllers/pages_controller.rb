@@ -38,6 +38,13 @@ def scilab
       format.js { render "layouts/scilab"  }
      end
   end
+  def bugzilla
+    @content = bugzilla_help(params[:ad])
+        @query_sc = params[:ad]
+    respond_to do |format|
+      format.js { render "layouts/bugzilla"  }
+     end
+  end
 def so
     @content = so_content(params[:ad])
         @query_so = params[:ad]

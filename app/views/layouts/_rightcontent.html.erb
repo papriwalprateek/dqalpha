@@ -2,7 +2,7 @@
 
 <div id = "rightcontent" class ="ui-layout-east">
 <label id="link_1" class="vm_icon">Wikipedia</label>
-<label id="link_3" class="vm_icon">Irc</label>
+<label id="link_3" class="vm_icon">Bugzilla</label>
 <label id="link_4" class="vm_icon">Stack Overflow</label>
 <label id="link_5" class="vm_icon">Gist</label>
 <label id="link_6" class="vm_icon">Scilab Help</label>
@@ -45,6 +45,16 @@
 <%= render 'layouts/so' %> 
 </div>
 </div>
+<div id ="bugzilla_vm">
+      <input name="ad" class="bugzilla_input" type="text" id="ad" value = "Enter your Bugzilla query"/>
+ <div style="float:right;margin-top:10px"><img id ="loading-image_bugzilla" src = "/assets/load.gif"></div>
+
+<div id ="bugzilla">
+<div id = "loading-fail_bugzilla"> There might be some error in your network connection </div>
+
+<%= render 'layouts/bugzilla' %> 
+</div>
+</div>
 <div id="gist_vm">
  <div  id="gist_field">
 
@@ -60,8 +70,7 @@
 
 </div>
 
-<div id="irc_vm">
-</div>
+
 </div>
 <%end%>
 <script>
@@ -76,10 +85,11 @@ $(function() {
     $("#loading-fail_so").hide();
     $("#loading-image_sc").hide();
     $("#loading-fail_sc").hide();
-  
+  	$("#loading-image_bugzilla").hide();
+    $("#loading-fail_bugzilla").hide();
     $('#so_vm').hide();    
 $('#gist_vm').hide();
-      $('#irc_vm').hide();
+      $('#bugzilla_vm').hide();
       $('#scilab_vm').hide();
     $('#link_1').css('border-bottom', '3px solid navy');
   
@@ -89,7 +99,7 @@ $('#gist_vm').hide();
   
       $('#so_vm').hide();
      
-      $('#irc_vm').hide();
+      $('#bugzilla_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').hide();
       $('#wiki_vm').fadeIn(300);
@@ -102,14 +112,14 @@ $('#link_3').click(function(){
       $('#wiki_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').hide();
-      $('#irc_vm').fadeIn(300);
+      $('#bugzilla_vm').fadeIn(300);
   }); 
  $('#link_4').click(function(){ 
      clear_borders();
      $('#link_4').css('border-bottom', '3px solid navy');
   
       $('#wiki_vm').hide();
-      $('#irc_vm').hide();
+      $('#bugzilla_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').hide();
       $('#so_vm').fadeIn(300);
@@ -118,7 +128,7 @@ $('#link_5').click(function(){
      clear_borders();
     $('#link_5').css('border-bottom', '3px solid navy');
       $('#wiki_vm').hide();
-      $('#irc_vm').hide();
+      $('#bugzilla_vm').hide();
       $('#so_vm').hide();
       $('#scilab_vm').hide();
       $('#gist_vm').fadeIn(300);
@@ -127,7 +137,7 @@ $('#link_5').click(function(){
     clear_borders();
     $('#link_6').css('border-bottom', '3px solid navy');
       $('#wiki_vm').hide();
-      $('#irc_vm').hide();
+      $('#bugzilla_vm').hide();
       $('#so_vm').hide();
       $('#gist_vm').hide();
       $('#scilab_vm').fadeIn(300);
@@ -140,8 +150,7 @@ url: "/wik",
 data: { ad: $('.wiki_input').val() },
            beforeSend: function() {
               $("#loading-image").show();
-               $("#loading-fail").hide();
-  
+               $("#loading-fail").hide();  
            },
            success: function() {
               $("#loading-image").hide();
@@ -149,6 +158,28 @@ data: { ad: $('.wiki_input').val() },
            error: function() {
               $("#loading-fail").show();  
               $("#loading-image").hide();
+               
+           }
+});
+    }
+     return false;
+});
+ $('.bugzilla_input').keyup(function(event) {
+        if (event.keyCode == 13) {
+         $.ajax({
+type: "GET",
+url: "/bugzilla",
+data: { ad: $('.bugzilla_input').val() },
+           beforeSend: function() {
+              $("#loading-image_bugzilla").show();
+               $("#loading-fail_bugzilla").hide();  
+           },
+           success: function() {
+              $("#loading-image_bugzilla").hide();
+           },
+           error: function() {
+              $("#loading-fail_bugzilla").show();  
+              $("#loading-image_bugzilla").hide();
                
            }
 });
@@ -203,18 +234,16 @@ data: { ad: $('.so_input').val() },
         
     });
 
+
+});
+
 function clear_borders(){
   $('#link_1').css('border', '0px');
   $('#link_3').css('border', '0px');
   $('#link_4').css('border', '0px');
   $('#link_5').css('border', '0px');
  $('#link_6').css('border', '0px');
- 
- 
    }
-});
-
-
  $(function() {
 
  $("input.wiki_input").blur(function() {
@@ -254,6 +283,20 @@ function clear_borders(){
         }
     }).focus(function() {
         if ($(this).val() == "Enter the scilab method here") {
+            $(this).val("");
+              
+        }
+    });
+ });
+$(function() {
+
+ $("input.bugzilla_input").blur(function() {
+        if ($(this).val() == "") {
+            $(this).val("Enter your Bugzilla query");
+              
+        }
+    }).focus(function() {
+        if ($(this).val() == "Enter your Bugzilla query") {
             $(this).val("");
               
         }

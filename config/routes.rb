@@ -11,9 +11,10 @@ Blog::Application.routes.draw do
   match '/leave_quest' => 'pages#leave_quest'   
   match '/join_quest' => 'pages#join_quest' 
   match "/wiki/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
-  match "/so/:search" => redirect("/wik?ad=%{search}&commit=Wiki")
-  match "/scilab/:search" => redirect("/scilab?ad=%{search}&commit=Wiki")
-    #get "pages/search"
+  match "/so/:search" => redirect("/wik?ad=%{search}&commit=so")
+  match "/scilab/:search" => redirect("/scilab?ad=%{search}&commit=scilab")
+  match "/bugzilla/:search" => redirect("/bugzilla?ad=%{search}&commit=Bugzilla")
+     #get "pages/search"
   match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
   match '/a' => 'pages#read_notification'
@@ -22,6 +23,7 @@ Blog::Application.routes.draw do
   match '/so' => 'pages#so'
   match '/notifications' => 'pages#notifications'
   match '/scilab' => 'pages#scilab'
+  match '/bugzilla' => 'pages#bugzilla'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
   match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
