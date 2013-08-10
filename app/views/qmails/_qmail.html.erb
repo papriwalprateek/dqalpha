@@ -1,5 +1,4 @@
-
- <div class ="post" style = "margin-bottom:20px;margin-right:10px;margin-left:1%;overflow:hidden;padding:20px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#F8F8F8 ;" data-time="<%=qmail.created_at.to_i%>" data-id="<%=qmail.id%>"> 
+ <div class ="post"  data-time="<%=qmail.created_at.to_i%>" data-id="<%=qmail.id%>"> 
  <span class= "bold">	<%=qmail.user.name%>
  	</span>
  	<div style="float:right">
@@ -9,5 +8,5 @@
   <%rescue%>
   <%end%>
   </div>
-  <div style="width:95%;"><%=raw(qmail.content) %></div>
+  <div style="width:93%;" class = "c_qmail"><%=raw(qmail.content)%></div>
  	<span style="background:#D1E1AD;padding-left:4px;padding-right:4px;"><%= link_to 'delete', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </span></div>
