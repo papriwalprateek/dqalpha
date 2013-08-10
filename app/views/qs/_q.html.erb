@@ -70,6 +70,10 @@
 </div>
 
 <script>
+hljs.initHighlightingOnLoad();
+$(document).ready(function() {
+  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+});
 $(function() {
  
 $('#onselection_list').hide();

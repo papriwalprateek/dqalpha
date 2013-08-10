@@ -17,4 +17,5 @@
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config
+//= require highlight.pack
 //= require_tree ./ckeditor
