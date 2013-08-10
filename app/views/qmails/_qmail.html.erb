@@ -9,5 +9,5 @@
   <%rescue%>
   <%end%>
   </div>
-  <div style="width:95%;"><%= markdown(qmail.content) %></div>
+  <div style="width:95%;"><%=raw(qmail.content) %></div>
  	<span style="background:#D1E1AD;padding-left:4px;padding-right:4px;"><%= link_to 'delete', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </span></div>

@@ -126,6 +126,6 @@ CKEDITOR.plugins.add( 'insertpre',
 	} );
 
 if (typeof(CKEDITOR.config.insertpre_style) == 'undefined')
-	CKEDITOR.config.insertpre_style = 'background-color:#F8F8F8;border:1px solid #DDD;padding:10px;';
+	CKEDITOR.config.insertpre_style = '';
 if (typeof(CKEDITOR.config.insertpre_class)  == 'undefined')
 	CKEDITOR.config.insertpre_class = 'prettyprint';

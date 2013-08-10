@@ -71,6 +71,7 @@ pre
 {
 	white-space: pre-wrap; /* CSS 2.1 */
 	word-wrap: break-word; /* IE7 */
+	background-color:#F8F8F8;border:1px solid #DDD;padding:10px;
 }
 .marker {
     background-color: Yellow;

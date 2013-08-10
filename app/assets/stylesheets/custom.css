@@ -555,9 +555,9 @@ margin: 0 -3px 0 0;
 	max-height: 200px;
 }
 pre {
-	background: #eee;
 	white-space:pre-wrap;
 	word-wrap:break-word;
+	background-color:#F8F8F8;border:1px solid #DDD;padding:10px;
 }
 .gist_form{
 	background:#E1E1E1;
@@ -1011,4 +1011,3 @@ input {display:inline;}
 
 
 /*below is highlight.js syntax highlighter css*/
-

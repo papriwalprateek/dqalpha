@@ -4,7 +4,7 @@
   <b><%= gist.title%>
   </b>
   <%if gist.content%>
-  <%=markdown(gist.content)%>
+  <%=raw(gist.content)%>
  
  	<%end%>
 <%= link_to 'X', [gist.user, gist], :remote => true, :method => :delete %>
