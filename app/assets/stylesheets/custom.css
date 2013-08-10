@@ -1096,7 +1096,7 @@ pre .subst,
 pre .request,
 pre .status {
   color: #333;
-  font-weight: bold
+ /* font-weight: bold*/
 }
 
 pre .number,
@@ -1115,7 +1115,7 @@ pre .tex .formula {
 pre .title,
 pre .id {
   color: #900;
-  font-weight: bold
+ /* font-weight: bold*/
 }
 
 pre .javascript .title,
@@ -1130,7 +1130,7 @@ pre .haskell .type,
 pre .vhdl .literal,
 pre .tex .command {
   color: #458;
-  font-weight: bold
+/*  font-weight: bold*/
 }
 
 pre .tag,
@@ -1153,7 +1153,7 @@ pre .regexp {
 
 pre .class {
   color: #458;
-  font-weight: bold
+  /*font-weight: bold*/
 }
 
 pre .symbol,
@@ -1176,7 +1176,7 @@ pre .doctype,
 pre .shebang,
 pre .cdata {
   color: #999;
-  font-weight: bold
+ /* font-weight: bold*/
 }
 
 pre .deletion {
