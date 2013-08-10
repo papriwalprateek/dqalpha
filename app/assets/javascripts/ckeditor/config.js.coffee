@@ -16,5 +16,6 @@ CKEDITOR.editorConfig = (config) ->
   config.toolbarCanCollapse = false
   config.autoGrow_onStartup = true
   config.autoGrow_maxHeight = 800
+  config.contentsCss = '/assets/ckeditor/contents.css.scss'
   true
 

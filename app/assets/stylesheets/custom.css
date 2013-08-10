@@ -556,6 +556,8 @@ margin: 0 -3px 0 0;
 }
 pre {
 	background: #eee;
+	white-space:pre-wrap;
+	word-wrap:break-word;
 }
 .gist_form{
 	background:#E1E1E1;
