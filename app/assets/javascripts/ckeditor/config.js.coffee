@@ -13,5 +13,6 @@ CKEDITOR.editorConfig = (config) ->
   config.toolbarCanCollapse = false
   config.autoGrow_onStartup = true
   config.autoGrow_maxHeight = 800
+  config.skin = 'my_cke_skin'
   true
 
