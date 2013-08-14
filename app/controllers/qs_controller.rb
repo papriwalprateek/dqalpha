@@ -4,7 +4,7 @@ before_filter :require_user
 def create
     @quest = Quest.find(params[:quest_id])
     @q = @quest.qs.create(params[:q])
-     @qmail = @q.qmails.create(:content =>params[:qmail_content], :user_id => current_user.id)
+    @qmail = @q.qmails.create(:content =>params[:qmail_content], :user_id => current_user.id)
   
     current_user.qmails << @qmail
  #       options = [:hard_wrap, :filter_html, :autolink]

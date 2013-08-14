@@ -33,7 +33,7 @@ the proper box size when the elements path is empty. */
 {
   display: inline-block;
   float: left;
-  padding: 3px 4px;
+  padding: 6px 8px 0px 1px;
   margin-right: 2px;
   cursor: default;
   text-decoration: none;

@@ -37,6 +37,23 @@ editors:
   vertical-align: baseline;
 }
 
+.cke_contents
+{
+  /* Do not include inheritable rules here. */
+  margin-top: 0px;
+  padding: 0;
+  border: solid;
+  border-color: #9ECAED;
+  border-width: 1px;
+  box-shadow: 0 0 2px #9ECAED;
+  background: transparent;
+  text-decoration: none;
+  width: auto;
+  height: auto;
+  vertical-align: baseline;
+}
+
+
 /* Reset for elements and their children. */
 .cke_reset_all, .cke_reset_all *
 {
@@ -44,7 +61,6 @@ editors:
   margin: 0;
   padding: 0;
   border: 0;
-  background: transparent;
   text-decoration: none;
   width: auto;
   height: auto;

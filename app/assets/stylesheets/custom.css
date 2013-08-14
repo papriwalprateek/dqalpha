@@ -1024,6 +1024,7 @@ div.post {
 	padding:20px;
 	box-shadow: 0 0 2px 0px #E0E0E0;
 	background-color:#F8F8F8;
+	word-wrap:break-word;
 
 }
 
@@ -1194,4 +1195,3 @@ pre .diff .change {
 pre .chunk {
   color: #aaa
 }
-

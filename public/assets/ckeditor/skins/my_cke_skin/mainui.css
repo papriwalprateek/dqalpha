@@ -92,9 +92,9 @@ Special outer level classes used in this file:
 
 .cke_top
 {
-  padding: 6px 8px 2px;
+  padding: 8px 2px;
 
-  background: #ffffff;
+  background: #f8f8f8;
 }
 
 .cke_float .cke_top
@@ -106,7 +106,7 @@ Special outer level classes used in this file:
   padding: 4px 8px;
   position: relative;
 
-  background: #ffffff;
+  background: #f8f8f8;
 }
 
 /* The resizer is the small UI element that is rendered at the bottom right

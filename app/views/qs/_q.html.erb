@@ -63,21 +63,11 @@
 </div>
 </div>
 </div>
-<div id="onselection_list">
-<p></p>
-
-<button onclick="search_wiki()" >Wiki</button>
-</div>
 
 <script>
 
 $(document).ready(function() {
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
-});
-$(function() {
- 
-$('#onselection_list').hide();
-
 });
 function join_quest(){
     $.ajax({
