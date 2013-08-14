@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+<%= title %></title>
+<body>	
+	<%begin%>
+	<%@da = @d[:a].delete("[']")%>
+	<%@ds = @da.split(",")%>
+	<%@ds.each do |url|%>
+	<%=url%>
+	<%scilab_extract(url)%>	
+	</br>
+	<%end%>
+	<%rescue%>
+	<%end%>
+<%= form_for :urls do |f| %>
+ <%= f.text_area :a %><br />
+  <%= f.submit %>
+<% end %>
+</body>

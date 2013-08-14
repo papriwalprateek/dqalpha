@@ -245,3 +245,45 @@ def link_to_add_fields(name, f, association)
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end 
 end
+def scilab_extract(url)
+@name = ["Niels Peter Fenger", "Stanislav", "owsigplc", "arctica1963", "Debola Abduljeleel", "grivet", "Samuel GOUGEON", "Pascal Buehler", "Serge Steer", "barbaraflowers", "Rafael Guerra", "oscar.espejo", "Michael J. McCann", "Antoine Monmayrant", "Michael J. McCann-2", "matacosta", "Sylvestre Ledru-4", "shorne", "omorr", "ezequiel soule", "Mathieu Dubois", "Adrien Vogt-Schilb", "cactus_jack", "Denis", "Amsdenyt", "Marria", "lukeaarond", "pepe", "F. Vogel", "F. Vogel-2", "jhdtyp", "Eze-Okoli Ifeoma Sandra", "jasper van baten", "Nima Sahraneshin-Samani", "A Khorshidi", "Janusz Magrian", "rajesh kannan", "Stefan Du Rietz", "stef296", "papriwalprateek", "Jacqueline Howe", "jacquih", "Paul Carrico", "martin.highUp", "simi99", "oiwmw", "Chuox", "Larissa", "Mike Page", "windkraft", "babigeon","Dang_Christophe", "Carrico_Paul"]
+
+user_id_offset = 648
+    @doc = Nokogiri::HTML(open(url))
+    @qtitle = @doc.css('h1#post-title').text
+    
+    # feed qtitle in the database here
+    qu = Quest.find(207)
+  q = qu.qs.create(:title =>@qtitle)
+    @qcontent = @doc.css('div.message-text')
+    i = 0
+    while i < @qcontent.length
+    x = @doc.css('table.classic-author-name')[i].text
+    x = x.gsub("\t","")
+    x = x.gsub("\n","")
+    
+    if x.include?("Denis")
+      x = "Denis"
+    end
+    if x.include?("Dang,")
+      x = "Dang_Christophe"
+    end
+    if x.include?("Carrico,")
+      x =  "Carrico_Paul"
+    end
+    if x.include?("Vogel-2")
+      x = "F. Vogel-2"
+    elsif x.include?("Vogel")
+      x = "F. Vogel"
+    end
+    
+    u_id = user_id_offset+@name.index(x)
+    qmail = q.qmails.create(:content=>@qcontent[i].inner_html, :user_id =>u_id )
+    # feed the above u_id as userid ... u need to manipulate accordingly
+    # feed @qcontent[i].inner_html as qmail content
+    
+    i = i + 1
+  end  
+  
+   
+end

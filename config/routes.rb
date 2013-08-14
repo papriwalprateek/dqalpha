@@ -52,6 +52,7 @@ Blog::Application.routes.draw do
     match '/about' => 'pages#about'
    match '/team'  => 'pages#team'
    match '/blogs'  => 'pages#blogs'
+   match '/scilab_extract'  => 'pages#scilab_extract'
    match '/google885d2aab83a9c566' => 'pages#google885d2aab83a9c566'
     # get "pages/contact"
     match '/contact' => 'pages#contact'  

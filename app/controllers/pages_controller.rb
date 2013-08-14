@@ -97,4 +97,12 @@ end
       format.js { render "pages/notifications"  }
      end
   end
+  
+  def scilab_extract
+  @title = "scilab_extract"
+  @d = params[:urls]
+      respond_to do |format|
+      format.html
+     end
+  end
 end
