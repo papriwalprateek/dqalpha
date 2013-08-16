@@ -279,8 +279,11 @@ def scilab_extract_it(url)
     elsif x.include?("Vogel")
       x = "F. Vogel"
     end
-    
-    u_id = user_id_offset+@name.index(x)
+    if @name.index(x)      
+     u_id = user_id_offset+@name.index(x)
+    else
+      u_id = 703
+    end
     qmail = q.qmails.create(:content=>@qcontent[i].inner_html, :user_id =>u_id )
     # feed the above u_id as userid ... u need to manipulate accordingly
     # feed @qcontent[i].inner_html as qmail content
