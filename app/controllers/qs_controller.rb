@@ -1,5 +1,5 @@
 class QsController < ApplicationController
-before_filter :require_user
+#before_filter :require_user
   
 def create
     @quest = Quest.find(params[:quest_id])

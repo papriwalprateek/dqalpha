@@ -6,16 +6,7 @@
 <title>
 <%= title %></title>
 <body>	
-	<%begin%>
-	<%@da = @d[:a].delete("[']")%>
-	<%@ds = @da.split(",")%>
-	<%@ds.each do |url|%>
-	<%=url%>
-	<%scilab_extract(url)%>	
-	</br>
-	<%end%>
-	<%rescue%>
-	<%end%>
+	
 <%= form_for :urls do |f| %>
  <%= f.text_area :a %><br />
   <%= f.submit %>

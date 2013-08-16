@@ -101,6 +101,13 @@ end
   def scilab_extract
   @title = "scilab_extract"
   @d = params[:urls]
+  if @d
+    @ds = @d[:a].split(",")
+    @ds.each do |url|
+     url = url.delete("[']")
+     scilab_extract_it(url) 
+     end
+  end
       respond_to do |format|
       format.html
      end

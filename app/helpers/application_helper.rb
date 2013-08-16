@@ -245,10 +245,13 @@ def link_to_add_fields(name, f, association)
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end 
 end
-def scilab_extract(url)
+def scilab_extract_it(url)
+  require 'rubygems'
+    require 'nokogiri'
+    require 'open-uri'
 @name = ["Niels Peter Fenger", "Stanislav", "owsigplc", "arctica1963", "Debola Abduljeleel", "grivet", "Samuel GOUGEON", "Pascal Buehler", "Serge Steer", "barbaraflowers", "Rafael Guerra", "oscar.espejo", "Michael J. McCann", "Antoine Monmayrant", "Michael J. McCann-2", "matacosta", "Sylvestre Ledru-4", "shorne", "omorr", "ezequiel soule", "Mathieu Dubois", "Adrien Vogt-Schilb", "cactus_jack", "Denis", "Amsdenyt", "Marria", "lukeaarond", "pepe", "F. Vogel", "F. Vogel-2", "jhdtyp", "Eze-Okoli Ifeoma Sandra", "jasper van baten", "Nima Sahraneshin-Samani", "A Khorshidi", "Janusz Magrian", "rajesh kannan", "Stefan Du Rietz", "stef296", "papriwalprateek", "Jacqueline Howe", "jacquih", "Paul Carrico", "martin.highUp", "simi99", "oiwmw", "Chuox", "Larissa", "Mike Page", "windkraft", "babigeon","Dang_Christophe", "Carrico_Paul"]
 
-user_id_offset = 648
+  user_id_offset = 648
     @doc = Nokogiri::HTML(open(url))
     @qtitle = @doc.css('h1#post-title').text
     
@@ -284,6 +287,5 @@ user_id_offset = 648
     
     i = i + 1
   end  
-  
    
 end
