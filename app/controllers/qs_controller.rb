@@ -28,7 +28,8 @@ def create
   def show
     @q = Q.find(params[:id])
     @quest = @q.quest
- 
+    @qmails = Qmail.search(params[:search],params[:id])
+      
      if params[:qmail_id] 
       @qmail_id = params[:qmail_id]
       if params[:n_id]         

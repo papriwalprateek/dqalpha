@@ -48,8 +48,13 @@
 <br>
 <br>
 <div id='com'>
-   <%if @q.qmails %>
-   <%= render partial: "qmails/qmail", collection: @q.qmails.sort_by { |obj| obj.created_at }%>
+<%= form_tag({ :action => "show"}, :method => "get") do %>
+  <%= label_tag(:search, "search") %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("Find", :name => nil) %>
+  <%end%>
+   <%if @qmails %>
+   <%= render partial: "qmails/qmail", collection: @qmails.sort_by { |obj| obj.created_at }%>
 <%end%>
  	</div>
 <div  id="qmail_field">

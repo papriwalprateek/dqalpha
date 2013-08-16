@@ -25,6 +25,8 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
+    @qs = Q.search(params[:search],params[:id])
+    
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end

@@ -38,19 +38,19 @@ data: { i_id: <%=i%>}
   <%= text_field_tag :add_user %>
   <%= submit_tag("Send") %>
 <% end %>
-
 </div>
-</div>
-  
-
+</div>  
 <div class="quests_show">
 
+<%= form_tag({ :action => "show"}, :method => "get") do %>
+  <%= label_tag(:search, "search") %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("Find", :name => nil) %>
+<% end %>
 <%= render "quests/listq"%>
 </div>
 
-
 </div>
-
 
 <script>
 function join_quest(){
