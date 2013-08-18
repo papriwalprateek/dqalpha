@@ -1,9 +1,29 @@
 <%if current_user%>
+<%= form_tag({ :action => "show"}, :method => "get", :remote => true) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+<% end %>
+<%end%>
+
 <div id = "start_thread"> 
 <a style="cursor:pointer;"><p id = "start_thread_button">Start a new thread</p></a>
 </div>
-<%end%>
 <br>
+<%if @documents%>
+	<%@documents.each do |d|%>
+	<%@d=d.searchable%>
+	<%if d.searchable_type=="Qmail"%>
+		<%url = @d.q.id.to_s()+"?qmail_id="+@d.id.to_s()%>
+	<%else%>
+		<%url = @d.id.to_s()%>
+	<%end%>
+	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+url%>>
+	<div class = "post">
+	<h2><%=d.searchable_type%>
+	</h2>
+	<%=raw d.content%>	
+	</div>
+	<%end%>
+<%elsif @qs%>
 <% @qs.each do |q| %>
 <a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
 <span>
@@ -16,7 +36,7 @@
 </span></a>
 <%end%>
   
-
+<%end%>
 <script>$(function() {
   $('p#start_thread_button').click(function(){ 
   $(".quests_show").html("<%=escape_javascript(render"qs/form")%>");      

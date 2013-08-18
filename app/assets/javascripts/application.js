@@ -18,4 +18,5 @@
 //= require ckeditor/init
 //= require ckeditor/config
 //= require highlight.pack
+//= require jquery-ui
 //= require_tree ./ckeditor

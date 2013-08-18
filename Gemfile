@@ -4,12 +4,11 @@ gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-group :development, :test do
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-end
-group :production do
-  gem 'pg'
-end
+#group :test do
+#  gem 'sqlite3-ruby', :require => 'sqlite3'
+#group :production do
+#  gem 'pg'
+#end
 gem 'redcarpet'
 gem 'albino'
 gem 'authlogic'
@@ -17,6 +16,7 @@ gem 'will_paginate'
 gem 'json'
 gem 'gravatar-ultimate'
 gem 'pg'
+gem 'pg_search'
 gem 'mediawiki-gateway'
 gem 'wikipedia-client'
 gem 'nokogiri'

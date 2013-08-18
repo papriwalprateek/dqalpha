@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429162836) do
+ActiveRecord::Schema.define(:version => 20130818072148) do
 
   create_table "gists", :force => true do |t|
     t.string   "title"
@@ -98,6 +98,14 @@ ActiveRecord::Schema.define(:version => 20130429162836) do
     t.integer  "votes_count", :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "polls", :force => true do |t|
