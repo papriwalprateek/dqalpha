@@ -24,6 +24,7 @@ validates :content, :presence => true
     ActiveRecord::Base.connection.execute(sql) 
   end
   include PgSearch
+ 
   multisearchable :against => [:content]
  
   def self.rebuild_pg_search_documents

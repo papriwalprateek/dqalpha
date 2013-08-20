@@ -41,7 +41,9 @@ data: { i_id: <%=i%>}
 </div>
 </div>  
 <div class="quests_show">
-
+<%= form_tag({ :action => "show"}, :method => "get", :remote => true) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+<% end %>
 <%= render "quests/listq"%>
 </div>
 

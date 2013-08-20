@@ -1,1 +1,2 @@
-$(".quests_show").html("<%= escape_javascript(render("quests/listq")) %>");      
+ $("#content").html("<%= escape_javascript(render("q")) %>");
+   window.history.pushState(null, document.title, "/quests/<%=@quest.id.to_s%>/qs/<%=@q.id.to_s%>");
