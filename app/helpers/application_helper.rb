@@ -258,6 +258,8 @@ def scilab_extract_it(url)
     # feed qtitle in the database here
     qu = Quest.find(207)
   q = qu.qs.create(:title =>@qtitle)
+    q.add_questid(207)#tells pg_search about quest id these two lines are must after each q or qmail create  
+ 
     @qcontent = @doc.css('div.message-text')
     i = 0
     while i < @qcontent.length
@@ -285,6 +287,8 @@ def scilab_extract_it(url)
       u_id = 703
     end
     qmail = q.qmails.create(:content=>@qcontent[i].inner_html, :user_id =>u_id )
+    qmail.add_questid(207)
+
     # feed the above u_id as userid ... u need to manipulate accordingly
     # feed @qcontent[i].inner_html as qmail content
     

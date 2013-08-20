@@ -6,8 +6,15 @@ validates :content, :presence => true
   has_many :notifications, :dependent => :destroy
   def self.add_quest_id
     all.each do |qmail|
-      qmail.quest_id = qmail.q.quest.id
-      qmail.save
+      begin 
+        if !qmail.quest_id
+          qmail.quest_id = qmail.q.quest.id
+          qmail.save
+        end        
+      rescue
+        qmail.quest_id = 2
+        qmail.save
+      end
     end
   end
   def add_questid(id)
