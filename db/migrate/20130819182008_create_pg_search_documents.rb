@@ -5,6 +5,7 @@ class CreatePgSearchDocuments < ActiveRecord::Migration
         t.text :content
         t.belongs_to :searchable, :polymorphic => true
         t.timestamps
+		t.integer :quest_id
       end
     end
   end

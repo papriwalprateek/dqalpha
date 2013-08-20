@@ -49,7 +49,7 @@ class QmailsController < ApplicationController
     @qmail = @q.qmails.create(:content =>params[:qmail_content],:user_id => current_user.id)
     @quest = @q.quest
     current_user.qmails << @qmail
-
+    @qmail.add_questid(@quest.id)#must for telling pg_search about the quest if of qmail
   #links vm code here
  #      doc = Nokogiri::HTML(markdown.render(@qmail.content))
  #      doc.xpath('//a[@href]').each do |l|
