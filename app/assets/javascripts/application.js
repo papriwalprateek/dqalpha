@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-migrate
 //= require jquery-ujs
+//= require custom
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config
@@ -20,4 +21,3 @@
 //= require jquery-ui
 //= require jquery_adapter
 //= require_tree ./ckeditor
-//= require custom
