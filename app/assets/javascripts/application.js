@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery-migrate
 //= require jquery-ujs
-//= require custom
 //= require bjqs
 //= require ckeditor/init
 //= require ckeditor/config
 //= require highlight.pack
 //= require jquery-ui
 //= require_tree ./ckeditor
+//= require custom
