@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   before_filter :require_vinay, :only => :index
   # GET /users
   # GET /users.json
-  def index
+ 
+ respond_to :html, :json, :js
+ def index
     @users = User.search(params[:search])
     @quests = Quest.all
     @q = Q.where(:title => "Add a Q")
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
       format.json { render json: @user.as_json(only: [:name, :email]) }
     end
   end
+  
 
   # GET /users/new
   # GET /users/new.json
@@ -62,19 +65,11 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   # PUT /users/1.json
-  def update
-    @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+def update
+  @user = User.find(params[:id])
+  @user.update_attributes(params[:user])
+  respond_with @user
+end
 
   # DELETE /users/1
   # DELETE /users/1.json

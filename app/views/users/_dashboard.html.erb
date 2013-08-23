@@ -1,63 +1,25 @@
-<div class="dashboard">
-<div class="dashboard_right">
-<div class="user_image">
-
-<a href="http://en.gravatar.com/emails/"  target="_blank"><%= image_tag(Gravatar.new(current_user.email).image_url(:size=>162),:alt=>current_user.name, :height => "162", :width => "162", :title => "Change your avatar at gravatar.com") %></a></div>
-</br>
-<div style="font-size:20px;color: #495961;margin-top:10px;margin-left:10px;margin-bottom:10px;font-weight:bold">
-<%=current_user.name%>
-</div>
-<hr>
-<div style="margin-top:10px;margin-left:10px;margin-bottom:10px;font-size:16px;">
-Joined on <%=current_user.created_at.strftime("%b %d, %Y")%>
-</div>
-<hr>
-<div class="notifications_block" style="margin-top:10px;margin-left:5px;margin-bottom:10px;">
-<div style="margin-bottom:10px;margin-left:5px;">Notifications
-<div class="unread_notification_count"> <%=@unread_notifications.count%>
-</div>
-</div>
-<%@unread_notifications.each do |notification|%>
-<% if !notification.has_read %>
-<div class="unread_notification_left" >
-<% else %>
-<div >
-<%end%>
-<span class= "clear_notification" data-id="<%= notification.id %>">
-✓ </span>
-<%= link_to notification.content,{ :controller=> "pages",:action => "read_notification",:n_id =>notification.id}, {:remote=>true}%>
-<hr>
-</div>
-
-<%end%>
-<a href="/notifications" class= "live_link" style="margin-left:5px;"> See all
-</a>
-
-</div>
-
-</div>
-
-<div class="quests_show">
-
-<p style="margin-left:3px;margin-top:5px;margin-bottom:5px;color:#666;font-size:1.4em;"><b>
+<div class="quests_info">
+<div style="font-size:2.5em;margin-bottom:30px;color:#464368;font-family:BentonSans;line-height:1.4em;">
 	
 	<% if current_user.quests.count!=0%>
-	Your Quests
+	My Quests
 	<%else%>
 	You are not involved in any quests yet!
 	<%end%>
-	</b></p>
+	</div>
 <% current_user.quests.each do |quest| %>
 <a class="block live_link" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
 
 <div class = "quests_tiles">
 <div class="time_quest">
-<%=quest.created_at.strftime("%b, %d")%>
+<%=quest.qs.size%> posts, <%=quest.users.size%> members
 </div>
+
 <div style="float:left;padding-top:15px;padding-left:20px;font-size:14px;">
-<h2 style="color:#693;font-weight:bold;position:relative;font-size:21px;line-height:1.5em;"><%=quest.title%></h2>
-<%=truncate(quest.description, :length => 85, :separator => ' ')%>
+<h2 style="color:#693;position:relative;ont-size:2.0em;font-family:BentonSans;line-height:1.4em;"><%=quest.title%></h2>
+
+<%=truncate(quest.description, :length => 80, :separator => ' ')%>
 </br>
 <div class="quests_tiles_img">
 <%quest.users.limit(14).each do |user|%>

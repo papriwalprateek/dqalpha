@@ -20,4 +20,6 @@
 //= require highlight.pack
 //= require jquery-ui
 //= require jquery_adapter
+//= require jquery.purr
+//= require best_in_place
 //= require_tree ./ckeditor

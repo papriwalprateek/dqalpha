@@ -11,6 +11,7 @@ gem 'rails', '3.2.6'
 #end
 gem 'redcarpet'
 gem 'albino'
+gem 'best_in_place'
 gem 'authlogic'
 gem 'will_paginate'
 gem 'json'
