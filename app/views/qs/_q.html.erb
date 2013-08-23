@@ -67,7 +67,10 @@
 <script>
 
 $(document).ready(function() {
+
+$('span#qmail_edit_save a').hide();
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+
 });
 function join_quest(){
     $.ajax({
@@ -78,4 +81,6 @@ function join_quest(){
 		});
 
 }
+
+
 </script>

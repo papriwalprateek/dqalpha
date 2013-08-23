@@ -62,7 +62,7 @@ $(function() {
             $('#onselection_list').hide();
         }
     });
-     	
+
  //git browse repo
    $("a.live_link").live("click", function() {
     $.getScript(this.href);
@@ -153,3 +153,19 @@ function updateComments () {
 			$("#link_1").click();
     	     
     	}
+function edit_this_qmail(elem,q_idd,qmail_idd){
+var editable = $(elem).parents('div.post')[0];
+var content = $(editable).children("div.c_qmail");
+var form_url = '/qs/'+q_idd;
+var form_urll = form_url+'/qmails/'+qmail_idd+'/update';
+$form = $('<form action='+form_urll+' method="post" data-remote ="true"></form>');
+$form.append('<textarea name ="qmail_content_edit"/>');
+
+$form.append('<input class="qmail_submit" type="submit" value="Save it!" >');
+($form).insertBefore(content);
+$($form).children("textarea").ckeditor();
+CKEDITOR.instances.qmail_content_edit.setData($(content).html());
+$('button.edit_qmail').hide();
+$(content).hide();
+$(editable).append('<a href='+form_url+' class="live_link">Cancel</a>');
+}

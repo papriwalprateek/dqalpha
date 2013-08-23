@@ -67,13 +67,12 @@ class QmailsController < ApplicationController
   # PUT /qmails/1.json
   def update
     @qmail = Qmail.find(params[:id])
-
+    @q = @qmail.q
     respond_to do |format|
-      if @qmail.update_attributes(params[:qmail])
-        format.html { redirect_to @qmail, notice: 'Qmail was successfully updated.' }
+      if @qmail.update_attributes(:content => params[:qmail_content_edit])
+        format.js {render action: "create"} 
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
         format.json { render json: @qmail.errors, status: :unprocessable_entity }
       end
     end

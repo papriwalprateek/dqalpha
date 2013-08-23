@@ -77,7 +77,6 @@ Special outer level classes used in this file:
   as the toolbar defines its own margin. */
   padding-bottom: 0;
 }
-
 /* Make the main spaces enlarge to hold potentially floated content. */
 .cke_top,
 .cke_contents,
