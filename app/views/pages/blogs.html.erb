@@ -10,22 +10,18 @@
  	<link rel="shortcut icon" href="/favicon.ico" />
 
 </head>
-<body style="background: #EEE;">
-<div class="ui-layout-north">
-
-<div style = "padding-left:5%;padding-right:5%;">
-<a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
-<ul class="navigation ">
- <li> <% if current_user %>
-  <div style="float:left"><a class="live_link" href ="/notifications"><%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></a></div>
-    <div style="float:left;margin-top:5px;font-weight:bold;"><%= current_user.name %>
-        <%= link_to "Sign-out", :signout%>
-        <% else %>
-        <%= link_to "Sign-in", :signin %>
-        <% end %>
-        </div>
-        </li>
-</ul>	
+<body style="background: #F8F8F8;">
+<div style = "height:60px;background-color:#99cc88;padding-top:20px;">
+<ul>
+<div style = "display:inline;margin-left:150px;">
+<a class="live_link" href="/" style="font-size:2.8em;color:#fff;line-height:1.2em;font-weight:bold;font-family:Lucida Grande">DaQwest</a></a>
+</div>
+<a href="/about"style="color:#fff;display:inline;margin-left:600px;font-size:150%;font-family:BentonSans;">About</a>
+<a href="/team" style="color:#fff;display:inline;margin-left:50px;font-size:150%;font-family:BentonSans;">Team</a>
+<a href = "/blogs" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Blog</a>
+<a style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">|</a>
+<a href = "/signin#signin" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Log in</a>
+</ul>
 </div>
 
 <div class="container ">
@@ -129,8 +125,8 @@
 <div style="float:left;width:18%;margin-left:65%;margin-top:12%;position:fixed;">
 <p style="font-weight:bold;color:#666;font-size:15px;margin-left:7%;margin-bottom:5%;">Recent Posts</p>
 <ul>
-<li><a style="color:#690;font-size:15px;font-weight:bold;" href="#virtualmembers">Virtual Members</a></li><hr style="margin-top:2%;margin-bottom:5%;">
-<li><a style="color:#690;font-size:15px;font-weight:bold;" href="#virtualmembersinaction">Virtual Members in Action !!!</a></li><hr style="margin-top:2%;margin-bottom:5%;">
+<li><a style="color:#690;font-size:16px;" href="#virtualmembers">Virtual Members</a></li><hr style="margin-top:2%;margin-bottom:5%;">
+<li><a style="color:#690;font-size:16px;" href="#virtualmembersinaction">Virtual Members in Action !!!</a></li><hr style="margin-top:2%;margin-bottom:5%;">
 </ul>
 </div>
 

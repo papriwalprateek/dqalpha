@@ -10,21 +10,17 @@
 
 </head>
 <body >
-<div class="ui-layout-north">
-
-<div style = "padding-left:5%;padding-right:5%;">
-<a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">
-<ul class="navigation ">
- <li> <% if current_user %>
-  <div style="float:left"><a class="live_link" href ="/notifications"><%= image_tag(Gravatar.new(current_user.email).image_url, :size => "30x30") %></a></div>
-    <div style="float:left;margin-top:5px;font-weight:bold;"><%= current_user.name %>
-        <%= link_to "Sign-out", :signout%>
-        <% else %>
-        <%= link_to "Sign-in", :signin %>
-        <% end %>
-        </div>
-        </li>
-</ul>	
+<div style = "height:60px;background-color:#99cc88;padding-top:20px;">
+<ul>
+<div style = "display:inline;margin-left:150px;">
+<a class="live_link" href="/" style="font-size:2.8em;color:#fff;line-height:1.2em;font-weight:bold;font-family:Lucida Grande">DaQwest</a></a>
+</div>
+<a href="/about"style="color:#fff;display:inline;margin-left:600px;font-size:150%;font-family:BentonSans;">About</a>
+<a href="/team" style="color:#fff;display:inline;margin-left:50px;font-size:150%;font-family:BentonSans;">Team</a>
+<a href = "/blogs" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Blog</a>
+<a style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">|</a>
+<a href = "/signin#signin" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Log in</a>
+</ul>
 </div>
 
 <div class="container ">
@@ -38,13 +34,6 @@
 
 <div style="margin-left:15%;margin-right:25%;margin-top:2%">
 
-<ul>
-<a href="/about"style="display:inline;margin-right:20px;font-size:120%;">About</a>
-<a href="/team" style="display:inline;margin-right:20px;font-size:120%;border-bottom: 2px solid navy">Team</a>
-<a href = "/blogs" style="display:inline;font-size:120%;">Blog</a>
-</ul>
-
-<hr>
 <br>
 <br>
 <h1 style="color:#333;font-family: Georgia, FreeSerif, Times, serif;font-size:30px;">Our Team</h1>

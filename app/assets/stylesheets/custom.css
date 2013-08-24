@@ -119,19 +119,23 @@ color : #555;
 line-height:24px;
 }
 .time{
-margin:5px;
+margin:8px;
 float:right;
 font-size:15px;
 color : #555;	
 }
 
+.qs_tiles {display:block;
+opacity:0.8;
+background-color:#EFEFEF;
+margin: 3px;
+color:#232323;
+position:relative;
+font-size: 8px;
+}
 .quests_show:hover{
 }
 
-.quests_tiles:hover{
-border-bottom:1px solid #6c3;
-border-right:1px solid #6c3;
-}
 .quests_info {
 margin-left: 20%;
 margin-top: 2%;
@@ -714,16 +718,16 @@ padding:5px 17px;
 text-decoration:none;
 cursor:pointer;
 }
-.signin_form{color: #666;
+.signin_form{color: #888;
 margin-top: 100px;
+margin-bottom:100px;
 font-family: arial, helvetica, sans-serif;	
 margin-right: auto;
 margin-left: auto;
 width: 30%;
 border: none;
-background: #F1F1F1;
-padding: 20px 25px 15px;
-box-shadow: 0 0 2px 0px #888;
+background: #F8F8F8;
+padding: 30px 30px 30px;
 }
 input#user_name{
 width: 80%;
@@ -828,43 +832,44 @@ border: none;
 border-color: #9ecaed;
 box-shadow: 0 0 10px #9ecaed;
 }
+.motto {
+font-family:BentonSans;
+text-align:center;margin-top:140px;color:#fff;font-size:3.3em;line-height:1.2em;
+}
 
+.motto_desc {
+font-family:BentonSans;
+text-align:center;margin-top:10px;color:#ddd;font-size:2.2em;line-height:1.1em;
+}
+
+
+#motto_signup_button{
+color:#99B299;font-size:1.6em;
+text-align:center;background-color:#fff;
+padding:7px;
+margin-top:80px;
+margin-left:45%;
+width:150px;
+cursor:pointer;
+}
 
 .field{
 font-size: 120%;
 margin-top: 5%;
 }
 
-
 .signin {
--moz-box-shadow:inset -31px -50px 2px 0px #82cc42;
--webkit-box-shadow:inset -31px -50px 2px 0px #82cc42;
-box-shadow:inset -31px -50px 2px 0px #82cc42;
-background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a0a899), color-stop(1, #8ac757) );
-background:-moz-linear-gradient( center top, #a0a899 5%, #8ac757 100% );
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a0a899', endColorstr='#8ac757');
-background-color:#a0a899;
-display:inline-block;
-color:#ffffff;
-font-family:arial;
-font-size:15px;
-font-weight:bold;
-padding:8px 5px;
-text-decoration:none;
-text-shadow:1px 1px 0px #757575;
-}.signin:hover {
-background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #8ac757), color-stop(1, #a0a899) );
-background:-moz-linear-gradient( center top, #8ac757 5%, #a0a899 100% );
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ac757', endColorstr='#a0a899');
-background-color:#8ac757;
-}.signin:active {
-position:relative;
-top:1px;
+color:white;font-size:1.4em;
+text-align:center;padding-top:5px;padding-bottom:5px;background-color:#9c8;width:25%;
+height:35px;
+cursor:pointer;
 }
 .vm_icon{
 display:inline-block;
-width:19%;	
 cursor:pointer;
+font-family:BentoSans;
+color:#666;
+font-size:1.4em;
 }
 .qmail_submit {
 margin-top:10px;
@@ -903,7 +908,7 @@ line-height:30px;
 }
 #start_thread_button{color:white;font-size:1.3em;}
 #start_thread{
-text-align:center;padding-top:5px;padding-bottom:5px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#693;width:25%;}
+text-align:center;padding-top:5px;padding-bottom:5px;box-shadow: 0 0 2px 0px #E0E0E0;background-color:#9c7;width:25%;}
 
 input#q_title{
 margin-top:30px;

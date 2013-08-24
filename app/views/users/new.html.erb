@@ -5,26 +5,65 @@
 <title>
 <%= title %></title><%= render 'layouts/stylesheets' %> 
 
-<div style = "padding-left:5%;padding-right:5%;">
-<a class="live_link" href="/"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px") %></a> <ul class="navigation ">	
-</div>
-
 
  	<link rel="shortcut icon" href="/favicon.ico" />
 
 </head>
 <body >
- <div class="ui-layout-north">
+	
+<div style = "height:60px;position:fixed;background-color:#99cc88;width:100%;padding-top:19px">
+<ul>
+<div style = "display:inline;margin-left:150px;">
+<a class="live_link" href="/" style="font-size:2.8em;color:#fff;line-height:1.2em;font-weight:bold;font-family:Lucida Grande">DaQwest</a></a>
+</div>
+<a href="/about"style="color:#fff;display:inline;margin-left:600px;font-size:150%;font-family:BentonSans;">About</a>
+<a href="/team" style="color:#fff;display:inline;margin-left:50px;font-size:150%;font-family:BentonSans;">Team</a>
+<a href = "/blogs" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Blog</a>
+<a style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">|</a>
+<a href = "/signin#signin" style="color:#fff;display:inline;font-size:150%;margin-left:50px;font-family:BentonSans;">Log in</a>
+</ul>
+</div>
+<div style="height:390px;background-color:#99cc88;padding-top:1px">
 
-<div class="container ">
-
-<% flash.each do |key, value| %>
-<%= content_tag(:div, value, :class => "flash #{key}") %>
-<% end %>
+<p class = "motto">Bringing the 3-tions together.</p>
+<p class = "motto_desc">Communication. Collaboration. Information.</p>
+<p id = "motto_signup_button"><a href="/signup#signup">Sign up</a></p>
 </div>
 
-</div>
+	<table style="margin-top:10%;margin-bottom:10%;margin-left:15%;margin-right:15%;width:75%;">
+		<tr>
+		<td style="width:50%;">
+		<div>
+		<div style="font-family:BentoSans;font-size:2.8em;line-height:1.5em;color:#444;">Enriching the mailing Lists</div>
+		<div style="font-family:BentoSans;font-size:2.0em;line-height:1.2em;color:#888;margin-top:20px">
+		<p>Experience the new avatar of mailing list phenomenon. Use features that are just awesome. Bring in sources like Wikipedia, Stackoverflow to embed information in the mailing list. Get instant updates on your email. Invite members instantly from the platform.</p>
+		</div>
+		<br>
+		</div></td>
+		
+		<td><div style="padding-left:10%;"><img src = "http://businessgross.com/wp-content/uploads/2013/01/email-list-building.jpg"><br></div></td>
+		
+		</tr>
+		
+		<tr>
+			
+		<td><br><br><div style="padding-right:10%;"><%= image_tag("sci_main.png", :alt => "sci") %></div></td>
+		<td style="width:50%;">
+		<br>
+		<br>
+		<div>
+		<div style="font-family:BentoSans;font-size:2.8em;line-height:1.5em;color:#444;">Amazing Waps !!!</div>
+		<div style="font-family:BentoSans;font-size:2.0em;line-height:1.2em;color:#888;margin-top:20px">
+		<p>Waps are the important gadgets attched on the right panel. With sources like Wikipedia, Stackoverflow and respective community documentations, it powers the community greatly. </p>
+		</div>
+		</div></td>
+		
+		</tr>
+	</table>
+	
+<a name = "signup">
+</div style="margin-top:100px;">
 <%= render 'form' %>
-
- 
+</div>
+ </a>
 </body>
