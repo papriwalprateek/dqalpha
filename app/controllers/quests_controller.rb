@@ -28,7 +28,10 @@ class QuestsController < ApplicationController
     @qs = @quest.qs
     if params[:search]     
       @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
+      begin
       @scilab_results = scilab_help(params[:search])
+      rescue
+      end
     end 
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
