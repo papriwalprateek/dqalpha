@@ -1281,3 +1281,7 @@ box-shadow: 0 0 5px #9ecaed;
 	right: 0;
 	clip: rect(-6px,22px,14px,10px);
 }  
+a.result_snippet_toggle{
+	color: #C3DD82;
+	float: right;
+}

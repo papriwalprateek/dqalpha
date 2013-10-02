@@ -36,7 +36,7 @@
 			
 				<%if result_qmail%>
 				
-				<div style = "margin-left:8px;font-size:14px;">
+				<div style = "margin-left:8px;font-size:14px;" class = "example">
 					<%=raw result_qmail.content%>
 					
 				</div>
@@ -79,6 +79,7 @@
         window.history.pushState(null, document.title,"#");
  
   });
+   $('.example').truncate({max_length: 24});
 });
 
 </script> 
