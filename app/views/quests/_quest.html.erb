@@ -26,6 +26,9 @@ data: { i_id: <%=i%>}
 <button style="margin-top:30px;" class="join_quest" onclick ="join_quest()">Join Quest</button>
 <%end%>
 </div>
+<div>
+<button style="margin-top:30px;" class="join_quest" onclick ="show_search_page()">DQ it!!!</button>
+</div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
@@ -41,14 +44,12 @@ data: { i_id: <%=i%>}
 </div>
 </div>  
 <div class="quests_show">
-<%= form_tag({ :action => "show"}, :method => "get", :remote => true) do %>
-  <%= text_field_tag(:search, params[:search]) %>
-<% end %>
-<%= render "quests/listq"%>
+	<%= form_tag({ :action => "show"}, :method => "get", :remote => true) do %>
+	  <%= text_field_tag(:search, params[:search]) %>
+	<% end %>
+	<%= render "quests/listq"%>
 </div>
-
 </div>
-
 <script>
 function join_quest(){
     $.ajax({
@@ -57,6 +58,11 @@ url: "/join_quest",
 data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
 });
 
+}
+function show_search_page(){
+ $('div.quests_show').hide();
+ $('div.quest_search_page').show();
+ 
 }
 
 </script> 

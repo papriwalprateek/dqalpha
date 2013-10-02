@@ -5,6 +5,18 @@
 <%end%>
 <br>
 <%if @documents%>
+<%if @scilab_results%>
+			<p style="margin-top:30px;margin-bottom:5px;color:#666;font-size: 14px;"><b>Scilab help</b></p>
+			<hr>
+			<%begin%>
+				<%=raw@callseq%>
+				<%=raw@refsec%>
+			<%rescue%>
+			<%end%>
+			<hr>
+		<%end%>
+<p style="margin-top:30px;margin-bottom:5px;color:#666;font-size: 14px;"><b>Mailing List</b></p>
+			<hr>
 	<%@documents.each do |d|%>
 		<%@d=d.searchable%>
 		<%if d.searchable_type=="Qmail"%>
@@ -22,16 +34,24 @@
 				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.3em;font-family:BentonSans;"><%=result_q.title%></b></h2>
 			</div>
 			<div>
-				<div style = "margin-left:8px;font-size:14px;"><%=raw result_qmail.content%>
+				<%if result_qmail%>
+				
+				<div style = "margin-left:8px;font-size:14px;">
+					<%=raw truncate(result_qmail.content, length: 50)%>
+					
 				</div>
 			<div style="width:100%;">
 				<div style="float:right;margin-right:5%;margin-bottom:10px;">
 					<p class = "post_user">posted <%=result_qmail.created_at.strftime("%b, %d")%> by <%=result_qmail.user.name%></p>
 				</div>
 			</div>
+			<%end%>
 		</a>
 		<hr>
+		
+
 	<%end%>
+	
 <%elsif @qs%>
 
 <% @qs.order('created_at DESC').each do |q| %>

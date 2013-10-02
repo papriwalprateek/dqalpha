@@ -6,15 +6,17 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
  
- respond_to :html, :json, :js
+ respond_to :html, :json, :js, :rdf
  def index
     @users = User.search(params[:search])
     @quests = Quest.all
     @q = Q.where(:title => "Add a Q")
+    @us = @users.first
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
       format.xml  { render :xml => @users }
+      format.rdf 
       format.js # index.js.erb
     end
   end
