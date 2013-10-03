@@ -1,10 +1,18 @@
 <%= form_tag({ :action => "search"}, :method => "get", :remote => true) do %>
 	  <%= text_field_tag(:search, params[:search]) %>
-	<% end %>
+  <%= submit_tag(">",:id=> "submitbar") %>
+  	<% end %>
+  	<hr>
+<div class="vm_tray">
+<span class="vm_icon1" id="mailing_list" style="width:10%">Mailing List</span>
+<span class="vm_icon1" id="documentation"style="width:10%">Documentation</span>
+<span class="vm_icon1" id="stack_overflow"style="width:10%">Stack Overflow</span>
+<span class="vm_icon1" id="scilab_help"style="width:10%">Scilab Help</span>
+<span class="vm_icon1" id="wikipedia"style="width:10%">Wikipedia</span>
+</div>
 <%if @documents%>
 		<%if @scilab_results%>
-		<div class="vm_results">
-			<p style="padding:2px;margin-bottom:5px;color:#666;font-size: 1.4em;background-color: #EDEDED;"><b>Scilab help</b></p>
+		<div class="vm_results" id ="scilab_help">
 			
 			<%begin%>
 				<%=raw@callseq%>
@@ -14,8 +22,7 @@
 			<hr>
 		</div>
 		<%end%>
-		<div class="vm_results">
-		<p style="padding:2px;margin-bottom:5px;color:#666;font-size: 1.4em;background-color: #EDEDED"><b>Mailing List</b></p>
+		<div class="vm_results" id="mailing_list">
 			
 	<%@documents.each do |d|%>
 		<%@d=d.searchable%>
@@ -52,10 +59,25 @@
 	<%end%>
 	
 </div>
+
 <%end%>
+<div id="stack_overflow" class="vm_results">
+No results found	</div>
+<div id="documentation" class="vm_results">
+No results found</div>
+<div id="wikipedia" class="vm_results">
+No results found</div>
 <script>$(function() {
  
    $('.example').truncate({max_length: 24});
-});
+$('span.vm_icon1').click(function(){
+	$('div.vm_results').hide();
+	$('div#'+$(this).attr("id")).show();
+	$('span.vm_icon1').css('border-top', '0px');
+	$('span.vm_icon1').css('color', '#777');
+	$(this).css('border-top', '3px solid navy');
+	$(this).css('color', 'navy');
 
+});
+});
 </script> 

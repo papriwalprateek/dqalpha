@@ -38,11 +38,9 @@ cursor:pointer;
 #content img{ margin-bottom: 0px;
 }
 #content { background:#FFFFFF;
-	 width: 65%;  float: left; height:100%; overflow-y:auto;
+	 width: 65%;  float: left; height:100%; overflow-y:auto;margin-top:4%;
 }
-#content_outer { background:#FFFFFF;
-	 width: 96%;  float: left; height:100%; overflow-y:auto;margin-top:4%;
-}
+
 .content_middle{
 	background: #FFFFFF;
 font-family: sans-serif;
@@ -161,23 +159,21 @@ opacity:0.8;
 .quests_show{
 	display:inline-block;
 	width:75%;
-	float:right;
-		margin-top:10px;
+	margin-top:10px;
 }
 .quest_search_page{
 	display:inline-block;
-	width:75%;
-	float:right;
-		margin-top:10px;
+	width:85%;
+	margin-top:10px;
 }
 .vm_results{
-	display:inline-block;
-	width:50%;
+	display:none;
+	width:65%;
 	float:left;
-	border: 1px solid #DDDDDD;
 	padding: 2px;
 	margin-top: 10px;
 }
+.vm_tray{margin-top: 0px;}
 .user_image{
 	padding:5px;
 	border:1px solid;
@@ -334,7 +330,8 @@ box-shadow: 0 0 5px 0px #888;
 float: right;
 width: 35%;
 margin-right: 10px;
-margin-left:64%;
+margin-left:66%;
+margin-top:70px;
 height:85%;
 overflow:scroll;
 box-shadow: 0 3px 4px 0px #ccc;
@@ -887,6 +884,16 @@ font-family:BentoSans;
 color:#666;
 font-size:1.4em;
 }
+.vm_icon1{
+display:inline-block;
+cursor:pointer;
+font-family: arial sans-serif;
+color:#777;
+font-size:1.4em;
+}
+.vm_icon1:hover{
+border-bottom: 3px solid #DDDDDD;
+}
 .qmail_submit {
 margin-top:10px;
 -moz-box-shadow:inset 0px 1px 0px 0px #d2f0b7;
@@ -1229,17 +1236,33 @@ pre .chunk {
   color: #aaa
 }
 input#search{
+background:#f8f8f8;
 font-size: 1.8em;
 color: #CCC;
+border:none;
+margin-bottom: 15px;
 width: 400px;
+padding:8px 60px 8px 15px;
 margin-top: 3px;
+webkit-box-shadow:inset 0 2px 2px rgba(0,0,0,0.15);
+box-shadow:inset 0 2px 2px rgba(0,0,0,0.15);
+
 }
 input#search:focus{
 font-size: 1.8em;
 width: 400px;
 color: #CCC;
-border: solid 1px #9ecaed;
-box-shadow: 0 0 5px #9ecaed;
+webkit-box-shadow:inset 0 2px 2px #9ecaed;
+box-shadow:inset 0 2px 2px #9ecaed;
+}
+input#submitbar{
+font-size: 1.8em;
+width: 50px;
+margin-top:2px;
+height:43px;
+background-color:royalblue;
+font-size:2em;
+color:#fff;    
 }
 .purr {
   position: fixed;
@@ -1300,7 +1323,16 @@ a.result_snippet_toggle{
 	color: #C3DD82;
 	float: right;
 }
-#link_3:hover{
-	color: #000080;
-	border-top:3px solid navy;
+button.left_nav_buttons{
+background-color:#FFFFFF;
+border:0px solid #666;
+display:inline-block;
+color:#777;
+font-family:arial;
+font-size:17px;
+padding:5px 0px;
+text-decoration:none;
+text-shadow:0px 1px #D4ED95;
+cursor:pointer;
+margin-top: 20px;
 }

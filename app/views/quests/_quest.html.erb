@@ -4,6 +4,10 @@
 <h2>
 <%=@quest.title%>
  </h2>
+<div>
+<button class="left_nav_buttons" id="left_nav_search"onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" style="color:crimson"id="left_nav_discussion"onclick ="show_mailing_page()">Discussion Forum</button>
+</div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
 </br>
@@ -25,11 +29,6 @@ data: { i_id: <%=i%>}
 <%else%>
 <button style="margin-top:30px;" class="join_quest" onclick ="join_quest()">Join Quest</button>
 <%end%>
-</div>
-<div>
-<button style="margin-top:30px;" class="join_quest" onclick ="show_search_page()">Search</button>
-<button style="margin-top:30px;" class="join_quest" onclick ="show_mailing_page()">Discussion Forum</button>
-
 </div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
@@ -67,14 +66,15 @@ data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user
 }
 function show_search_page(){
  $('div.quests_show').hide();
- $('div#rightcontent').hide();
+ hide_rightcontent();
  $('div.quest_search_page').show();
- $('div#content').css("width", "100%");
-}
+ $('button.left_nav_buttons').css("color","#777");
+ $('button#left_nav_search').css("color", "crimson");
+ }
 function show_mailing_page(){
  $('div.quest_search_page').hide();
- $('div#content').css("width", "65%");
  $('div.quests_show').show();
- $('div#rightcontent').show();
-}
+ $('button.left_nav_buttons').css("color","#777");
+ $('button#left_nav_discussion').css("color", "crimson");
+ }
 </script> 

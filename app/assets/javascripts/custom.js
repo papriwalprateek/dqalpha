@@ -1,5 +1,6 @@
 $(function() {	
 //youtube like progress bar
+hide_rightcontent();
 $(document).ajaxStart(function() {
     //only add progress bar if added yet.
     if ($("#progress").length === 0) {
@@ -182,4 +183,18 @@ CKEDITOR.instances.qmail_content_edit.setData($(content).html());
 $('button.edit_qmail').hide();
 $(content).hide();
 $(editable).append('<a href='+form_url+' class="live_link">Cancel</a>');
+}
+function show_rightcontent(){
+ $('div#rightcontent').show();
+ $('div#content').css("width", "65%");	
+ $('div.dashboard_right').css("width", "20%");	
+}
+function hide_rightcontent(){
+ $('div#rightcontent').hide();
+ $('div#content').css("width", "100%");	
+ $('div.dashboard_right').css("width", "13%");	
+}
+function toggle_rightcontent(){
+	if($('div#rightcontent').css('display')=="none") show_rightcontent();
+	else hide_rightcontent();
 }
