@@ -27,7 +27,9 @@ data: { i_id: <%=i%>}
 <%end%>
 </div>
 <div>
-<button style="margin-top:30px;" class="join_quest" onclick ="show_search_page()">DQ it!!!</button>
+<button style="margin-top:30px;" class="join_quest" onclick ="show_search_page()">Search</button>
+<button style="margin-top:30px;" class="join_quest" onclick ="show_mailing_page()">Discussion Forum</button>
+
 </div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
@@ -43,11 +45,15 @@ data: { i_id: <%=i%>}
 <% end %>
 </div>
 </div>  
+<div class= "dashboard_content_area">
 <div class="quests_show">
-	<%= form_tag({ :action => "show"}, :method => "get", :remote => true) do %>
-	  <%= text_field_tag(:search, params[:search]) %>
-	<% end %>
 	<%= render "quests/listq"%>
+</div>
+  
+<div class="quest_search_page" style="display:none;">
+	
+	<%= render "quests/search_page"%>
+</div>
 </div>
 </div>
 <script>
@@ -61,8 +67,14 @@ data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user
 }
 function show_search_page(){
  $('div.quests_show').hide();
+ $('div#rightcontent').hide();
  $('div.quest_search_page').show();
- 
+ $('div#content').css("width", "100%");
 }
-
+function show_mailing_page(){
+ $('div.quest_search_page').hide();
+ $('div#content').css("width", "65%");
+ $('div.quests_show').show();
+ $('div#rightcontent').show();
+}
 </script> 

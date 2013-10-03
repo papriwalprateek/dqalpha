@@ -57,5 +57,22 @@ class QuestsController < ApplicationController
   end
 
   end
+ def search
+    @quest = Quest.find(params[:id])
+    @qs = @quest.qs
+    if params[:search]     
+      @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
+      begin
+      @scilab_results = scilab_help(params[:search])
+      rescue
+      end
+    end 
 
+     respond_to do |format|
+   
+      #format.html {render "_quest" }# show.html.erb
+      #format.json { render :json => @quest }
+      format.js
+    end
+  end
 end
