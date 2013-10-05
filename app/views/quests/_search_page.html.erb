@@ -17,22 +17,23 @@
 		<div class="vm_results" id ="description">
 			
 			<%begin%>
-				<%=raw@description%>
-			<%rescue%>
+				<%@description.each do |t|%>
+				<%=raw t%>
+				<%end%>
 			<%end%>
 			<hr>
 		</div>
 		
 		<div id="related" class="vm_results">
 			<%begin%>
-			<%=raw@relatedfunc%>				
+			<%=raw@relatedfunc[0]%>				
 			<%rescue%>
 			<%end%>
 		</div>
 		<div class="vm_results" id ="examples">
 			
 			<%begin%>
-					<%=raw@example%>
+					<%=raw@example[0]%>
 			<%rescue%>
 			<%end%>
 			<hr>
