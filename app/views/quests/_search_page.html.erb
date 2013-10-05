@@ -4,19 +4,35 @@
   	<% end %>
   	<hr>
 <div class="vm_tray">
+<span class="vm_icon1" id="description"style="width:10%">Description</span>
+<span class="vm_icon1" id="examples"style="width:10%">Examples</span>
 <span class="vm_icon1" id="mailing_list" style="width:10%">Mailing List</span>
-<span class="vm_icon1" id="documentation"style="width:10%">Documentation</span>
-<span class="vm_icon1" id="stack_overflow"style="width:10%">Stack Overflow</span>
-<span class="vm_icon1" id="scilab_help"style="width:10%">Scilab Help</span>
-<span class="vm_icon1" id="wikipedia"style="width:10%">Wikipedia</span>
+<span class="vm_icon1" id="qna"style="width:10%">QnA</span>
+<span class="vm_icon1" id="bugs"style="width:10%">Bugs</span>
+<span class="vm_icon1" id="related"style="width:10%">Related Functions</span>
+
 </div>
 <%if @documents%>
 		<%if @scilab_results%>
-		<div class="vm_results" id ="scilab_help">
+		<div class="vm_results" id ="description">
 			
 			<%begin%>
-				<%=raw@callseq%>
-				<%=raw@refsec%>
+				<%=raw@description%>%>
+			<%rescue%>
+			<%end%>
+			<hr>
+		</div>
+		
+		<div id="related" class="vm_results">
+			<%begin%>
+			<%=raw@relatedfunc%>				
+			<%rescue%>
+			<%end%>
+		</div>
+		<div class="vm_results" id ="examples">
+			
+			<%begin%>
+					<%=raw@example%>
 			<%rescue%>
 			<%end%>
 			<hr>
@@ -61,12 +77,11 @@
 </div>
 
 <%end%>
-<div id="stack_overflow" class="vm_results">
+<div id="qna" class="vm_results">
 No results found	</div>
-<div id="documentation" class="vm_results">
+<div id="bugs" class="vm_results">
 No results found</div>
-<div id="wikipedia" class="vm_results">
-No results found</div>
+
 <script>$(function() {
  
    $('.example').truncate({max_length: 24});

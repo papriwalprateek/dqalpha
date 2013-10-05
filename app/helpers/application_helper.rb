@@ -217,13 +217,38 @@ def scilab_help(a)
    
    @doc = Nokogiri::HTML(open("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html"))
 
+   @description = []
+   @example = [] 
+   @relatedfunc = []
+   
    @title = @doc.css("div.refnamediv")
    @callseq = @doc.css("div.refsynopsisdiv")
+    
    @refsec = @doc.css("div.refsection")
-  @refsec.xpath('//a[@href]').each do |l|
-  l.attributes["href"].value = "/scilab/"+l.attributes["href"].value
-  end
-end
+   @refsec.each do |t|
+        if t.css("h3").text == "Description"
+            @description << t
+        end
+   end
+   @description << @callseq
+   @refsec.each do |t|
+        if t.css("h3").text == "Arguments"
+            @description << t
+        end
+   end
+
+   @refsec.each do |t|
+        if t.css("h3").text == "Examples"
+            @example << t
+        end
+   end
+
+   @refsec.each do |t|
+        if t.css("h3").text == "See Also"
+            @relatedfunc << t
+        end
+   end
+ end
  def bugzilla_help(a)
    require "nokogiri"
    require "open-uri"
