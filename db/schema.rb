@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823063636) do
+ActiveRecord::Schema.define(:version => 20131006165059) do
 
   create_table "gists", :force => true do |t|
     t.string   "title"
@@ -25,20 +25,6 @@ ActiveRecord::Schema.define(:version => 20130823063636) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.integer  "quest_id"
-  end
-
-  create_table "lifespans", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "email"
-    t.string   "password"
-  end
-
-  create_table "links", :force => true do |t|
-    t.string   "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.integer  "quest_id"
   end
 
@@ -68,28 +54,9 @@ ActiveRecord::Schema.define(:version => 20130823063636) do
 
   add_index "messages", ["received_messageable_id", "sender_id"], :name => "inbox_idx"
 
-  create_table "microposts", :force => true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "mies", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "notifications", :force => true do |t|
-    t.text     "content"
-    t.boolean  "has_read"
-    t.integer  "sender_id"
-    t.string   "url"
-    t.string   "of_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-    t.integer  "qmail_id"
   end
 
   create_table "options", :force => true do |t|
@@ -106,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20130823063636) do
     t.string   "searchable_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "quest_id"
   end
 
   create_table "polls", :force => true do |t|
@@ -119,8 +85,9 @@ ActiveRecord::Schema.define(:version => 20130823063636) do
     t.string   "name"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "userid"
     t.integer  "user_id"
   end
 
@@ -166,12 +133,13 @@ ActiveRecord::Schema.define(:version => 20130823063636) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.boolean  "verified"
     t.string   "perishable_token",  :default => "", :null => false
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 
 end

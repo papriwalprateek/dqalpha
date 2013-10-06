@@ -227,6 +227,7 @@ def scilab_help(a)
    @refsec = @doc.css("div.refsection")
    @refsec.each do |t|
         if t.css("h3").text == "Description"
+			t.css("h3").remove
             @description << t
         end
    end
@@ -239,12 +240,14 @@ def scilab_help(a)
 
    @refsec.each do |t|
         if t.css("h3").text == "Examples"
+			t.css("h3").remove
             @example << t
         end
    end
 
    @refsec.each do |t|
         if t.css("h3").text == "See Also"
+			t.css("h3").remove
             @relatedfunc << t
         end
    end
