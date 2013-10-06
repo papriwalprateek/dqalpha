@@ -9,6 +9,8 @@ gem 'rails', '3.2.6'
 #group :production do
 #  gem 'pg'
 #end
+gem 'therubyracer'
+gem 'execjs'
 gem 'redcarpet'
 gem 'albino'
 gem 'best_in_place'
