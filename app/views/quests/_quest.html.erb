@@ -5,8 +5,8 @@
 <%=@quest.title%>
  </h2>
 <div>
-<button class="left_nav_buttons" id="left_nav_search"onclick ="show_search_page()">Search</button>
-<button class="left_nav_buttons" style="color:crimson"id="left_nav_discussion"onclick ="show_mailing_page()">Discussion Forum</button>
+<button class="left_nav_buttons" style="color:crimson" id="left_nav_search" onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" id="left_nav_discussion"onclick ="show_mailing_page()">Discussion Forum</button>
 </div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
@@ -45,11 +45,11 @@ data: { i_id: <%=i%>}
 </div>
 </div>  
 <div class= "dashboard_content_area">
-<div class="quests_show">
+<div class="quests_show" style="display:none;">
 	<%= render "quests/listq"%>
 </div>
   
-<div class="quest_search_page" style="display:none;">
+<div class="quest_search_page" >
 	
 	<%= render "quests/search_page"%>
 </div>

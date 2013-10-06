@@ -2,14 +2,14 @@
 	  <%= text_field_tag(:search, params[:search]) %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
-  	<hr>
 <div class="vm_tray">
-<span class="vm_icon1" id="description"style="width:10%">Description</span>
-<span class="vm_icon1" id="examples"style="width:10%">Examples</span>
-<span class="vm_icon1" id="mailing_list" style="width:10%">Mailing List</span>
-<span class="vm_icon1" id="qna"style="width:10%">QnA</span>
-<span class="vm_icon1" id="bugs"style="width:10%">Bugs</span>
-<span class="vm_icon1" id="related"style="width:10%">Related Functions</span>
+<span class="vm_icon1" id="description">Description</span>
+<span class="vm_icon1" id="examples">Examples</span>
+<span class="vm_icon1" id="mailing_list" >Mailing List</span>
+<span class="vm_icon1" id="qna">QnA</span>
+<span class="vm_icon1" id="bugs">Bugs</span>
+<span class="vm_icon1" id="related">Related Functions</span>
+<hr style = "width:75%;">
 
 </div>
 <%if @documents%>
@@ -18,7 +18,7 @@
 			
 			<%begin%>
 				<%@description.each do |t|%>
-				<%=raw t%>
+				<div id = "searchresults"><%=raw t%></div>
 				<%end%>
 			<%end%>
 			<hr>
@@ -26,14 +26,19 @@
 		
 		<div id="related" class="vm_results">
 			<%begin%>
-			<%=raw@relatedfunc[0]%>				
+			
+			<div id = "searchresults"><%=raw@relatedfunc[0]%></div>				
 			<%rescue%>
 			<%end%>
 		</div>
 		<div class="vm_results" id ="examples">
 			
 			<%begin%>
-					<%=raw@example[0]%>
+					<%@example[0].css("div.programlisting").each do |l|%>
+					<div style="float:right;background-color:#ccc;padding:5px;margin-bottom:2px;cursor:pointer;"><a  href="http://cloud.scilab.in" target="_blank">Copy & Run in Cloud</a></div>
+					<div id = "searchresults"><%=raw l%></div>
+					<br>
+					<%end%>
 			<%rescue%>
 			<%end%>
 			<hr>
@@ -54,32 +59,33 @@
 		
 		<%end%>
 		<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+url%>>
+			<div  id="mailresults">
 			<div>
-				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.3em;font-family:BentonSans;"><%=result_q.title%></b></h2>
+				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.2em;font-family:BentonSans;"><%=result_q.title%></h2>
 			</div>
 			
 				<%if result_qmail%>
 				
-				<div style = "margin-left:8px;font-size:14px;" class = "example">
-					<%=raw result_qmail.content%>
-					
-				</div>
 			<div style="width:100%;">
-				<div style="float:right;margin-right:5%;margin-bottom:10px;">
-					<p class = "post_user">posted <%=result_qmail.created_at.strftime("%b, %d")%> by <%=result_qmail.user.name%></p>
+				<div style="float:right;margin-bottom:20px;">
+					<div class = "post_user" style="font-family:BentoSans;margin-right:3%;">posted on <%=result_qmail.created_at.strftime("%b, %d")%> by <%=result_qmail.user.name%></div>
 				</div>
 			</div>
+			<br>
 			<%end%>
+			</div>
 		</a>
-		<hr>
 		
 	<%end%>
 	
 </div>
 
 <%end%>
+
 <div id="qna" class="vm_results">
-No results found	</div>
+No results found	
+</div>
+
 <div id="bugs" class="vm_results">
 No results found</div>
 
@@ -89,9 +95,9 @@ No results found</div>
 $('span.vm_icon1').click(function(){
 	$('div.vm_results').hide();
 	$('div#'+$(this).attr("id")).show();
-	$('span.vm_icon1').css('border-top', '0px');
+	$('span.vm_icon1').css('border-bottom', '0px');
 	$('span.vm_icon1').css('color', '#777');
-	$(this).css('border-top', '3px solid navy');
+	$(this).css('border-bottom', '3px solid navy');
 	$(this).css('color', 'navy');
 
 });
