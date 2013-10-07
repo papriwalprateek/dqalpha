@@ -83,11 +83,42 @@
 <%end%>
 
 <div id="qna" class="vm_results">
-No results found	
+	<%if @so_results%>
+		<%begin%>
+			<br>
+		<%j=0%>
+		<%while j < @reco.length%>
+			<br>	
+			<hr>		
+			<br>
+		<h3><%=raw@reco[j]%></h3>	
+		<h4><%=raw@reco_desc[j]%></h4>
+		<%j=j+1%>
+		<%end%>	
+		<%rescue%>
+		<%end%>	
+	<%end%>	
 </div>
 
 <div id="bugs" class="vm_results">
-No results found</div>
+	<%if @bugzilla_results%>
+	
+	<%begin%>
+	<br>
+	<%j = 0%>
+		<%while j < @shortdesc.length%>
+		<%=raw@shortdesc[j]%>
+		<%=raw@component[j]%>
+		<%=raw@datemodified[j]%>
+		<%=raw@bz_links[j]%>
+		<br>
+		<br>
+		<%j = j + 1%>
+		<%end%>
+	<%rescue%>
+	<%end%>
+	<%end%>
+</div>
 
 <script>$(function() {
  

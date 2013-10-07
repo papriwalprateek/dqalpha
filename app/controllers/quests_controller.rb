@@ -66,6 +66,14 @@ class QuestsController < ApplicationController
       @scilab_results = scilab_help(params[:search])
       rescue
       end
+      begin
+      @so_results = so_search(params[:search])
+      rescue
+      end
+      begin
+      @bugzilla_results = bugzilla_search(params[:search])
+      rescue
+      end
     end 
 
      respond_to do |format|
