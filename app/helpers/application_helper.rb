@@ -281,7 +281,7 @@ def bugzilla_search(a)
    @doc = Nokogiri::HTML(open("http://bugzilla.scilab.org/buglist.cgi?quicksearch="+a+"&order=resolution"))
    @shortdesc = @doc.css("td.bz_short_desc_column")
    @component = @doc.css("td.bz_component_column")
-   @datemodified = @doc.css("td.bz_changedate_column")
+   @datemodified = @doc.css("td.bz_changeddate_column")
    @bz_links = @shortdesc.css('a').map {|link| link["href"]}
 end
 def link_to_add_fields(name, f, association)
