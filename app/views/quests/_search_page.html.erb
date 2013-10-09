@@ -106,15 +106,19 @@
 	<%begin%>
 	<br>
 	<%j = 0%>
+		<table>
+		<tr><td style = "font-family:BentoSans;font-size:1.2em;">Component</td>
+		<td style = "font-family:BentoSans;font-size:1.2em;">Issue</td>
+		<td style = "font-family:BentoSans;font-size:1.2em;">Modified Date</td>
+		</tr>
 		<%while j < @shortdesc.length%>
-		<%=raw@shortdesc[j]%>
-		<%=raw@component[j]%>
-		<%=raw@datemodified[j]%>
-		<%=raw@bz_links[j]%>
-		<br>
-		<br>
+		<tr>
+		<div style="font-family:BentoSans;font-size:1em;"><%=raw@component[j]%></div>
+		<div style="font-family:BentoSans;font-size:1em;"><%=raw@shortdesc[j]%></div>
+		<div style="font-family:BentoSans;font-size:1em;"><%=raw@datemodified[j]%></div>
 		<%j = j + 1%>
 		<%end%>
+		</table>
 	<%rescue%>
 	<%end%>
 	<%end%>
