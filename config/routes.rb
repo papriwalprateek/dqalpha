@@ -29,6 +29,7 @@ Blog::Application.routes.draw do
   match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
   match 'qs/:id/qmails/:id/update' => 'qmails#update', :via => [:get, :post]
   match '/quests/:id/search' => 'quests#search', :via => [:get, :post]
+  match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
 
   resources :users do
     resources :quests

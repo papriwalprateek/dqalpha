@@ -60,25 +60,22 @@ class QuestsController < ApplicationController
  def search
     @quest = Quest.find(params[:id])
     @qs = @quest.qs
+    @arr=[]
     if params[:search]     
+     @query = params[:search]
       @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
-      begin
-      @scilab_results = scilab_help(params[:search])
-      rescue
-      end
-      begin
-      @so_results = so_search(params[:search])
-      rescue
-      end
-      begin
-      @bugzilla_results = bugzilla_search(params[:search])
-      rescue
-      end
+      @arr<<"mailing_list"
+      @scilab_results = "aa"
+      @bugzilla_results = "as"
+      @so_results = "sd"
+      @quest.vms.each do |vm|
+        send(vm.name,@query)
+      end      
     end 
 
      respond_to do |format|
    
-      #format.html {render "_quest" }# show.html.erb
+      format.html {render "_quest" }# show.html.erb
       #format.json { render :json => @quest }
       format.js
     end

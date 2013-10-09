@@ -4,4 +4,5 @@ class Quest < ActiveRecord::Base
   has_many :qs, :dependent => :destroy
   has_many :links
   has_many :users, :through => :involvements, :uniq => true 
+  has_and_belongs_to_many :vms
 end

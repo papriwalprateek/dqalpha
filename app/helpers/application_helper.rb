@@ -219,6 +219,8 @@ def so_search(a)
     @reco = @doc.css("div.result-link")
     @reco_desc = @doc.css("div.excerpt")
     @links = @reco.css('a').map {|link| link["href"]}
+    @arr<<"qna"
+      
 end
 def scilab_help(a)
    require "nokogiri"
@@ -230,7 +232,7 @@ def scilab_help(a)
    @example = [] 
    @relatedfunc = []
    
-   @title = @doc.css("div.refnamediv")
+   @scilab_title = @doc.css("div.refnamediv")
    @callseq = @doc.css("div.refsynopsisdiv")
     
    @refsec = @doc.css("div.refsection")
@@ -260,6 +262,9 @@ def scilab_help(a)
             @relatedfunc << t
         end
    end
+       @arr<<"description"
+        @arr<<"examples"
+        @arr<<"related"
  end
  def bugzilla_help(a)
    require "nokogiri"
@@ -283,6 +288,8 @@ def bugzilla_search(a)
    @component = @doc.css("td.bz_component_column")
    @datemodified = @doc.css("td.bz_changedate_column")
    @bz_links = @shortdesc.css('a').map {|link| link["href"]}
+   @arr<<"bugs"
+      
 end
 def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
