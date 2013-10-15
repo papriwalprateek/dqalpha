@@ -7,6 +7,8 @@
 	rake db:migrate
 	```
 * rake pg_search:multisearch:rebuild[Qmail]
+* For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
+  and set https_proxy=proxy:port
 
 
 ## Virtual Member(VM)
