@@ -66,12 +66,13 @@ class QuestsController < ApplicationController
       @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
       @arr<<"mailing_list"
       @quest.vms.each do |vm|
+      #vm = @quest.vms.last
         begin
          send(vm.name,@query)
         rescue
         end
-      end      
-      @scilab_results = @arr.include?("description")
+      end 
+     @scilab_results = @arr.include?("description")
       @bugzilla_results = @arr.include?("bugs")
       @so_results = @arr.include?("qna")     
     end 

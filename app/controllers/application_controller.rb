@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-helper_method :current_user
+helper_method :current_user,:open_html
 include ApplicationHelper
   
   
@@ -10,7 +10,17 @@ include ApplicationHelper
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
   end
-  
+   def open_html(str)
+   require 'rubygems'
+   require 'open-uri'
+   require 'nokogiri'
+   
+   if Rails.env.development?
+    return  Nokogiri::HTML(open(str,:proxy=>"http://10.10.78.22:3128"))
+   else
+     return Nokogiri::HTML(open(str))      
+   end
+ end  
   
   def current_user
     return @current_user if defined?(@current_user)
@@ -52,4 +62,5 @@ include ApplicationHelper
   def clear_return_to
     session[:return_to] = nil
   end
+  
 end

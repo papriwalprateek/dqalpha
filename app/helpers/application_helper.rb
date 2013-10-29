@@ -102,7 +102,7 @@ def wiki_content(a)
   print "This is disambiguation case"
     @name = a
     a = a.to_s.gsub ' ', '_'
-    @docdis = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+    @docdis = open_html("http://en.wikipedia.org/wiki/"+a)
     y = @docdis.css("table#disambigbox")
     y.remove
     @content = @docdis.css('div.mw-content-ltr')
@@ -114,7 +114,7 @@ def wiki_content(a)
     if redirect == 'REDIRECT'
   print "This is redirect case"
     a = a.to_s.gsub ' ', '_'
-    @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+    @doc = open_html("http://en.wikipedia.org/wiki/"+a)
   end
   
     x = @doc.css("span.editsection")
@@ -175,7 +175,7 @@ end
       @stringurl = "nothing_here"
     end 
     if @stringurl !="nothing_here"
-    @doc1 = Nokogiri::HTML(open(@stringurl))
+    @doc1 = open_html(@stringurl)
     introimage = @doc1.css('div.fullImageLink > a')[0]['href']
     @introimage = introimage
     end
@@ -191,10 +191,11 @@ def so_content(a)
    StackExchange::StackOverflow::Client.config do |options|
       options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
    end   
-   a = a.to_s
-   a = a.split("stackoverflow.com/questions/")
-   a = a[1].to_i
-    
+   if(!a.is_a?(Integer))  #since our so_content method can be passed both question id or link
+    a = a.to_s
+    a = a.split("stackoverflow.com/questions/")
+    a = a[1].to_i
+   end
    @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
 # something like below can be done if we can get a nokogiri instance of this @doc
 #    @doc.xpath('//a[@href]').each do |l|
@@ -211,10 +212,8 @@ def so_content(a)
    end
 end
 def so_search(a)   
-    require "nokogiri"
-    require "open-uri"
     a = a.gsub(" ","+")
-    @doc = Nokogiri::HTML(open("http://www.stackoverflow.com/search?q=[scilab]+"+a))
+    @doc = open_html("http://www.stackoverflow.com/search?q=[scilab]+"+a)
 
     @reco = @doc.css("div.result-link")
     @reco_desc = @doc.css("div.excerpt")
@@ -223,10 +222,8 @@ def so_search(a)
       
 end
 def scilab_help(a)
-   require "nokogiri"
-   require "open-uri"
    
-   @doc = Nokogiri::HTML(open("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html"))
+   @doc = open_html("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html")
 
    @description = []
    @example = [] 
@@ -267,10 +264,9 @@ def scilab_help(a)
         @arr<<"related"
  end
  def bugzilla_help(a)
-   require "nokogiri"
-   require "open-uri"
+
    
-   @doc = Nokogiri::HTML(open(a))
+   @doc = open_html(a)
    
    @ques = @doc.css("td.field_label")[1].parent.child.next.next.text
    @desc = @doc.css("pre")[0]
@@ -279,11 +275,10 @@ def scilab_help(a)
    
 end
 def bugzilla_search(a)
-  require "nokogiri"
-   require "open-uri"
+  
    a = a.gsub(" ","+")
   
-   @doc = Nokogiri::HTML(open("http://bugzilla.scilab.org/buglist.cgi?quicksearch="+a+"&order=resolution"))
+   @doc = open_html("http://bugzilla.scilab.org/buglist.cgi?quicksearch="+a+"&order=resolution")
    @shortdesc = @doc.css("td.bz_short_desc_column")
    @component = @doc.css("td.bz_component_column")
    @datemodified = @doc.css("td.bz_changeddate_column")
@@ -301,13 +296,10 @@ def link_to_add_fields(name, f, association)
   end 
 end
 def scilab_extract_it(url)
-  require 'rubygems'
-    require 'nokogiri'
-    require 'open-uri'
 @name = ["Niels Peter Fenger", "Stanislav", "owsigplc", "arctica1963", "Debola Abduljeleel", "grivet", "Samuel GOUGEON", "Pascal Buehler", "Serge Steer", "barbaraflowers", "Rafael Guerra", "oscar.espejo", "Michael J. McCann", "Antoine Monmayrant", "Michael J. McCann-2", "matacosta", "Sylvestre Ledru-4", "shorne", "omorr", "ezequiel soule", "Mathieu Dubois", "Adrien Vogt-Schilb", "cactus_jack", "Denis", "Amsdenyt", "Marria", "lukeaarond", "pepe", "F. Vogel", "F. Vogel-2", "jhdtyp", "Eze-Okoli Ifeoma Sandra", "jasper van baten", "Nima Sahraneshin-Samani", "A Khorshidi", "Janusz Magrian", "rajesh kannan", "Stefan Du Rietz", "stef296", "papriwalprateek", "Jacqueline Howe", "jacquih", "Paul Carrico", "martin.highUp", "simi99", "oiwmw", "Chuox", "Larissa", "Mike Page", "windkraft", "babigeon","Dang_Christophe", "Carrico_Paul"]
 
   user_id_offset = 648
-    @doc = Nokogiri::HTML(open(url))
+    @doc = open_html(url)
     @qtitle = @doc.css('h1#post-title').text
     
     # feed qtitle in the database here
@@ -349,5 +341,5 @@ def scilab_extract_it(url)
     
     i = i + 1
   end  
-   
+
 end

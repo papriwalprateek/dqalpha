@@ -136,5 +136,22 @@ $('span.vm_icon1').click(function(){
 	$(this).css('color', 'navy');
 
 });
+  $("div.result-link a").live("click", function() {
+     ajax_result_content_navigation("/so","stackoverflow.com/questions/12760174");
+     return false;
+   });
 });
+function ajax_result_content_navigation(url,data){
+	$('div.quest_search_page').children().hide()
+	 $('div.quest_search_page').append('<div id="result_content_navigation"style="width: 70%;display: inline-block;"><button onclick=back_navigation()><=</button></div>');
+          $.ajax({
+			type: "GET",
+			url: url,
+			data: { ad: data,right: false}
+		  });
+}
+function back_navigation(){
+	$('div#result_content_navigation').remove();
+	$('div.quest_search_page').children().show()	
+}
 </script> 

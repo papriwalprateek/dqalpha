@@ -205,7 +205,7 @@ data: { ad: $('.sc_input').val() },
          $.ajax({
 type: "GET",
 url: "/so",
-data: { ad: $('.so_input').val() },
+data: { ad: $('.so_input').val(),right: true },
            beforeSend: function() {
               $("#loading-image_so").show();
                $("#loading-fail_so").hide();

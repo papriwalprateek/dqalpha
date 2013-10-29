@@ -48,6 +48,7 @@ def scilab
 def so
     @content = so_content(params[:ad])
         @query_so = params[:ad]
+        @so_is_right = params[:right]
     respond_to do |format|
       format.js { render "layouts/so"  }
      end
