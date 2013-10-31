@@ -19,10 +19,9 @@
 <div style="float:left;padding-top:15px;padding-left:20px;font-size:14px;">
 <h2 style="color:#693;position:relative;ont-size:2.0em;font-family:BentonSans;line-height:1.4em;"><%=quest.title%></h2>
 
-<%=truncate(quest.description, :length => 80, :separator => ' ')%>
-</br>
+<div style="font-family:BentoSans;font-size:1em;"><%=truncate(quest.description, :length => 80, :separator => ' ')%></div>
 <div class="quests_tiles_img">
-<%quest.users.limit(14).each do |user|%>
+<%quest.users.limit(16).each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
 </div>

@@ -1,5 +1,5 @@
 class QuestsController < ApplicationController
-  before_filter :require_user
+ # before_filter :require_user
   
   def create
     @user = current_user

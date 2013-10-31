@@ -1,6 +1,6 @@
 <div style = "margin-left:20%;margin-top:2%;">
 <div style="width:60%;">
-<div style = "font-size:2.2em;line-height:1.4em;font-weight:bold;float:left;font-family:BentonSans;"> <%= best_in_place @user, :name %></div><div style = "float:left;font-size:2.2em;font-family:BentonSans;line-height:1.4em;">, open source Enthusiast</div>
+<div style = "font-size:2.2em;line-height:1.4em;font-weight:bold;float:left;font-family:BentonSans;"> <%= best_in_place @user, :name %></div><div style = "float:left;font-size:2.2em;font-family:BentonSans;line-height:1.4em;"></div>
 </div>
 <div id = "my_quests_button"><a class="live_link" href ="/" style="color:#fff;">My Quests</a>
 </div>
@@ -10,12 +10,10 @@
 <div style = "float:left; margin-left:0px">
 <table>
 <tr><td class="user_info" style="color:#666;">Email</td>   <td class = "user_info"><%=@user.email%></td></tr>
-<tr><td class="user_info" style="color:#666;">Location</td>   <td class = "user_info">Rajasthan, India</td></tr>
-<tr><td class="user_info" style="color:#666;">Employment</td>   `
-<tr><td class="user_info" style="color:#666;">Education</td>   <td class = "user_info">IIT Delhi</td></tr>
-<tr><td class="user_info" style="color:#666;">Organisations</td>   <td class = "user_info_right">Scilab, Raxa, Sympy</td></tr>
-<tr><td class="user_info" style="color:#666;">Skills & Expertise</td>   <td class = "user_info_right">C, Ruby, Python</td></tr>
-<tr><td class="user_info" style="color:#666;">Description</td>   <td class = "user_info_right">I love beauty in words and pictures. Quora engineer '10-'11. MS CS at Stanford University '10, Mayfield Fellows Program '09, BS EE at Stanford University '09, Facebook intern '08, Google intern '07. I curate collections of the beautiful and cute on my triketumblr: http://triketora.tumblr.com/archive and pinterest: http://pinterest.com/triketora.</td></tr>
+<tr><td class="user_info" style="color:#666;">Location</td>   <td class = "user_info"><%=best_in_place @user, :location%></td></tr>
+<tr><td class="user_info" style="color:#666;">Education</td>   <td class = "user_info"><%=best_in_place @user, :education%></td></tr>
+<tr><td class="user_info" style="color:#666;">Organization</td>   <td class = "user_info_right"><%=best_in_place @user, :organization%></td></tr>
+<tr><td class="user_info" style="color:#666;">Description</td>   <td class = "user_info_right"><%=best_in_place @user, :description%></td></tr>
 <tr><td class="user_info" style="color:#666;">Joined on</td>   <td class = "user_info"><%=@user.created_at.strftime("%b %d, %Y")%></td></tr>
 
 </table>

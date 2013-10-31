@@ -14,7 +14,7 @@
 <div style="margin-top:10px;">
 <b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d, %Y")%>
 <hr style="margin-top:10px;">
-
+<%if current_user%>
 <div class ="join_leave_quest">
 <%i = Involvement.where("user_id =? AND quest_id =?",current_user.id,@quest.id)%>
 <% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
@@ -31,6 +31,19 @@
 <button style="margin-top:30px;" class="join_quest" onclick ="join_quest()">Join Quest</button>
 <%end%>
 </div>
+<script>
+function join_quest(){
+    $.ajax({
+			type: "GET",
+			url: "/join_quest",
+			data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
+		
+		});
+
+}
+
+</script>
+<%end%>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
@@ -72,15 +85,6 @@ $('span#qmail_edit_save a').hide();
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 
 });
-function join_quest(){
-    $.ajax({
-			type: "GET",
-			url: "/join_quest",
-			data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
-		
-		});
-
-}
 
 
 </script>

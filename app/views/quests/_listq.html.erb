@@ -2,6 +2,15 @@
 <div id = "start_thread"> 
 <a style="cursor:pointer;"><p id = "start_thread_button">Start a new thread</p></a>
 </div>
+<script>$(function() {
+  $('p#start_thread_button').click(function(){ 
+  $(".quests_show").html("<%=escape_javascript(render"qs/form")%>");      
+        window.history.pushState(null, document.title,"#");
+ 
+  });
+});
+
+</script> 
 <%end%>
 <br>
 <%if @documents%>
@@ -74,11 +83,6 @@
 <%end%> 
 
 <script>$(function() {
-  $('p#start_thread_button').click(function(){ 
-  $(".quests_show").html("<%=escape_javascript(render"qs/form")%>");      
-        window.history.pushState(null, document.title,"#");
- 
-  });
    $('.example').truncate({max_length: 24});
 });
 

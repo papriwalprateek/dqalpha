@@ -1,0 +1,28 @@
+<div id = "feedback_box" style="position:fixed;margin-left: 50px;bottom:0;background-color: #0088CC;font-size: 1.4em"> 
+<a style="cursor:pointer;"><p id = "feedback_button"><b>Feedback</b></p></a>
+<div id="feedback-dialog-form">
+  <form>
+  	Tell us what you think about Daqwest
+  <fieldset>
+   <input type="text" name="name" id="name" placeholder ="Your name" class="text ui-widget-content ui-corner-all" />
+   <textarea id="feedback_body" placeholder="We love detailed feedback!" required="required" rows="5"></textarea>
+  </fieldset>
+  </form>
+</div>
+<script>$(function() {
+  $( "#feedback-dialog-form" ).dialog({
+      autoOpen: false,
+      height: 300,
+      width: 350,
+      modal: true,
+      position: { my: "left top", at: "left top", of: window }
+    });
+ 
+  $('p#feedback_button').click(function(){ 
+  $( "#feedback-dialog-form" ).dialog("open");
+  });
+});
+
+</script> 
+
+</div>

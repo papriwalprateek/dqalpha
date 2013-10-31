@@ -14,7 +14,6 @@ margin-top:10px;
 }
 
 .user_hdr_img{
-border-radius:50%;
 width: 30px;
 height:30px;
 }
@@ -101,7 +100,7 @@ float:left;
 margin:1px;}
 
 div.quests_tiles{
-width:90%;
+width:70%;
 height:170px;
 position:relative;
 border-top: 1px solid #F8F8F8;

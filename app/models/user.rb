@@ -25,6 +25,6 @@
     
   end
   acts_as_authentic
-    attr_accessible :name, :email, :password, :password_confirmation
+    attr_accessible :name, :email, :password, :password_confirmation, :location, :education, :organization, :description
 end
 

@@ -24,4 +24,9 @@ class UserMailer < ActionMailer::Base
   mail(:to => invite_mail_id, :subject => "Invited to Daqwest")
   end
   
+  def feedback_mail
+    mail(:to => "vinayrajchoudhary@gmail.com", :subject => "Feedback @DaQwest")
+   mail(:to => "papriwalprateek@gmail.com", :subject => "Feedback @DaQwest")
+  
+  end
 end
