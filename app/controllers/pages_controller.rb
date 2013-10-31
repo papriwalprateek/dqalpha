@@ -113,4 +113,9 @@ end
       format.html
      end
   end
+  def feedback_submit
+    @feedback_content = params[:feedback_content]
+    @feedback_name = params[:feedback_name]
+    UserMailer.feedback_mail(@feedback_name,@feedback_content).deliver
+  end
 end

@@ -6,6 +6,7 @@
   <fieldset>
    <input type="text" name="name" id="name" placeholder ="Your name" class="text ui-widget-content ui-corner-all" />
    <textarea id="feedback_body" placeholder="We love detailed feedback!" required="required" rows="5"></textarea>
+   <button id="feedback_submit">Submit</button>
   </fieldset>
   </form>
 </div>
@@ -15,9 +16,20 @@
       height: 300,
       width: 350,
       modal: true,
-      position: { my: "left top", at: "left top", of: window }
+      position: { my: "left top ", at: "0 0", of:$("html") },
+    
     });
  
+ $('button#feedback_submit').click(function(){
+        	 $.ajax({
+			type: "GET",
+			url: "/feedback_submit",
+			data: { feedback_name: $('div#feedback-dialog-form input#name').val(),
+					feedback_content: $('div#feedback-dialog-form textarea#feedback_body').val() },
+          
+		});
+		$("#feedback-dialog-form").dialog("close");      
+ });
   $('p#feedback_button').click(function(){ 
   $( "#feedback-dialog-form" ).dialog("open");
   });
