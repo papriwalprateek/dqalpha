@@ -15,21 +15,36 @@
 <div style="margin-top:10px;">
 <b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d")%>
 <hr style="margin-top:10px;">
+<%if current_user%>
 <div class ="join_leave_quest">
-<%i = is_member_of(current_user.id,@quest.id)%>
-<% if i %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
+<%i = Involvement.where("user_id =? AND quest_id =?",current_user.id,@quest.id)%>
+<% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()">Leave Quest</button>
 <script>function leave_quest(){
     $.ajax({
-type: "GET",
-url: "/leave_quest",
-data: { i_id: <%=i%>}
-});
+			type: "GET",
+			url: "/leave_quest",
+			data: { i_id: <%=i[0].id%>}
+		 	
+		});
 
 }</script>
 <%else%>
 <button style="margin-top:30px;" class="join_quest" onclick ="join_quest()">Join Quest</button>
 <%end%>
 </div>
+<script>
+function join_quest(){
+    $.ajax({
+			type: "GET",
+			url: "/join_quest",
+			data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
+		
+		});
+
+}
+
+</script>
+<%end%>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
 <div>
 <%@quest.users.each do |user|%>
@@ -56,33 +71,28 @@ data: { i_id: <%=i%>}
 </div>
 </div>
 <script>
-function join_quest(){
-    $.ajax({
-type: "GET",
-url: "/join_quest",
-data: { join_quest_quest_id: <%=@quest.id%>, join_quest_user_id: <%=current_user.id%>}
-});
 
-}
 function show_search_page(){
+  window.history.pushState(null, document.title, "/quests/"+<%=@quest.id%>+"/search");   
  $('div.quests_show').hide();
  hide_rightcontent();
  $('div.quest_search_page').show();
  $('button.left_nav_buttons').css("color","#777");
- $('button#left_nav_search').css("color", "#fff");
+  $('button#left_nav_search').css("color", "#fff");
  $('button.left_nav_buttons').css("background-color","#e8e8e8");
  $('button#left_nav_search').css("background-color", "#666");
  $('button.left_nav_buttons').css("font-weight","normal");
  $('button#left_nav_search').css("font-weight", "bold");
- }
+}
 function show_mailing_page(){
+ window.history.pushState(null, document.title, "/quests/"+<%=@quest.id%>);   
  $('div.quest_search_page').hide();
  $('div.quests_show').show();
  $('button.left_nav_buttons').css("color","#777");
- $('button#left_nav_discussion').css("color", "#fff");
+  $('button#left_nav_discussion').css("color", "#fff");
  $('button.left_nav_buttons').css("background-color","#e8e8e8");
  $('button#left_nav_discussion').css("background-color", "#666");
  $('button.left_nav_buttons').css("font-weight","normal");
  $('button#left_nav_discussion').css("font-weight", "bold");
- }
+}
 </script> 
