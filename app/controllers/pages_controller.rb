@@ -117,5 +117,8 @@ end
     @feedback_content = params[:feedback_content]
     @feedback_name = params[:feedback_name]
     UserMailer.feedback_mail(@feedback_name,@feedback_content).deliver
+    respond_to do |format|
+      format.js
+    end
   end
 end

@@ -1,10 +1,10 @@
 <div id = "feedback_box" style="position:fixed;margin-left: 50px;bottom:0;background-color: #0088CC;font-size: 1.4em"> 
 <a style="cursor:pointer;"><p id = "feedback_button"><b>Feedback</b></p></a>
 <div id="feedback-dialog-form">
-  <form>
+  <form data-remote ="true">
   	Tell us what you think about Daqwest
   <fieldset>
-   <input type="text" name="name" id="name" placeholder ="Your name" class="text ui-widget-content ui-corner-all" />
+   <input type="text" id = "name" placeholder ="Your name" class="text ui-widget-content ui-corner-all" />
    <textarea id="feedback_body" placeholder="We love detailed feedback!" required="required" rows="5"></textarea>
    <button id="feedback_submit">Submit</button>
   </fieldset>
@@ -22,7 +22,7 @@
  
  $('button#feedback_submit').click(function(){
         	 $.ajax({
-			type: "GET",
+			type: "POST",
 			url: "/feedback_submit",
 			data: { feedback_name: $('div#feedback-dialog-form input#name').val(),
 					feedback_content: $('div#feedback-dialog-form textarea#feedback_body').val() },
