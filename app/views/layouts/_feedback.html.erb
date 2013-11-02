@@ -1,10 +1,12 @@
-<div id = "feedback_box" style="position:fixed;margin-left: 50px;bottom:0;background-color: #0088CC;font-size: 1.4em"> 
-<a style="cursor:pointer;"><p id = "feedback_button"><b>Feedback</b></p></a>
-<div id="feedback-dialog-form">
+<div id = "feedback_box" style="position:fixed;padding:2px 8px 2px 8px;margin-left: 85%;bottom:0;background-color: rgb(51,153,153);font-size: 1.4em;"> 
+<a style="cursor:pointer;color:#fff;"><p id = "feedback_button">Feedback</p></a></div>
+<div id="feedback-dialog-form" title='Feedback'>
   <form data-remote ="true">
-  	Tell us what you think about Daqwest
+  	<div style="font-family:BentoSans;font-size:1.2em;text-align:center;margin:2px;color:rgb(51, 153, 153);">Tell us what you think about Daqwest</div>
+  	<hr>
+  	
   <fieldset>
-   <input type="text" id = "name" placeholder ="Your name" class="text ui-widget-content ui-corner-all" />
+   <input type="text" id = "name" placeholder ="Your name" class="text ui-widget-content ui-corner-all feedback-name" />
    <textarea id="feedback_body" placeholder="We love detailed feedback!" required="required" rows="5"></textarea>
    <button id="feedback_submit">Submit</button>
   </fieldset>
@@ -13,13 +15,11 @@
 <script>$(function() {
   $( "#feedback-dialog-form" ).dialog({
       autoOpen: false,
-      height: 300,
-      width: 350,
       modal: true,
-      position: { my: "left top ", at: "0 0", of:$("html") },
-    
+      width: 600,
+      dialogClass: "feedback-box" 
     });
- 
+ //$('div.feedback-box').css("position","absolute");
  $('button#feedback_submit').click(function(){
         	 $.ajax({
 			type: "POST",
@@ -36,5 +36,3 @@
 });
 
 </script> 
-
-</div>
