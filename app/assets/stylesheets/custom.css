@@ -1385,16 +1385,16 @@ color:#000;
 button#feedback_submit{
 text-align:center;
 font-family:BentoSans;
-font-size:1.2em;
+font-size:1em;
 padding-top:5px;
 padding-bottom:5px;
 box-shadow: 0 0 2px 0px #E0E0E0;
 color: rgb(124,118,184);
-width:20%;
+width:30%;
 background-color:#fff;
 border: 2px solid rgba(124,118,184,0.2);
 cursor:pointer;
-
+font-weight:bold;
 }
 
 button#feedback_submit:hover{
