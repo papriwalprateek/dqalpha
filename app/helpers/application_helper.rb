@@ -224,7 +224,9 @@ end
 def scilab_help(a)
    
    @doc = open_html("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html")
-
+   x = @doc.css("img")
+   x.remove
+   
    @description = []
    @example = [] 
    @relatedfunc = []
@@ -258,6 +260,7 @@ def scilab_help(a)
 			t.css("h3").remove
 			t.css("li").each do |l|
 			l.xpath("a")[0].attributes["href"].value = "search?search=" + l.xpath("a")[0].attributes["href"].value.split(".")[0]
+			l.xpath("a")[0].attributes["class"].value = "sci_related_link"
 			@relatedfunc << l
 			end
         end
