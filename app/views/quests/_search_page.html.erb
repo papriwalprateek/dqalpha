@@ -28,7 +28,7 @@
 		<div id="related" class="vm_results">
 			<%begin%>
 				<%@relatedfunc.each do |t|%>
-				<div id = "searchresults"><%=raw t%></div>				
+				<div id = "searchresults" class="sci_rel_func"><%=raw t%></div>				
 				<%end%>
 			<%rescue%>
 			<%end%>
@@ -139,6 +139,10 @@ $('span.vm_icon1').click(function(){
 });
   $("div.result-link a").live("click", function() {
      ajax_result_content_navigation("/so","stackoverflow.com/questions/12760174");
+     return false;
+   });
+ $("div#bugs.vm_results a").live("click", function() {
+     ajax_result_content_navigation("/bugzilla","http://bugzilla.scilab.org/show_bug.cgi?id=3523");
      return false;
    });
 });

@@ -101,6 +101,11 @@ $(document).ajaxComplete(function() {
     window.history.pushState(null, document.title, this.href);
      return false;
   });
+   $("div.sci_rel_func a.link").live("click", function() {
+    $.getScript(this.href);
+    window.history.pushState(null, document.title, this.href);
+     return false;
+  });
   $(".live_links_right a,a#mashup_links").live("click", function() {
       $.ajax({
 			type: "GET",
