@@ -256,7 +256,10 @@ def scilab_help(a)
    @refsec.each do |t|
         if t.css("h3").text == "See Also"
 			t.css("h3").remove
-            @relatedfunc << t
+			t.css("li").each do |l|
+			l.xpath("a")[0].attributes["href"].value = "search?search=" + l.xpath("a")[0].attributes["href"].value.split(".")[0]
+			@relatedfunc << l
+			end
         end
    end
        @arr<<"description"

@@ -20,14 +20,16 @@
 				<%@description.each do |t|%>
 				<div id = "searchresults"><%=raw t%></div>
 				<%end%>
+			<%rescue%>
 			<%end%>
 			<hr>
 		</div>
 		
 		<div id="related" class="vm_results">
 			<%begin%>
-			
-			<div id = "searchresults"><%=raw@relatedfunc[0]%></div>				
+				<%@relatedfunc.each do |t|%>
+				<div id = "searchresults"><%=raw t%></div>				
+				<%end%>
 			<%rescue%>
 			<%end%>
 		</div>
@@ -88,12 +90,11 @@
 			<br>
 		<%j=0%>
 		<%while j < @reco.length%>
-			<br>	
-			<hr>		
 			<br>
 		<h3><%=raw@reco[j]%></h3>	
 		<h4><%=raw@reco_desc[j]%></h4>
 		<%j=j+1%>
+		<hr>
 		<%end%>	
 		<%rescue%>
 		<%end%>	
@@ -107,15 +108,15 @@
 	<br>
 	<%j = 0%>
 		<table>
-		<tr><td style = "font-family:BentoSans;font-size:1.2em;">Component</td>
-		<td style = "font-family:BentoSans;font-size:1.2em;">Issue</td>
-		<td style = "font-family:BentoSans;font-size:1.2em;">Modified Date</td>
+		<tr><td style = "font-family:BentoSans;font-size:1.1em;"><b>Component</b></td>
+		<td style = "font-family:BentoSans;font-size:1.1em;"><b>Issue</b></td>
+		<td style = "font-family:BentoSans;font-size:1.1em;"><b>Modified Date</b></td>
 		</tr>
-		<%while j < @shortdesc.length%>
+		<%while j < @shortdesc.length and j < 20%>
 		<tr>
-		<div style="font-family:BentoSans;font-size:1em;"><%=raw@component[j]%></div>
-		<div style="font-family:BentoSans;font-size:1em;"><%=raw@shortdesc[j]%></div>
-		<div style="font-family:BentoSans;font-size:1em;"><%=raw@datemodified[j]%></div>
+		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@component[j]%></div>
+		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@shortdesc[j]%></div>
+		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@datemodified[j]%></div>
 		<%j = j + 1%>
 		<%end%>
 		</table>
