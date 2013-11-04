@@ -40,3 +40,8 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 > Linked Data describes a method of publishing structured data so that it can be interlinked and become more useful. 
 > It builds upon standard Web technologies such as HTTP, RDF and URIs, but rather than using them to serve web pages for human readers, it extends them to share information in a way that can be read automatically by computers. 
 > This enables data from different sources to be connected and queried.
+
+## Proxy issues
+On windows SET HTTPS_PROXY=http://server-ip:port/ to use heroku commands from CLI
+also if heroku run rake db:migrate does not work following might be useful
+heroku run:detached rake db:migrate
