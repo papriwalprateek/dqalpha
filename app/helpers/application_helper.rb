@@ -260,7 +260,6 @@ def scilab_help(a)
 			t.css("h3").remove
 			t.css("li").each do |l|
 			l.xpath("a")[0].attributes["href"].value = "search?search=" + l.xpath("a")[0].attributes["href"].value.split(".")[0]
-			l.xpath("a")[0].attributes["class"].value = "sci_related_link"
 			@relatedfunc << l
 			end
         end
