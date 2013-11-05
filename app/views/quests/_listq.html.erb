@@ -13,55 +13,6 @@
 </script> 
 <%end%>
 <br>
-<%if @documents%>
-<%if @scilab_results%>
-			<p style="margin-top:30px;margin-bottom:5px;color:#666;font-size: 14px;"><b>Scilab help</b></p>
-			<hr>
-			<%begin%>
-				<%=raw@callseq%>
-				<%=raw@refsec%>
-			<%rescue%>
-			<%end%>
-			<hr>
-		<%end%>
-<p style="margin-top:30px;margin-bottom:5px;color:#666;font-size: 14px;"><b>Mailing List</b></p>
-			<hr>
-	<%@documents.each do |d|%>
-		<%@d=d.searchable%>
-		<%if d.searchable_type=="Qmail"%>
-			<%result_q = @d.q%>
-			<%url = result_q.id.to_s()+"?qmail_id="+@d.id.to_s()%>
-			<%result_qmail = @d%>
-		<%else%>
-			<%url = @d.id.to_s()%>
-			<%result_q = @d%>
-			<%result_qmail = @d.qmails.first()%>
-		
-		<%end%>
-		<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+url%>>
-			<div>
-				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.3em;font-family:BentonSans;"><%=result_q.title%></b></h2>
-			</div>
-			
-				<%if result_qmail%>
-				
-				<div style = "margin-left:8px;font-size:14px;" class = "example">
-					<%=raw result_qmail.content%>
-					
-				</div>
-			<div style="width:100%;">
-				<div style="float:right;margin-right:5%;margin-bottom:10px;">
-					<p class = "post_user">posted <%=result_qmail.created_at.strftime("%b, %d")%> by <%=result_qmail.user.name%></p>
-				</div>
-			</div>
-			<%end%>
-		</a>
-		<hr>
-		
-
-	<%end%>
-	
-<%elsif @qs%>
 
 <% @qs.order('created_at DESC').each do |q| %>
 	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
@@ -80,7 +31,6 @@
 	</div>
 	</span></a>
 <%end%>
-<%end%> 
 
 <script>$(function() {
    $('.example').truncate({max_length: 24});
