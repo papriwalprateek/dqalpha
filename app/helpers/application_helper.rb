@@ -214,12 +214,16 @@ end
 def so_search(a)   
     a = a.gsub(" ","+")
     @doc = open_html("http://www.stackoverflow.com/search?q=[scilab]+"+a)
-
-    @reco = @doc.css("div.result-link")
-    @reco_desc = @doc.css("div.excerpt")
-    @links = @reco.css('a').map {|link| link["href"]}
-    @arr<<"qna"
-      
+    if @doc then
+     @reco = @doc.css("div.result-link")
+     if @reco[0]
+       @arr<<"qna"
+     end
+     @reco_desc = @doc.css("div.excerpt")
+     @links = @reco.css('a').map {|link| link["href"]}
+     
+    end 
+    
 end
 def scilab_help(a)
    
@@ -284,12 +288,16 @@ def bugzilla_search(a)
    a = a.gsub(" ","+")
   
    @doc = open_html("http://bugzilla.scilab.org/buglist.cgi?quicksearch="+a+"&order=resolution")
-   @shortdesc = @doc.css("td.bz_short_desc_column")
-   @component = @doc.css("td.bz_component_column")
-   @datemodified = @doc.css("td.bz_changeddate_column")
-   @bz_links = @shortdesc.css('a').map {|link| link["href"]}
-   @arr<<"bugs"
-      
+   if @doc then
+    @shortdesc = @doc.css("td.bz_short_desc_column")
+    if @shortdesc[0] then
+      @arr<<"bugs"
+    end
+    @component = @doc.css("td.bz_component_column")
+    @datemodified = @doc.css("td.bz_changeddate_column")
+    @bz_links = @shortdesc.css('a').map {|link| link["href"]}
+    
+   end  
 end
 def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new

@@ -21,7 +21,7 @@
 
 <div style="font-family:BentoSans;font-size:1em;"><%=truncate(quest.description, :length => 80, :separator => ' ')%></div>
 <div class="quests_tiles_img">
-<%quest.users.limit(16).each do |user|%>
+<%quest.users.limit(14).each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url,:alt=>"" ,:size => "30x30") %>
 <%end%>
 </div>
