@@ -227,7 +227,7 @@ def so_search(a)
 end
 def scilab_help(a)
    
-   @doc = open_html("http://help.scilab.org/docs/5.4.0/en_US/"+ a + ".html")
+   @doc = open_html("http://help.scilab.org/docs/current/en_US/"+ a + ".html")
    x = @doc.css("img")
    x.remove
    
@@ -269,7 +269,9 @@ def scilab_help(a)
         end
    end
        @arr<<"description"
-        @arr<<"examples"
+        if @example[0] then
+          @arr<<"examples"
+        end
         @arr<<"related"
  end
  def bugzilla_help(a)

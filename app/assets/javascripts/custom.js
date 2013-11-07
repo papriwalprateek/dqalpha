@@ -129,13 +129,13 @@ $(document).ajaxComplete(function() {
  
   
   
-   $(window).bind("popstate", function() {
-      $.getScript(location.href);
-    });
+ //  $(window).bind("popstate", function() {
+ //     $.getScript(location.href);
+ //   });
 
-  if ($("#com").length > 0) {
-    setTimeout(updateComments, 100000);
-  }
+// if ($("#com").length > 0) {
+//	    setTimeout(updateComments, 100000);
+//  }
 	
 	});
 function updateComments () {
