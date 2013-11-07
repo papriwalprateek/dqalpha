@@ -126,7 +126,8 @@
 </div>
 
 <script>$(function() {
- 
+  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+
    $('.example').truncate({max_length: 24});
 $('span.vm_icon1').click(function(){
 	$('div.vm_results').hide();
