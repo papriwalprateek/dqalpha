@@ -191,11 +191,11 @@ def so_content(a)
    StackExchange::StackOverflow::Client.config do |options|
       options.api_key = 'Sd9owvzqRd)VnsNfrCAJwA(('
    end   
-   if(!a.is_a?(Integer))  #since our so_content method can be passed both question id or link
+   #since our so_content method can be passed both question id or link
     a = a.to_s
     a = a.split("stackoverflow.com/questions/")
     a = a[1].to_i
-   end
+ 
    @doc = StackExchange::StackOverflow::Question.find a, :query => {:body => true , :answers => true} 
 # something like below can be done if we can get a nokogiri instance of this @doc
 #    @doc.xpath('//a[@href]').each do |l|
