@@ -125,13 +125,16 @@
 	<%end%>
 </div>
 
-<script>$(function() {
+<script>
+var vm_live_id;
+$(function() {
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 
    $('.example').truncate({max_length: 24});
 $('span.vm_icon1').click(function(){
 	$('div.vm_results').hide();
 	$('div#'+$(this).attr("id")).show();
+	vm_live_id = $(this).attr("id");
 	$('span.vm_icon1').css('border-bottom', '0px');
 	$('span.vm_icon1').css('color', '#777');
 	$(this).css('border-bottom', '3px solid navy');
@@ -164,6 +167,8 @@ function ajax_result_content_navigation(url,data){
 }
 function back_navigation(){
 	$('div#result_content_navigation').remove();
-	$('div.quest_search_page').children().show();	
+	$('div.quest_search_page').children().show();
+	$('div.quest_search_page .vm_results').hide();
+	$('div.quest_search_page #'+vm_live_id).show();
 }
 </script> 
