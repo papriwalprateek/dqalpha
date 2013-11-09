@@ -58,15 +58,29 @@ class QuestsController < ApplicationController
     @show_content_for = "search"
     if params[:search]     
      @query = params[:search]
+      @time_arr = []
+      @time_arr<<Time.now      
       @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
       @arr<<"mailing_list"
+      thread_arr =[]
+      @time_arr<<Time.now.to_s()
       @quest.vms.each do |vm|
       #vm = @quest.vms.last
         begin
-         send(vm.name,@query)
+          thread_arr<<Thread.new{
+             send(vm.name,@query)
+            @time_arr<< Time.now.to_s()+vm.name
+          }
         rescue
         end
       end 
+      thread_arr.each do |t|
+        t.join
+      @time_arr<< Time.now.to_s()
+     
+      end
+      @time_arr<< Time.now.to_s()+"end"
+     
      @scilab_results = @arr.include?("description")
       @bugzilla_results = @arr.include?("bugs")
       @so_results = @arr.include?("qna")     

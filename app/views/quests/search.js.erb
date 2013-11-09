@@ -1,5 +1,7 @@
 $(".quest_search_page").html("<%= escape_javascript(render("search_page")) %>");
 $("span.vm_icon1").hide();
+var js_array_time = <%= raw @time_arr.to_json %>;
+console.log(js_array_time);
 var js_array = <%= raw @arr.to_json %>;
 for (var i=0;i<js_array.length;i++)
 { $("span#"+js_array[i]).show();
