@@ -141,7 +141,10 @@ $(document).ajaxComplete(function() {
      ajax_result_content_navigation("/bugzilla","http://bugzilla.scilab.org/show_bug.cgi?id="+b);
      return false;
    });
-  
+    $('.pagination a').live("click", function(){
+    $.getScript(this.href);
+    return false;
+  });
  //  $(window).bind("popstate", function() {
  //     $.getScript(location.href);
  //   });
@@ -231,3 +234,4 @@ function back_navigation(){
 	$('div.quest_search_page .vm_results').hide();
 	$('div.quest_search_page #'+vm_live_id).show();
 }
+

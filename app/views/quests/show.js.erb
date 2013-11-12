@@ -1,2 +1,6 @@
+<%if @pagination%>
+$("div.quests_show").html("<%= escape_javascript(render("quests/listq"))%>");
+<%else%>
 $("#content").html("<%= escape_javascript(render("quest")) %>");
+<%end%>
 hide_rightcontent();

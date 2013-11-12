@@ -13,7 +13,7 @@
 </script> 
 <%end%>
 <br>
-
+<%= will_paginate @qs %>
 <% @qs.each do |q| %>
 	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+q.id.to_s()%>>
 	<span>

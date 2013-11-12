@@ -25,7 +25,11 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs.last(50)
+    @qs = @quest.qs.paginate(:page => params[:page], :per_page => 25)
+    if params[:page]
+      @pagination = true
+    end     
+    
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end
@@ -52,7 +56,7 @@ class QuestsController < ApplicationController
   end
  def search
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs.last(50)
+    @qs = @quest.qs.paginate(:page => params[:page], :per_page => 25)
     @arr=[]
     if params[:search]     
      @query = params[:search]

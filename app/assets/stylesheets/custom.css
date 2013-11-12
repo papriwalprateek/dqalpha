@@ -1417,3 +1417,6 @@ font-weight:bold;
 
 button#navi_result:hover{
 color: #bbb;}
+.pagination{
+	font-size:1.2em;
+}
