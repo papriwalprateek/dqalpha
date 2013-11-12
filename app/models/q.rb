@@ -4,7 +4,11 @@ class Q < ActiveRecord::Base
   has_many :qmails, :dependent => :destroy
   def add_questid(id)
     sql = "UPDATE pg_search_documents SET quest_id=#{id} WHERE searchable_type='Q' AND searchable_id=#{self.id} " 
-    ActiveRecord::Base.connection.execute(sql) 
+    ActiveRecord::Base.connection.execute(sql)   
+  end
+  def add_qid(id)
+    sql = "UPDATE pg_search_documents SET q_id=#{id} WHERE searchable_type='Q' AND searchable_id=#{self.id} " 
+    ActiveRecord::Base.connection.execute(sql)   
   end
   include PgSearch
   multisearchable :against => [:title]

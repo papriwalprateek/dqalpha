@@ -63,6 +63,7 @@ class QuestsController < ApplicationController
       @time_arr = []
       @time_arr<<Time.now      
       @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
+      @result_q_ids = @documents.all.map{|a| a.q_id}.uniq
       @arr<<"mailing_list"
       thread_arr =[]
       @time_arr<<Time.now.to_s()
@@ -70,7 +71,7 @@ class QuestsController < ApplicationController
       #vm = @quest.vms.last
       thread_arr<<Thread.new{         
         begin
-           send(vm.name,@query)
+        #   send(vm.name,@query)
            @time_arr<< Time.now.to_s()+vm.name
         rescue
         end

@@ -17,6 +17,8 @@ def create
  #      end
   @q.add_questid(params[:quest_id])#tells pg_search about quest id these two lines are must after each q or qmail create  
   @qmail.add_questid(params[:quest_id])
+  @q.add_qid(@q.id)
+  @qmail.add_qid(@q.id)
   respond_to do |format|
      
         format.html { redirect_to quest_path(@quest)}

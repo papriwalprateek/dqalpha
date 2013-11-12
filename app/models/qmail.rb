@@ -23,6 +23,10 @@ validates :content, :presence => true
     sql = "UPDATE pg_search_documents SET quest_id=#{self.quest_id} WHERE searchable_type='Qmail' AND searchable_id=#{self.id} " 
     ActiveRecord::Base.connection.execute(sql) 
   end
+  def add_qid(id)
+    sql = "UPDATE pg_search_documents SET q_id=#{id} WHERE searchable_type='Qmail' AND searchable_id=#{self.id} " 
+    ActiveRecord::Base.connection.execute(sql)   
+  end
   include PgSearch
  
   multisearchable :against => [:content]

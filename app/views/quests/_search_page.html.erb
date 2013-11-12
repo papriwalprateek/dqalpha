@@ -48,19 +48,10 @@
 		<%end%>
 		<div class="vm_results" id="mailing_list">
 			
-	<%@documents.each do |d|%>
-		<%@d=d.searchable%>
-		<%if d.searchable_type=="Qmail"%>
-			<%result_q = @d.q%>
-			<%url = result_q.id.to_s()+"?qmail_id="+@d.id.to_s()%>
-			<%result_qmail = @d%>
-		<%else%>
-			<%url = @d.id.to_s()%>
-			<%result_q = @d%>
-			<%result_qmail = @d.qmails.first()%>
-		
-		<%end%>
-		<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+url%>>
+	<%@result_q_ids.each do |d|%>
+	<%result_q=Q.find(d)%>
+	<%result_qmail = result_q.qmails.first()%>
+	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
 			<div  id="mailresults">
 			<div>
 				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.2em;font-family:BentonSans;"><%=result_q.title%></h2>
