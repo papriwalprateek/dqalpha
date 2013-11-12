@@ -5,7 +5,7 @@
 <%=@quest.title%>
  </h2>
 <div style="margin-top:30px;">
-<button class="left_nav_buttons" id="left_nav_search" onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" onclick ="show_search_page()">Search</button>
 <button class="left_nav_buttons" id="left_nav_discussion" onclick ="show_mailing_page()">Discussion Forum</button>
 </div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
@@ -73,13 +73,7 @@ function join_quest(){
 </div>
 <script>
 var dq_search_page = "/quests/"+<%=@quest.id%>+"/search";
-var click_button = "vinay"+<%=@show_content_for.to_s()%>;
-$(function() {
-	
-	if (click_button=="search")
-		show_search_page();
-	else show_mailing_page();
-});
+
 function show_search_page(){
   window.history.pushState(null, document.title, dq_search_page);   
  $('div.quests_show').hide();

@@ -26,7 +26,6 @@ class QuestsController < ApplicationController
   def show
     @quest = Quest.find(params[:id])
     @qs = @quest.qs
-    @show_content_for = "mailing"
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end
@@ -55,7 +54,6 @@ class QuestsController < ApplicationController
     @quest = Quest.find(params[:id])
     @qs = @quest.qs
     @arr=[]
-    @show_content_for = "search"
     if params[:search]     
      @query = params[:search]
       @time_arr = []

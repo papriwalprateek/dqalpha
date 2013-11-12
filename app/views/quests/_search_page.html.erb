@@ -158,7 +158,7 @@ $('span.vm_icon1').click(function(){
 });
 function ajax_result_content_navigation(url,data){
 	$('div.quest_search_page').children().hide();
-	 $('div.quest_search_page').append('<div id="result_content_navigation"style="width: 70%;display: inline-block;"><button onclick=back_navigation()>back</button></div>');
+	 $('div.quest_search_page').append('<div id="result_content_navigation"style="width: 70%;display: inline-block;"><button id="navi_result"onclick=back_navigation()>back</button></div>');
           $.ajax({
 			type: "GET",
 			url: url,
