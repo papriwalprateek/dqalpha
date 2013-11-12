@@ -25,7 +25,7 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs.paginate(:page => params[:page], :per_page => 25)
+    @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     if params[:page]
       @pagination = true
     end     
@@ -56,7 +56,7 @@ class QuestsController < ApplicationController
   end
  def search
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs.paginate(:page => params[:page], :per_page => 25)
+    @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     @arr=[]
     if params[:search]     
      @query = params[:search]

@@ -35,13 +35,14 @@ validates :content, :presence => true
   }
   def self.rebuild_pg_search_documents
     connection.execute <<-SQL
-     INSERT INTO pg_search_documents (searchable_type, searchable_id, content, created_at, updated_at,quest_id)
+     INSERT INTO pg_search_documents (searchable_type, searchable_id, content, created_at, updated_at,quest_id,q_id)
        SELECT 'Qmail' AS searchable_type,
               qmails.id AS searchable_id,
               qmails.content AS content,
               now() AS created_at,
               now() AS updated_at,
-              qmails.quest_id AS quest_id
+              qmails.quest_id AS quest_id,
+              qmails.q_id AS q_id
        FROM qmails
        Union ALL
       SELECT 'Q' AS searchable_type,
@@ -49,7 +50,8 @@ validates :content, :presence => true
               qs.title AS content,
               now() AS created_at,
               now() AS updated_at,
-              qs.quest_id AS quest_id
+              qs.quest_id AS quest_id,
+              qs.id AS q_id
        FROM qs
        
     SQL
