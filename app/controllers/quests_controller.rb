@@ -66,18 +66,17 @@ class QuestsController < ApplicationController
       @time_arr<<Time.now.to_s()
       @quest.vms.each do |vm|
       #vm = @quest.vms.last
+      thread_arr<<Thread.new{         
         begin
-          thread_arr<<Thread.new{
-             send(vm.name,@query)
-            @time_arr<< Time.now.to_s()+vm.name
-          }
+           send(vm.name,@query)
+           @time_arr<< Time.now.to_s()+vm.name
         rescue
         end
+      }
       end 
       thread_arr.each do |t|
         t.join
-      @time_arr<< Time.now.to_s()
-     
+      @time_arr<< Time.now.to_s()     
       end
       @time_arr<< Time.now.to_s()+"end"
      

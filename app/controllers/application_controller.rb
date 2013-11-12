@@ -16,7 +16,7 @@ include ApplicationHelper
    require 'nokogiri'
    
    if Rails.env.development?
-    return  Nokogiri::HTML(open(str,:proxy=>"http://10.10.78.62:3128"))
+    return  Nokogiri::HTML(open(str,:proxy=>"http://10.10.78.22:3128"))
    else
      return Nokogiri::HTML(open(str))      
    end
