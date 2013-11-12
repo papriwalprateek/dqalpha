@@ -62,11 +62,13 @@ class QuestsController < ApplicationController
      @query = params[:search]
       @time_arr = []
       @time_arr<<Time.now      
-      @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
-      @result_q_ids = @documents.all.map{|a| a.q_id}.uniq
-      @arr<<"mailing_list"
-      thread_arr =[]
-      @time_arr<<Time.now.to_s()
+      thread_arr =[]      
+      thread_arr<<Thread.new{         
+        @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
+        @result_q_ids = @documents.all.map{|a| a.q_id}.uniq
+        @arr<<"mailing_list"
+        @time_arr<<Time.now.to_s()
+      }
       @quest.vms.each do |vm|
       #vm = @quest.vms.last
       thread_arr<<Thread.new{         
