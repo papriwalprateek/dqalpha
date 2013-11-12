@@ -71,7 +71,7 @@ class QuestsController < ApplicationController
       #vm = @quest.vms.last
       thread_arr<<Thread.new{         
         begin
-        #   send(vm.name,@query)
+          send(vm.name,@query)
            @time_arr<< Time.now.to_s()+vm.name
         rescue
         end
