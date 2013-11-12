@@ -127,7 +127,20 @@ $(document).ajaxComplete(function() {
      return false;
  });
  
-  
+  $("div#qna div.result-link a").live("click", function() {
+     a = this.href;
+     b = a.split("questions/")[1];
+     b = b.split("/")[0];
+     ajax_result_content_navigation("/so","stackoverflow.com/questions/"+b);
+     return false;
+   });
+ $("div#bugs.vm_results a").live("click", function() {
+     a = this.href;
+     b = a.split("show_bug.cgi?id=")[1];
+   
+     ajax_result_content_navigation("/bugzilla","http://bugzilla.scilab.org/show_bug.cgi?id="+b);
+     return false;
+   });
   
  //  $(window).bind("popstate", function() {
  //     $.getScript(location.href);
@@ -202,4 +215,19 @@ function hide_rightcontent(){
 function toggle_rightcontent(){
 	if($('div#rightcontent').css('display')=="none") show_rightcontent();
 	else hide_rightcontent();
+}
+function ajax_result_content_navigation(url,data){
+	$('div.quest_search_page').children().hide();
+	 $('div.quest_search_page').append('<div id="result_content_navigation"style="width: 70%;display: inline-block;"><button id="navi_result" onclick=back_navigation()>back</button></div>');
+          $.ajax({
+			type: "GET",
+			url: url,
+			data: { ad: data,right: false}
+		  });
+}
+function back_navigation(){
+	$('div#result_content_navigation').remove();
+	$('div.quest_search_page').children().show();
+	$('div.quest_search_page .vm_results').hide();
+	$('div.quest_search_page #'+vm_live_id).show();
 }

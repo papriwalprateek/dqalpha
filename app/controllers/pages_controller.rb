@@ -39,7 +39,7 @@ def scilab
      end
   end
   def bugzilla
-    #@content = bugzilla_help(params[:ad])
+    @content = bugzilla_help(params[:ad])
         @query_sc = params[:ad]
          @is_right = params[:right]
     respond_to do |format|
