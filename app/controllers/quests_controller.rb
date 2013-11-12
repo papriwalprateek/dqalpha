@@ -25,7 +25,7 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs
+    @qs = @quest.qs.last(50)
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end
@@ -52,7 +52,7 @@ class QuestsController < ApplicationController
   end
  def search
     @quest = Quest.find(params[:id])
-    @qs = @quest.qs
+    @qs = @quest.qs.last(50)
     @arr=[]
     if params[:search]     
      @query = params[:search]
