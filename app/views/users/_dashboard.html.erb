@@ -32,19 +32,18 @@
 <br>
 <%qrec = recommended_quests(current_user.id)%>
 <%if qrec.count!=0%>
-<p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.2em;"><b>Explore more Quests<b></p>
+<p style="margin-left:3px;margin-top:5px;margin-bottom:15px;color:#666;font-size:1.8em;font-family:BentoSans;"><b>Browse recommended quests</b></p>
 <%end%>
 <%qrec.each do |q|%>
 <% quest = Quest.find(q) %>
 <a class="block live_link" href = <%= '/users/'+current_user.id.to_s()+'/quests/'+quest.id.to_s()%>>
 <span>
 
-<div class = "quests_tiles_explore">
-<div class="time_quest">
-<%=quest.created_at.strftime("%b, %d")%>
-</div>
+<div style = "height:170px;width:70%;cursor:pointer;border-top: 1px solid #F8F8F8;box-shadow: 0 1px 2px 0 #ccc;padding:10px;margin-bottom:50px;">
+
 <div style="float:left;padding-top:15px;padding-left:20px;font-size:14px;">
-<h2 style="color:#666;font-weight:bold;position:relative;font-size:18px;line-height:1.5em;"><%=quest.title%></h2>
+<div style="color:#693;font-size:2.0em;font-family:BentonSans;line-height:1.4em;font-weight:normal;"><%=quest.title%></div>
+<p style="font-family:BentoSans;font-size:1.4em;line-height:1.2em;color:#888;margin-top:20px;font-weight:normal;"><%=quest.description%></p>
 
 <div class="quests_tiles_img">
 <%quest.users.limit(14).each do |user|%>
