@@ -1,20 +1,20 @@
 <%begin%>
-<h2 style="margin-bottom: 0px;"><%=raw@ques%></h2>
+<div style="font-family:BentoSans;font-size:2.1em;"><%=raw@ques%></div>
 <% if @doc %>
 <hr>
 <br>
-<h3 style="margin-bottom: 0px;">Description</h4>
+<div style="margin-bottom: 0px;font-family:BentoSans;font-size:1.6em;">Description</div>
 <div style="background-color:#f8f8f8"><%=raw@desc%></div>
 <hr>
 <br>
 <%end%>
-<h3 style="margin-bottom: 0px;"><%=@answers.length%> Answers</h3>
+<div style="font-family:BentoSans;font-size:1.3em;"><%=@answers.length%> Comments</div>
 <%j=0%>
 <%while j < @answers.length%>
 <br>
-<h4 style="margin-bottom: 0px;">Answer <%=j+1%></h4>
-<hr>
+<div style="background-color:#ccc;padding:5px;width:80px;text-align:center;color:#fff;font-family:BentoSans;font-weight:bold;">Comment <%=j+1%></div>
 <%=raw@answers[j]%>
+<br>
 <%j=j+1%>
 <%end%>
 <%rescue%>

@@ -218,7 +218,7 @@ function toggle_rightcontent(){
 }
 function ajax_result_content_navigation(url,data){
 	$('div.quest_search_page').children().hide();
-	 $('div.quest_search_page').append('<div id="result_content_navigation"style="width: 70%;display: inline-block;"><button id="navi_result" onclick=back_navigation()>back</button></div>');
+	 $('div.quest_search_page').append('<div id="result_content_navigation"style="margin-top:5px;;width: 70%;display: inline-block;"><button id="navi_result" onclick=back_navigation()>Back</button></div>');
           $.ajax({
 			type: "GET",
 			url: url,
