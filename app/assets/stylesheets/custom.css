@@ -1405,18 +1405,49 @@ button#navi_result
 {
 text-align:center;
 font-family:BentoSans;
-font-size:1.5em;
-box-shadow: 0 0 2px 0px #E0E0E0;
+font-size:1.2em;
 color: rgb(124,118,184);
 width:12%;
 background-color:#fff;
-border: 2px solid rgba(124,118,184,0.2);
+border: 2px solid #eee;
 cursor:pointer;
+padding-top:5px;
+padding-bottom:5px;
 font-weight:bold;
+float:right;
 }
 
 button#navi_result:hover{
-color: #bbb;}
+color: #eee;
+}
+
+pre.bz_comment_text{
+margin:0px;
+}
+
+td.bz_component_column{
+font-family:BentoSans;font-size:1.3em;
+}
+
+td.bz_short_desc_column{
+font-family:BentoSans;font-size:1.3em;
+}
+
+td.bz_changeddate_column{
+font-family:BentoSans;font-size:1.3em;
+}
+
+div#so_navi_answer{
+border: 2px solid #ccc;
+padding:8px;
+font-family:BentoSans;
+font-size:1.2em;	
+}
+
+div#so_navi_desc{
+font-family:BentoSans;
+font-size:1.2em;
+}
 .pagination{
 	font-size:1.2em;
 }

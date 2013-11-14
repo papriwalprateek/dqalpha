@@ -47,8 +47,7 @@
 		</div>
 		<%end%>
 		<div class="vm_results" id="mailing_list">
-			
-	<%@result_q_ids.each do |d|%>
+	<%@result_q_ids.each do |d|%>	
 	<%result_q=Q.find(d)%>
 	<%result_qmail = result_q.qmails.first()%>
 	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
@@ -99,15 +98,16 @@
 	<br>
 	<%j = 0%>
 		<table>
-		<tr><td style = "font-family:BentoSans;font-size:1.1em;"><b>Component</b></td>
-		<td style = "font-family:BentoSans;font-size:1.1em;"><b>Issue</b></td>
-		<td style = "font-family:BentoSans;font-size:1.1em;"><b>Modified Date</b></td>
+		<tr><td class="bz_component_column"><b>Component</b></td>
+		<td class="bz_short_desc_column"><b>Issue</b></td>
+		<td class="bz_changeddate_column"><b>Modified Date</b></td>
 		</tr>
 		<%while j < @shortdesc.length and j < 20%>
 		<tr>
-		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@component[j]%></div>
-		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@shortdesc[j]%></div>
-		<div style="font-family:BentoSans;font-size:1.1em;"><%=raw@datemodified[j]%></div>
+		<%=raw@component[j]%>
+		<%=raw@shortdesc[j]%>
+		<%=raw@datemodified[j]%>
+		</tr>
 		<%j = j + 1%>
 		<%end%>
 		</table>

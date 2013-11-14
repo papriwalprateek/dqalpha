@@ -1,23 +1,21 @@
-
 <%begin%>
-<h2 style="margin-bottom: 0px;"><%=raw@ques%></h2>
+<div style="font-family:BentoSans;font-size:2.1em;"><%=raw@ques%></div>
 <% if @doc %>
 <hr>
 <br>
-<h4 style="margin-bottom: 0px;">Description</h4>
-<%=raw@desc%>
+<div style="margin-bottom: 0px;font-family:BentoSans;font-size:1.6em;">Description</div>
+<div id="so_navi_desc"><%=raw@desc%></div>
 <hr>
 <br>
 <%end%>
-<h3 style="margin-bottom: 0px;"><%=@answers.length%> Answers</h3>
+<div style="font-family:BentoSans;font-size:1.3em;"><%=@answers.length%> Answers</div>
 <%j=0%>
 <%while j < @answers.length%>
 <br>
-<h4 style="margin-bottom: 0px;">Answer <%=j+1%></h4>
-<hr>
-<%=raw@answers[j]%>
+<div style="background-color:#ccc;padding:5px;width:80px;text-align:center;color:#fff;font-family:BentoSans;font-weight:bold;">Answer <%=j+1%></div>
+<div id="so_navi_answer"><%=raw@answers[j]%></div>
+<br>
 <%j=j+1%>
 <%end%>
 <%rescue%>
-
 <%end%>
