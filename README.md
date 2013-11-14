@@ -1,23 +1,3 @@
-## Setting up environment
-
-* Creating and migrating the tables - 
-
-	```
-	rake db:create 
-	rake db:migrate
-	```
-* rake pg_search:multisearch:rebuild[Qmail]
-
-* To reset search documents table execute this in rails console
-  ActiveRecord::Base.connection.execute("DELETE from pg_search_documents")
-  For viewing table information run heroku pg:psql and then following
-    SELECT schemaname,relname,n_live_tup
-	FROM pg_stat_user_tables
-	ORDER BY n_live_tup DESC;
-* For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
-  and set https_proxy=proxy:port
-
-
 ## Virtual Member(VM)
 
 It is a resource of knowledge that could be used to enrich a quest with information about various things,
@@ -40,6 +20,27 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 *  Adding a custom vm to a quest
 
 	-  ``` Quest.find(quest_id) << Vm.find(vm_id) ```
+
+## Setting up environment
+
+* Creating and migrating the tables - 
+
+	```
+	rake db:create 
+	rake db:migrate
+	```
+* rake pg_search:multisearch:rebuild[Qmail]
+
+* To reset search documents table execute this in rails console
+  ActiveRecord::Base.connection.execute("DELETE from pg_search_documents")
+  For viewing table information run heroku pg:psql and then following
+    	```
+	SELECT schemaname,relname,n_live_tup
+	FROM pg_stat_user_tables
+	ORDER BY n_live_tup DESC;
+	```
+* For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
+  and set https_proxy=proxy:port
 
 
 ## Core Technology at the root - Linked Data
