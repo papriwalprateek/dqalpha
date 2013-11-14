@@ -30,13 +30,7 @@ validates :content, :presence => true
   include PgSearch
  
   multisearchable :against => [:content]
-  PgSearch.multisearch_options = {
-  :using => {
-                    :tsearch => {
-                                :dictionary => "english"
-                                }
-                  }
-  }
+ 
   def self.rebuild_pg_search_documents
     connection.execute <<-SQL
      INSERT INTO pg_search_documents (searchable_type, searchable_id, content, created_at, updated_at,quest_id,q_id)
