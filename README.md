@@ -25,7 +25,7 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 
 * Creating and migrating the tables - 
 
-	```
+	```ruby
 	rake db:create 
 	rake db:migrate
 	```
@@ -34,11 +34,13 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 * To reset search documents table execute this in rails console
   ActiveRecord::Base.connection.execute("DELETE from pg_search_documents")
   For viewing table information run heroku pg:psql and then following
-    	```
+    	
+	```sql
 	SELECT schemaname,relname,n_live_tup
 	FROM pg_stat_user_tables
-	ORDER BY n_live_tup DESC;
+	ORDER BY n_live_tup DESC; 
 	```
+
 * For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
   and set https_proxy=proxy:port
 
