@@ -51,16 +51,15 @@
 	<%result_q=Q.find(d)%>
 	<%result_qmail = result_q.qmails.first()%>
 	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
-			<div  id="mailresults">
-			<div>
-				<h2 style = "margin-top:10px;margin-left:3px;padding:5px;color:#666;font-size:1.8em;line-height:1.2em;font-family:BentonSans;"><%=result_q.title%></h2>
+			<div class = "qs_tiles">
+			<div style = "font-size:2em;margin-left:8px;padding:0px;margin-bottom:0px;padding-top:5px;font-family: BentoSans;"><%=result_q.title%>
 			</div>
 			
 				<%if result_qmail%>
 				
 			<div style="width:100%;">
-				<div style="float:right;margin-bottom:20px;">
-					<div class = "post_user" style="font-family:BentoSans;margin-right:3%;">posted on <%=result_qmail.created_at.strftime("%b, %d")%> by <%=result_qmail.user.name%></div>
+				<div>
+					<div style="font-size:1.2em;margin-left:8px;padding-bottom:1px;font-family: BentoSans;color:#888;">posted on <%=result_qmail.created_at.strftime("%b, %d")%> by <b><%=result_qmail.user.name%></b></div>
 				</div>
 			</div>
 			<br>

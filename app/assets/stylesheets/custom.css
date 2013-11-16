@@ -1451,3 +1451,10 @@ font-size:1.2em;
 .pagination{
 	font-size:1.2em;
 }
+
+div.result-link{
+	font-family:BentoSans;
+}
+div.excerpt{
+	font-family:BentoSans;
+}
