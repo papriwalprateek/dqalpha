@@ -27,17 +27,7 @@
 $(document).ready(function() {
 $('span#qmail_edit_save a').hide();
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
-var x
-var json = <%= raw @parsed.to_json %>;
-$.each(json, function(i, v) {
-    if (v.id == <%=@q.id%>) {     
-        for (var i = 0; i < v.tags.length; i++) { 
-    	$('div.q_tags').append("<span > "+v.tags[i].tag+" </span>");
-    	}
-		return;
-    }
-});
-console.log();
+
 });
 
 

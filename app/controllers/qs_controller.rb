@@ -33,9 +33,6 @@ def create
     @q = Q.find(params[:id])
     @quest = @q.quest
     @qmails = @q.qmails
-    file = open("lib/rdftags.json")
-    @json = file.read
-    @parsed = JSON.parse(@json)
   
      if params[:qmail_id] 
       @qmail_id = params[:qmail_id]
