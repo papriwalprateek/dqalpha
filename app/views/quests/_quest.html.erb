@@ -1,9 +1,12 @@
 <div class="dashboard">
 
 <div class="dashboard_right">
-<h2>
-<%=@quest.title%>
- </h2>
+<div style="display: inline-block;font-size:2em;">
+<%= image_tag("list.png", :alt => "<=", :height => "20", :width => "20") %>
+<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'?partial=true'%> >
+<%=@quest.title%></a>
+</div>
+
 <div style="margin-top:30px;">
 <button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" onclick ="show_search_page()">Search</button>
 <button class="left_nav_buttons" id="left_nav_discussion" onclick ="show_mailing_page()">Discussion Forum</button>
@@ -46,7 +49,7 @@ function join_quest(){
 
 </script>
 <%end%>
-<p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members</b></p>
+<p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members (<%=@quest.users.count%>)</b></p>
 <div>
 <%@quest.users.each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30", :title => user.name) %>
@@ -62,20 +65,33 @@ function join_quest(){
 </div>  
 <div class= "dashboard_content_area">
 <div class="quests_show" style="display:none;">
+	<%if @q%>
+	<%= render "qs/q"%>
+	<%else%>
 	<%= render "quests/listq"%>
+	<%end%>
 </div>
   
 <div class="quest_search_page" >
 	
 	<%= render "quests/search_page"%>
+
 </div>
 </div>
 </div>
 <script>
-var dq_search_page = "/quests/"+<%=@quest.id%>+"/search";
+$(function() {	
+var page_url_split = location.href.split("/search");
+var dq_search_page =location.href;
+if(page_url_split[1]==undefined){
+	dq_search_page = (dq_search_page.split("?")[0]).split("/qs/")[0]+"/search";
+}
+$('button#left_nav_discussion').data("url",page_url_split[0]);
+$('button#left_nav_search').data("url",dq_search_page);
+	});
 
 function show_search_page(){
-  window.history.pushState(null, document.title, dq_search_page);   
+ window.history.pushState(null, document.title, $('button#left_nav_search').data("url"));   
  $('div.quests_show').hide();
  hide_rightcontent();
  $('div.quest_search_page').show();
@@ -87,8 +103,7 @@ function show_search_page(){
  $('button#left_nav_search').css("font-weight", "bold");
 }
 function show_mailing_page(){
- dq_search_page = location.href;
- window.history.pushState(null, document.title, "/quests/"+<%=@quest.id%>);   
+ window.history.pushState(null, document.title, $('button#left_nav_discussion').data("url"));   
  $('div.quest_search_page').hide();
  $('div.quests_show').show();
  $('button.left_nav_buttons').css("color","#777");

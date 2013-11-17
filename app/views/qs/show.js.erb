@@ -1,9 +1,12 @@
  show_rightcontent();
- $("#content").html("<%= escape_javascript(render("q")) %>");
+ $(".quests_show").html("<%= escape_javascript(render("q")) %>");
+ $(".quests_show").show();
   var id = "<%= @qmail_id%>";
-  if(id)
+  if(id){
     $('div[data-id='+id+']').effect("highlight", {}, 3000);
      $('html,body').animate({
         scrollTop: $('div[data-id='+id+']').offset().top},
         'slow');
-   end
+  }
+  $('button#left_nav_discussion').data("url",location.href);
+  show_mailing_page();
