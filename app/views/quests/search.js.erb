@@ -6,7 +6,6 @@ var js_array = <%= raw @arr.to_json %>;
 for (var i=0;i<js_array.length;i++)
 { $("span#"+js_array[i]).show();
 }
-$("span#"+js_array[0]).click();
 <%if @query%>
   window.history.pushState(null, document.title, "<%="/quests/"+@quest.id.to_s()+"/search?search="+@query.to_s()%>");   
 
