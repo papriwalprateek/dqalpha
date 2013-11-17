@@ -29,7 +29,9 @@ class QuestsController < ApplicationController
     if params[:page]
       @pagination = true
     end     
-    
+    if params[:partial]
+      @partial = true
+    end   
     if params[:add_user]     
       invite(current_user.name,current_user.id,@quest.id,@quest.title,params[:add_user])
     end

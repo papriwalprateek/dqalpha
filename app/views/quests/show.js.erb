@@ -1,5 +1,7 @@
-<%if @pagination%>
+<%if @pagination||@partial%>
 $("div.quests_show").html("<%= escape_javascript(render("quests/listq"))%>");
+show_mailing_page();
+$('button#left_nav_discussion').data("url",location.href);
 <%else%>
 $("#content").html("<%= escape_javascript(render("quest")) %>");
 <%end%>
