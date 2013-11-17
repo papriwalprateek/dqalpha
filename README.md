@@ -78,7 +78,7 @@ heroku run:detached rake db:migrate
   - Save the above generated content in a file
   	
 	```ruby
-	File.open("yourfile.json","w"){|file| file.read(@userlist)}
+	File.open("yourfile.json","w"){|file| file.write(@userlist.to_json)}
 	```
   
   - Then load the json file again and parse the file using JSON
