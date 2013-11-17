@@ -1,23 +1,3 @@
-## Setting up environment
-
-* Creating and migrating the tables - 
-
-	```
-	rake db:create 
-	rake db:migrate
-	```
-* rake pg_search:multisearch:rebuild[Qmail]
-
-* To reset search documents table execute this in rails console
-  ActiveRecord::Base.connection.execute("DELETE from pg_search_documents")
-  For viewing table information run heroku pg:psql and then following
-    SELECT schemaname,relname,n_live_tup
-	FROM pg_stat_user_tables
-	ORDER BY n_live_tup DESC;
-* For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
-  and set https_proxy=proxy:port
-
-
 ## Virtual Member(VM)
 
 It is a resource of knowledge that could be used to enrich a quest with information about various things,
@@ -41,6 +21,19 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 
 	-  ``` Quest.find(quest_id) << Vm.find(vm_id) ```
 
+## Setting up environment
+
+* Creating and migrating the tables - 
+
+	```ruby
+	rake db:create 
+	rake db:migrate
+	```
+* rake pg_search:multisearch:rebuild[Qmail]
+
+* For local windows machine proxy settings using the manual way given at https://gist.github.com/fnichol/867550 
+  and set https_proxy=proxy:port
+
 
 ## Core Technology at the root - Linked Data
 
@@ -52,3 +45,47 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 On windows SET HTTPS_PROXY=http://server-ip:port/ to use heroku commands from CLI
 also if heroku run rake db:migrate does not work following might be useful
 heroku run:detached rake db:migrate
+
+
+## Handy Tools and Codes
+
+* To reset search documents table execute this in rails console
+  ActiveRecord::Base.connection.execute("DELETE from pg_search_documents")
+  For viewing table information run heroku pg:psql and then following
+    	
+	```sql
+	SELECT schemaname,relname,n_live_tup
+	FROM pg_stat_user_tables
+	ORDER BY n_live_tup DESC; 
+	```
+
+* JSON Builder
+  - Execute the code shown below to develop a arraylist in the given format.
+	
+	```ruby
+	@users = User.all
+	@userlist = []
+	@users.each do |user|
+  		@userlist << {
+    		:id => user.id,
+	  	:fname => user.fname,
+    		:lname => user.lname,
+    		:photo => user.profile_pic.url(:small)
+  		}
+	end
+	```
+  
+  - Save the above generated content in a file
+  	
+	```ruby
+	File.open("yourfile.json","w"){|file| file.read(@userlist)}
+	```
+  
+  - Then load the json file again and parse the file using JSON
+  	
+	```ruby
+	file = open("yourfile.json")
+	json = file.read
+	parsed = JSON.parse(json)
+	```
+   	
