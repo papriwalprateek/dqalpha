@@ -1,12 +1,12 @@
 $(function() {	
 //youtube like progress bar
-hide_rightcontent();
 $(document).ajaxStart(function() {
     //only add progress bar if added yet.
     if ($("#progress").length === 0) {
         $("body").append($("<div><dt/><dd/></div>").attr("id", "progress"));
         $("#progress").width((50 + Math.random() * 30) + "%");
     }
+    console.log(location.href);
 });
 
 $(document).ajaxComplete(function() {
@@ -14,6 +14,11 @@ $(document).ajaxComplete(function() {
     $("#progress").width("101%").delay(200).fadeOut(400, function() {
         $(this).remove();
     });
+});
+$(document).ajaxSend(function(evt, request, settings) {
+ if(settings.url.split("/search?")[1]!=undefined){
+    $('p.searching_text').show();
+  }
 });
 //new quest text fields
  

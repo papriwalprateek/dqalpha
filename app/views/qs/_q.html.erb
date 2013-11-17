@@ -2,13 +2,16 @@
 <div>
 <div style ="margin-top:5px;margin-left:1%;font-size:2em;font-weight:bold;"><%=@q.title%></div>
 </div>
-<br>
-<br>
+</br>
+</br>
 <div id='com'>
    <%if @qmails %>
    <%= render partial: "qmails/qmail", collection: @qmails.sort_by { |obj| obj.created_at }%>
 <%end%>
  	</div>
+<div class="q_tags" style="display:none;">
+</div>
+
 <div  id="qmail_field">
 <%if current_user%>
 
@@ -22,10 +25,19 @@
 <script>
 
 $(document).ready(function() {
-show_rightcontent();
 $('span#qmail_edit_save a').hide();
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
-
+var x
+var json = <%= raw @parsed.to_json %>;
+$.each(json, function(i, v) {
+    if (v.id == <%=@q.id%>) {     
+        for (var i = 0; i < v.tags.length; i++) { 
+    	$('div.q_tags').append("<span > "+v.tags[i].tag+" </span>");
+    	}
+		return;
+    }
+});
+console.log();
 });
 
 
