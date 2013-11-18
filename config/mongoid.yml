@@ -83,8 +83,8 @@ production:
   sessions:
     default:
       hosts:
-        - - paulo.mongohq.com
-          - 10010
+        - paulo.mongohq.com:10010
+          
       username: vinayrajchoudhary
       password: khetri
       database: daqwest_mongo
