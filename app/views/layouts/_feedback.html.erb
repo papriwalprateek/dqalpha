@@ -1,12 +1,16 @@
 <div id = "feedback_box" style="position:fixed;padding:2px 8px 2px 8px;margin-left: 85%;bottom:0;background-color: rgb(51,153,153);font-size: 1.4em;"> 
 <a style="cursor:pointer;color:#fff;"><p id = "feedback_button">Feedback</p></a></div>
-<div id="feedback-dialog-form" title='Feedback'>
+<div id="feedback-dialog-form">
   <form data-remote ="true">
-  	<div style="font-family:BentoSans;font-size:1.2em;text-align:center;margin:2px;color:rgb(51, 153, 153);">Tell us what you think about Daqwest</div>
+  	<div style="font-family:BentoSans;font-size:1.4em;text-align:center;margin:2px;color:rgb(51, 153, 153);font-weight:bold;">Tell us what you think about Daqwest</div>
   	<hr>
   	
   <fieldset>
-   <input type="text" id = "name" placeholder ="Your name" class="text ui-widget-content ui-corner-all feedback-name" />
+   <% if current_user %>
+   <input type="text" id = "name" value = <%=current_user.name%> class="text ui-widget-content ui-corner-all feedback-name" />
+   <%else%>
+   <input type="text" id = "name" placeholder = "Your name" class="text ui-widget-content ui-corner-all feedback-name" />
+   <% end %>
    <textarea id="feedback_body" placeholder="We love detailed feedback!" required="required" rows="5"></textarea>
    <button id="feedback_submit">Submit Feedback</button>
   </fieldset>

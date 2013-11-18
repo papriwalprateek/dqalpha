@@ -25,6 +25,12 @@
 <script>
 
 $(document).ready(function() {
+var js_tags = <%= raw @tags.to_json %>;
+for (var i=0;i<js_tags.length;i++)
+{ 
+	$("div.q_tags").append("<span>"+js_tags[i]+"</span>");
+}
+
 $('span#qmail_edit_save a').hide();
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 

@@ -33,7 +33,11 @@ def create
     @q = Q.find(params[:id])
     @quest = @q.quest
     @qmails = @q.qmails
-  
+    begin
+    @tags = Rdf.where(:q_id => @q.id).last.tags
+    rescue
+    @tags = ["No tags yet!"]
+    end
      if params[:qmail_id] 
       @qmail_id = params[:qmail_id]
       if params[:n_id]         

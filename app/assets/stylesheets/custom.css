@@ -1358,7 +1358,7 @@ padding:5px;
 
 input#name{
 background:#f8f8f8;
-font-size: 1.8em;
+font-size: 1.6em;
 color: #CCC;
 border:none;
 margin-bottom: 15px;
@@ -1457,4 +1457,31 @@ div.result-link{
 }
 div.excerpt{
 	font-family:BentoSans;
+}
+p.searching_text{
+  font-family:BentoSans;
+  color:#888;
+  font-size:1.3em;
+  position:fixed;
+  margin-left:40%;
+}
+button.edit_qmail{
+  cursor:pointer;
+  background:#D1E1AD;
+  padding-left:4px;
+  padding-right:4px;
+  margin-left:2px;
+  font-family:BentoSans;
+  border:none;
+}
+
+span.edit_qmail{
+  cursor:pointer;
+  background:#D1E1AD;
+  padding-left:6px;
+  padding-right:2px;
+  margin-left:4px;
+ padding-top:3px;
+ padding-bottom:2px;
+ font-family:BentoSans;
 }

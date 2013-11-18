@@ -10,7 +10,7 @@
   </div>
   <div style="width:93%;" class = "c_qmail"><%=raw(qmail.content)%></div>
  <%if current_user%>
- 	<span style="background:#D1E1AD;padding-left:4px;padding-right:4px;"><%= link_to 'delete', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </span>
+<span class="edit_qmail"><%= link_to 'Delete', [qmail.q, qmail], :remote => true, :method => :delete, :data => { :confirm => 'Are you sure?' } %> </span>
 <button class="edit_qmail" onclick="edit_this_qmail(this,<%=qmail.q.id%>,<%=qmail.id%>)">Edit </button>
 <%end%>
 </div>
