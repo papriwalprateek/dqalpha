@@ -9,4 +9,5 @@ for (var i=0;i<js_array.length;i++)
 <%if @query%>
   window.history.pushState(null, document.title, "<%="/quests/"+@quest.id.to_s()+"/search?search="+@query.to_s()%>");   
   $('button#left_nav_search').data("url","<%="/quests/"+@quest.id.to_s()+"/search?search="+@query.to_s()%>");
+  $('p.searching_text').hide();
 <%end%>

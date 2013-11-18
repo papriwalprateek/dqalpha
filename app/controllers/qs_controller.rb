@@ -33,7 +33,7 @@ def create
     @q = Q.find(params[:id])
     @quest = @q.quest
     @qmails = @q.qmails
-      
+  
      if params[:qmail_id] 
       @qmail_id = params[:qmail_id]
       if params[:n_id]         

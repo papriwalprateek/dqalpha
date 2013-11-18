@@ -1,6 +1,8 @@
 <div id="header" >
 
 <a class="live_link" href="/" style="font-size:2.8em;color:#fff;line-height:1.2em;font-weight:bold;font-family:Lucida Grande;margin-left:140px;margin-top:14px;"><%= image_tag("logo.png", :alt => "DaQuest", :height => "40px", :class => "logo") %></a> 
+<p class="searching_text" style="display: none;">
+crunching latest datasets for you....</p>
 <ul class="navigation ">
  <li> <% if current_user %>
  <div style="float:left;margin-top:10px;"><a href ="/users/<%=current_user.id%>"><%= image_tag(Gravatar.new(current_user.email).image_url(:d => "mm"), :class => "user_hdr_img") %></a></div>

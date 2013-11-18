@@ -88,12 +88,14 @@ if(page_url_split[1]==undefined){
 }
 $('button#left_nav_discussion').data("url",page_url_split[0]);
 $('button#left_nav_search').data("url",dq_search_page);
-	});
+<%if @q%>
+show_mailing_page();
+<%end%>
+});
 
 function show_search_page(){
  window.history.pushState(null, document.title, $('button#left_nav_search').data("url"));   
  $('div.quests_show').hide();
- hide_rightcontent();
  $('div.quest_search_page').show();
  $('button.left_nav_buttons').css("color","#777");
   $('button#left_nav_search').css("color", "#fff");

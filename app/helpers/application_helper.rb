@@ -28,7 +28,7 @@ module ApplicationHelper
     end
     
     def recommended_quests(user_id)
-      all_q = [26,42]
+      all_q = [26,207]
       q = []       
       all_q.each do |quest_id|
         if Quest.where("id = ?",quest_id)[0]
