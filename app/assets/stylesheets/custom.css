@@ -1479,3 +1479,12 @@ span.edit_qmail{
 	padding-bottom:2px;
 	font-family:BentoSans;
 }
+
+p.searching_text{
+	font-family:BentoSans;
+	color:#888;
+	font-size:1.3em;
+	position:fixed;
+	margin-left:40%;
+}
+
