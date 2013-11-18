@@ -1457,8 +1457,25 @@ div.result-link{
 }
 div.excerpt{
 	font-family:BentoSans;
-<<<<<<< HEAD
 }
-=======
+
+button.edit_qmail{
+	cursor:pointer;
+	background:#D1E1AD;
+	padding-left:4px;
+	padding-right:4px;
+	margin-left:2px;
+	font-family:BentoSans;
+	border:none;
 }
->>>>>>> 7b03fb2dce9660edfbd3abad8dbd67fbdbb10d17
+
+span.edit_qmail{
+	cursor:pointer;
+	background:#D1E1AD;
+	padding-left:6px;
+	padding-right:2px;
+	margin-left:4px;
+	padding-top:3px;
+	padding-bottom:2px;
+	font-family:BentoSans;
+}
