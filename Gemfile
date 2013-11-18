@@ -30,6 +30,8 @@ gem 'ckeditor', '~> 4.0.4'
 gem 'pilha'
 gem 'newrelic_rpm'
 gem 'sendgrid'
+gem 'mongoid'
+gem 'bson_ext'
   gem 'coffee-rails', '~> 3.2.1'
 # Gems used only for assets and not required
 # in production environments by default.

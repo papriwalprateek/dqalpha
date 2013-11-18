@@ -88,4 +88,11 @@ heroku run:detached rake db:migrate
 	json = file.read
 	parsed = JSON.parse(json)
 	```
-   	
+	
+## Mongodb alongside Activerecord
+
+ Mongoid by default overrides the default activerecord generators so need to
+ use following commands to generate activerecord models or migrations.	
+	```ruby
+	rails g active_record:model Xyz
+	```
