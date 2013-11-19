@@ -132,6 +132,7 @@ margin: 3px;
 color:#232323;
 position:relative;
 font-size: 8px;
+width: 65%;
 }
 .quests_show:hover{
 }
@@ -157,7 +158,7 @@ opacity:0.8;
 
 .quests_show{
 	display:inline-block;
-	width:52%;
+	width:80%;
 	margin-top:10px;
 	margin-left:3%;
 }
@@ -1484,4 +1485,23 @@ span.edit_qmail{
  padding-top:3px;
  padding-bottom:2px;
  font-family:BentoSans;
+}
+span.qtag{
+    cursor:pointer;
+    background:#D1E1AD;
+    padding-left:6px;
+    padding-right:2px;
+    margin-left:4px;
+    font-family:Georgia;
+    margin-top:4px;
+    font-size:1.2em;
+    display: inline-block;
+    
+}
+span.qtag:hover{
+    background:#C6D880;
+}
+#com,#new_qmail_outer{
+	width: 65%;
+	float: left;
 }

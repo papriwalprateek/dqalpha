@@ -9,10 +9,14 @@
    <%= render partial: "qmails/qmail", collection: @qmails.sort_by { |obj| obj.created_at }%>
 <%end%>
  	</div>
-<div class="q_tags" style="display:none;">
+<div class ="q_tags" style="float:right;margin-right:5%;width:25%;">
+    <div style="font-family:Georgia;font-size:1.8em;">Tags</div>
+<hr>
+</br>
 </div>
 
-<div  id="qmail_field">
+
+<div  id="new_qmail_outer">
 <%if current_user%>
 
 <%= render "qmails/form" %>
@@ -26,9 +30,10 @@
 
 $(document).ready(function() {
 var js_tags = <%= raw @tags.to_json %>;
+var js_html_tag = "";
 for (var i=0;i<js_tags.length;i++)
 { 
-	$("div.q_tags").append("<span>"+js_tags[i]+"</span>");
+	$("div.q_tags").append("<a class='live_link' href='/quests/"+<%=@quest.id%>+"/search?search="+js_tags[i]+"'><span class='qtag'>"+js_tags[i]+"</span></a>");
 }
 
 $('span#qmail_edit_save a').hide();

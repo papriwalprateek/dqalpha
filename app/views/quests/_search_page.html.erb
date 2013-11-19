@@ -51,7 +51,7 @@
 	<%result_q=Q.find(d)%>
 	<%result_qmail = result_q.qmails.first()%>
 	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
-			<div class = "qs_tiles">
+			<div class = "qs_tiles" style="width:100%;">
 			<div style = "font-size:2em;margin-left:8px;padding:0px;margin-bottom:0px;padding-top:5px;font-family: BentoSans;"><%=result_q.title%>
 			</div>
 			
