@@ -29,8 +29,7 @@ validates :content, :presence => true
   end
   include PgSearch
  
-  multisearchable :against => [:content],
-                  :if => lambda { |record| record.id < 200 }
+  multisearchable :against => [:content]
  
   def self.rebuild_pg_search_documents
     connection.execute <<-SQL

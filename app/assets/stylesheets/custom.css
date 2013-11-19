@@ -1469,14 +1469,13 @@ p.searching_text{
 button.edit_qmail{
   cursor:pointer;
   background:#D1E1AD;
-  padding-left:4px;
-  padding-right:4px;
+  padding:1px 2px 2px 6px;
   margin-left:2px;
   font-family:BentoSans;
   border:none;
 }
 
-span.edit_qmail{
+span.delete_qmail{
   cursor:pointer;
   background:#D1E1AD;
   padding-left:6px;
@@ -1496,7 +1495,8 @@ span.qtag{
     margin-top:4px;
     font-size:1.2em;
     display: inline-block;
-    
+    border-radius:3px 3px 3px 3px;
+	padding-right:6px;
 }
 span.qtag:hover{
     background:#C6D880;

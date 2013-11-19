@@ -69,7 +69,7 @@ class QuestsController < ApplicationController
         @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
         @result_q_ids = @documents.all.map{|a| a.q_id}.uniq
         @arr<<"mailing_list"
-        @time_arr<<Time.now.to_s()
+        @time_arr<<Time.now.to_s()+"doc res"
       }
       @quest.vms.each do |vm|
       #vm = @quest.vms.last

@@ -96,3 +96,8 @@ heroku run:detached rake db:migrate
 	```ruby
 	rails g active_record:model Xyz
 	```
+	
+## PgSearch issues
+ 
+ Words too long to be indexed - this error is because of some of the qmails have content which have xml tags
+ like "<w:", "gte 9" etc. removing these removes this error.
