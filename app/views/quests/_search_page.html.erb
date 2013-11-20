@@ -1,8 +1,8 @@
 <%= form_tag({ :controller => "quests", :action => "search", :id => @quest.id}, :method => "get", :remote => true ) do %>
-	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'parsley', :"data-step" => 1, :class=> 'mashup_search_box') %>
+	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'You can use this search bar to get results arranged category-wise which are fetched from various relevant datasets', :"data-step" => 1, :class=> 'mashup_search_box') %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
-<div class="vm_tray" data-intro="results tray" data-step=2>
+<div class="vm_tray" data-intro="These are the categories in which search result is divided, you can click on any of them to see those and then also see detailed results if any by following links in the results" data-step=2>
 <span class="vm_icon1" id="description">Description</span>
 <span class="vm_icon1" id="examples">Examples</span>
 <span class="vm_icon1" id="mailing_list" >Mailing List</span>

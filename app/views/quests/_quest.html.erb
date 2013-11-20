@@ -1,15 +1,15 @@
 <div class="dashboard">
 
 <div class="dashboard_right">
-<div style="display: inline-block;font-size:2em;" data-intro="home page of the quest" data-step=3>
+<div style="display: inline-block;font-size:2em;" data-intro="This will take you to the home page, where all archived mails are listed" data-step=3>
 <%= image_tag("list.png", :alt => "<=", :height => "20", :width => "20") %>
 <a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'?partial=true'%> >
 <%=@quest.title%></a>
 </div>
 
 <div style="margin-top:30px;">
-<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'this lists all the threads of the quest' data-step = 5 onclick ="show_search_page()">Search</button>
-<button class="left_nav_buttons" id="left_nav_discussion"  data-intro = 'this lists all the threads of the quest' data-step = 5 onclick ="show_mailing_page()">Discussion Forum</button>
+<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'This will take you to search dashboard where you can also see your previous search results' data-step = 5 onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" id="left_nav_discussion"  data-intro = 'This will take you to the mailing archives threads list or mails of a particular thread' data-step = 5 onclick ="show_mailing_page()">Discussion Forum</button>
 </div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
@@ -56,7 +56,7 @@ function join_quest(){
 <%end%>
 </div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Send an invite</b></p>
-<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless",:"data-intro" => 'parsley', :"data-step" => 7) do %>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless",:"data-intro" => 'Enter email-id to invite someone.', :"data-step" => 7) do %>
   <%= label_tag(:add_user, " ") %>
   <%= text_field_tag :add_user %>
   <%= submit_tag("Send") %>
