@@ -1,2 +1,4 @@
- $("#content").html("<%= escape_javascript(render("q")) %>");
-   window.history.pushState(null, document.title, "/quests/<%=@quest.id.to_s%>/qs/<%=@q.id.to_s%>");
+ $(".quests_show").html("<%= escape_javascript(render("q")) %>");
+ $(".quests_show").show();
+  $('button#left_nav_discussion').data("url",location.href);
+  show_mailing_page();

@@ -8,7 +8,7 @@
 </div>
 
 <div style="margin-top:30px;">
-<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'this lists all the threads of the quest' data-step = 5onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'this lists all the threads of the quest' data-step = 5 onclick ="show_search_page()">Search</button>
 <button class="left_nav_buttons" id="left_nav_discussion"  data-intro = 'this lists all the threads of the quest' data-step = 5 onclick ="show_mailing_page()">Discussion Forum</button>
 </div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
@@ -108,10 +108,10 @@ function show_search_page(){
 }
 function show_mailing_page(){
  window.history.pushState(null, document.title, $('button#left_nav_discussion').data("url"));   
+ $('.vm_tray').hide();
+ $('.mashup_search_box').hide();
  $('div.quest_search_page').hide();
  $('div.quests_show').show();
- $('.vm_tray').hide();
-  $('.mashup_search_box').hide();
  $('button.left_nav_buttons').css("color","#777");
   $('button#left_nav_discussion').css("color", "#fff");
  $('button.left_nav_buttons').css("background-color","#e8e8e8");

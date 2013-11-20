@@ -19,6 +19,9 @@ def create
   @qmail.add_questid(params[:quest_id])
   @q.add_qid(@q.id)
   @qmail.add_qid(@q.id)
+  @qmails = @q.qmails
+  @tags = ["No tags yet!"]
+   
   respond_to do |format|
      
         format.html { redirect_to quest_path(@quest)}

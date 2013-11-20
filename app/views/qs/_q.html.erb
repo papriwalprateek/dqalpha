@@ -33,7 +33,13 @@ var js_tags = <%= raw @tags.to_json %>;
 var js_html_tag = "";
 for (var i=0;i<js_tags.length;i++)
 { 
+	if(js_tags[i]!= "No tags yet!"){
 	$("div.q_tags").append("<a class='live_link' href='/quests/"+<%=@quest.id%>+"/search?search="+js_tags[i]+"'><span class='qtag'>"+js_tags[i]+"</span></a>");
+	}
+	else{
+	$("div.q_tags").append("<span class='qtag'>"+js_tags[i]+"</span>");
+		
+	}
 }
 
 $('span#qmail_edit_save a').hide();
