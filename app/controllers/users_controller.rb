@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  layout false
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :require_vinay, :only => :index
@@ -40,7 +40,12 @@ class UsersController < ApplicationController
     render :layout => false
  
   end
-
+ def failed_signup
+    @user = User.new
+   respond_to do |format|
+   format.html
+   end  
+  end
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
@@ -58,7 +63,7 @@ class UsersController < ApplicationController
         format.html { redirect_to "/about" }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        format.html { render action: "failed_signup" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
