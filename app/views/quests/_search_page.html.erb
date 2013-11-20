@@ -1,8 +1,8 @@
-<%= form_tag({ :controller => "quests", :action => "search", :id => @quest.id}, :method => "get", :remote => true) do %>
-	  <%= text_field_tag(:search, params[:search]) %>
+<%= form_tag({ :controller => "quests", :action => "search", :id => @quest.id}, :method => "get", :remote => true ) do %>
+	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'parsley', :"data-step" => 1, :class=> 'mashup_search_box') %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
-<div class="vm_tray">
+<div class="vm_tray" data-intro="results tray" data-step=2>
 <span class="vm_icon1" id="description">Description</span>
 <span class="vm_icon1" id="examples">Examples</span>
 <span class="vm_icon1" id="mailing_list" >Mailing List</span>

@@ -10,11 +10,13 @@ Crunching the latest datasets just for you<img src = "/assets/search.gif" style 
   <div style= "float:left;margin-top:15px"><a class="live_link" href ="/notifications">Notifications</a></div>
   <div style= "float:left;margin-top:10px;font-size:20px;"> | </div>
     <div style="float:left;margin-top:15px;">
-        <%= link_to "Logout", :signout%>
+        <%= link_to "Logout", :signout%></div>
         <% else %>
 			<div style="float:left;margin-top:15px;font-family:BentoSans;font-size:1.2em;background:#ccc;padding:5px;"> <%= link_to "Login", :signin %></div>
         <% end %>
-        </div>
+ 	 <div style= "float:left;margin-top:10px;font-size:20px;"> | </div>
+      <button style="float:left;font-family:Georgia;margin-top:10px;font-size:1.2em; border-radius:3px 3px 3px 3px;background-color: darkkhaki; padding: 4px;color: grey"onclick="introduce_page()">Introduction!</button>     
+
         </li>
 </ul>
 </div>

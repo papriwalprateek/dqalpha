@@ -239,3 +239,7 @@ function back_navigation(){
 	$('div.quest_search_page .vm_results').hide();
 	$('div.quest_search_page #'+vm_live_id).show();
 }
+function introduce_page(){
+	i = introJs();
+	i.start();
+}

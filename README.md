@@ -101,3 +101,7 @@ heroku run:detached rake db:migrate
  
  Words too long to be indexed - this error is because of some of the qmails have content which have xml tags
  like "<w:", "gte 9" etc. removing these removes this error.
+ 
+## Rails 2.3 style plugins deprecation warning
+
+ installing rails_12 factor gem resolved the issue

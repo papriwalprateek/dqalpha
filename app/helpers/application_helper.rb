@@ -205,11 +205,13 @@ def so_content(a)
    @desc = @doc.body 
    j=0
    @answers = []
+   if @doc.answers
    while j < @doc.answers.length
       @ans = @doc.answers[j]["body"]
       @answers << @ans
       j = j + 1   
    end
+  end
 end
 def so_search(a)   
     a = a.gsub(" ","+")
