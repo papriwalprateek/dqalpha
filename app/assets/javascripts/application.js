@@ -22,6 +22,6 @@
 //= require jquery_adapter
 //= require jquery.purr
 //= require best_in_place
+//= require intro
 //= require jquery.truncator
 //= require_tree ./ckeditor
-//= require intro
