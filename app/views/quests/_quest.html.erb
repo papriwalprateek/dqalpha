@@ -8,8 +8,8 @@
 </div>
 
 <div style="margin-top:30px;">
-<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'This will take you to search dashboard where you can also see your previous search results' data-step = 5 onclick ="show_search_page()">Search</button>
-<button class="left_nav_buttons" id="left_nav_discussion"  data-intro = 'This will take you to the mailing archives threads list or mails of a particular thread' data-step = 5 onclick ="show_mailing_page()">Discussion Forum</button>
+<button class="left_nav_buttons" style="color:#fff;background-color:#666;font-weight:bold;" id="left_nav_search" data-intro = 'This will take you to search dashboard where you can also see your previous search results' data-step = 5 data-position = "right" onclick ="show_search_page()">Search</button>
+<button class="left_nav_buttons" id="left_nav_discussion"  data-intro = 'This will take you to the mailing archives threads list or mails of a particular thread' data-step = 5 data-position = "right" onclick ="show_mailing_page()">Discussion Forum</button>
 </div>
 <p style="margin-top:25px;margin-bottom:5px;color:#666;"><b>About</b></p>
 <%=@quest.description%>
@@ -18,10 +18,10 @@
 <div style="margin-top:10px;">
 <b style="color:#666;">Started</b> on <%=@quest.created_at.strftime("%b %d")%>
 <hr style="margin-top:10px;">
-<%if current_user%>
 <div class ="join_leave_quest">
+<%if current_user%>
 <%i = Involvement.where("user_id =? AND quest_id =?",current_user.id,@quest.id)%>
-<% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()"  data-intro = 'Clicking this will unsubscribe you from this quest' data-step = 6>Leave Quest</button>
+<% if i[0] %><button style="margin-top:30px;" class="leave_quest" onclick ="leave_quest()"  data-intro = 'Clicking this will unsubscribe you from this quest' data-step = 6 data-step = 6 data-position = "top" >Leave Quest</button>
 <script>
 function leave_quest(){
     $.ajax({
@@ -33,9 +33,7 @@ function leave_quest(){
 
 }</script>
 <%else%>
-<button style="margin-top:30px;" class="join_quest" onclick ="join_quest()"  data-intro = 'Clicking this will subscribe you to the quest' data-step = 6>Join Quest</button>
-<%end%>
-</div>
+<button style="margin-top:30px;" class="join_quest" onclick ="join_quest()"  data-intro = 'Clicking this will subscribe you to the quest' data-step = 6 data-position = "top" >Join Quest</button>
 <script>
 function join_quest(){
     $.ajax({
@@ -49,18 +47,24 @@ function join_quest(){
 
 </script>
 <%end%>
+<%else%>
+<a style="margin-top:30px;" class="join_quest" href="/signin"  data-intro = 'Clicking this will subscribe you to the quest' data-step = 6 data-position = "top" >Join Quest</a>
+<%end%>
+</div>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Members (<%=@quest.users.count%>)</b></p>
 <div>
 <%@quest.users.each do |user|%>
 <%= image_tag(Gravatar.new(user.email).image_url ,:size => "30x30", :title => user.name) %>
 <%end%>
 </div>
+<%if current_user%>
 <p style="margin-top:30px;margin-bottom:5px;color:#666;"><b>Send an invite</b></p>
-<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless",:"data-intro" => 'Enter email-id to invite someone.', :"data-step" => 7) do %>
+<%= form_tag({:controller=> "quests",:action => "show"},:remote=> true, :id => "borderless",:"data-intro" => 'Enter email-id to invite someone.', :"data-step" => 7, :"data-position" => "top") do %>
   <%= label_tag(:add_user, " ") %>
   <%= text_field_tag :add_user %>
   <%= submit_tag("Send") %>
 <% end %>
+<%end%>
 </div>
 </div>  
 <div class= "dashboard_content_area">
