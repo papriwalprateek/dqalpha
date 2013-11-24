@@ -1,0 +1,23 @@
+<div id="bugs" class="vm_results">
+	
+	<%begin%>
+	<br>
+	<%j = 0%>
+		<table>
+		<tr><td class="bz_component_column"><b>Component</b></td>
+		<td class="bz_short_desc_column"><b>Issue</b></td>
+		<td class="bz_changeddate_column"><b>Modified Date</b></td>
+		</tr>
+		<%while j < @shortdesc.length and j < 20%>
+		<tr>
+		<%=raw@component[j]%>
+		<%=raw@shortdesc[j]%>
+		<%=raw@datemodified[j]%>
+		</tr>
+		<%j = j + 1%>
+		<%end%>
+		</table>
+	<%rescue%>
+	<%end%>
+
+</div>

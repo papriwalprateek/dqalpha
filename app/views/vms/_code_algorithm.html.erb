@@ -1,0 +1,19 @@
+<div id="code" class="vm_results">
+        <%if @code%>
+        <%begin%>
+                        <div id = "searchresults"><%=raw @code%></div>
+        <%rescue%>
+        <%end%>
+        <%end%>
+        <%if @pseudocode%>
+		<%begin%>
+						<div style="font-family:BentoSans;color:#666;font-size:2em;">Implementation</div><br>
+						<%@pseudocode.each do |l|%>
+                        <div id = "searchresults"><%=raw l%></div>
+                        <br>
+                        <%end%>
+		<%rescue%>
+		<%end%>
+        <%end%>
+
+</div>

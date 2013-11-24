@@ -1,0 +1,24 @@
+		<div class="vm_results" id="mailing_list">
+	<%@result_q_ids.each do |d|%>	
+	<%result_q=Q.find(d)%>
+	<%result_qmail = result_q.qmails.first()%>
+	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
+			<div class = "qs_tiles" style="width:100%;">
+			<div style = "font-size:2em;margin-left:8px;padding:0px;margin-bottom:0px;padding-top:5px;font-family: BentoSans;"><%=result_q.title%>
+			</div>
+			
+				<%if result_qmail%>
+				
+			<div style="width:100%;">
+				<div>
+					<div style="font-size:1.2em;margin-left:8px;padding-bottom:1px;font-family: BentoSans;color:#888;">posted on <%=result_qmail.created_at.strftime("%b, %d")%> by <b><%=result_qmail.user.name%></b></div>
+				</div>
+			</div>
+			<br>
+			<%end%>
+			</div>
+		</a>
+		
+	<%end%>
+	
+</div>

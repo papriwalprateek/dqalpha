@@ -2,122 +2,49 @@
 	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'You can use this search bar to get results arranged category-wise which are fetched from various relevant datasets', :"data-step" => 1, :class=> 'mashup_search_box') %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
-<div class="vm_tray" data-intro="These are the categories in which search result is divided, you can click on any of them to see those and then also see detailed results if any by following links in the results" data-step=2>
+<div class="vm_tray">
 <span class="vm_icon1" id="description">Description</span>
+<span class="vm_icon1" id="algo_description" >Description</span>
 <span class="vm_icon1" id="examples">Examples</span>
+<span class="vm_icon1" id="math_analysis" >Mathematical Analysis</span>
+<span class="vm_icon1" id="algo_examples" >Examples</span>
 <span class="vm_icon1" id="mailing_list" >Mailing List</span>
 <span class="vm_icon1" id="qna">QnA</span>
 <span class="vm_icon1" id="bugs">Bugs</span>
 <span class="vm_icon1" id="related">Related Functions</span>
+<span class="vm_icon1" id="code" >Code</span>
+<span class="vm_icon1" id="algo_related" >Related Algorithms</span>
 <hr style = "width:75%;">
 
 </div>
 <%if @documents%>
-		<%if @scilab_results%>
-		<div class="vm_results" id ="description">
-			
-			<%begin%>
-				<%@description.each do |t|%>
-				<div id = "searchresults"><%=raw t%></div>
-				<%end%>
-			<%rescue%>
-			<%end%>
-			<hr>
-		</div>
-		
-		<div id="related" class="vm_results">
-			<%begin%>
-				<%@relatedfunc.each do |t|%>
-				<div id = "searchresults" class="sci_rel_func"><%=raw t%></div>				
-				<%end%>
-			<%rescue%>
-			<%end%>
-		</div>
-		<div class="vm_results" id ="examples">
-			
-			<%begin%>
-					<%@example[0].css("div.programlisting").each do |l|%>
-					<div style="float:right;background-color:#ccc;padding:5px;margin-bottom:2px;cursor:pointer;"><a  href="http://cloud.scilab.in" target="_blank">Run in Cloud</a></div>
-					<div id = "searchresults"><%=raw l%></div>
-					<br>
-					<%end%>
-			<%rescue%>
-			<%end%>
-			<hr>
-		</div>
-		<%end%>
-		<div class="vm_results" id="mailing_list">
-	<%@result_q_ids.each do |d|%>	
-	<%result_q=Q.find(d)%>
-	<%result_qmail = result_q.qmails.first()%>
-	<a class= "live_link" href = <%= '/quests/'+@quest.id.to_s()+'/qs/'+d.to_s()%>>
-			<div class = "qs_tiles" style="width:100%;">
-			<div style = "font-size:2em;margin-left:8px;padding:0px;margin-bottom:0px;padding-top:5px;font-family: BentoSans;"><%=result_q.title%>
-			</div>
-			
-				<%if result_qmail%>
-				
-			<div style="width:100%;">
-				<div>
-					<div style="font-size:1.2em;margin-left:8px;padding-bottom:1px;font-family: BentoSans;color:#888;">posted on <%=result_qmail.created_at.strftime("%b, %d")%> by <b><%=result_qmail.user.name%></b></div>
-				</div>
-			</div>
-			<br>
-			<%end%>
-			</div>
-		</a>
-		
-	<%end%>
-	
-</div>
-
+	<%= render "vms/mailing"%>		
+<%end%>
+<%if @scilab_results%>
+	<%= render "vms/scilab_help"%>
+<%end%>
+<%if @so_results%>
+		<%= render "vms/so_search"%>		
+<%end%>	
+<%if @bugzilla_results%>
+		<%= render "vms/bugzilla_search"%>		
+<%end%>	
+<%if (@code || @pseudocode)%>
+		<%= render "vms/code_algorithm"%>		
 <%end%>
 
-<div id="qna" class="vm_results">
-	<%if @so_results%>
-		<%begin%>
-			<br>
-		<%j=0%>
-		<%while j < @reco.length%>
-			<br>
-		<h3><%=raw@reco[j]%></h3>	
-		<h4><%=raw@reco_desc[j]%></h4>
-		<%j=j+1%>
-		<hr>
-		<%end%>	
-		<%rescue%>
-		<%end%>	
-	<%end%>	
-</div>
-
-<div id="bugs" class="vm_results">
-	<%if @bugzilla_results%>
-	
-	<%begin%>
-	<br>
-	<%j = 0%>
-		<table>
-		<tr><td class="bz_component_column"><b>Component</b></td>
-		<td class="bz_short_desc_column"><b>Issue</b></td>
-		<td class="bz_changeddate_column"><b>Modified Date</b></td>
-		</tr>
-		<%while j < @shortdesc.length and j < 20%>
-		<tr>
-		<%=raw@component[j]%>
-		<%=raw@shortdesc[j]%>
-		<%=raw@datemodified[j]%>
-		</tr>
-		<%j = j + 1%>
-		<%end%>
-		</table>
-	<%rescue%>
-	<%end%>
-	<%end%>
-</div>
+<%= render "vms/wiki_algorithm"%>		
 
 <script>
 var vm_live_id;
 $(function() {
+$("span.vm_icon1").hide();
+
+<%if @arr%>var js_array = <%= raw @arr.to_json %>;
+for (var i=0;i<js_array.length;i++)
+{ $("span#"+js_array[i]).show();
+}
+<%end%>
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 
    $('.example').truncate({max_length: 24});

@@ -1,0 +1,63 @@
+<%if @wiki_definition%>
+<div class="vm_results" id ="algo_description">
+                        <%begin%>
+                                <%@wiki_definition.each do |t|%>
+                                <div id = "searchresults"><%=raw t%></div>
+                                <br>
+                                <%end%>
+                        <%rescue%>
+                        <%end%>
+<hr>
+</div>
+<%end%>
+<%if @math%>
+<div id="math_analysis" class="vm_results">
+        <%begin%>
+                        <%@math.each do |l|%>
+                        <div id = "searchresults"><%=raw l%></div>
+                        <br>
+                        <%end%>
+        <%rescue%>
+        <%end%>
+</div>           
+<%end%>
+<%if (@algorithm||@cmplx)%>     
+<div class="vm_results" id ="algo_examples">
+         <%if @algorithm%>
+         <%begin%>
+                        <%@algorithm.each do |l|%>
+                        <div id = "searchresults"><%=raw l%></div>
+                        <br>
+                        <%end%>
+         <%rescue%>
+         <%end%>
+         <%end%>
+                
+                <%if @cmplx%>
+                <%begin%>
+                                <div style="font-family:BentoSans;color:#666;font-size:2em;">Complexity</div><br>
+                                <%@cmplx.each do |t|%>
+                                <div id = "searchresults"><%=raw t%></div>
+                                <br>
+                                <%end%>
+                <%rescue%>
+                <%end%>
+                <%end%>
+                
+                <hr>
+                </div>
+<%end%>
+<%if @related_algorithm %>
+<div class="vm_results" id="algo_related">                        
+        <%if @related_algorithm[0] != "see also"%>
+		<%begin%>
+						<div style="font-family:BentoSans;color:#666;font-size:2em;">Related:</div><br>
+						<%@related_algorithm.each do |l|%>
+                        <div id = "searchresults"><%=raw l%></div>
+                        <br>
+                        <%end%>
+		<%rescue%>
+		<%end%>
+        <%end%>        
+</div>
+<%end%>

@@ -1,0 +1,14 @@
+<div id="qna" class="vm_results">
+<%begin%>
+			<br>
+		<%j=0%>
+		<%while j < @reco.length%>
+			<br>
+		<h3><%=raw@reco[j]%></h3>	
+		<h4><%=raw@reco_desc[j]%></h4>
+		<%j=j+1%>
+		<hr>
+		<%end%>	
+<%rescue%>
+<%end%>	
+</div>

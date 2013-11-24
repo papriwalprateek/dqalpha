@@ -1,6 +1,5 @@
 class QuestsController < ApplicationController
  # before_filter :require_user
-  
   def create
     @user = current_user
     @quest = @user.quests.create(params[:quest])
@@ -62,20 +61,28 @@ class QuestsController < ApplicationController
     @arr=[]
     if params[:search]     
      @query = params[:search]
+      vmsa =[]
+      @quest.vms.each do |vm|
+      vmsa<<vm.name
+      end 
+      
+      
       @time_arr = []
       @time_arr<<Time.now      
-      thread_arr =[]      
+      thread_arr =[]              
         @documents = PgSearch.multisearch(params[:search]).where(quest_id: "#{params[:id]}")
         @result_q_ids = @documents.all.map{|a| a.q_id}.uniq
         @arr<<"mailing_list"
         @time_arr<<Time.now.to_s()+"doc res"
-      @quest.vms.each do |vm|
-      #vm = @quest.vms.last
+      
+      vmsa.each do |vm|
       thread_arr<<Thread.new{         
         begin
-          send(vm.name,@query)
-           @time_arr<< Time.now.to_s()+vm.name
-        rescue
+         puts vm+@query
+          send(vm,@query)
+           @time_arr<< Time.now.to_s()+vm
+        rescue 
+          puts $!.inspect
         end
       }
       end 

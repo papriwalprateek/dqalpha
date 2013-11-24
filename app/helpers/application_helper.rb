@@ -1,5 +1,4 @@
-module ApplicationHelper
-    
+module ApplicationHelper 
     def title   
         base_title = "DaQwest" 
         if @title.nil?
@@ -311,7 +310,7 @@ def link_to_add_fields(name, f, association)
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end 
-end
+
 def scilab_extract_it(url)
 @name = ["Niels Peter Fenger", "Stanislav", "owsigplc", "arctica1963", "Debola Abduljeleel", "grivet", "Samuel GOUGEON", "Pascal Buehler", "Serge Steer", "barbaraflowers", "Rafael Guerra", "oscar.espejo", "Michael J. McCann", "Antoine Monmayrant", "Michael J. McCann-2", "matacosta", "Sylvestre Ledru-4", "shorne", "omorr", "ezequiel soule", "Mathieu Dubois", "Adrien Vogt-Schilb", "cactus_jack", "Denis", "Amsdenyt", "Marria", "lukeaarond", "pepe", "F. Vogel", "F. Vogel-2", "jhdtyp", "Eze-Okoli Ifeoma Sandra", "jasper van baten", "Nima Sahraneshin-Samani", "A Khorshidi", "Janusz Magrian", "rajesh kannan", "Stefan Du Rietz", "stef296", "papriwalprateek", "Jacqueline Howe", "jacquih", "Paul Carrico", "martin.highUp", "simi99", "oiwmw", "Chuox", "Larissa", "Mike Page", "windkraft", "babigeon","Dang_Christophe", "Carrico_Paul"]
 
@@ -358,5 +357,241 @@ def scilab_extract_it(url)
     
     i = i + 1
   end  
+  
+end
+   
+def algorithm_wiki(a)
+  if a
+  puts "inside algorithm vm"
+  require 'media_wiki'
+    require 'nokogiri'
+    require 'open-uri'
+  require 'wikicloth'
 
+    mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
+    @catch = false
+    begin
+    wiki = mw.render(a.to_s.titleize)
+  
+    rescue MediaWiki::APIError => e
+    begin
+  wiki =  mw.render(a)
+    rescue MediaWiki::APIError => e
+    @catch = true
+    end
+    end
+
+    @wiki_definition = []
+
+    @doc = Nokogiri::HTML(wiki)
+
+    redirect = @doc.css('li').children.text.split(' ')
+    redirect = redirect[0]
+    if redirect.include?'REDIRECT'
+  print "This is redirect case"
+    a = a.to_s.gsub ' ', '_'
+    @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+  end
+
+
+# @wiki_definition << @doc.css("p")[0]
+  @node = @doc.css("p")[0]
+  @stop = @doc.css("div#toc")[0]
+  @stop1 = @doc.css("h2 > span")[0].parent
+  
+  while @node!=@stop and @node!=@stop1
+      @wiki_definition << @node
+      @node = @node.next 
+    end 
+    if @doc.css("a.image")[0]
+  @wiki_definition << @doc.css("a.image")[0]
+  x = @doc.css("a.image")[0]
+  x.remove
+  end
+  if @doc.css("table.infobox")
+  @wiki_definition << @doc.css("table.infobox")
+  end
+
+# Mathematical Insights
+
+  j = 0
+  htag = -1
+  
+  @math_tags = ["solving","analysis","combinatorics","math","proof","relation","formulas","correctness"]  # This is tag array which empowers the math method
+  
+  while j < @doc.css("h2 > span").length
+      @math_tags.each do |x|
+      if @doc.css("h2 > span")[j].text.downcase.include?(x) 
+        htag = j
+      end
+      end
+      if htag >= 0
+        j = @doc.css("h2 > span").length
+      end
+      j = j + 1
+  end
+  
+  if htag >= 0
+    @math = []
+  @node = @doc.css("h2 > span")[htag].parent
+    @stop = @doc.css("h2 > span")[htag+2].parent
+    
+    editsec = @doc.css("span.mw-editsection")
+    editsec.remove
+    
+    @node = @node.next
+    while @node!=@stop
+      @math << @node
+      @node = @node.next 
+    end
+  end
+
+# Algo Complexity 
+    
+  j = 0
+  htag = -1
+  @cmplx_tags = ["Complexity","Efficiency","efficiency","complexity","time","Time"]  # This is array of semantic tags which tags content related to algorithm complexity 
+  
+  while j < @doc.css("h2 > span").length
+      @cmplx_tags.each do |x|
+      if @doc.css("h2 > span")[j].text.include?(x)
+        htag = j
+      end
+      end
+      if htag >= 0
+        j = @doc.css("h2 > span").length
+      end
+      j = j + 1
+  end
+  if htag >= 0
+    @cmplx = []
+  @node = @doc.css("h2 > span")[htag].parent
+    @stop1 = @doc.css("h2 > span")[htag+1].parent
+    @stop = @doc.css("h2 > span")[htag+2].parent
+    
+    editsec = @doc.css("span.mw-editsection")
+    editsec.remove
+    
+    @node = @node.next
+    while @node!=@stop and @node!=@stop1
+      @cmplx << @node
+      @node = @node.next 
+    end
+    end
+
+
+
+# Algorithm
+
+  j = 0
+  htag = -1
+  
+  @algo_tags = ["algorithm","definition","description","encoding","overview","operation"]
+  
+  while j < @doc.css("h2 > span").length
+      @algo_tags.each do |x|
+      if @doc.css("h2 > span")[j].text.downcase.include?(x) 
+        htag = j
+      end
+      end
+      
+      if htag >= 0
+        j = @doc.css("h2 > span").length
+      end
+      j = j + 1
+  end
+  if htag >= 0
+    @algorithm = []
+  @node = @doc.css("h2 > span")[htag].parent
+  @stop1 = @doc.css("h2 > span")[htag+1].parent
+    @stop = @doc.css("h2 > span")[htag+2].parent
+    
+    editsec = @doc.css("span.mw-editsection")
+    editsec.remove
+    
+    @node = @node.next
+    while @node!=@stop and @node!=@stop1
+      @algorithm << @node
+      @node = @node.next 
+    end
+    end
+
+# Pseudocode
+
+  j = 0
+  htag = -1
+  
+  @pseudocode_tags = ["pseudocode","implementation"]
+  
+  while j < @doc.css("h2 > span").length
+      @pseudocode_tags.each do |x|
+      if @doc.css("h2 > span")[j].text.downcase.include?(x) 
+        htag = j
+      end
+      end
+      
+      if htag >= 0
+        j = @doc.css("h2 > span").length
+      end
+      j = j + 1
+  end
+  if htag >= 0
+    @pseudocode = []
+  @node = @doc.css("h2 > span")[htag].parent
+  @stop1 = @doc.css("h2 > span")[htag+1].parent
+    @stop = @doc.css("h2 > span")[htag+2].parent
+    
+    editsec = @doc.css("span.mw-editsection")
+    editsec.remove
+    
+    @node = @node.next
+    while @node!=@stop and @node!=@stop1
+      @pseudocode << @node
+      @node = @node.next 
+    end
+    end
+
+# Related algorithms
+
+  j = 0
+  htag = -1
+  
+  @related_algorithm = ["see also"]  # This is tag array which empowers the related algorithms method
+  
+  while j < @doc.css("h2 > span").length
+      @related_algorithm.each do |x|
+      if @doc.css("h2 > span")[j].text.downcase.include?(x) 
+        htag = j
+      end
+      end
+      if htag >= 0
+        j = @doc.css("h2 > span").length
+      end
+      j = j + 1
+  end
+  
+  if htag >= 0
+    @related_algorithm = []
+  @node = @doc.css("h2 > span")[htag].parent
+    @stop = @doc.css("h2 > span")[htag+2].parent
+    @stop1= @doc.css("h2 > span")[htag+1].parent
+    
+    editsec = @doc.css("span.mw-editsection")
+    editsec.remove
+    
+    @node = @node.next
+    while @node!=@stop and @node!=@stop1
+      @related_algorithm << @node
+      @node = @node.next 
+    end
+  end
+
+
+  end
+       @arr<<"algo_description"
+       @arr<<"math_analysis"
+       @arr<<"algo_examples"
+       @arr<<"algo_related"
+  
+  end
 end

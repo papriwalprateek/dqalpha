@@ -1,0 +1,31 @@
+<div class="vm_results" id ="description">
+			
+			<%begin%>
+				<%@description.each do |t|%>
+				<div id = "searchresults"><%=raw t%></div>
+				<%end%>
+			<%rescue%>
+			<%end%>
+			<hr>
+		</div>
+		
+		<div id="related" class="vm_results">
+			<%begin%>
+				<%@relatedfunc.each do |t|%>
+				<div id = "searchresults" class="sci_rel_func"><%=raw t%></div>				
+				<%end%>
+			<%rescue%>
+			<%end%>
+		</div>
+		<div class="vm_results" id ="examples">
+			
+			<%begin%>
+					<%@example[0].css("div.programlisting").each do |l|%>
+					<div style="float:right;background-color:#ccc;padding:5px;margin-bottom:2px;cursor:pointer;"><a  href="http://cloud.scilab.in" target="_blank">Run in Cloud</a></div>
+					<div id = "searchresults"><%=raw l%></div>
+					<br>
+					<%end%>
+			<%rescue%>
+			<%end%>
+			<hr>
+		</div>
