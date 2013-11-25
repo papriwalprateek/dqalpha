@@ -608,10 +608,10 @@ def algorithm_wiki(a)
 #   @bz_links = @shortdesc.css('a').map {|link| link["href"]}
 
   term = a.split(" ")
-  
-  parsed = Geekslink.all
+  time = Time.now
+  parsed = Geekslink.all.to_a
   rank = []   # this is a rank array containing the ranking of geeks articles on the basis of query terms
-
+  puts Time.now-time
   parsed.each do |p|
     totrank=0
     rankarr = []  # rank matrix for particular tag term
@@ -651,7 +651,7 @@ def algorithm_wiki(a)
   #puts "jfsdhksjfhkjsfhkjshfkjshfkjsdhksjfhk"
   #puts rank.max
   l = parsed[x].link
-  #puts l
+  puts Time.now-time
   @doc = Nokogiri::HTML(open(l))
   j = 0
   while j < @doc.css("pre").length
@@ -663,7 +663,7 @@ def algorithm_wiki(a)
   end
   @code = @doc.css("pre")[c]
   @arr<<"code"
-# puts @code
+ puts Time.now-time
 end
 
 end
