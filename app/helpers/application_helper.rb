@@ -609,7 +609,7 @@ def algorithm_wiki(a)
 
   term = a.split(" ")
   time = Time.now
-  parsed = Geekslink.all.to_a
+  parsed = Geekslink.all.to_a()
   rank = []   # this is a rank array containing the ranking of geeks articles on the basis of query terms
   puts Time.now-time
   parsed.each do |p|

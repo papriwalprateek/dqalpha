@@ -76,7 +76,6 @@ class QuestsController < ApplicationController
         @time_arr<<Time.now.to_s()+"doc res"
       
       vmsa.each do |vm|
-      thread_arr<<Thread.new{         
         begin
          puts vm+@query
           send(vm,@query)
@@ -84,12 +83,7 @@ class QuestsController < ApplicationController
         rescue 
           puts $!.inspect
         end
-      }
       end 
-      thread_arr.each do |t|
-        t.join
-      @time_arr<< Time.now.to_s()     
-      end
       @time_arr<< Time.now.to_s()+"end"
      
      @scilab_results = @arr.include?("description")
