@@ -38,7 +38,19 @@
 
 <script>
 var vm_live_id;
+<%if @wikialgo%>
 $(function() {
+ var algo_tags = [<% for algo in @wikialgo -%>
+"<%= algo.htag %>"
+<%if algo==@wikialgo.last%>
+<%else%>
+,<%end%>
+<% end -%>];
+
+ $( "input.mashup_search_box" ).autocomplete({
+	source: algo_tags
+});
+<%end%>
 $("span.vm_icon1").hide();
 
 <%if @arr%>var js_array = <%= raw @arr.to_json %>;

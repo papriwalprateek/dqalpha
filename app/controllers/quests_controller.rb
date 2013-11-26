@@ -24,6 +24,9 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
+  if @quest.id==26
+    @wikialgo = Wikialgo.all.to_a()
+  end
     @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     if params[:page]
       @pagination = true
@@ -56,7 +59,11 @@ class QuestsController < ApplicationController
 
   end
  def search
+  
     @quest = Quest.find(params[:id])
+  if @quest.id==26
+    @wikialgo = Wikialgo.all.to_a()
+  end
     @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     @arr=[]
     if params[:search]     
