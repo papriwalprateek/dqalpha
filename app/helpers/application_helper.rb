@@ -598,59 +598,8 @@ def algorithm_wiki(a)
   def algorithm_geeks(a)
   require "nokogiri"
    require "open-uri"
-   require "json"
-#   a = a.gsub(" ","+")
-  
-#   @doc = Nokogiri::HTML(open("http://bugzilla.scilab.org/buglist.cgi?quicksearch="+a+"&order=resolution"))
-#   @shortdesc = @doc.css("td.bz_short_desc_column")
-#   @component = @doc.css("td.bz_component_column")
-#   @datemodified = @doc.css("td.bz_changeddate_column")
-#   @bz_links = @shortdesc.css('a').map {|link| link["href"]}
-
-  term = a.split(" ")
-  time = Time.now
-  parsed = Geekslink.all.to_a()
-  rank = []   # this is a rank array containing the ranking of geeks articles on the basis of query terms
-  puts Time.now-time
-  parsed.each do |p|
-    totrank=0
-    rankarr = []  # rank matrix for particular tag term
-    if p.htag == 0
-      trank = -1
-    else    # Using dynamic programming to rank the htags for given query 
-      term.each do |t|
-        trank = 0
-        for i in 0..(t.length-1)
-          rankarr << []
-          for j in 0..(p.htag.length-1)
-            if i == 0 or j == 0
-              rankarr[i][j] = 0
-            elsif t[i-1] == p.htag[j-1]
-              rankarr[i][j] = rankarr[i-1][j-1] + 1
-              if trank < rankarr[i][j]
-                trank = rankarr[i][j]
-              end
-              if trank == t.length 
-                trank = trank * 3
-              end
-              if t.downcase == "algorithm"
-                trank = trank/3;
-              end
-            else
-              rankarr[i][j] = 0
-            end
-          end
-        end
-        totrank = totrank + (trank*1.0/t.length)
-      end
-    end
-    rank << totrank
-  end
-  #puts rank
-  x = rank.index(rank.max)
-  #puts "jfsdhksjfhkjsfhkjshfkjshfkjsdhksjfhk"
-  #puts rank.max
-  l = parsed[x].link
+  parsed  = Geekslink.fulltext_search(a)
+  l = parsed[0].link
   puts Time.now-time
   @doc = Nokogiri::HTML(open(l))
   j = 0
