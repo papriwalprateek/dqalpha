@@ -600,7 +600,6 @@ def algorithm_wiki(a)
    require "open-uri"
   parsed  = Geekslink.fulltext_search(a)
   l = parsed[0].link
-  puts Time.now-time
   @doc = Nokogiri::HTML(open(l))
   j = 0
   while j < @doc.css("pre").length
@@ -614,7 +613,6 @@ def algorithm_wiki(a)
   @code = @doc.css("pre")[c]
   @arr<<"code"
   end
- puts Time.now-time
 end
 
 end
