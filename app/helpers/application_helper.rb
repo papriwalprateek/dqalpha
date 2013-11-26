@@ -435,7 +435,7 @@ rank = []
         l << parsed[t[0]].htag    
       end
       puts l
-    @arr << "algo_description"
+    @arr << "algo_suggestion"
     @algo_suggestion = l  
     end
     
