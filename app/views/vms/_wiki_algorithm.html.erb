@@ -61,3 +61,16 @@
         <%end%>        
 </div>
 <%end%>
+<%if @algo_suggestion %>
+<div class="vm_results" id="algo_suggestion">                        
+    	<%begin%>
+						<div style="font-family:BentoSans;color:#666;font-size:2em;">Do you mean:</div><br>
+						<%@algo_suggestion.each do |l|%>
+                        <div id = "searchresults"><a href="search?search=<%=raw l%>" class="live_link"><%=raw l%></a></div>
+                        <br>
+                        <%end%>
+		<%rescue%>
+		<%end%>
+              
+</div>
+<%end%>

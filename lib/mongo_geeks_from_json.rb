@@ -1,9 +1,9 @@
-file = open("lib/geeksjson.json")
+file = open("lib/algorithm.json")
 json = file.read
 parsed = JSON.parse(json)
 for i in parsed
-	r = Geekslink.new
+	r = Wikialgo.new
 	r.link = i["link"]
-	r.htag = i["htag"]
+	r.htag = i["name"]
 	r.save!
 end
