@@ -596,23 +596,34 @@ def algorithm_wiki(a)
   
   end
   def algorithm_geeks(a)
+   puts Time.now()
   require "nokogiri"
    require "open-uri"
+  puts Time.now().to_s()+"loaded library"
   parsed  = Geekslink.fulltext_search(a)
+  puts Time.now().to_s()+"searched mongo"  
   l = parsed[0].link
   @doc = Nokogiri::HTML(open(l))
+  
+  puts Time.now().to_s()+"noko opened"
   j = 0
-  while j < @doc.css("pre").length
-    if @doc.css("pre")[j].text.split("//").length > 5 or @doc.css("pre")[j].text.split("/*").length > 5
+  @dc = @doc.css("pre")
+  while j < @dc.length
+    @k = @dc[j].text
+    if (@k.split("//").length > 5 or @k.split("/*").length > 5)
       c = j
       break
     end
     j = j + 1
   end
+  
+  puts Time.now().to_s()+"pre found"
   if c
-  @code = @doc.css("pre")[c]
-  @arr<<"code"
+  @code = @dc[c]
+  #@arr<<"code"
   end
+
+  puts Time.now().to_s()+"end"
 end
 
 end
