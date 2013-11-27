@@ -597,13 +597,20 @@ def algorithm_wiki(a)
   end
   def algorithm_geeks(a)
    puts Time.now()
-  require "nokogiri"
-   require "open-uri"
-  puts Time.now().to_s()+"loaded library"
   parsed  = Geekslink.fulltext_search(a)
   puts Time.now().to_s()+"searched mongo"  
-  l = parsed[0].link
-  @doc = Nokogiri::HTML(open(l))
+  @code_arr = parsed
+  if @code_arr
+    @code_arr.each do |c|
+      c.link = "/geeks-link/"+c.link.split("forgeeks.org/")[1]
+    end
+  end
+end
+def algorithm_geeks_extract(link)
+  require "nokogiri"
+   require "open-uri"
+ 
+  @doc = Nokogiri::HTML(open("http://www."+link))
   
   puts Time.now().to_s()+"noko opened"
   j = 0
@@ -624,6 +631,6 @@ def algorithm_wiki(a)
   end
 
   puts Time.now().to_s()+"end"
+  
 end
-
 end

@@ -24,6 +24,7 @@ Blog::Application.routes.draw do
   match '/notifications' => 'pages#notifications'
   match '/scilab' => 'pages#scilab'
   match '/bugzilla' => 'pages#bugzilla'
+  match '/geeks-link' => 'pages#geek'
   match '/feedback_submit' => 'pages#feedback_submit'
 #get "users/new"
   match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]

@@ -139,6 +139,12 @@ $(document).ajaxSend(function(evt, request, settings) {
      ajax_result_content_navigation("/so","stackoverflow.com/questions/"+b);
      return false;
    });
+   
+  $("div#code a.geeks_link").live("click", function() {
+     a = this.href.split("geeks-link/")[1];
+     ajax_result_content_navigation("/geeks-link","geeksforgeeks.org/"+a);
+     return false;
+   });
  $("div#bugs.vm_results a").live("click", function() {
      a = this.href;
      b = a.split("show_bug.cgi?id=")[1];

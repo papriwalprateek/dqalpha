@@ -1,10 +1,5 @@
 <div id="code" class="vm_results">
-        <%if @code%>
-        <%begin%>
-                        <div id = "searchresults"><%=raw @code%></div>
-        <%rescue%>
-        <%end%>
-        <%end%>
+   
         <%if @pseudocode%>
 		<%begin%>
 						<div style="font-family:BentoSans;color:#666;font-size:2em;">Implementation</div><br>
@@ -15,5 +10,12 @@
 		<%rescue%>
 		<%end%>
         <%end%>
-
+     <%if @code_arr%>
+        <%begin%>
+            <%@code_arr.each do |t|%>
+				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>				
+				<%end%>
+        <%rescue%>
+        <%end%>
+        <%end%>
 </div>

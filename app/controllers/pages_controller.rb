@@ -46,6 +46,13 @@ def scilab
       format.js { render "layouts/bugzilla"  }
      end
   end
+  def geek
+    @content = algorithm_geeks_extract(params[:ad])
+    respond_to do |format|
+      format.js { render "layouts/geek"  }
+     end
+  end
+
 def so
     @content = so_content(params[:ad])
         @query_so = params[:ad]
