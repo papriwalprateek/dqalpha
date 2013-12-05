@@ -412,6 +412,10 @@ def algorithm_wiki(a)
   @wiki_definition << @doc.css("table.infobox")
   end
 
+	if @wiki_definition[0] != nil
+       @arr<<"algo_description"
+	end
+
 # Mathematical Insights
 
   j = 0
@@ -444,6 +448,10 @@ def algorithm_wiki(a)
       @math << @node
       @node = @node.next 
     end
+	if @math[0] != nil
+       @arr<<"math_analysis"
+	end
+
   end
 
 # Algo Complexity 
@@ -550,6 +558,11 @@ def algorithm_wiki(a)
       @node = @node.next 
     end
     end
+	
+	if @psuedocode[0] != nil
+       @arr<<"code"
+	end
+
 
 # Related algorithms
 
@@ -585,14 +598,17 @@ def algorithm_wiki(a)
       @node = @node.next 
     end
   end
-
-
-  end
-       @arr<<"algo_description"
-       @arr<<"math_analysis"
-       @arr<<"algo_examples"
+	if @related_algorithm[0] != nil
        @arr<<"algo_related"
-       @arr<<"code"
+	end
+
+	if @cmplx[0] != nil or @algorithm[0] != nil
+       @arr<<"algo_examples"		
+	end
+
+	
+  end
+
   
   end
   def algorithm_geeks(a)
@@ -627,7 +643,9 @@ def algorithm_geeks_extract(link)
   puts Time.now().to_s()+"pre found"
   if c
   @code = @dc[c]
-  #@arr<<"code"
+  if @arr.include?("code")
+  elsif @code !=nil
+     @arr<<"code"
   end
 
   puts Time.now().to_s()+"end"
