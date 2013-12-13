@@ -25,6 +25,7 @@
 <div class="vm_results" id ="algo_examples">
          <%if @algorithm%>
          <%begin%>
+         				<div name="algo"></div>
                         <%@algorithm.each do |l|%>
                         <div id = "searchresults"><%=raw l%></div>
                         <br>
@@ -33,9 +34,9 @@
          <%end%>
          <%end%>
                 
-                <%if @cmplx%>
+                <%if @cmplx != []%>
                 <%begin%>
-                                <div style="font-family:BentoSans;color:#666;font-size:2em;">Complexity</div><br>
+                                <div style="font-family:BentoSans;color:#666;font-size:2em;" name = "cmpx">Complexity</div><br>
                                 <%@cmplx.each do |t|%>
                                 <div id = "searchresults"><%=raw t%></div>
                                 <br>
@@ -44,20 +45,29 @@
                 <%end%>
                 <%end%>
                 
-                <hr>
-                </div>
+</div>
+
 <%end%>
+
+
 <%if @related_algorithm %>
 <div class="vm_results" id="algo_related">                        
         <%if @related_algorithm[0] != "see also"%>
 		<%begin%>
-						<div style="font-family:BentoSans;color:#666;font-size:2em;">Related:</div><br>
+						<div style="font-family:BentoSans;color:#666;font-size:1.6em;">Related:</div><br>
 						<%@related_algorithm.each do |l|%>
                         <div id = "searchresults"><%=raw l%></div>
                         <br>
                         <%end%>
 		<%rescue%>
 		<%end%>
-        <%end%>        
+        <%end%>
+        
+        <div style="font-family:BentoSans;color:#666;font-size:1.6em;">Videos:</div><br>
+        <%@embed_vid.each do |e|%>
+        	<iframe width="460" height="250" src="//www.youtube.com/embed/<%=raw e%>" frameborder="0" allowfullscreen></iframe>
+        	<br>
+        	<br>
+        <%end%> 
 </div>
 <%end%>
