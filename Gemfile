@@ -6,9 +6,9 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #group :test do
 #  gem 'sqlite3-ruby', :require => 'sqlite3'
-#group :production do
-#  gem 'pg'
-#end
+group :production do
+  gem 'ckeditor', '~> 4.0.6'
+end
 gem 'redcarpet'
 gem 'albino'
 gem 'best_in_place'

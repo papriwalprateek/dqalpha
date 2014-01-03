@@ -42,7 +42,7 @@ GEM
     bson_ext (1.9.2)
       bson (~> 1.9.2)
     builder (3.0.0)
-    ckeditor (4.0.4)
+    ckeditor (4.0.7)
       mime-types
       orm_adapter
     coffee-rails (3.2.2)
@@ -180,7 +180,7 @@ DEPENDENCIES
   authlogic
   best_in_place
   bson_ext
-  ckeditor (~> 4.0.4)
+  ckeditor (~> 4.0.6)
   coffee-rails (~> 3.2.1)
   google_visualr
   gravatar-ultimate
