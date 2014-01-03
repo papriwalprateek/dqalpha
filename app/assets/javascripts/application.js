@@ -15,6 +15,7 @@
 //= require jquery-ujs
 //= require custom
 //= require bjqs
+//= require ckeditor/override
 //= require ckeditor/init
 //= require ckeditor/config
 //= require highlight.pack
