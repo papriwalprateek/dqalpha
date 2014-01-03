@@ -242,7 +242,7 @@ def scilab_help(a)
    @refsec = @doc.css("div.refsection")
    @refsec.each do |t|
         if t.css("h3").text == "Description"
-			t.css("h3").remove
+      t.css("h3").remove
             @description << t
         end
    end
@@ -255,18 +255,18 @@ def scilab_help(a)
 
    @refsec.each do |t|
         if t.css("h3").text == "Examples"
-			t.css("h3").remove
+      t.css("h3").remove
             @example << t
         end
    end
 
    @refsec.each do |t|
         if t.css("h3").text == "See Also"
-			t.css("h3").remove
-			t.css("li").each do |l|
-			l.xpath("a")[0].attributes["href"].value = "search?search=" + l.xpath("a")[0].attributes["href"].value.split(".")[0]
-			@relatedfunc << l
-			end
+      t.css("h3").remove
+      t.css("li").each do |l|
+      l.xpath("a")[0].attributes["href"].value = "search?search=" + l.xpath("a")[0].attributes["href"].value.split(".")[0]
+      @relatedfunc << l
+      end
         end
    end
        @arr<<"description"
@@ -412,9 +412,9 @@ def algorithm_wiki(a)
   @wiki_definition << @doc.css("table.infobox")
   end
 
-	if @wiki_definition[0] != nil
+  if @wiki_definition != []
        @arr<<"algo_description"
-	end
+  end
 
 # Mathematical Insights
 
@@ -437,7 +437,7 @@ def algorithm_wiki(a)
   
   if htag >= 0
     @math = []
-  @node = @doc.css("h2 > span")[htag].parent
+    @node = @doc.css("h2 > span")[htag].parent
     @stop = @doc.css("h2 > span")[htag+2].parent
     
     editsec = @doc.css("span.mw-editsection")
@@ -448,9 +448,9 @@ def algorithm_wiki(a)
       @math << @node
       @node = @node.next 
     end
-	if @math[0] != nil
+    if @math != []
        @arr<<"math_analysis"
-	end
+    end
 
   end
 
@@ -510,8 +510,8 @@ def algorithm_wiki(a)
   end
   if htag >= 0
     @algorithm = []
-  @node = @doc.css("h2 > span")[htag].parent
-  @stop1 = @doc.css("h2 > span")[htag+1].parent
+    @node = @doc.css("h2 > span")[htag].parent
+    @stop1 = @doc.css("h2 > span")[htag+1].parent
     @stop = @doc.css("h2 > span")[htag+2].parent
     
     editsec = @doc.css("span.mw-editsection")
@@ -522,7 +522,12 @@ def algorithm_wiki(a)
       @algorithm << @node
       @node = @node.next 
     end
-    end
+  end
+  
+  if @algorithm != [] or @cmplx != []
+      @arr<<"algo_examples" 
+  end
+
 
 # Pseudocode
 
@@ -545,8 +550,8 @@ def algorithm_wiki(a)
   end
   if htag >= 0
     @pseudocode = []
-  @node = @doc.css("h2 > span")[htag].parent
-  @stop1 = @doc.css("h2 > span")[htag+1].parent
+    @node = @doc.css("h2 > span")[htag].parent
+    @stop1 = @doc.css("h2 > span")[htag+1].parent
     @stop = @doc.css("h2 > span")[htag+2].parent
     
     editsec = @doc.css("span.mw-editsection")
@@ -557,11 +562,11 @@ def algorithm_wiki(a)
       @pseudocode << @node
       @node = @node.next 
     end
-    end
-	
-	if @psuedocode[0] != nil
+  end
+  
+  if @psuedocode != []
        @arr<<"code"
-	end
+  end
 
 
 # Related algorithms
@@ -569,10 +574,10 @@ def algorithm_wiki(a)
   j = 0
   htag = -1
   
-  @related_algorithm = ["see also"]  # This is tag array which empowers the related algorithms method
+  @related_algo_tags = ["see also"]  # This is tag array which empowers the related algorithms method
   
   while j < @doc.css("h2 > span").length
-      @related_algorithm.each do |x|
+      @related_algo_tags.each do |x|
       if @doc.css("h2 > span")[j].text.downcase.include?(x) 
         htag = j
       end
@@ -583,9 +588,10 @@ def algorithm_wiki(a)
       j = j + 1
   end
   
+  @related_algorithm = []
   if htag >= 0
-    @related_algorithm = []
-  @node = @doc.css("h2 > span")[htag].parent
+
+    @node = @doc.css("h2 > span")[htag].parent
     @stop = @doc.css("h2 > span")[htag+2].parent
     @stop1= @doc.css("h2 > span")[htag+1].parent
     
@@ -598,46 +604,55 @@ def algorithm_wiki(a)
       @node = @node.next 
     end
   end
-	if @related_algorithm[0] != nil
-       @arr<<"algo_related"
-	end
-
-	if @cmplx[0] != nil or @algorithm[0] != nil
-       @arr<<"algo_examples"		
-	end
-
-	
+  
+  if @related_algorithm != []
+      @arr<<"algo_related"
   end
-
   
   end
+  end
+  
   def algorithm_geeks(a)
-   puts Time.now()
+    
+  puts Time.now()
   parsed  = Geekslink.fulltext_search(a)
+  puts parsed[0].link
   puts Time.now().to_s()+"searched mongo"  
   @code_arr = parsed
   if @code_arr
     @code_arr.each do |c|
       c.link = "/geeks-link/"+c.link.split("forgeeks.org/")[1]
     end
-    @arr << "code"
   end
+  if !@arr.include?("code")
+  elsif @code_arr[0] != nil
+    @arr<<"code"
+  end
+ 
+   
+
 end
 def algorithm_geeks_extract(link)
   require "nokogiri"
    require "open-uri"
+ 
   @doc = Nokogiri::HTML(open("http://www."+link))
+  
   content = @doc.css("div#post-content")
   node = content.css("p")[0]
- @code =[]
+ 
+  @code = []
+ 
   while true
     @code << node
     node = node.next
     if node.text.include?("References:") or node.text.include?("Sources:")
         break
-        end
+    end
   end
   
-end
+  puts Time.now().to_s()+"end"
+  
 
+end
 end
