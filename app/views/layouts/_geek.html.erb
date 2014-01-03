@@ -1,7 +1,8 @@
-
-        <%if @code%>
-        <%begin%>
-                        <div id = "searchresults"><%=raw @code%></div>
-        <%rescue%>
-        <%end%>
+<%if @code%>
+            <%begin%>
+                        <%@code.each do |t|%>
+                        <div id = "searchresults"><%=raw t%></div>
+                        <%end%>
+            <%rescue%>
+            <%end%>
         <%end%>

@@ -620,35 +620,24 @@ def algorithm_wiki(a)
     @code_arr.each do |c|
       c.link = "/geeks-link/"+c.link.split("forgeeks.org/")[1]
     end
+    @arr << "code"
   end
 end
 def algorithm_geeks_extract(link)
   require "nokogiri"
    require "open-uri"
- 
   @doc = Nokogiri::HTML(open("http://www."+link))
-  
-  puts Time.now().to_s()+"noko opened"
-  j = 0
-  @dc = @doc.css("pre")
-  while j < @dc.length
-    @k = @dc[j].text
-    if (@k.split("//").length > 5 or @k.split("/*").length > 5)
-      c = j
-      break
-    end
-    j = j + 1
+  content = @doc.css("div#post-content")
+  node = content.css("p")[0]
+ @code =[]
+  while true
+    @code << node
+    node = node.next
+    if node.text.include?("References:") or node.text.include?("Sources:")
+        break
+        end
   end
-  
-  puts Time.now().to_s()+"pre found"
-  if c
-  @code = @dc[c]
-  if @arr.include?("code")
-  elsif @code !=nil
-     @arr<<"code"
-  end
-
-  puts Time.now().to_s()+"end"
   
 end
+
 end
