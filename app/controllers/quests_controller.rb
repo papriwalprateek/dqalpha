@@ -24,6 +24,14 @@ class QuestsController < ApplicationController
   
   def show
     @quest = Quest.find(params[:id])
+    if params[:type]
+    w = Wikialgo.find_or_create_by(htag: params[:edit_algo])
+    e = Element.new
+    e.user_id = current_user.id
+    e.value = params[:value]
+    e.type = params[:type]
+    w.elements << e
+  end
   if @quest.id==26
     @wikialgo = Wikialgo.all.to_a()
   end
@@ -64,10 +72,20 @@ class QuestsController < ApplicationController
   if @quest.id==26
     @wikialgo = Wikialgo.all.to_a()
   end
+  if params[:type]
+    w = Wikialgo.find_or_create_by(htag: params[:edit_algo])
+    e = Element.new
+    e.user_id = current_user.id
+    e.value = params[:value]
+    e.type = params[:type]
+    w.elements << e
+  end
     @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     @arr=[]
     if params[:search]     
+     
      @query = params[:search]
+     corpus_extract(@query)
       vmsa =[]
       @quest.vms.each do |vm|
       vmsa<<vm.name
@@ -85,7 +103,6 @@ class QuestsController < ApplicationController
       vmsa.each do |vm|
         begin
          puts vm+@query
-          send(vm,@query)
            @time_arr<< Time.now.to_s()+vm
         rescue 
           puts $!.inspect

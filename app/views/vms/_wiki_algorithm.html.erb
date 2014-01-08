@@ -76,3 +76,50 @@
         <%end%> 
 </div>
 <%end%>
+
+
+
+<%if @e_desc && @e_desc!=[]%>
+<div class="vm_results" id ="algo_description">
+                        <%begin%>
+                                <%@e_desc.each do |t|%>
+                                Commited by <%=raw User.find(t.user_id).name%> </br>
+                                <div id = "searchresults"><%=raw t.value%></div>
+                                <br>
+                                <%end%>
+                        <%rescue%>
+                      
+                        <%end%>
+<hr>
+</div>
+<%end%>
+
+<%if @e_ex && @e_ex!=[]%>
+<div class="vm_results" id ="algo_examples">
+                        <%begin%>
+                                <%@e_ex.each do |t|%>
+                                Commited by <%=raw User.find(t.user_id).name%> </br>
+                                <div id = "searchresults"><%=raw t.value%></div>
+                                <br>
+                                <%end%>
+                        <%rescue%>
+                      
+                        <%end%>
+<hr>
+</div>
+<%end%>
+
+<%if @e_code && @e_code!=[]%>
+<div class="vm_results" id ="code">
+                        <%begin%>
+                                <%@e_code.each do |t|%>
+                                Commited by <%=raw User.find(t.user_id).name%> </br>
+                                <div id = "searchresults"><%=raw t.value%></div>
+                                <br>
+                                <%end%>
+                        <%rescue%>
+                      
+                        <%end%>
+<hr>
+</div>
+<%end%>

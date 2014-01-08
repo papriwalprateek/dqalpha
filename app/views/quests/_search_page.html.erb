@@ -2,6 +2,8 @@
 	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'You can use this search bar to get results arranged category-wise which are fetched from various relevant datasets', :"data-step" => 1, :class=> 'mashup_search_box') %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
+<%= render "commit_form"%>		
+
 <div class="vm_tray">
 <span class="vm_icon1" id="description">Description</span>
 <span class="vm_icon1" id="algo_description" >Description</span>
@@ -35,6 +37,7 @@
 <%end%>
 
 <%= render "vms/wiki_algorithm"%>		
+
 
 <script>
 var vm_live_id;

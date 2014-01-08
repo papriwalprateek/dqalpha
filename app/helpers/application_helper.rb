@@ -669,4 +669,25 @@ def algorithm_geeks_extract(link)
   
 
 end
+def corpus_extract(q)
+  w = Wikialgo.find_by(htag: q)
+      if w
+        e = w.elements
+        if e
+          @e_desc = e.where(type: "description").to_a
+          @e_ex = e.where(type: "example").to_a
+          @e_code = e.where(type: "code").to_a
+        end
+      end
+      
+  if @e_desc!=[]
+    @arr << "algo_description"
+  end
+  if @e_ex!=[]
+    @arr << "algo_examples"
+  end
+  if @e_code!=[]
+    @arr << "code"
+  end
+end
 end
