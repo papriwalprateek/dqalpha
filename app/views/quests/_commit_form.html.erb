@@ -11,7 +11,7 @@
 <%= radio_button_tag(:type, "code") %>
 <%= label_tag(:c, "Code") %>
 </br>
-<%= text_area_tag(:value, "", size: "24x6") %>
+<%= text_area :value, ""%>
 </br>
 <%= submit_tag("Commit") %>
 <% end %>
@@ -21,12 +21,16 @@
   $( "#commit-dialog-form" ).dialog({
       autoOpen: false,
       modal: true,
-      width: 600,
-      dialogClass: "commit-box" 
+      width: 600, 
+      close:function(){
+      	    var editor = $('#commit-dialog-form textarea').ckeditorGet();
+            editor.destroy()  
+      }
     });
 
   $('p#commit_button').click(function(){ 
   $( "#commit-dialog-form" ).dialog("open");
+  $('#commit-dialog-form textarea').ckeditor();
   });
 });
 

@@ -76,7 +76,7 @@ class QuestsController < ApplicationController
     w = Wikialgo.find_or_create_by(htag: params[:edit_algo])
     e = Element.new
     e.user_id = current_user.id
-    e.value = params[:value]
+    e.value = params[:value_content]
     e.type = params[:type]
     w.elements << e
   end
@@ -106,6 +106,7 @@ class QuestsController < ApplicationController
       vmsa.each do |vm|
         begin
          puts vm+@query
+         send(vm,@query)
            @time_arr<< Time.now.to_s()+vm
         rescue 
           puts $!.inspect

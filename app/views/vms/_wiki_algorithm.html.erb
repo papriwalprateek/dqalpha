@@ -114,8 +114,8 @@
                         <%begin%>
                                 <%@e_code.each do |t|%>
                                 Commited by <%=raw User.find(t.user_id).name%> </br>
-                                <div id = "searchresults"><%=raw t.value%></div>
-                                <br>
+                                <div id = "searchresults"><%=raw(t.value)%></div>
+                               
                                 <%end%>
                         <%rescue%>
                       
