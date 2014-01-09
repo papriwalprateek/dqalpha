@@ -85,7 +85,10 @@ class QuestsController < ApplicationController
     if params[:search]     
      
      @query = params[:search]
+     if @quest.id==26
+      
      corpus_extract(@query)
+     end
       vmsa =[]
       @quest.vms.each do |vm|
       vmsa<<vm.name
