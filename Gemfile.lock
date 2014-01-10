@@ -180,6 +180,7 @@ DEPENDENCIES
   authlogic
   best_in_place
   bson_ext
+  builder
   ckeditor (= 4.0.6)
   coffee-rails (~> 3.2.1)
   google_visualr

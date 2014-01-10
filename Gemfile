@@ -10,6 +10,7 @@ gem 'rails', '3.2.16'
   gem 'ckeditor', '4.0.6'
 #end
 gem 'redcarpet'
+gem 'builder'
 gem 'albino'
 gem 'best_in_place'
 gem 'rdf'
