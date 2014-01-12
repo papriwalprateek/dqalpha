@@ -1,6 +1,6 @@
-<div id = "commit_box" style="background-color: rgb(51,153,153);font-size: 1.4em;width: 80px;padding: 5px; float: right"> 
-<a style="cursor:pointer;color:#fff;"><p id = "commit_button">Contribute</p></a></div>
-<div id="commit-dialog-form">
+
+<p class = "click_to_commit" style="cursor:pointer;background-color: rgb(51,153,153);font-size: 1.4em;width: 80px;padding: 5px; float: right">Commit</p>
+<div class="commit_box"> 
  <%= form_tag do %>
 <%= text_field_tag(:edit_algo,"", :class => 'mashup_search_box') %>
 </br>
@@ -11,27 +11,29 @@
 <%= radio_button_tag(:type, "code") %>
 <%= label_tag(:c, "Code") %>
 </br>
-<%= text_area :value, ""%>
+<%= cktext_area :value, ""%>
 </br>
 <%= submit_tag("Commit") %>
+<span class="qtag cancel_commit">X</span>
 <% end %>
 
 </div>
-<script>$(function() {
-  $( "#commit-dialog-form" ).dialog({
-      autoOpen: false,
-      modal: true,
-      width: 600, 
-      close:function(){
-      	    var editor = $('#commit-dialog-form textarea').ckeditorGet();
-            editor.destroy()  
-      }
-    });
 
-  $('p#commit_button').click(function(){ 
-  $( "#commit-dialog-form" ).dialog("open");
-  $('#commit-dialog-form textarea').ckeditor();
-  });
-});
+<script>
+$(function(){
+     $('.commit_box').hide();
+  
+  $('p.click_to_commit').click(function(){ 
+        $('p.click_to_commit').hide();
+  
+      $('.commit_box').fadeIn(300);
+  }); 
+  $('.cancel_commit').click(function(){ 
+        $('p.click_to_commit').show();
+  
+      $('.commit_box').hide();
+  }); 
+ });
+ 
+</script>
 
-</script> 
