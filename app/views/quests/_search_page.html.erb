@@ -2,6 +2,9 @@
 	  <%= text_field_tag(:search, params[:search],:"data-intro" => 'You can use this search bar to get results arranged category-wise which are fetched from various relevant datasets', :"data-step" => 1, :class=> 'mashup_search_box') %>
   <%= submit_tag(">",:id=> "submitbar") %>
   	<% end %>
+<%if @quest.id==2%>
+<%=raw @disp1%>
+<%end%>
 <%if @quest.id == 26 && current_user%>
 <%= render "quests/commit_form"%>		
 <%end%>
@@ -34,7 +37,7 @@
 <%if @bugzilla_results%>
 		<%= render "vms/bugzilla_search"%>		
 <%end%>	
-<%if (@code_arr || @pseudocode)%>
+<%if (@code_arr || @pseudocode|| @git_repo || @langcodes)%>
 		<%= render "vms/code_algorithm"%>		
 <%end%>
 

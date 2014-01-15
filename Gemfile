@@ -34,6 +34,8 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_search'
 gem 'mongoid_fulltext'
+gem 'ruby-readability'
+gem 'fastimage'
 gem 'rails_12factor', group: :production
   gem 'coffee-rails', '~> 3.2.1'
 # Gems used only for assets and not required

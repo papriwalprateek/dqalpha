@@ -18,4 +18,22 @@
         <%rescue%>
         <%end%>
         <%end%>
+    <%if @langcodes%>
+    <%j=0%>
+	<%while j < @langcodes.length%> 
+	    <%k = 0%>
+	    <%while k < @langcodes[j].length%>
+	         <%=raw @langcodes[j][k]%>
+	         <%k = k + 1%>
+	     <%end%>
+	     <%j = j + 1%>
+	<%end%>
+	<%end%>
+	<%if @git_repo%>
+		 <%@git_repo.each do |e|%>
+            <%=raw e%>
+            <br>
+            <br>
+		<%end%>
+	<%end%>
 </div>

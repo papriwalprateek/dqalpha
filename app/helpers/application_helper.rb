@@ -669,6 +669,69 @@ def algorithm_geeks_extract(link)
   
 
 end
+def algorithm_rosetta(a)
+  @doc = Nokogiri::HTML(open('http://rosettacode.org/wiki/')+a.gsub(' ','_'))
+  lang = [' C',' C++',' Java',' Javascript',' Matlab',' Python',' Ruby']
+
+  x = @doc.css('span.editsection')
+  x.remove
+
+  @l = @doc.css('h2')
+
+
+  @langcodes = []
+  k = 0
+
+while k < lang.length
+    j = 0
+    htag = -1
+    while j < @l.length
+        if lang[0] == @l[j].text
+            htag = j
+        end
+        j = j + 1
+    end
+    
+    if htag >= 0
+        node = @l[htag]
+        stop = @l[htag+1]
+        
+        temp = []
+        while true
+            if node == stop
+                break
+            end
+            temp << node
+            node = node.next
+        end
+        @langcodes << temp
+    end
+    k = k + 1
+    if @langcodes
+      @arr << "code"
+    end
+end    
+ 
+end
+def algorithm_git(a)
+  @gitdoc = Nokogiri::HTML(open("https://github.com/search?q="+a.gsub(' ','+')+"&type=Repositories"))
+    @git_repo = []
+    x=@gitdoc.css('span.repolist-icon')
+    x.remove
+    x=@gitdoc.css('li.stargazers')
+    x.remove
+    x=@gitdoc.css('li.forks')
+    x.remove
+    
+    j = 0
+    while j < @gitdoc.css('li.source').length
+      @git_repo << @gitdoc.css('li.source')[j]
+      j = j + 1
+    end
+    if @git_repo
+      @arr << "code"
+    end
+end
 def corpus_extract(q)
   w = Wikialgo.find_by(htag: q)
       if w
