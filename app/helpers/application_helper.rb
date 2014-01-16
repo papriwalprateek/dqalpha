@@ -670,7 +670,7 @@ def algorithm_geeks_extract(link)
 
 end
 def algorithm_rosetta(a)
-  @doc = Nokogiri::HTML(open('http://rosettacode.org/wiki/')+a.gsub(' ','_'))
+  @doc = Nokogiri::HTML(open('http://rosettacode.org/wiki/'+a.gsub(' ','_')))
   lang = [' C',' C++',' Java',' Javascript',' Matlab',' Python',' Ruby']
 
   x = @doc.css('span.editsection')
@@ -686,7 +686,7 @@ while k < lang.length
     j = 0
     htag = -1
     while j < @l.length
-        if lang[0] == @l[j].text
+        if lang[k] == @l[j].text
             htag = j
         end
         j = j + 1

@@ -18,9 +18,15 @@
         <%rescue%>
         <%end%>
         <%end%>
-    <%if @langcodes%>
+ </div>
+<div id="code" class="vm_results">
+
+ <%if @langcodes%>
+<b>    rosetta codes</b>
+
     <%j=0%>
 	<%while j < @langcodes.length%> 
+	 <hr>
 	    <%k = 0%>
 	    <%while k < @langcodes[j].length%>
 	         <%=raw @langcodes[j][k]%>
@@ -29,11 +35,4 @@
 	     <%j = j + 1%>
 	<%end%>
 	<%end%>
-	<%if @git_repo%>
-		 <%@git_repo.each do |e|%>
-            <%=raw e%>
-            <br>
-            <br>
-		<%end%>
-	<%end%>
-</div>
+	</div>

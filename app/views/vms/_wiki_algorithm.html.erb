@@ -76,7 +76,14 @@
         <%end%> 
 </div>
 <%end%>
-
+<%if @git_repo%>
+<div class="vm_results" id="misc">                        
+  <div style="font-family:BentoSans;color:#666;font-size:1.6em;">Github repositories:</div><br>
+		 <%@git_repo.each do |e|%>
+            <%=raw e%>
+		<%end%>
+</div>
+<%end%>
 
 
 <%if @e_desc && @e_desc!=[]%>
