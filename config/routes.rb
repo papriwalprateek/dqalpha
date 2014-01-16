@@ -7,7 +7,9 @@ Blog::Application.routes.draw do
 
   resources :polls
     #get "pages/home"
-  match '/' => 'pages#blogs', :constraints => { :subdomain => "algorithm" }
+  match '/vinay' => 'algorithms#show'
+  match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
+  match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'
   match '/leave_quest' => 'pages#leave_quest'   
   match '/join_quest' => 'pages#join_quest' 

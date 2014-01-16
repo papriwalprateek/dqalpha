@@ -117,8 +117,7 @@ class QuestsController < ApplicationController
         end
       end 
       @time_arr<< Time.now.to_s()+"end"
-     
-     @scilab_results = @arr.include?("description")
+      @scilab_results = @arr.include?("description")
       @bugzilla_results = @arr.include?("bugs")
       @so_results = @arr.include?("qna")     
     end 
