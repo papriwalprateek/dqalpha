@@ -1,0 +1,57 @@
+<%= form_tag({ :controller => "algorithms", :action => "show"}, :method => "get", :remote => true ) do %>
+	  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag(">",:id=> "submitbar") %>
+  	<% end %>
+<div class="vm_tray">
+<span class="vm_icon1" id="algo_description" >Description</span>
+<span class="vm_icon1" id="math_analysis" >Mathematical Analysis</span>
+<span class="vm_icon1" id="algo_examples" >Examples</span>
+<span class="vm_icon1" id="code" >Code</span>
+<span class="vm_icon1" id="algo_related" >Related Algorithms</span>
+<span class="vm_icon1" id="misc" >Miscellinous</span>
+<hr style = "width:75%;">
+
+</div>
+<%= render "vms/code_algorithm"%>		
+
+<%= render "vms/wiki_algorithm"%>		
+
+
+<script>
+var vm_live_id;
+$(function() {
+<%if @wikialgo%>
+ var algo_tags = [<% for algo in @wikialgo -%>
+"<%= algo.htag %>"
+<%if algo==@wikialgo.last%>
+<%else%>
+,<%end%>
+<% end -%>];
+
+ $( "input#search" ).autocomplete({
+	source: algo_tags
+});
+<%end%>
+$("span.vm_icon1").hide();
+
+<%if @arr%>var js_array = <%= raw @arr.to_json %>;
+for (var i=0;i<js_array.length;i++)
+{ $("span#"+js_array[i]).show();
+}
+<%end%>
+  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+
+   $('.example').truncate({max_length: 24});
+$('span.vm_icon1').click(function(){
+	$('div.vm_results').hide();
+	$('div#'+$(this).attr("id")).show();
+	vm_live_id = $(this).attr("id");
+	$('span.vm_icon1').css('border-bottom', '0px');
+	$('span.vm_icon1').css('color', '#777');
+	$(this).css('border-bottom', '3px solid navy');
+	$(this).css('color', 'navy');
+
+});
+  $('span#mailing_list').click();
+});
+</script> 
