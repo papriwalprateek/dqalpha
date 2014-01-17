@@ -368,25 +368,20 @@ def algorithm_wiki(a)
     require 'open-uri'
     require 'wikicloth'
 
-    @youdoc = Nokogiri::HTML(open("http://www.youtube.com/results?search_query="+a.gsub(" ","+")))
-    @embed_vid = []
-    j = 0
-    while j < 5
-      @embed_vid << @youdoc.css("h3.yt-lockup-title > a")[j].attributes["href"].value.split("=")[1]    
-      j = j + 1
-    end
-    if @embed_vid
-    @arr << "misc"
-    end
+   
     mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
     @catch = false
     begin
-    wiki = mw.render(a.to_s.titleize)
-  
+    wiki = mw.render(a)
+   puts a.to_s.titleize
+   puts "ttl"
     rescue MediaWiki::APIError => e
     begin
   wiki =  mw.render(a)
+  puts a
+     puts "rescue mein"
     rescue MediaWiki::APIError => e
+     puts "second rescue mein"
     @catch = true
     end
     end
@@ -614,6 +609,10 @@ def algorithm_wiki(a)
     
     @node = @node.next
     while @node!=@stop and @node!=@stop1
+      begin 
+      @node.css('a')[0].attributes["href"].value = "/search?search=" + @node.css('a')[0].attributes["title"].value
+      rescue
+      end
       @related_algorithm << @node
       @node = @node.next 
     end
@@ -628,23 +627,17 @@ def algorithm_wiki(a)
   
   def algorithm_geeks(a)
     
-  puts Time.now()
-  parsed  = Geekslink.fulltext_search(a)
-  puts parsed[0].link
-  puts Time.now().to_s()+"searched mongo"  
-  @code_arr = parsed
-  if @code_arr
-    @code_arr.each do |c|
+  parsed  = Geekslink.where(:htag =>/#{a}/i).to_a()
+  @geeks_articles = parsed
+  if @geeks_articles != []
+    @geeks_articles.each do |c|
       c.link = "/geeks-link/"+c.link.split("forgeeks.org/")[1]
     end
   end
-  if !@arr.include?("code")
-  elsif @code_arr[0] != nil
-    @arr<<"code"
+  if @geeks_articles[0] != nil
+    @arr<<"algo_article"
   end
  
-   
-
 end
 def algorithm_geeks_extract(link)
   require "nokogiri"
@@ -670,6 +663,7 @@ def algorithm_geeks_extract(link)
 
 end
 def algorithm_rosetta(a)
+  begin
   @doc = Nokogiri::HTML(open('http://rosettacode.org/wiki/'+a.gsub(' ','_')))
   lang = [' C',' C++',' Java',' Javascript',' Matlab',' Python',' Ruby']
 
@@ -711,7 +705,8 @@ while k < lang.length
       @arr << "code"
     end
 end    
- 
+rescue
+end
 end
 def algorithm_git(a)
   @gitdoc = Nokogiri::HTML(open("https://github.com/search?q="+a.gsub(' ','+')+"&type=Repositories"))
@@ -752,5 +747,18 @@ def corpus_extract(q)
   if @e_code!=[]
     @arr << "code"
   end
+end
+def algorithm_youtube(a)
+      @youdoc = Nokogiri::HTML(open("http://www.youtube.com/results?search_query="+a.gsub(" ","+")))
+   @embed_vid = []
+    j = 0
+    while j < 5
+      @embed_vid << @youdoc.css("h3.yt-lockup-title > a")[j].attributes["href"].value.split("=")[1]    
+      j = j + 1
+    end
+    if @embed_vid
+    # @arr << "misc"
+    end
+
 end
 end

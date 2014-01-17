@@ -5,7 +5,7 @@
 <head>
 <title>
 <%= title %></title>
-<%= render 'layouts/stylesheets' %> 
+<%= stylesheet_link_tag 'algorithm', :media => 'screen' %>
 <%= javascript_include_tag "algorithm" %>
  	<link rel="shortcut icon" href="/favicon.ico" />
 
@@ -14,7 +14,11 @@
 <div class="dashboard">
 
 <div class= "dashboard_content_area">
- 
+ <%= form_tag({ :controller => "algorithms", :action => "show"}, :method => "get", :remote => true ) do %>
+	  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("",:id=> "submitbar") %>
+ <% end %>
+
 <div class="quest_search_page" style ="margin-top:20px;margin-left:18%;" >
 	
 <%= render "result"%>

@@ -6,16 +6,13 @@ class AlgorithmsController < ApplicationController
     @title = "Algorithms Repository"
     if params[:search]
      @query = params[:search]
-     corpus_extract(@query)
+     #corpus_extract(@query)
      
-      vmsa =["algorithm_wiki","algorithm_geeks","algorithm_git","algorithm_rosetta"]
+      vmsa =["algorithm_geeks","algorithm_wiki","algorithm_rosetta"]
       
       vmsa.each do |vm|
-        begin
          puts vm+@query
          send(vm,@query)
-        rescue 
-        end
       end   
     end 
      respond_to do |format|

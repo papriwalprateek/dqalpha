@@ -1,8 +1,6 @@
-<%= form_tag({ :controller => "algorithms", :action => "show"}, :method => "get", :remote => true ) do %>
-	  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag(">",:id=> "submitbar") %>
-  	<% end %>
+
 <div class="vm_tray">
+<span class="vm_icon1" id="algo_article" >Articles</span>
 <span class="vm_icon1" id="algo_description" >Description</span>
 <span class="vm_icon1" id="math_analysis" >Mathematical Analysis</span>
 <span class="vm_icon1" id="algo_examples" >Examples</span>
@@ -15,6 +13,7 @@
 <%= render "vms/code_algorithm"%>		
 
 <%= render "vms/wiki_algorithm"%>		
+<%= render "vms/article"%>		
 
 
 <script>
@@ -41,7 +40,6 @@ for (var i=0;i<js_array.length;i++)
 <%end%>
   $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 
-   $('.example').truncate({max_length: 24});
 $('span.vm_icon1').click(function(){
 	$('div.vm_results').hide();
 	$('div#'+$(this).attr("id")).show();
@@ -52,6 +50,6 @@ $('span.vm_icon1').click(function(){
 	$(this).css('color', 'navy');
 
 });
-  $('span#mailing_list').click();
+  $('span#'+js_array[0]).click();
 });
 </script> 

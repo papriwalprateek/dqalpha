@@ -1,0 +1,10 @@
+<div id="algo_article" class="vm_results">      
+     <%if @geeks_articles%>
+        <%begin%>
+            <%@geeks_articles.each do |t|%>
+				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>				
+				<%end%>
+        <%rescue%>
+        <%end%>
+        <%end%>
+ </div>

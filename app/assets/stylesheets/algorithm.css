@@ -1,0 +1,388 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *= require blueprint/screen
+ *= require jquery-ui
+ */
+.container {
+margin-bottom: 0px; margin-top: 0px;
+}
+body { width:100%;background: #FFFFFF; margin: 0px; padding: 0px;height: 100%;
+}
+p{margin:0px;}
+
+#content img{ margin-bottom: 0px;
+}
+#content { background:#FFFFFF;
+	 width: 100%;  float: left; height:100%; overflow-y:auto;margin-top:4%;
+}
+table{
+	margin:0px;
+}
+.quest_search_page{
+	display:inline-block;
+	width:80%;
+	margin-top:10px;
+	margin-left:3%;
+}
+.vm_results{
+	display:none;
+	width:70%;
+	float:left;
+	padding: 2px;
+	margin-top: 10px;
+}
+.vm_tray{margin-top: 0px;}
+.dashboard{
+	margin-left:40px;
+}
+hr{
+	margin:0px;
+}
+ul.ui-autocomplete a{
+color: #333333;
+	
+}
+ul.ui-autocomplete{
+margin: 0px;
+background:#FFFFFF;
+-webkit-box-shadow: 0 0 0px 5px#888;
+box-shadow: 0 0 5px 0px #888;
+
+ z-index:199;
+ width: 120px;
+ 
+}
+ul{
+	list-style-type: none;
+}
+#wikiimage {
+padding:5px;float:left;
+box-shadow: 0 0 5px 0px #888;
+border:1px solid;
+border-color:#DEDEDE;
+margin: 3px 10px 0px 3px;
+	
+}
+pre {
+	white-space:pre-wrap;
+	word-wrap:break-word;
+	background-color:#F8F8F8;border:1px solid #DDD;padding:10px;
+}
+.vm_icon{
+display:inline-block;
+cursor:pointer;
+font-family:BentoSans;
+color:#666;
+font-size:1.4em;
+}
+.vm_icon1{
+display:inline-block;
+cursor:pointer;
+font-family: arial sans-serif;
+color:#777;
+font-size:1.4em;
+}
+.vm_icon1:hover{
+border-bottom: 3px solid #DDDDDD;
+}
+
+/* Autocomplete
+----------------------------------*/
+.ui-autocomplete { position: absolute; cursor: default; }       
+.ui-autocomplete-loading { background: white url('ui-anim_basic_16x16.gif') right center no-repeat; }
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/* Menu
+----------------------------------*/
+.ui-menu {
+        list-style:none;
+        padding: 2px;
+        margin: 0;
+        display:block;
+}
+.ui-menu .ui-menu {
+        margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+        margin:0;
+        padding: 0;
+        width: 100%;
+}
+.ui-menu .ui-menu-item a {
+        text-decoration:none;
+        display:block;
+        padding:.2em .4em;
+        line-height:1.5;
+        zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+        margin: -1px;
+}
+
+
+input {display:inline;}
+
+
+/*below is highlight.js syntax highlighter css*/
+
+/* end of qmail css*/
+/*code coloring in pre highlight .js*/
+
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #333;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .nginx .title,
+pre .subst,
+pre .request,
+pre .status {
+  color: #333;
+ /* font-weight: bold*/
+}
+
+pre .number,
+pre .hexcolor,
+pre .ruby .constant {
+  color: #099;
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+ /* font-weight: bold*/
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .clojure .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .type,
+pre .vhdl .literal,
+pre .tex .command {
+  color: #458;
+/*  font-weight: bold*/
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  /*font-weight: bold*/
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .lisp .keyword,
+pre .tex .special,
+pre .prompt {
+  color: #990073
+}
+
+pre .built_in,
+pre .lisp .title,
+pre .clojure .built_in {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+ /* font-weight: bold*/
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+input#search{
+background:#E9ECEC;
+font-size: 1.8em;
+color: #CCC;
+border:none;
+width: 400px;
+padding:8px 60px 8px 15px;
+margin-top: 30px;
+margin-left: 18%;
+border-radius: 40px;
+vertical-align: super;
+}
+input#search:focus{
+font-size: 1.8em;
+width: 400px;
+color: #CCC;
+webkit-box-shadow:inset 0 2px 2px rgba(0,0,0,0.15);
+box-shadow:inset 0 2px 2px rgba(0,0,0,0.15);
+}
+input#submitbar{
+background: url("/assets/find.png") no-repeat scroll 0 0 transparent;
+font-size: 1.8em;
+width: 32px;
+height: 32px;
+font-size:2em;
+color:#fff;    
+border:none;
+cursor:pointer;
+}
+#progress {
+	position: fixed;
+	z-index: 2147483647;
+	top: 0;
+	left: -6px;
+	width: 1%;
+	height: 2px;
+	background: #0088CC;
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+	border-radius: 1px;
+	-moz-transition: width 500ms ease-out,opacity 400ms linear;
+	-ms-transition: width 500ms ease-out,opacity 400ms linear;
+	-o-transition: width 500ms ease-out,opacity 400ms linear;
+	-webkit-transition: width 500ms ease-out,opacity 400ms linear;
+	transition: width 500ms ease-out,opacity 400ms linear;
+}
+
+
+#progress dd, #progress dt {
+	position: absolute;
+	top: 0;
+	height: 2px;
+	-moz-box-shadow: #0088CC 1px 0 6px 1px;
+	-ms-box-shadow: #0088CC 1px 0 6px 1px;
+	-webkit-box-shadow: #0088CC 1px 0 6px 1px;
+	box-shadow: #0088CC 1px 0 6px 1px;
+	-moz-border-radius: 100%;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+}
+
+#progress dt {
+	opacity: .6;
+	width: 180px;
+	right: -80px;
+	clip: rect(-6px,90px,14px,-6px);
+}
+
+#progress dd {
+	opacity: .6;
+	width: 20px;
+	right: 0;
+	clip: rect(-6px,22px,14px,10px);
+}  
+
+span.vm_icon1{
+padding-bottom:1%;
+width:9%;
+font-family:BentoSans;
+text-align:center;
+margin-right:2%;
+}
+
+div#searchresults{
+	font-family:BentoSans;
+	font-size:1.4em;
+}
+
+button#navi_result
+{
+text-align:center;
+font-family:BentoSans;
+font-size:1.2em;
+color: rgb(124,118,184);
+width:12%;
+background-color:#fff;
+border: 2px solid #eee;
+cursor:pointer;
+padding-top:5px;
+padding-bottom:5px;
+font-weight:bold;
+float:right;
+}
+button#navi_result:hover{
+color: #eee;
+}
+div#so_navi_answer{
+border: 2px solid #ccc;
+padding:8px;
+font-family:BentoSans;
+font-size:1.2em;	
+}
+
+div#so_navi_desc{
+font-family:BentoSans;
+font-size:1.2em;
+}
+div.result-link{
+	font-family:BentoSans;
+}
