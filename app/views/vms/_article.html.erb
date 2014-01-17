@@ -1,4 +1,4 @@
-  <%if @geeks_articles!=[]%>
+  <%if @geeks_articles!=nil && @geeks_articles!=[]%>
 <div id="algo_article" class="vm_results" style="margin-left:0px; width:100%;">      
   
 <div style="margin-left:5%;margin-top:20px;">
@@ -6,7 +6,7 @@
 <div id="articlecontent" style="padding:20px;font-size:1.3em;">
 <div style="font-size:1.6em;font-family:sans-serif;margin-bottom:5px;"><%=@geeks_articles[0].htag%></div>
 <hr style="color:#eee;height:4px;margin-bottom:15px;">
- <%if @geekarticle!=[]%>
+ <%if @geekarticle!=nil && @geekarticle!=[]%>
         <%begin%>
         				<%@geekarticle.each do |t|%>
 	                       <%=raw t%>
