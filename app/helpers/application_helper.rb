@@ -400,7 +400,10 @@ def algorithm_wiki(a)
     
     x = @doc.css("table.ambox")
     x.remove
-    
+      x = @doc.css(".portal")
+    x.remove
+     infobox = @doc.css("table.infobox")
+    infobox.remove
 # @wiki_definition << @doc.css("p")[0]
   @node = @doc.css("p")[0]
   @stop = @doc.css("div#toc")[0]
@@ -410,6 +413,9 @@ def algorithm_wiki(a)
       @wiki_definition << @node
       @node = @node.next 
     end 
+     if infobox
+    @wiki_definition << @doc.css("table.infobox")
+  end
 #  if @doc.css("a.image")[0]
 #  @wiki_definition << @doc.css("a.image")[0]
 #  x = @doc.css("a.image")[0]
@@ -610,7 +616,9 @@ def algorithm_wiki(a)
     @node = @node.next
     while @node!=@stop and @node!=@stop1
       begin 
-      @node.css('a')[0].attributes["href"].value = "/search?search=" + @node.css('a')[0].attributes["title"].value
+      @node.css('a').each do |c|
+      c.attributes["href"].value = "/search?search=" + c.attributes["title"].value
+      end
       rescue
       end
       @related_algorithm << @node
@@ -636,22 +644,23 @@ def algorithm_wiki(a)
   end
   if @geeks_articles[0] != nil
     @arr<<"algo_article"
+    algorithm_geeks_extract("geeksforgeeks.org"+@geeks_articles[0].link.split("geeks-link")[1])
   end
  
 end
 def algorithm_geeks_extract(link)
   require "nokogiri"
    require "open-uri"
- 
-  @doc = Nokogiri::HTML(open("http://www."+link))
+ puts link
+  algogeekdoc = Nokogiri::HTML(open("http://www."+link))
   
-  content = @doc.css("div#post-content")
+  content = algogeekdoc.css("div#post-content")
   node = content.css("p")[0]
  
-  @code = []
+  @geekarticle = []
  
   while true
-    @code << node
+    @geekarticle << node
     node = node.next
     if node.text.include?("References:") or node.text.include?("Sources:") or node.text.include?("write comments") or node.text.include?("Please see")
         break
@@ -664,13 +673,20 @@ def algorithm_geeks_extract(link)
 end
 def algorithm_rosetta(a)
   begin
-  @doc = Nokogiri::HTML(open('http://rosettacode.org/wiki/'+a.gsub(' ','_')))
+  rosdoc = Nokogiri::HTML(open('http://rosettacode.org/wiki/'+a.gsub(' ','_')))
+  rescue
+  begin
+    rosdoc = Nokogiri::HTML(open('http://rosettacode.org/wiki/Sorting_algorithms/'+a.gsub(' ','_')))  
+  rescue
+  end
+  end
+  if rosdoc
   lang = [' C',' C++',' Java',' Javascript',' Matlab',' Python',' Ruby']
 
-  x = @doc.css('span.editsection')
+  x = rosdoc.css('span.editsection')
   x.remove
 
-  @l = @doc.css('h2')
+  @l = rosdoc.css('h2')
 
 
   @langcodes = []
@@ -704,9 +720,8 @@ while k < lang.length
     if @langcodes
       @arr << "code"
     end
-end    
-rescue
 end
+end    
 end
 def algorithm_git(a)
   @gitdoc = Nokogiri::HTML(open("https://github.com/search?q="+a.gsub(' ','+')+"&type=Repositories"))
@@ -757,7 +772,7 @@ def algorithm_youtube(a)
       j = j + 1
     end
     if @embed_vid
-    # @arr << "misc"
+     @arr << "misc"
     end
 
 end

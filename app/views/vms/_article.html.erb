@@ -1,10 +1,35 @@
-<div id="algo_article" class="vm_results">      
-     <%if @geeks_articles%>
+  <%if @geeks_articles!=[]%>
+<div id="algo_article" class="vm_results" style="margin-left:0px; width:100%;">      
+  
+<div style="margin-left:5%;margin-top:20px;">
+<div style="float:left;width:75%;border:1px solid #e8e8e8;box-shadow: 1px 1px 3px #888888;background-color:#fff;font-family:serif;margin-bottom:20px;">
+<div id="articlecontent" style="padding:20px;font-size:1.3em;">
+<div style="font-size:1.6em;font-family:sans-serif;margin-bottom:5px;"><%=@geeks_articles[0].htag%></div>
+<hr style="color:#eee;height:4px;margin-bottom:15px;">
+ <%if @geekarticle!=[]%>
+        <%begin%>
+        				<%@geekarticle.each do |t|%>
+	                       <%=raw t%>
+                        <%end%>
+        <%rescue%>
+        <%end%>
+        <%end%></div>
+</div>
+<div style="float:left;width:23%;">
+   
         <%begin%>
             <%@geeks_articles.each do |t|%>
-				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>				
+				
+ 				<div style="height:75px;border:1px solid #e8e8e8;padding:5px;"><div style="font-size:1.0em;font-family:BentoSans;">
+ 				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>					
+ 				</div>
+ 				<div style="float:right;background-color:#888;color:#fff;padding:2px;">geekforgeeks.org</div></div>
+				
 				<%end%>
         <%rescue%>
         <%end%>
-        <%end%>
- </div>
+</div>
+</div>
+</div>
+
+<%end%>
