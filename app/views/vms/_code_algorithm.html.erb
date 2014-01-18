@@ -1,7 +1,7 @@
+<%if @pseudocode!=nil && @pseudocode!=[]%>
 <div id="code" class="vm_results">
    
-        <%if @pseudocode%>
-		<%begin%>
+        <%begin%>
 						<div style="font-family:BentoSans;color:#666;font-size:2em;">Implementation</div><br>
 						<%@pseudocode.each do |l|%>
                         <div id = "searchresults"><%=raw l%></div>
@@ -9,19 +9,13 @@
                         <%end%>
 		<%rescue%>
 		<%end%>
-        <%end%>
-     <%if @code_arr%>
-        <%begin%>
-            <%@code_arr.each do |t|%>
-				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>				
-				<%end%>
-        <%rescue%>
-        <%end%>
-        <%end%>
+        
  </div>
+ <%end%>
+ <%if @langcodes!=nil && @langcodes!=[]%>
+
 <div id="code" class="vm_results">
 
- <%if @langcodes%>
 <b>    rosetta codes</b>
 
     <%j=0%>
@@ -34,5 +28,6 @@
 	     <%end%>
 	     <%j = j + 1%>
 	<%end%>
-	<%end%>
+	
 	</div>
+	<%end%>

@@ -368,27 +368,25 @@ def algorithm_wiki(a)
     require 'open-uri'
     require 'wikicloth'
 
+   a = a.to_s.gsub ' ', '_'
    
-    mw = MediaWiki::Gateway.new('http://en.wikipedia.org/w/api.php/')
     @catch = false
     begin
-    wiki = mw.render(a)
+   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
    puts a.to_s.titleize
    puts "ttl"
-    rescue MediaWiki::APIError => e
+    rescue 
     begin
-  wiki =  mw.render(a)
-  puts a
+   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+   puts a
      puts "rescue mein"
-    rescue MediaWiki::APIError => e
+    rescue 
      puts "second rescue mein"
     @catch = true
     end
     end
 
     @wiki_definition = []
-
-    @doc = Nokogiri::HTML(wiki)
 
     redirect = @doc.css('li').children.text.split(' ')
     redirect = redirect[0]
@@ -579,7 +577,8 @@ def algorithm_wiki(a)
     end
   end
   
-  if @psuedocode != []
+  if @psuedocode != [] && @pseudocode!=nil
+    
        @arr<<"code"
   end
 
@@ -717,7 +716,7 @@ while k < lang.length
         @langcodes << temp
     end
     k = k + 1
-    if @langcodes
+    if @langcodes!=[] && @langcodes!=nil
       @arr << "code"
     end
 end
@@ -738,7 +737,7 @@ def algorithm_git(a)
       @git_repo << @gitdoc.css('li.source')[j]
       j = j + 1
     end
-    if @git_repo
+    if @git_repo!=[] && @git_repo!=nil
       @arr << "code"
     end
 end
@@ -759,7 +758,8 @@ def corpus_extract(q)
   if @e_ex!=[]
     @arr << "algo_examples"
   end
-  if @e_code!=[]
+  if @e_code!=[] && @e_code!=nil
+    puts @e_code
     @arr << "code"
   end
 end

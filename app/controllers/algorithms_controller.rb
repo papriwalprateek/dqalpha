@@ -12,11 +12,8 @@ class AlgorithmsController < ApplicationController
       
       vmsa.each do |vm|
          puts vm+@query
-         begin
-         send(vm,@query)
-        rescue
-        puts "------------------------rescued error here "
-        end
+        send(vm,@query)
+        
       end   
     end 
      respond_to do |format|
