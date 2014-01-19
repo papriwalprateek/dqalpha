@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
  before_filter :require_user, :only => [:home] 
+   layout false, :only => [:geek]
+ 
   def about
   render :layout => false
 @title = "about"
@@ -49,7 +51,8 @@ def scilab
   def geek
     @content = algorithm_geeks_extract(params[:ad])
     respond_to do |format|
-      format.js { render "layouts/geek"  }
+      format.html { render "layouts/_geek"  }
+     format.js { render "layouts/geek"  }
      end
   end
 

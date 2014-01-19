@@ -1,35 +1,42 @@
   <%if @geeks_articles!=nil && @geeks_articles!=[]%>
+<script>
+ $(function() {       
+ $( "#tabs" ).tabs({
+ 	 beforeLoad: function( event, ui ) {
+        if ( ui.tab.data( "loaded" ) ) {
+            event.preventDefault();
+            return;
+        }
+ 
+        ui.jqXHR.success(function() {
+            ui.tab.data( "loaded", true );
+        });
+    }
+ 	
+ }).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );  });
+</script>
+
 <div id="algo_article" class="vm_results" style="margin-left:0px; width:100%;">      
   
 <div style="margin-left:5%;margin-top:20px;">
-<div style="float:left;width:75%;border:1px solid #e8e8e8;box-shadow: 1px 1px 3px #888888;background-color:#fff;font-family:serif;margin-bottom:20px;">
-<div id="articlecontent" style="padding:20px;font-size:1.3em;">
-<div style="font-size:1.6em;font-family:sans-serif;margin-bottom:5px;"><%=@geeks_articles[0].htag%></div>
-<hr style="background-color:#ADA8CA;height:4px;margin-bottom:15px;">
- <%if @geekarticle!=nil && @geekarticle!=[]%>
-        <%begin%>
-        				<%@geekarticle.each do |t|%>
-	                       <%=raw t%>
-                        <%end%>
-        <%rescue%>
-        <%end%>
-        <%end%></div>
-</div>
-<div style="float:left;width:23%;">
    
-        <%begin%>
-            <%@geeks_articles.each do |t|%>
-				
- 				<div style="height:75px;border:1px solid #e8e8e8;padding:5px;"><div style="font-size:1.0em;font-family:BentoSans;">
- 				<div id = "searchresults"><a class= "geeks_link" href = "<%= raw t.link%>"><%=raw t.htag%></a></div>					
- 				</div>
- 				<div style="float:right;background-color:#888;color:#fff;padding:2px;">geekforgeeks.org</div></div>
-				
-				<%end%>
-        <%rescue%>
-        <%end%>
+<div id="tabs">
+  <ul>
+<%@geeks_articles.each do |t|%>
+			
+ 	<li>	
+ 	<div style="height:75px;border:1px solid #e8e8e8;padding:5px;"><div style="">
+ 				<div id = "searchresults">
+ 				
+ 					<a href = "/geeks-link?ad=geeksforgeeks.org/<%=t.link.split("geeks-link/")[1]%>"><%=raw t.htag%></a>
+ 				</div></div>
+ 				<div style="float:right;background-color:#888;color:#fff;padding:2px;font-family:sans-serif;font-weight: 200;">geekforgeeks.org</div></div>
+ 	</li>	
+ <%end%>
+ </ul>
+</div>				
+ 	
 </div>
 </div>
-</div>
-
 <%end%>

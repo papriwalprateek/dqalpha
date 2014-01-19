@@ -17,6 +17,7 @@
 //= require jquery-ui
 $(function() {	
 //youtube like progress bar
+
 $(document).ajaxStart(function() {
     //only add progress bar if added yet.
     if ($("#progress").length === 0) {
@@ -61,7 +62,8 @@ $(document).ajaxSend(function(evt, request, settings) {
      ajax_result_content_navigation("/geeks-link","geeksforgeeks.org/"+a);
      return false;
    });
- 	
+
+	
 	});
 
 function ajax_result_content_navigation(url,data){

@@ -8,7 +8,16 @@
 <%= stylesheet_link_tag 'algorithm', :media => 'screen' %>
 <%= javascript_include_tag "algorithm" %>
  	<link rel="shortcut icon" href="/favicon.ico" />
-
+ <style>
+  .ui-tabs-vertical { width: 100%; }
+  .ui-tabs-vertical .ui-tabs-nav {  float: right; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border: 0px; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border : 0px; }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; }
+  .ui-tabs .ui-tabs-nav li a { max-height:75px; white-space:normal;width: 250px;font-family: sans-serif;color:#333;font-size:1.0em;} 
+#tabs{border: 0px;}
+  </style>
 </head>
 <body>
 <div class="dashboard">

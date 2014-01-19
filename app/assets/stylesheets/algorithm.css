@@ -350,7 +350,9 @@ margin-right:2%;
 
 div#searchresults{
 	font-family:BentoSans;
-	font-size:1.4em;
+	font-size:1.0em;
+	font-weight: normal;
+	color: grey;
 }
 
 button#navi_result

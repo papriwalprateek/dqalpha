@@ -643,7 +643,6 @@ def algorithm_wiki(a)
   end
   if @geeks_articles[0] != nil
     @arr<<"algo_article"
-    algorithm_geeks_extract("geeksforgeeks.org"+@geeks_articles[0].link.split("geeks-link")[1])
   end
  
 end
@@ -657,7 +656,7 @@ def algorithm_geeks_extract(link)
   node = content.css("p")[0]
  
   @geekarticle = []
- 
+  @geekarticletitle = algogeekdoc.css("h2.post-title").text 
   while true
     @geekarticle << node
     node = node.next
