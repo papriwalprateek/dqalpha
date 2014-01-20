@@ -367,17 +367,16 @@ def algorithm_wiki(a)
     require 'nokogiri'
     require 'open-uri'
     require 'wikicloth'
-
-   a = a.to_s.gsub ' ', '_'
-   
+   puts a
     @catch = false
     begin
-   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
-   puts a.to_s.titleize
-   puts "ttl"
+  b = URI.encode(a)
+   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+b))
     rescue 
     begin
-   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+a))
+   
+
+   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+URI.encode(a.to_s.gsub(' ', '_'))))
    puts a
      puts "rescue mein"
     rescue 
@@ -763,7 +762,7 @@ def corpus_extract(q)
   end
 end
 def algorithm_youtube(a)
-      @youdoc = Nokogiri::HTML(open("http://www.youtube.com/results?search_query="+a.gsub(" ","+")))
+      @youdoc = Nokogiri::HTML(open("http://www.youtube.com/results?search_query="+URI.encode(a.gsub(" ","+"))))
    @embed_vid = []
     j = 0
     while j < 5

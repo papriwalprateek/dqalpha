@@ -28,7 +28,10 @@ $(function() {
 <% end -%>];
 
  $( "input#search" ).autocomplete({
-	source: algo_tags
+	source: algo_tags,
+	formatResult: function(row) {
+      return decodeURI();
+    }
 });
 <%end%>
 $("span.vm_icon1").hide();
