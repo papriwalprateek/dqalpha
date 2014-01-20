@@ -634,17 +634,46 @@ def algorithm_wiki(a)
   def algorithm_geeks(a)
     
   parsed  = Geekslink.where(:htag =>/#{a}/i).to_a()
-  @geeks_articles = parsed
-  if @geeks_articles != []
-    @geeks_articles.each do |c|
-      c.link = "/geeks-link/"+c.link.split("forgeeks.org/")[1]
+  if @articles
+  else
+    @articles =[]
+  end
+  if parsed != []
+    parsed.each do |c|
+      c.link = "/geeks-link?ad=geeksforgeeks.org/"+c.link.split("forgeeks.org/")[1]
+      @articles << {"link" => c.link,"title" => c.htag, "source" => "geeksforgeeks.org"}
     end
   end
-  if @geeks_articles[0] != nil
+  
+  if @articles[0] != nil
     @arr<<"algo_article"
   end
  
 end
+def algorithm_webpages(a)
+  par  = Wikialgo.find_by(:htag => a)  
+  parsed = par.pages
+  if parsed
+    if @articles
+    else
+      @articles = []
+    end
+    parsed.each do |p|
+      source = ""
+      if p.link.include?("http")
+        source = p.link.split("/")[2]
+      else
+        source = p.link.split("/")[1]
+      end
+           @articles << {"link" => "/read?ad="+p.link,"title" => p.title, "source" => source}
+    end
+  end
+  
+  if @articles[0] != nil
+    @arr<<"algo_article"
+  end
+end
+
 def algorithm_geeks_extract(link)
   require "nokogiri"
    require "open-uri"
@@ -773,5 +802,12 @@ def algorithm_youtube(a)
      @arr << "misc"
     end
 
+end
+def webpages_read(a)
+ if !a.include?("http")
+   a = "http://" + a
+end
+  source = open(a).read
+  @y = Readability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
 end
 end

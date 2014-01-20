@@ -1,0 +1,16 @@
+	<div style="float:left;width:74%;border:1px solid #e8e8e8;box-shadow: 1px 1px 3px #888888;background-color:#fff;font-family:serif;margin-bottom:20px;">
+	  <div id ="c">
+<div id="articlecontent" style="padding:20px;font-size:1.3em;">
+<div style="font-size:1.6em;font-family:sans-serif;margin-bottom:5px;">Title of the page</div>
+<hr style="background-color:#ADA8CA;height:4px;margin-bottom:15px;">
+	<%= raw @y %>
+
+ </div>
+	</div>
+
+</div>
+<script>
+$(function() {	
+	  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+});
+</script>

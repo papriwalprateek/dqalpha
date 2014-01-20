@@ -8,7 +8,7 @@ class AlgorithmsController < ApplicationController
      @query = params[:search]
      #corpus_extract(@query)
      
-      vmsa =["algorithm_geeks","algorithm_wiki","algorithm_rosetta","algorithm_youtube"]
+      vmsa =["algorithm_geeks","algorithm_webpages","algorithm_wiki","algorithm_rosetta","algorithm_youtube"]
       
       vmsa.each do |vm|
          puts vm+@query

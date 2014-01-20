@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
  before_filter :require_user, :only => [:home] 
-   layout false, :only => [:geek]
+   layout false, :only => [:geek,:read]
  
   def about
   render :layout => false
@@ -53,6 +53,12 @@ def scilab
     respond_to do |format|
       format.html { render "layouts/_geek"  }
      format.js { render "layouts/geek"  }
+     end
+  end
+  def read
+    webpages_read(params[:ad]) 
+    respond_to do |format|
+      format.html { render "layouts/read"  }
      end
   end
  def dev_algo

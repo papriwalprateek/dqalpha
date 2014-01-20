@@ -1,4 +1,4 @@
-  <%if @geeks_articles!=nil && @geeks_articles!=[]%>
+  <%if @articles!=nil && @articles!=[]%>
 <script>
  $(function() {       
  $( "#tabs" ).tabs({
@@ -23,13 +23,13 @@
    
 <div id="tabs">
   <ul>
-<%@geeks_articles.each do |t|%>
+<%@articles.each do |t|%>
 			
  	<li>	
  	<div style="height:75px;border:1px solid #e8e8e8;padding:5px;"><div style="">
- 					<a href = "/geeks-link?ad=geeksforgeeks.org/<%=t.link.split("geeks-link/")[1]%>"><%=raw t.htag%></a>
+ 					<a href = "<%=t["link"]%>"><%=raw t["title"]%></a>
  				</div>
- 				<div style="float:right;background-color:#888;color:#fff;padding:2px;font-family:sans-serif;font-weight: 200;">geekforgeeks.org</div></div>
+ 				<div style="float:right;background-color:#888;color:#fff;padding:2px;font-family:sans-serif;font-weight: 200;"><%=t["source"]%></div></div>
  	</li>	
  <%end%>
  </ul>

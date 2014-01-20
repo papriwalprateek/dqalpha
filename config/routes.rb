@@ -9,6 +9,7 @@ Blog::Application.routes.draw do
     #get "pages/home"
   match '/vinay' => 'algorithms#show'
   match '/dev_algo' => 'pages#dev_algo'
+  match '/read' => 'pages#read'
  
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
