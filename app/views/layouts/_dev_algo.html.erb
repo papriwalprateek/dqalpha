@@ -1,9 +1,10 @@
 <h2>CAUTION: Following are two forms for wiki links and geeks respectively both have separate destroy buttons dont confuse while using them 
-otherwise wrong entries might be deleted </h2>
+otherwise wrong entries might be deleted. Format is /title/ link: /link of article/</h2>
 <div>
+<h2> <%=@wikialgo.count%> algorithm tags </h2>
  <%= form_tag do %>
  <% @wikialgo.each do |item| %>
-      <%= check_box_tag "items[]", item.htag %><%=item.htag%></br>
+      <%= check_box_tag "items[]", item.htag %><%=item.htag%><%="   link: "%><%=item.link%></br>
 <% end %>
 
 <%= submit_tag("Destroy: wiki corpus") %>
@@ -14,10 +15,11 @@ otherwise wrong entries might be deleted </h2>
 <h2>From here on geeks link are shown and below is the form to delete a geeks link dont confuse them with wiki tags both have different form
 </h2><hr>
 
+<h2> <%=@geeks.count%> geeks tags </h2>
 
  <%= form_tag do %>
  <% @geeks.each do |itema| %>
-      <%= check_box_tag "itemas[]", itema.htag %><%=itema.htag%></br>
+      <%= check_box_tag "itemas[]", itema.htag %><%=itema.htag%><%="   link: "%><%=itema.link%></br>
 <% end %>
 
 <%= submit_tag("Destroy: geek corpus") %>
