@@ -55,7 +55,26 @@ def scilab
      format.js { render "layouts/geek"  }
      end
   end
+ def dev_algo
 
+ if params[:items]
+  @a =  params[:items] 
+  @a.each do |a|
+    Wikialgo.find_by(:htag => a).destroy
+  end
+ end 
+ if params[:itemas]
+  @a =  params[:itemas] 
+  @a.each do |a|
+    Geekslink.find_by(:htag => a).destroy
+  end
+ end
+ @wikialgo = Wikialgo.all.to_a()
+ @geeks = Geekslink.all.to_a()
+    respond_to do |format|
+      format.html { render "layouts/_dev_algo"  }
+     end
+  end
 def so
     @content = so_content(params[:ad])
         @query_so = params[:ad]

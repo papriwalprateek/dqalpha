@@ -8,6 +8,8 @@ Blog::Application.routes.draw do
   resources :polls
     #get "pages/home"
   match '/vinay' => 'algorithms#show'
+  match '/dev_algo' => 'pages#dev_algo'
+ 
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'
