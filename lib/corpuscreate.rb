@@ -1,8 +1,7 @@
 #whole of this code will be run in loop for all algorihms of Wikialgo corpus
-algos = ["kruskal", "prim's",  "selection sort", "bubble sort", "merge sort", "heapsort", "dijkstra's"]
-#algos.each do |al|
-#Wikialgo.find_by(:htag => al)
-@doc = Nokogiri::HTML(open("https://www.google.co.in/search?q=bubble+sort"))
+Wikialgo.each do |w|
+if w.pages =[]
+@doc = Nokogiri::HTML(open("https://www.google.co.in/search?q="+w.link.gsub(" ","+")))
 # in this bubble sort will be replaced by htag from wikialgo corpus
 
 gtags = @doc.css("h3.r")
@@ -24,7 +23,7 @@ end
 j = 0
 resources = []
 
-blacklist = ["wikipedia","youtube","rosetta","geeksforgeeks"]
+blacklist = ["wikipedia","youtube","rosetta","geeksforgeeks","stackoverflow"]
 
 while j < @tags.length
 	flag = 1
@@ -40,13 +39,18 @@ while j < @tags.length
 	j = j + 1
 end
 
-@corpus["Bubble sort"] = resources
-w = Wikialgo.find_by(:htag => /bubble/i)
-resources.each do |r|
-	p = Page.new
-	p.link = r[1]
-	p.title = r[0]
-	p.wikialgo = w
-	p.save
+@corpus["s"] = resources
+
+	resources.each do |r|
+		p = Page.new
+		p.link = r[1]
+		p.title = r[0]
+		p.wikialgo = w
+		p.save
 # in this bubble sort will be replace by htag of wikialgo corpus
+	end
+end
+
+puts w.htag
+puts w.pages.count
 end

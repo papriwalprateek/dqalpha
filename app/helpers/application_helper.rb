@@ -371,13 +371,12 @@ def algorithm_wiki(a)
     @catch = false
     begin
   b = URI.encode(a)
-   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+b))
+   @doc = Nokogiri::HTML(open(a))
     rescue 
     begin
    
-
-   @doc = Nokogiri::HTML(open("http://en.wikipedia.org/wiki/"+URI.encode(a.to_s.gsub(' ', '_'))))
-   puts a
+   @doc = Nokogiri::HTML(open(b))
+   puts b
      puts "rescue mein"
     rescue 
      puts "second rescue mein"
@@ -651,27 +650,40 @@ def algorithm_wiki(a)
  
 end
 def algorithm_webpages(a)
-  par  = Wikialgo.find_by(:htag => a)  
+  par  = Wikialgo.find_by(:title => a)  
   parsed = par.pages
+  @articles =[]
   if parsed
-    if @articles
-    else
-      @articles = []
+   parsed.each do |p|
+      article_classify(p)
     end
-    parsed.each do |p|
-      source = ""
-      if p.link.include?("http")
-        source = p.link.split("/")[2]
-      else
-        source = p.link.split("/")[1]
-      end
-           @articles << {"link" => "/read?ad="+p.link,"title" => p.title, "source" => source}
-    end
-  end
-  
+  end  
   if @articles[0] != nil
     @arr<<"algo_article"
   end
+end
+
+def article_classify(d)
+   if d.link.include?("wikipedia")
+      algorithm_wiki(d.link)
+   elsif(d.link.include?("geeksforgeeks.org"))
+      @article << {"link" => "/geeks-link?ad="+d.link,"title" => d.title, "source" => "geeksforgeeks.org"} 
+   elsif(d.link.include?("stackoverflow"))
+   elsif(d.link.include?("rosettacode"))
+     algorithm_rosetta(d.link)
+   elsif(d.link.include?("youtube.com"))
+   elsif(d.link.include?("github"))
+   elsif(d.link.include?(".pdf"))
+   else
+     source = ""
+      if d.link.include?("http")
+        source = d.link.split("/")[2]
+      else
+        source = d.link.split("/")[1]
+      end
+           @articles << {"link" => "/read?ad="+d.link,"title" => d.title, "source" => source}       
+   end
+     
 end
 
 def algorithm_geeks_extract(link)
@@ -699,10 +711,10 @@ def algorithm_geeks_extract(link)
 end
 def algorithm_rosetta(a)
   begin
-  rosdoc = Nokogiri::HTML(open('http://rosettacode.org/wiki/'+a.gsub(' ','_')))
+  rosdoc = Nokogiri::HTML(open(a))
   rescue
   begin
-    rosdoc = Nokogiri::HTML(open('http://rosettacode.org/wiki/Sorting_algorithms/'+a.gsub(' ','_')))  
+    rosdoc = Nokogiri::HTML(open(a))  
   rescue
   end
   end
@@ -769,7 +781,7 @@ def algorithm_git(a)
     end
 end
 def corpus_extract(q)
-  w = Wikialgo.find_by(htag: q)
+  w = Wikialgo.find_by(title: q)
       if w
         e = w.elements
         if e
@@ -806,7 +818,7 @@ end
 def webpages_read(a)
  if !a.include?("http")
    a = "http://" + a
-end
+  end
   source = open(a).read
   @y = Readability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
 end
