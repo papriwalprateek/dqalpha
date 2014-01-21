@@ -655,7 +655,10 @@ def algorithm_webpages(a)
   @articles =[]
   if parsed
    parsed.each do |p|
+    begin  
       article_classify(p)
+    rescue
+    end
     end
   end  
   if @articles[0] != nil
@@ -821,5 +824,6 @@ def webpages_read(a)
   end
   source = open(a).read
   @y = Readability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
+  @y_title = Wikialgo.find_by("pages.link" =>a).pages.find_by("link"=>a).title
 end
 end
