@@ -22,5 +22,23 @@ class AlgorithmsController < ApplicationController
       format.js
     end
   end
-
+def rhodes
+  @w = []
+  if params[:a] 
+    wa = Wikialgo.find_by(:title => params[:a])
+    wa.pages.each do |ww|
+      @w<<ww
+    end
+  end
+   respond_to do |format|
+   
+      format.html 
+    end
+end
+ def rhodesread
+    webpages_read(params[:ad]) 
+    respond_to do |format|
+      format.html
+     end
+  end
 end

@@ -10,7 +10,8 @@ Blog::Application.routes.draw do
   match '/vinay' => 'algorithms#show'
   match '/dev_algo' => 'pages#dev_algo'
   match '/read' => 'pages#read'
- 
+ match '/rhodes' => 'algorithms#rhodes'
+ match '/rhodesread' => 'algorithms#rhodesread'
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'
