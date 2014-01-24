@@ -32,7 +32,8 @@ def rhodes
   end
    respond_to do |format|
    
-      format.html 
+      format.html
+      format.json {render json: wa } 
     end
 end
  def rhodesread
