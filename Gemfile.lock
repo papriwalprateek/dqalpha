@@ -52,6 +52,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    dq-readability (1.0.2)
+      guess_html_encoding (>= 0.0.4)
+      nokogiri (>= 1.4.2)
     ensure_valid_encoding (0.5.2)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -144,9 +147,6 @@ GEM
     redcarpet (2.1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    ruby-readability (0.6.0)
-      guess_html_encoding (>= 0.0.4)
-      nokogiri (>= 1.4.2)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -188,6 +188,7 @@ DEPENDENCIES
   builder
   ckeditor (= 4.0.6)
   coffee-rails (~> 3.2.1)
+  dq-readability
   fastimage
   google_visualr
   gravatar-ultimate
@@ -207,7 +208,6 @@ DEPENDENCIES
   rails_12factor
   rdf
   redcarpet
-  ruby-readability
   sass-rails (~> 3.2.3)
   sendgrid
   uglifier (>= 1.0.3)

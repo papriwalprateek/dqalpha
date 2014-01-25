@@ -83,8 +83,8 @@ class QuestsController < ApplicationController
     @qs = @quest.qs.order('created_at DESC').paginate(:page => params[:page], :per_page => 25)
     @arr=[]
     if params[:search] && @quest.id==2
-      source = open(params[:search]).read
-       @disp1 = Readability::Document.new(source, :tags => %w[img p div p pre h1 h2 h3 h4 img ul a b li], :attribute => %w[href src]).content  
+      source = params[:search]
+      @disp1 =  DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
     end
     if params[:search] && @quest.id !=2   
      

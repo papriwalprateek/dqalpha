@@ -822,8 +822,11 @@ def webpages_read(a)
  if !a.include?("http")
    a = "http://" + a
   end
-  source = open(a).read
-  @y = Readability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
+  source = a
+  @y =  DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
+  begin
   @y_title = Wikialgo.find_by("pages.link" =>a).pages.find_by("link"=>a).title
-end
+  rescue
+  end
+  end
 end
