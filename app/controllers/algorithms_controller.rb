@@ -38,8 +38,10 @@ def rhodes
 end
  def rhodesread
     webpages_read(params[:ad]) 
+    wa = {"title"=>@y_title,"content"=>@y}
     respond_to do |format|
-      format.html
+      format.html      
+      format.json {render json: wa } 
      end
   end
 end
