@@ -669,8 +669,8 @@ end
 def article_classify(d)
    if d.link.include?("wikipedia")
       algorithm_wiki(d.link)
-   elsif(d.link.include?("geeksforgeeks.org"))
-      @article << {"link" => "/geeks-link?ad="+d.link,"title" => d.title, "source" => "geeksforgeeks.org"} 
+   #elsif(d.link.include?("geeksforgeeks.org"))
+   #   @article << {"link" => "/geeks-link?ad="+d.link,"title" => d.title, "source" => "geeksforgeeks.org"} 
    elsif(d.link.include?("stackoverflow"))
    elsif(d.link.include?("rosettacode"))
      algorithm_rosetta(d.link)
@@ -822,7 +822,7 @@ def webpages_read(a)
  if !a.include?("http")
    a = "http://" + a
   end
-  source = a
+  source = URI.encode(a)
   @y =  DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em],:attributes=>%w[href src align width  color]).content
   begin
   @y_title = Wikialgo.find_by("pages.link" =>a).pages.find_by("link"=>a).title
