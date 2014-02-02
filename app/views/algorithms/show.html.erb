@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta content="en-us" http-equiv="Content-Language">
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
 <title>
 <%= title %></title>
 <%= stylesheet_link_tag 'algorithm', :media => 'screen' %>
@@ -10,7 +12,7 @@
  	<link rel="shortcut icon" href="/favicon.ico" />
  <style>
   .ui-tabs-vertical { width: 100%; }
-  .ui-tabs-vertical .ui-tabs-nav {  float: left;margin-top:50px;margin-left:80px; }
+  .ui-tabs-vertical .ui-tabs-nav {  float: left;margin-top:50px; }
   .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border: 0px; margin:0; }
   .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
   .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border : 0px;}
@@ -23,13 +25,25 @@
 <div class="dashboard">
 
 <div class= "dashboard_content_area">
+<div id = "qwst_hdr">
  <%= form_tag({ :controller => "algorithms", :action => "show"}, :method => "get", :remote => true ) do %>
 	  <%= text_field_tag(:search, params[:search]) %>
   <%= submit_tag("",:id=> "submitbar") %>
  <% end %>
+</div>
+
 
 <div class="quest_search_page" style ="margin-top:20px;" >
-	
+
+<div style="width:600px;margin-top:50px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
+<div id = "category_hdr" >Sequence sorting</div>
+<div style="margin:20px;">
+<%@wikialgo.each do |w|%>
+<div style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png"><a style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;" href = ""><%= w.title %></a></div>
+<%end%>	
+</div>
+</div>
+
 <%= render "result"%>
 
 </div>
