@@ -25,9 +25,11 @@ class AlgorithmsController < ApplicationController
 def rhodes
   @w = []
   if params[:a] 
-    wa = Wikialgo.find_by(:title => params[:a])
-    wa.pages.each do |ww|
+    wb = Wikialgo.find_by(:title => params[:a])
+    wa = {"pages"=> [] }
+    wb.pages.desc(:prank).each do |ww|
       @w<<ww
+      wa["pages"]<<ww
     end
   end
    respond_to do |format|
