@@ -818,6 +818,7 @@ def algorithm_youtube(a)
     end
 
 end
+
 def webpages_read(a)
  if !a.include?("http")
    a = "http://" + a

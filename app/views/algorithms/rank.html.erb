@@ -1,0 +1,39 @@
+<head>
+<meta content="en-us" http-equiv="Content-Language">
+<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+</head>
+ <%= form_tag do %>
+<input type="hidden" name="link" value="<%=@link%>">
+<%= radio_button_tag(:type, -1) %>
+<%= label_tag(:a, "Useless") %>
+<%= radio_button_tag(:type, 1) %>
+<%= label_tag(:b, "1") %>
+<%= radio_button_tag(:type, 2) %>
+<%= label_tag(:c, "2") %>
+<%= radio_button_tag(:type, 3) %>
+<%= label_tag(:a, "3") %>
+<%= radio_button_tag(:type, 4) %>
+<%= label_tag(:a, "4") %>
+<%= radio_button_tag(:type, 5) %>
+<%= label_tag(:a, "5") %>
+
+<%= submit_tag("Rank") %>
+<% end %>
+
+	<div style="float:left;max-width:700px;background-color:#fff;font-family:chaparral-pro,serif;margin-bottom:20px;">
+	  <div id ="c">
+<div id="articlecontent" style="padding-left:20px;padding-right:20px;font-size:1.3em;margin-left:0px">
+
+<div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;margin-bottom:50px;"><%=@y_title%></div>
+
+<%= raw @y %>
+
+ </div>
+	</div>
+
+</div>
+<script>
+$(function() {	
+	  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+});
+</script>

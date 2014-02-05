@@ -44,6 +44,19 @@ end
       format.json {render json: wa } 
      end
   end
+   def rank
+    if params[:type]
+    p = Wikialgo.find_by("pages.link"=> params[:link]).pages.find_by("link"=>params[:link])
+    p.prank = params[:type]
+    p.save
+    end
+    p = Wikialgo.find_by("pages.prank"=>0).pages.find_by("prank"=>0)
+    webpages_read(p.link) 
+    @link = p.link
+    respond_to do |format|
+      format.html      
+     end
+  end
   def categorylist
     w = Wikialgo.where(:category=>params["cat"]).pluck(:title)
     respond_to do |format|
