@@ -12,6 +12,7 @@ Blog::Application.routes.draw do
   match '/read' => 'pages#read'
  match '/rhodes' => 'algorithms#rhodes'
  match '/rhodesread' => 'algorithms#rhodesread'
+ match '/cat_list' => 'algorithms#categorylist'
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'

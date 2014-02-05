@@ -44,4 +44,10 @@ end
       format.json {render json: wa } 
      end
   end
+  def categorylist
+    w = Wikialgo.where(:category=>params["cat"]).pluck(:title)
+    respond_to do |format|
+      format.json {render json: w}
+    end
+  end
 end
