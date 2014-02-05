@@ -405,7 +405,8 @@ font-weight:400;
 }
 
 #articlecontent img{
-	overflow:hidden;
+
+	max-width:680px;
 }
 
 #category_hdr{
