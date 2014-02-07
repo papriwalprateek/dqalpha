@@ -19,7 +19,7 @@ var vm_live_id;
 $(function() {
 <%if @wikialgo%>
  var algo_tags = [<% for algo in @wikialgo -%>
-"<%= algo.title %>"
+"<%= algo %>"
 <%if algo==@wikialgo.last%>
 <%else%>
 ,<%end%>

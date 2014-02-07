@@ -2,6 +2,7 @@
 <meta content="en-us" http-equiv="Content-Language">
 <meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
 </head>
+<%if @link%>
  <%= form_tag do %>
 <input type="hidden" name="link" value="<%=@link%>">
 <%= radio_button_tag(:type, -1) %>
@@ -37,3 +38,42 @@ $(function() {
 	  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
 });
 </script>
+<%else%>
+Articles rated as follows
+<b>Articles rated 5</b>
+<%=@a5.count%><br>
+<%@a5.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<b>Articles rated 4</b>
+<%=@a4.count%><br>
+<%@a4.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<b>Articles rated 3</b>
+<%=@a3.count%><br>
+<%@a3.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<b>Articles rated 2</b>
+<%=@a2.count%><br>
+<%@a2.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<b>Articles rated 1</b>
+<%=@a1.count%><br>
+<%@a1.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<b>Articles rated -1</b>
+<%=@aneg.count%><br>
+<%@aneg.each do |a|%>
+<%=a.link%>
+<br>
+<%end%>
+<%end%>

@@ -1,7 +1,7 @@
 class AlgorithmsController < ApplicationController
   layout false
  def show
-    @wikialgo = Wikialgo.all.to_a()
+    @wikialgo = Wikialgo.all.pluck(:title)
     @arr=[]
     @title = "Algorithms Repository"
     if params[:search]
@@ -52,9 +52,39 @@ end
     q.prank = params[:type]
     q.save
     end
+    wp = Wikialgo.find_by("pages.prank"=>0)
+    if wp
     p = Wikialgo.find_by("pages.prank"=>0).pages.find_by("prank"=>0)
     webpages_read(p.link) 
     @link = p.link
+    else
+    @aneg = []
+    @a1 =[]
+    @a2= []
+    @a3= []
+    @a4= []
+    @a5= []
+    Wikialgo.each do |w|
+      w.pages.each do |pt|
+       case pt.prank
+        when -1
+          @aneg<<pt
+        when 1
+          @a1 << pt
+        when 2
+          @a2 << pt
+        when 3
+          @a3 << pt
+        when 4
+          @a4 << pt
+        when 5
+          @a5 << pt
+        else
+        puts "You gave me #{a} -- I have no idea what to do with that."
+       end
+      end
+    end
+    end
     respond_to do |format|
       format.html      
      end
