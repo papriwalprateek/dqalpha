@@ -27,7 +27,7 @@ def rhodes
   if params[:a] 
     wb = Wikialgo.find_by(:title => params[:a])
     wa = {"pages"=> [] }
-    wb.pages.desc(:prank).each do |ww|
+    wb.pages.where(:prank.gt=>3).desc(:prank).each do |ww|
       @w<<ww
       wa["pages"]<<ww
     end
@@ -52,7 +52,11 @@ end
     q.prank = params[:type]
     q.save
     end
+    begin
     wp = Wikialgo.find_by("pages.prank"=>0)
+    rescue
+    wp = nil
+    end
     if wp
     p = Wikialgo.find_by("pages.prank"=>0).pages.find_by("prank"=>0)
     webpages_read(p.link) 

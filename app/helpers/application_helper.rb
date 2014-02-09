@@ -651,7 +651,7 @@ def algorithm_wiki(a)
 end
 def algorithm_webpages(a)
   par  = Wikialgo.find_by(:title => a)  
-  parsed = par.pages.desc(:prank)
+  parsed = par.pages.where(:prank.gt=>3).desc(:prank)
   @articles =[]
   if parsed
    parsed.each do |p|
