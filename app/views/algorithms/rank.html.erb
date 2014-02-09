@@ -78,7 +78,7 @@ $(function() {
 <hr><hr>
 <%Wikialgo.each do |www|%>
 <h2><%=www.title%></h2>
-<%www.pages.each do |ppp|%>
+<%www.pages.desc(:prank).each do |ppp|%>
 rank - <%=ppp.prank%> link -  <%=ppp.link%></br>
 <%end%>
 
