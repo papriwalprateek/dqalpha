@@ -1,11 +1,12 @@
 #!/usr/local/bin/ruby
 # encoding: UTF-8
-c = @corpus["Sequence sorting"]
+
+c = @corpus["Dynamic Programming"]
 
 c.each do |d|
 	w = Wikialgo.new
 	w.title = d[0]
-	w.category = "Sequence sorting"
+	w.category = "Dynamic Programming"
 	w.save
 	kt = d[1]
 	kt.each do |kk|

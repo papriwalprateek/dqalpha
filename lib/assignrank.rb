@@ -1,9 +1,9 @@
 @pt =[]
 @youtube_links = 0
-Wikialgo.where(:category => /graph/i).each do |w|
-  w.pages.where(:link=>/stackoverflow.com/i).each do |pg|
-    pg.prank = -1
-    pg.save
+Wikialgo.where(:category => /i/i).each do |w|
+  w.pages.where(:link=>/en.wikipedia.+#{w.title.gsub("–","%E2%80%93").gsub(" ","_")}/i).each do |pg|
+    #pg.prank = -1
+    #pg.save
     @youtube_links= @youtube_links +1
   end
 end
