@@ -56,7 +56,10 @@ def scilab
      end
   end
   def read
-    webpages_read(params[:ad]) 
+  #this read method splits input url to get parameter instead of using params and hence should be carefully take care if more then
+  #one parameters are to be passed in future
+  #webpages_read(params[:ad]) 
+  webpages_read(request.original_url.split("/read?ad=")[1])
     respond_to do |format|
       format.html { render "layouts/read"  }
      end
