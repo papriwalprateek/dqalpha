@@ -20,6 +20,13 @@
   .ui-tabs .ui-tabs-nav li a { max-height:75px; white-space:normal;width: 250px;font-family: sans-serif;color:#333;font-size:1.0em;font-weight: 200;} 
 #tabs{border: 0px;}
   </style>
+<script>
+  $(function() {
+    $( "#accordion" ).accordion({
+    	collapsible: true
+    });
+  });
+  </script>
 </head>
 <body>
 <div class="dashboard">
@@ -40,14 +47,16 @@
 <%= render "result"%>
 
 <%if @query==nil%>
-<div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
-<div id = "category_hdr" >Sequence sorting</div>
+<div id = "accordion" style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
+<%@categories.each do |catg|%>
+<h3><%=catg%></h3>
 <div style="margin:20px;">
-<%@wikialgo.each do |w|%>
+<%Wikialgo.where(:category=>/#{catg}/i).each do |w|%>
 <div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
-<a href="?search=<%=w%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w %></a></div>
+<a href="?search=<%=w.title%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w.title %></a></div>
 <%end%>	
 </div>
+<%end%>
 </div>
 <%end%>
 </div>
