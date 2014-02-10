@@ -26,7 +26,7 @@
 
 <div class= "dashboard_content_area">
 <div id = "qwst_hdr">
-<div><a  id = "logo" href ="/vinay">daqwest</a></div>
+<div><a  id = "logo" href ="/">daqwest</a></div>
 <div style="float:left;display:inline;"> <%= form_tag({ :controller => "algorithms", :action => "show"}, :method => "get", :remote => true ) do %>
 	  <%= text_field_tag(:search, params[:search]) %>
   <%= submit_tag("",:id=> "submitbar") %>

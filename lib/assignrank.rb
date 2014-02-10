@@ -1,10 +1,16 @@
-@p =[]
+@pt =[]
 @youtube_links = 0
-Wikialgo.each do |w|
- w.pages.each do |pg| 
- if (pg.prank == 3)
- @p << pg
- end
- end
+Wikialgo.where(:category => /graph/i).each do |w|
+  w.pages.where(:prank=>0).each do |pg|
+    @youtube_links= @youtube_links +1
+  end
 end
-puts @p.count
+puts @youtube_links
+puts @pt.count
+#w.pages.where(:link => /xlinux.nist.gov/i).each do |pg| 
+#  pg.prank = 3
+#  pg.save
+#  puts pg.link
+#  @youtube_links= @youtube_links +1
+# end
+# w.pages.where(:link => /en.wikipedia.+#{w.title.gsub(" ","_")}/i).each

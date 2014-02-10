@@ -712,14 +712,16 @@ def algorithm_geeks_extract(link)
   
 
 end
-def algorithm_rosetta(a)
+def algorithm_rosetta(ad)
+  par  = Wikialgo.find_by(:title => ad)  
+  begin
+  a = par.pages.find_by(:link=>/rosettacode.org/i).link
+  rescue
+  a = nil
+  end
   begin
   rosdoc = Nokogiri::HTML(open(a))
   rescue
-  begin
-    rosdoc = Nokogiri::HTML(open(a))  
-  rescue
-  end
   end
   if rosdoc
   lang = [' C',' C++',' Java',' Javascript',' Matlab',' Python',' Ruby']
