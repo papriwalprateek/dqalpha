@@ -827,14 +827,14 @@ def webpages_read(a)
   end
   begin
     begin
-      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
+      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     rescue
       source = URI.encode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     end
   rescue
       source = URI.decode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
   end
   begin
 
