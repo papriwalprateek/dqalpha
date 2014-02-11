@@ -825,21 +825,22 @@ def webpages_read(a)
  if !a.include?("http")
    a = "http://" + a
   end
-  puts a
   begin
     begin
-      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
     rescue
       source = URI.encode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
     end
   rescue
       source = URI.decode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content.force_encoding("UTF-8")
   end
   begin
+
   @y_title = Wikialgo.find_by("pages.link" =>a).pages.find_by("link"=>a).title
-  rescue
+  rescue Exception => e  
+  puts e.message  
   @y_title = "Article"
   end
   end
