@@ -49,7 +49,7 @@ end
   end
    def rank
     if params[:type]
-    q = Wikialgo.find_by("pages.link"=> params[:link]).pages.find_by("link"=>params[:link])
+    q = Wikialgo.find_by("pages.prank"=> 0).pages.find_by("link"=>params[:link])
     q.prank = params[:type]
     q.save
     end
