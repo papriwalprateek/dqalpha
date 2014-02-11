@@ -1,6 +1,5 @@
 <head>
-<meta content="en-us" http-equiv="Content-Language">
-<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<meta charset="utf-8">
 </head>
 <%if @link%>
  <%= form_tag do %>
@@ -27,7 +26,7 @@
 
 <div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;margin-bottom:50px;"><%=@y_title%></div>
 
-<%= raw @y %>
+<%=raw @y.encode!('UTF-8') %>
 
  </div>
 	</div>
