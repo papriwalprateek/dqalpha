@@ -47,6 +47,11 @@ end
       format.json {render json: wa } 
      end
   end
+  def ranked
+    respond_to do |format|
+      format.html      
+     end
+  end
    def rank
     if params[:type]
     q = Wikialgo.find_by("pages.prank"=> 0).pages.find_by("link"=>params[:link])
