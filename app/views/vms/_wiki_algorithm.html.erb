@@ -65,16 +65,6 @@
       
 </div>
 <%end%>
-<%if @embed_vid %>
-<div class="vm_results" id="misc">                        
-  <div style="font-family:BentoSans;color:#666;font-size:1.6em;">Videos:</div><br>
-        <%@embed_vid.each do |e|%>
-        	<iframe width="460" height="250" src="//www.youtube.com/embed/<%=raw e%>" frameborder="0" allowfullscreen></iframe>
-        	<br>
-        	<br>
-        <%end%> 
-</div>
-<%end%>
 <%if @git_repo%>
 <div class="vm_results" id="misc">                        
   <div style="font-family:BentoSans;color:#666;font-size:1.6em;">Github repositories:</div><br>

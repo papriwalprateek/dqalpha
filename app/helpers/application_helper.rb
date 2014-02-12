@@ -652,7 +652,10 @@ end
 def algorithm_webpages(a)
   par  = Wikialgo.find_by(:title => a)  
   parsed = par.pages.where(:prank.gt=>3).desc(:prank)
+  #initial output variables
   @articles =[]
+  @embed_vid = []
+  #send each link to it's respective module via classifier
   if parsed
    parsed.each do |p|
     begin  
@@ -661,9 +664,14 @@ def algorithm_webpages(a)
     end
     end
   end  
+  #setting result variable flags for front end ui tabs etc
   if @articles[0] != nil
     @arr<<"algo_article"
   end
+  if @embed_vid[0] != nil
+    @arr<<"videos"
+  end
+  
 end
 
 def article_classify(d)
@@ -674,7 +682,8 @@ def article_classify(d)
    elsif(d.link.include?("stackoverflow"))
    elsif(d.link.include?("rosettacode"))
      algorithm_rosetta(d.link)
-   elsif(d.link.include?("youtube.com"))
+   elsif(d.link.include?("www.youtube.com"))
+     @embed_vid<<[d.title,d.link]
    elsif(d.link.include?("github"))
    elsif(d.link.include?(".pdf"))
    else
@@ -827,14 +836,14 @@ def webpages_read(a)
   end
   begin
     begin
-      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     rescue
       source = URI.encode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     end
   rescue
       source = URI.decode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
   end
   begin
 

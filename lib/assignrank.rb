@@ -1,8 +1,8 @@
 @pt =[]
 @youtube_links = 0
 Wikialgo.where(:category => /i/i).each do |w|
-  w.pages.where(:link=>/en.wikipedia.+#{w.title.gsub("–","%E2%80%93").gsub(" ","_")}/i).each do |pg|
-    #pg.prank = -1
+  w.pages.where(:link=>/youtube.com/i).each do |pg|
+    #pg.prank = -2
     #pg.save
     @youtube_links= @youtube_links +1
   end
@@ -16,3 +16,5 @@ puts @pt.count
 #  @youtube_links= @youtube_links +1
 # end
 # w.pages.where(:link => /en.wikipedia.+#{w.title.gsub(" ","_")}/i).each
+#pg.link = pg.link.gsub("watch?v=","embed/")
+    
