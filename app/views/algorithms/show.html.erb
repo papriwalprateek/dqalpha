@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta content="en-us" http-equiv="Content-Language">
-<meta content="text/html; charset=windows-1252" http-equiv="Content-Type">
+<!-- rzdpt2_bUF76kGnajCBG26nR6Qg -->
 <title>
 <%= title %></title>
 <%= stylesheet_link_tag 'algorithm', :media => 'screen' %>
@@ -20,13 +19,6 @@
   .ui-tabs .ui-tabs-nav li a { max-height:75px; white-space:normal;width: 250px;font-family: sans-serif;color:#333;font-size:1.0em;font-weight: 200;} 
 #tabs{border: 0px;}
   </style>
-<script>
-  $(function() {
-    $( "#accordion" ).accordion({
-    	collapsible: true
-    });
-  });
-  </script>
 </head>
 <body>
 <div class="dashboard">
@@ -47,9 +39,9 @@
 <%= render "result"%>
 
 <%if @query==nil%>
-<div id = "accordion" style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
+<div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
 <%@categories.each do |catg|%>
-<h3><%=catg%></h3>
+<div id = "category_hdr" ><%=catg%></div>
 <div style="margin:20px;">
 <%Wikialgo.where(:category=>/#{catg}/i).each do |w|%>
 <div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
