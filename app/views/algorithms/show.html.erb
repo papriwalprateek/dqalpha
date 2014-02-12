@@ -39,18 +39,37 @@
 <%= render "result"%>
 
 <%if @query==nil%>
+
+<div style="font-family:serif;float:right;margin-left:1050px;position:fixed;margin-top:20px;">
+	<p style="margin:0px;font-size:2.0em;color:#888;"><b style="color:#444;">129</b> algorithms</p> 
+	<p style="font-size:1.5em;color:#888;">from <b style="color:#444;">51</b> resources</p>
+	<ul style="list-style-type:none;padding-left:2px;">
+		<%@categories.each do |catg|%>
+			<li id = "sidenav"><a href="#<%=catg.split(' ')[0]%>"><%=catg%></a></li>
+		<%end%>
+	</ul>
+	
+<!--	<div style="padding:5px;background-color:#aaa;color:#fff;font-size:1.2em;text-align:center;cursor:pointer;">Contribute to repository</div> -->
+	
+</div>
+
 <div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
 <%@categories.each do |catg|%>
-<div id = "category_hdr" ><%=catg%></div>
+<div id = "category_hdr"><a name="<%=catg.split(' ')[0]%>"><%=catg%></a></div>
 <div style="margin:20px;">
 <%Wikialgo.where(:category=>/#{catg}/i).each do |w|%>
-<div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
-<a href="?search=<%=w.title%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w.title %></a></div>
+	<div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
+	<a href="?search=<%=w.title%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w.title %></a></div>
 <%end%>	
 </div>
+<br>
 <%end%>
 </div>
+
 <%end%>
+
+
+
 </div>
 </div>
 </div>
