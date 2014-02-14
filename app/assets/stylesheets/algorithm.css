@@ -37,7 +37,7 @@ table{
 	padding: 2px;
 	margin-top: 20px;
 }
-.vm_tray{margin-left: 310px;}
+.vm_tray{margin-left: 295px;}
 .dashboard{
 }
 
@@ -458,3 +458,10 @@ li#sidenav{
 	font-size:1.2em;
 }
 
+div#algo_article li.ui-state-active{
+	background-color:#eee;
+}
+
+div#videos{
+	padding:30px;
+}
