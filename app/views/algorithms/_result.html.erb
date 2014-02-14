@@ -8,10 +8,22 @@
 <span class="vm_icon1" id="videos" >Videos</span>
 
 </div>
+<%if (@defs && @defs!=[])%>
+<div class="vm_results" id ="algo_description">
+                        <%begin%>
+                                <%@defs.each do |t|%>
+                                <b><%= t.source%></b>
+                                <div id = "searchresults"><%=raw t.content%></div>
+                                <hr>
+                                <%end%>
+                        <%rescue%>
+                        <%end%>
+</div>
+<%end%>
 <%= render "vms/code_algorithm"%>		
-
 <%= render "vms/wiki_algorithm"%>		
 <%= render "vms/article"%>		
+
 <%if(@embed_vid && @embed_vid != []) %>
 <div class="vm_results" id="videos">                        
         <%@embed_vid.each do |e|%>

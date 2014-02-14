@@ -7,6 +7,7 @@ class AlgorithmsController < ApplicationController
     @title = "Algorithms Repository"
     if params[:search]
      @query = params[:search]
+     
      #corpus_extract(@query)
      
       vmsa =["algorithm_webpages","algorithm_rosetta"]

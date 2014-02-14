@@ -652,7 +652,8 @@ end
 def algorithm_webpages(a)
   par  = Wikialgo.find_by(:title => a)  
   parsed = par.pages.where(:prank.gt=>3).desc(:prank)
-  #initial output variables
+  @defs = par.descriptions
+  #initialize output variables
   @articles =[]
   @embed_vid = []
   #send each link to it's respective module via classifier
