@@ -27,7 +27,7 @@
 <%if(@embed_vid && @embed_vid != []) %>
 <div class="vm_results" id="videos">                        
         <%@embed_vid.each do |e|%>
-        	<div style="color:#aaa;font-family:serif;font-size:1.2em;font-weight:400;margin-bottom:0px;"><u><%=e[0]%></u></div></br>
+        	<div style="color:#aaa;font-family:serif;font-size:1.2em;font-weight:400;margin-bottom:0px;"><u><%=raw e[0]%></u></div></br>
         	<iframe width="520" height="300" src="<%=e[1]%>" frameborder="0" allowfullscreen></iframe>
         	<br>
         	<br>

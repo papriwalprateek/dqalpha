@@ -7,6 +7,8 @@ Blog::Application.routes.draw do
 
   resources :polls
     #get "pages/home"
+  get '/quests/26', to: redirect('/')
+  get '/quests/26/qs/:id', to: redirect('/')
   match '/vinay' => 'algorithms#show'
   match '/dev_algo' => 'pages#dev_algo'
   match '/read' => 'pages#read'
@@ -26,7 +28,7 @@ Blog::Application.routes.draw do
   match "/scilab/:search" => redirect("/scilab?ad=%{search}&commit=scilab")
   match "/bugzilla/:search" => redirect("/bugzilla?ad=%{search}&commit=Bugzilla")
      #get "pages/search"
-  match '/search' => 'pages#search'
+  #match '/search' => 'pages#search'
   match '/wik' => 'pages#wik'
   match '/a' => 'pages#read_notification'
   match '/clear_notification' => 'pages#clear_notification'
@@ -44,6 +46,7 @@ Blog::Application.routes.draw do
   match '/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'create_user' => 'users#create', :via => [ :post]
+  
   resources :wikialgos do
   end
   resources :users do
@@ -129,7 +132,6 @@ Blog::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
     root :to => 'page#home'
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

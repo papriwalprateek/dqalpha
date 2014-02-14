@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
- before_filter :require_user, :only => [:home] 
+ #before_filter :require_user, :only => [:home] 
    layout false, :only => [:geek,:read]
  
   def about
@@ -17,11 +17,16 @@ class PagesController < ApplicationController
   @title = "search"  end
 
   def home
-    @unread_notifications = current_user.notifications.where(:has_read=>false).order("created_at DESC")
-    respond_to do |format|
-      format.html # new.html.erb
-      format.js
-    end
+  if(request.url.include?('www'))
+  redirect_to request.url.sub('www','algorithm')
+  else
+  redirect_to request.url.sub('daqwest','algorithm.daqwest')
+  end
+  #  @unread_notifications = current_user.notifications.where(:has_read=>false).order("created_at DESC")
+   # respond_to do |format|
+   #   format.html # new.html.erb
+   #   format.js
+   # end
 
  #asd
   end
