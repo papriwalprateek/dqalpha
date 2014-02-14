@@ -17,7 +17,9 @@ class PagesController < ApplicationController
   @title = "search"  end
 
   def home
-  if(request.url.include?('www'))
+  if(request.url.include?('localhost'))
+    redirect_to '/vinay'  
+  elsif(request.url.include?('www'))
   redirect_to request.url.sub('www','algorithm')
   else
   redirect_to request.url.sub('daqwest','algorithm.daqwest')
