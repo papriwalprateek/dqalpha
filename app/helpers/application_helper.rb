@@ -831,9 +831,10 @@ def algorithm_youtube(a)
 end
 
 def webpages_read(a)
- if !a.include?("http")
+  if !a.include?("http")
    a = "http://" + a
   end
+  @src = a
   begin
     begin
       @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt dl dd b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
