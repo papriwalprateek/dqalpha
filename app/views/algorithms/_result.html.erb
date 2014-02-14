@@ -42,17 +42,14 @@ var vm_live_id;
 $(function() {
 <%if @wikialgo%>
  var algo_tags = [<% for algo in @wikialgo -%>
-"<%= algo %>"
+"<%= raw algo %>"
 <%if algo==@wikialgo.last%>
 <%else%>
 ,<%end%>
 <% end -%>];
 
  $( "input#search" ).autocomplete({
-	source: algo_tags,
-	formatResult: function(row) {
-      return decodeURI();
-    }
+	source: algo_tags
 });
 <%end%>
 $("span.vm_icon1").hide();

@@ -1,0 +1,22 @@
+<h1>Listing wikialgos</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wikialgos.each do |wikialgo| %>
+  <tr>
+	<td><%= wikialgo.title%></td>
+    <td><%= link_to 'Show', wikialgo %></td>
+    <td><%= link_to 'Edit', edit_wikialgo_path(wikialgo) %></td>
+    <td><%= link_to 'Destroy', wikialgo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wikialgo', new_wikialgo_path %>

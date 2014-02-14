@@ -1,0 +1,29 @@
+<%= form_for(@wikialgo) do |f| %>
+  <% if @wikialgo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wikialgo.errors.count, "error") %> prohibited this wikialgo from being saved:</h2>
+
+      <ul>
+      <% @wikialgo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+<%@wikialgo.pages.each do |w|%>
+<%= form_for(w) do |fd| %>
+
+  <div class="field">
+    <%= fd.label :title %><br />
+    <%= fd.text_field :title %>
+  </div>
+  <%end%>
+  <%end%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

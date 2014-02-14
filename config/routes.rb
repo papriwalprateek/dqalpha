@@ -44,11 +44,13 @@ Blog::Application.routes.draw do
   match '/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'create_user' => 'users#create', :via => [ :post]
-
+  resources :wikialgos do
+  end
   resources :users do
     resources :quests
   
   end
+
    resources :users do
       resources :gists
     end
