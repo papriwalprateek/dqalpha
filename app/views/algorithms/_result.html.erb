@@ -27,14 +27,21 @@
 
 <script>
 var vm_live_id;
+var algo_tags;
+var t;
 $(function() {
 <%if @wikialgo%>
- var algo_tags = [<% for algo in @wikialgo -%>
+ algo_tags = [<% for algo in @wikialgo -%>
 "<%= algo %>"
 <%if algo==@wikialgo.last%>
 <%else%>
 ,<%end%>
 <% end -%>];
+
+for (var i=0;i<algo_tags.length;i++)
+{ 
+	algo_tags[i] = algo_tags[i].replace("&#x27;","'");
+}
 
  $( "input#search" ).autocomplete({
 	source: algo_tags,
