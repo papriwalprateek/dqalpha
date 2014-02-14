@@ -836,14 +836,14 @@ def webpages_read(a)
   end
   begin
     begin
-      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(a,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt dl dd b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     rescue
       source = URI.encode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt dl dd b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
     end
   rescue
       source = URI.decode(a)
-      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
+      @y = DQReadability::Document.new(source,:tags=>%w[div pre p h1 h2 h3 h4 td table tr tt dl dd b a img br li ul ol center br hr blockquote em strong sub sup font tbody span],:attributes=>%w[href src align width color height]).content
   end
   begin
 
