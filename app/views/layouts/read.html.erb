@@ -5,7 +5,7 @@
 	  <div id ="c">
 <div id="articlecontent" style="padding-left:20px;padding-right:20px;font-size:1.3em;margin-left:0px;border-left:2px solid #eee;padding-top:10px;">
 
-<div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;"><%=@y_title%></div>
+<div id = "articletitle" style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;"><%=@y_title%></div>
 <div style="float:right;margin-bottom:50px;margin-right:10px;margin-top:5px;"><a target="_blank" style = "color:rgb(153,153,153);font-family:serif;font-size:0.9em;" href="<%=@src%>">View source</a></div>
 <%=raw @y.encode!('UTF-8') %>
 
@@ -16,5 +16,6 @@
 <script>
 $(function() {	
 	  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+	  $('div#articletitle')[0].textContent = $('div#articletitle')[0].textContent.replace('&#39;',"'");
 });
 </script>
