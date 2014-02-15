@@ -676,7 +676,7 @@ def algorithm_webpages(a)
 end
 
 def article_classify(d)
-   if d.link.include?("wikipedia")
+   if d.link.include?("en.wikipedia")
      algorithm_wiki(d.link)
    #elsif(d.link.include?("geeksforgeeks.org"))
    #   @article << {"link" => "/geeks-link?ad="+d.link,"title" => d.title, "source" => "geeksforgeeks.org"} 
