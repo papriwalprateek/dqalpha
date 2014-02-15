@@ -400,6 +400,8 @@ def algorithm_wiki(a)
     x.remove
      infobox = @doc.css("table.infobox")
     infobox.remove
+    x = @doc.css('table.vertical-navbox')
+  x.remove
 # @wiki_definition << @doc.css("p")[0]
   @node = @doc.css("p")[0]
   @stop = @doc.css("div#toc")[0]
@@ -412,11 +414,6 @@ def algorithm_wiki(a)
      if infobox
     @wiki_definition << @doc.css("table.infobox")
   end
-#  if @doc.css("a.image")[0]
-#  @wiki_definition << @doc.css("a.image")[0]
-#  x = @doc.css("a.image")[0]
-#  x.remove
-#  end
 
   if @doc.css("table.infobox")
   @wiki_definition << @doc.css("table.infobox")
