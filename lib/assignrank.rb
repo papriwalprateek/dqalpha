@@ -1,12 +1,12 @@
 @pt =[]
 @youtube_links = 0
-Wikialgo.where(:category => /i/i).each do |w|
-  if (w.pages.where(:link=>/wikipedia.org/i).count >1)
-    #pg.prank = -2
-    #pg.save
+Wikialgo.where(:category => /matching/i).each do |w|
+w.pages.where(:link=>/citeseer/i).each do |pg|
+    pg.prank = -1
+    pg.save
     puts w.title
     @youtube_links= @youtube_links +1
-  end
+end
 end
 puts @youtube_links
 puts @pt.count
