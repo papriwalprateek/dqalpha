@@ -57,10 +57,13 @@ class WikialgosController < ApplicationController
   # PUT /wikialgos/1.json
   def update
     @wikialgo = Wikialgo.find(params[:id])
-
+    params["pages"].each do |idd|
+      t = @wikialgo.pages.find_by("_id"=>idd)
+      t.destroy
+    end  
     respond_to do |format|
       if @wikialgo.update_attributes(params[:wikialgo])
-        format.html { redirect_to @wikialgo, notice: 'Wikialgo was successfully updated.' }
+        format.html { redirect_to @wikialgo, notice: "Wikialgo was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
