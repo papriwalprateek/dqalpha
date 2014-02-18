@@ -2,11 +2,11 @@
 # encoding: UTF-8
 
 count = 0 
-c = @corpus["Strings and pattern matching"]
+c = @corpus["Combinatorial algorithms"]
 c.each do |d|
   w = Wikialgo.new
   w.title = d[0]
-  w.category = "Strings and pattern matching"
+  w.category = "Combinatorial algorithms"
   w.save
   kt = d[1]
   kt.each do |kk|

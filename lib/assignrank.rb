@@ -1,10 +1,10 @@
 @pt =[]
 @youtube_links = 0
-Wikialgo.where(:category => /matching/i).each do |w|
-w.pages.where(:link=>/citeseer/i).each do |pg|
-    pg.prank = -1
+Wikialgo.where(:category => /combinato/i).each do |w|
+w.pages.where(:link=>/rosetta/i).each do |pg|
+    pg.prank = 2
     pg.save
-    puts w.title
+   # puts w.title
     @youtube_links= @youtube_links +1
 end
 end
