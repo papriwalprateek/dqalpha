@@ -3,3 +3,4 @@ $(".quest_search_page").html("<%= escape_javascript(render("result")) %>");
   window.history.pushState(null, document.title, "<%="/search?search="+@query.to_s()%>");   
   $('p.searching_text').hide();
 <%end%>
+ga('send', 'pageview', {'page': "<%="/search?search="+@query.to_s()%>",'title': "<%=@query%>"});
