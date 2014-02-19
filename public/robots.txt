@@ -6,6 +6,4 @@
  Disallow: /users/
 
  User-agent: AhrefsBot
- Disallow: /quests/
- Disallow: /qs/
- Disallow: /users/
+ Disallow: /
