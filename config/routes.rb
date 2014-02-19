@@ -39,33 +39,34 @@ Blog::Application.routes.draw do
   match '/bugzilla' => 'pages#bugzilla'
   match '/geeks-link' => 'pages#geek'
   match '/feedback_submit' => 'pages#feedback_submit'
+ 
 #get "users/new"
-  match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
-  match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
-  match 'qs/:id/qmails/:id/update' => 'qmails#update', :via => [:get, :post]
-  match '/quests/:id/search' => 'quests#search', :via => [:get, :post]
-  match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
+  #match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
+  #match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
+  #match 'qs/:id/qmails/:id/update' => 'qmails#update', :via => [:get, :post]
+  #match '/quests/:id/search' => 'quests#search', :via => [:get, :post]
+  #match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'create_user' => 'users#create', :via => [ :post]
   
   resources :wikialgos do
   end
-  resources :users do
-    resources :quests
+#  resources :users do
+#    resources :quests
   
-  end
+#  end
 
-   resources :users do
-      resources :gists
-    end
+  # resources :users do
+  #    resources :gists
+  #  end
 
-    resources :quests do
-      resources :qs
-    end
+   # resources :quests do
+   #   resources :qs
+   # end
 
   
-   resources :qs do
-      resources :qmails
-    end
+   #resources :qs do
+   #   resources :qmails
+   # end
   resources :user_sessions, :only => [ :create]
   match 'signin' => 'user_sessions#new', :as => :signin
   match 'signout' => 'user_sessions#destroy', :as => :signout
