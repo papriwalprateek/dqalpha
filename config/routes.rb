@@ -10,13 +10,13 @@ Blog::Application.routes.draw do
   get '/quests/26', to: redirect('/')
   get '/quests/26/qs/:id', to: redirect('/')
   match '/vinay' => 'algorithms#show'
-  match '/dev_algo' => 'pages#dev_algo'
-  match '/read' => 'pages#read'
+  #match '/dev_algo' => 'pages#dev_algo'
+ # match '/read' => 'pages#read'
  match '/rhodes' => 'algorithms#rhodes'
  match '/rhodesread' => 'algorithms#rhodesread'
  match '/cat_list' => 'algorithms#categorylist'
- match '/rank' => 'algorithms#rank'
- match '/ranked' => 'algorithms#ranked'
+ #match '/rank' => 'algorithms#rank'
+ #match '/ranked' => 'algorithms#ranked'
  
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
@@ -48,8 +48,8 @@ Blog::Application.routes.draw do
   #match 'users/:id/quests/:id/search' => 'quests#search', :via => [:get, :post]
   match 'create_user' => 'users#create', :via => [ :post]
   
-  resources :wikialgos do
-  end
+  #resources :wikialgos do
+  #end
 #  resources :users do
 #    resources :quests
   
