@@ -14,6 +14,7 @@ gem 'google-search'
 gem "koala", "~> 1.8.0rc1"
 gem 'execjs'
 gem 'therubyracer'
+gem 'rack-timeout'
 gem 'redcarpet'
 gem 'builder'
 gem 'albino'

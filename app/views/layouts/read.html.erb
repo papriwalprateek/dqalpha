@@ -17,5 +17,6 @@
 <script>
 $(function() {	
 	  $('pre').each(function(i, e) {hljs.highlightBlock(e)});
+	ga('send', 'pageview', {'page': "/read?<%=raw @src%>",'title': "<%=raw @y_title%>"});
 });
 </script>

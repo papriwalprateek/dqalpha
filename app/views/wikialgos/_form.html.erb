@@ -10,19 +10,22 @@
       </ul>
     </div>
   <% end %>
- <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-<%@wikialgo.pages.each do |w|%>
-<%= form_for(w) do |fd| %>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @wikialgo.pages.each do |item| %>
+      <tr>
+        <td><%= check_box_tag "pages[]", item.id %></td>
+      	<td>rank - <%=item.prank%> link - <%= item.link%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-  <div class="field">
-    <%= fd.label :title %><br />
-    <%= fd.text_field :title %>
-  </div>
-  <%end%>
-  <%end%>
   <div class="actions">
     <%= f.submit %>
   </div>
