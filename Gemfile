@@ -9,6 +9,7 @@ gem 'rails', '3.2.16'
 #group :production do
   gem 'ckeditor', '4.0.6'
 #end
+gem 'rack-timeout'
 gem 'redcarpet'
 gem 'builder'
 gem 'albino'
