@@ -2,11 +2,11 @@
 # encoding: UTF-8
 
 count = 0 
-c = @corpus["Combinatorial algorithms"]
+c = @corpus["Tree (data structure)"]
 c.each do |d|
   w = Wikialgo.new
   w.title = d[0]
-  w.category = "Combinatorial algorithms"
+  w.category = "Tree (data structure)"
   w.save
   kt = d[1]
   kt.each do |kk|

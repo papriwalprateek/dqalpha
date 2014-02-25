@@ -2,5 +2,6 @@ class Element
   include Mongoid::Document
   field :type, type: String
   field :value, type: String
-  field :user_id, type: Integer
+  field :user, type: String
+  embedded_in :wikialgo
 end

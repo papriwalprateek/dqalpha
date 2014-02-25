@@ -7,10 +7,8 @@ class AlgorithmsController < ApplicationController
     @title = "Algorithms Repository"
     if params[:search]
      @query = params[:search]
-     
-     #corpus_extract(@query)
-     
-      vmsa =["algorithm_webpages","algorithm_rosetta"]
+       
+      vmsa =["algorithm_webpages","algorithm_rosetta","corpus_extract"]
       
       vmsa.each do |vm|
          puts vm+@query
