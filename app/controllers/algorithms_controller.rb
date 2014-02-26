@@ -1,7 +1,7 @@
 class AlgorithmsController < ApplicationController
   layout false
  def show
-    @categories = ["Sequence sorting","Dynamic Programming","Graph algorithms","Strings and pattern matching", "Combinatorial algorithms"]
+    @categories = ["Sequence sorting","Dynamic Programming","Graph algorithms","Strings and pattern matching", "Combinatorial algorithms","Tree (data structure)"]
     @wikialgo = Wikialgo.all.pluck(:title)
     @arr=[]
     @title = "Algorithms Repository"
