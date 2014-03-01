@@ -1,16 +1,14 @@
 class AlgorithmsController < ApplicationController
   layout false
  def show
-    @categories = ["Sequence sorting","Dynamic Programming","Graph algorithms","Strings and pattern matching", "Combinatorial algorithms"]
+    @categories = ["Sequence sorting","Dynamic Programming","Graph algorithms","Strings and pattern matching", "Combinatorial algorithms","Tree (data structure)"]
     @wikialgo = Wikialgo.all.pluck(:title)
     @arr=[]
     @title = "Algorithms Repository"
     if params[:search]
      @query = params[:search]
-     
-     #corpus_extract(@query)
-     
-      vmsa =["algorithm_webpages","algorithm_rosetta"]
+       
+      vmsa =["algorithm_webpages","algorithm_rosetta","corpus_extract"]
       
       vmsa.each do |vm|
          puts vm+@query

@@ -1,3 +1,4 @@
+
 <%if @pseudocode!=nil && @pseudocode!=[]%>
 <div id="code" class="vm_results">
    
@@ -11,12 +12,28 @@
 		<%end%>
         
  </div>
+</hr>
  <%end%>
+<%if @e_code && @e_code!=[]%>
+<div class="vm_results" id ="code">
+                        <%begin%>
+                                <%@e_code.each do |t|%>
+                                <b>Commited by <%=raw t.user%> </b></br>
+                                <pre>
+                                <div id = "searchresults"><%=t.value%></div>
+                               	</pre>
+                                <%end%>
+                        <%rescue%>
+                      
+                        <%end%>
+<hr>
+</div>
+<%end%>
  <%if @langcodes!=nil && @langcodes!=[]%>
 
 <div id="code" class="vm_results">
 
-<b>    rosetta codes</b>
+<h2>Rosetta codes</h2>
 
     <%j=0%>
 	<%while j < @langcodes.length%> 

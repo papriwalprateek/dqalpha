@@ -105,17 +105,4 @@
 </div>
 <%end%>
 
-<%if @e_code && @e_code!=[]%>
-<div class="vm_results" id ="code">
-                        <%begin%>
-                                <%@e_code.each do |t|%>
-                                Commited by <%=raw User.find(t.user_id).name%> </br>
-                                <div id = "searchresults"><%=raw(t.value)%></div>
-                               
-                                <%end%>
-                        <%rescue%>
-                      
-                        <%end%>
-<hr>
-</div>
-<%end%>
+
