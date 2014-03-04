@@ -9,6 +9,11 @@ gem 'rails', '3.2.16'
 #group :production do
   gem 'ckeditor', '4.0.6'
 #end
+gem 'rb-libsvm'
+gem 'google-search'
+gem "koala", "~> 1.8.0rc1"
+gem 'execjs'
+gem 'therubyracer'
 gem 'rack-timeout'
 gem 'redcarpet'
 gem 'builder'
@@ -35,7 +40,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_search'
 gem 'mongoid_fulltext'
-gem 'dq-readability'
+gem 'dq-readability', '1.0.4'
 gem 'fastimage'
 gem 'rails_12factor', group: :production
   gem 'coffee-rails', '~> 3.2.1'
