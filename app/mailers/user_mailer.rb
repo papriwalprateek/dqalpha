@@ -30,4 +30,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => "vinayrajchoudhary@gmail.com", :subject => "Feedback @DaQwest")
    
   end
+  def track_repo(a)
+    @track_email = a
+    mail(:to => "vinayrajchoudhary@gmail.com", :subject => "Track #AlgoRepo @DaQwest")
+   
+  end
 end

@@ -168,4 +168,12 @@ end
       format.js
     end
   end
+  
+  def track_repo
+    @track_email = params[:track_email]
+    UserMailer.track_repo(@track_email).deliver
+    respond_to do |format|
+      format.js
+    end
+  end
 end

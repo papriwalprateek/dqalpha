@@ -58,7 +58,31 @@
 	</ul>
 	
 <!--	<div style="padding:5px;background-color:#aaa;color:#fff;font-size:1.2em;text-align:center;cursor:pointer;">Contribute to repository</div> -->
+<div id="form_track">
+<p style="margin:0px;font-size:1.4em;color:#888;border-top:1px solid #888">
+Track the Repository for new algorithms and features</p> 
 	
+<form data-remote ="true" id="track">
+  	
+  <fieldset>
+   <input type="text" id = "track_email" placeholder = "Your email address" class="text ui-widget-content ui-corner-all feedback-name" style="width:80%;" />
+   <button id="track_email_button">Track</button>
+  </fieldset>
+
+  </form>
+</div>
+  <script>$(function() {
+ $('button#track_email_button').click(function(){
+        	 $.ajax({
+			type: "POST",
+			url: "/track_repo",
+			data: { track_email: $('input#track_email').val()}
+			});
+ });
+});
+
+</script> 
+
 </div>
 
 <div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
