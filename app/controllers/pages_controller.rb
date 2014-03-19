@@ -7,6 +7,11 @@ class PagesController < ApplicationController
 @title = "about"
 
   end
+  def mission
+  render :layout => false
+@title = "mission"
+
+  end
  def google885d2aab83a9c566
  render :layout => false
 @title = "google_authentication"
