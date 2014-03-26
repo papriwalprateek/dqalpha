@@ -23,6 +23,11 @@ documentations, all wrapped around in a standard manner i.e. our VM API, to prov
 
 ## Setting up environment
 
+* Setting postgres (ubuntu)
+	-  ``` sudo apt-get install postgres postres-contrib ```
+	-  ``` sudo apt-get install libpq-dev ```
+	-  Setting postgres database (set password as well)
+
 * Creating and migrating the tables - 
 
 	```ruby
