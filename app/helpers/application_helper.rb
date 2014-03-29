@@ -598,6 +598,7 @@ def algorithm_wiki(a)
   end
   
   @related_algorithm = []
+  temp_ra = []
   if htag >= 0
 	arr = Wikialgo.all
     @node = @doc.css("h2 > span")[htag].parent
@@ -612,9 +613,10 @@ def algorithm_wiki(a)
       begin 
       @node.css('a').each do |c|
 		arr.each do |a|
-			if a.title == c.attributes["title"].value
+			if a.title == c.attributes["title"].value and temp_ra.include?(c.attributes["title"].value) == false
 				c.attributes["href"].value = "/search?search=" + c.attributes["title"].value
 				@related_algorithm << c				
+				temp_ra << c.attributes["title"].value
 			end
 		end
       end
