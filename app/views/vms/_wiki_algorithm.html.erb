@@ -4,8 +4,10 @@
                         <%begin%>
                                 <div style="padding:5px;">
                                 <%@wiki_definition.each do |t|%>
+                                <% if t.text.length > 1%>
                                 <div id = "searchresults"><%=raw t%></div>
                                 <br>
+                                <%end%>
                                 <%end%>
 								</div>
                         <%rescue%>
@@ -16,8 +18,10 @@
 <div id="math_analysis" class="vm_results">
         <%begin%>
                         <%@math.each do |l|%>
+                        <% if l.text.length > 1%>
                         <div id = "searchresults"><%=raw l%></div>
                         <br>
+                        <%end%>
                         <%end%>
         <%rescue%>
         <%end%>
@@ -29,8 +33,10 @@
          <%begin%>
          				<div name="algo"></div>
                         <%@algorithm.each do |l|%>
+						<%if l.text.length > 1%>
                         <div id = "searchresults"><%=raw l%></div>
                         <br>
+                        <%end%>
                         <%end%>
          <%rescue%>
          <%end%>
@@ -40,8 +46,10 @@
                 <%begin%>
                                 <div style="font-family:BentoSans;color:#666;font-size:2em;" name = "cmpx">Complexity</div><br>
                                 <%@cmplx.each do |t|%>
+                                <%if t.text.length > 1%>
                                 <div id = "searchresults"><%=raw t%></div>
                                 <br>
+                                <%end%>
                                 <%end%>
                 <%rescue%>
                 <%end%>

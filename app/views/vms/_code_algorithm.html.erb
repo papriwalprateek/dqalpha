@@ -4,9 +4,12 @@
    
         <%begin%>
 						<div style="font-family:BentoSans;color:#666;font-size:2em;">Implementation</div><br>
+						
 						<%@pseudocode.each do |l|%>
+						<% if l.text.length > 1%>
                         <div id = "searchresults"><%=raw l%></div>
                         <br>
+						<%end%>
                         <%end%>
 		<%rescue%>
 		<%end%>
