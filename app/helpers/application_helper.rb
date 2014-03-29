@@ -599,7 +599,7 @@ def algorithm_wiki(a)
   
   @related_algorithm = []
   if htag >= 0
-
+	arr = Wikialgo.all
     @node = @doc.css("h2 > span")[htag].parent
     @stop = @doc.css("h2 > span")[htag+2].parent
     @stop1= @doc.css("h2 > span")[htag+1].parent
@@ -611,18 +611,22 @@ def algorithm_wiki(a)
     while @node!=@stop and @node!=@stop1
       begin 
       @node.css('a').each do |c|
-      c.attributes["href"].value = "/search?search=" + c.attributes["title"].value
+		arr.each do |a|
+			if a.title == c.attributes["title"].value
+				c.attributes["href"].value = "/search?search=" + c.attributes["title"].value
+				@related_algorithm << c				
+			end
+		end
       end
       rescue
       end
-      @related_algorithm << @node
       @node = @node.next 
     end
   end
   
-  if @related_algorithm != []
-      @arr<<"algo_related"
-  end
+#  if @related_algorithm != []
+#      @arr<<"algo_related"
+#  end
   
   end
   end

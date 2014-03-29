@@ -1,3 +1,17 @@
+<%if @query!=nil%>
+<div style="font-family:serif;float:right;margin-left:1100px;position:fixed;margin-top:200px;">
+<%if @related_algorithm.length > 0%>
+<div style="font-size:1.4em;color:#888;font-family:serif;margin-bottom:10px">Related entities (<%= @related_algorithm.length %>)</div>
+	<ul>
+	<%@related_algorithm.each do |l|%>
+		<li type="none" style="font-family:serif; font-size:1.2em;"><%= raw l%></li>
+	<%end%>
+	</ul>
+<%end%>
+</div>
+<%end%>
+
+
 <div class="vm_tray">
 <span class="vm_icon1" id="algo_article" >Articles</span>
 <span class="vm_icon1" id="algo_description" >Description</span>
