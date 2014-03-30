@@ -1,12 +1,13 @@
 #!/usr/local/bin/ruby
 # encoding: UTF-8
 
+
 count = 0 
-c = @corpus["Tree (data structure)"]
+c = @corpus["Optimization algorithms"]
 c.each do |d|
   w = Wikialgo.new
   w.title = d[0]
-  w.category = "Tree (data structure)"
+  w.category = "Optimization algorithms"
   w.save
   kt = d[1]
   kt.each do |kk|

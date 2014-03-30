@@ -1,10 +1,11 @@
 @pt =[]
 @youtube_links = 0
-Wikialgo.where(:category => /tree/i).each do |w|
-if w.pages.where(:link=>/en.wikipedia/i).count > 1 
-    #pg.prank = -1
-    #pg.save
-    puts w.title
+Wikialgo.where(:category => /optimiz/i).each do |w|
+#if w.pages.where(:link=>/en.wikipedia/i).count > 1 
+w.pages.where(:link => /www.youtube/i).each do |pg| 
+    pg.prank = 6
+    pg.save!
+    puts pg.link
     @youtube_links= @youtube_links +1
 end
 end

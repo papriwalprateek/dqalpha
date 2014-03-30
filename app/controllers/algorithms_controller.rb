@@ -26,10 +26,16 @@ def rhodes
   @w = []
   if params[:a] 
     wb = Wikialgo.find_by(:title => params[:a])
-    wa = {"pages"=> [] }
-    wb.pages.where(:prank.gt=>3).desc(:prank).each do |ww|
+    wa = {"desc"=>[],"pages"=> [],"videos"=>[] }
+    wb.pages.where(:prank.gt=>3,:prank.lt=>6).desc(:prank).each do |ww|
       @w<<ww
       wa["pages"]<<ww
+    end
+    wb.descriptions.each do |ww|
+      wa["desc"]<<ww
+    end
+    wb.pages.where(:prank=>6).each do |ww|
+      wa["videos"]<<ww
     end
   end
    respond_to do |format|
