@@ -1,11 +1,13 @@
 <%if @wiki_definition%>
 <div class="vm_results" id ="algo_description">
-                        <b>Wikipedia</b>
+                                <span style = "margin-bottom:5px;background-color:#ccc;color:#222;padding:4px;font-family:sans-serif;font-weight: 200;">Wikipedia</span>
                         <%begin%>
+                                <div style="padding:5px;">
                                 <%@wiki_definition.each do |t|%>
                                 <div id = "searchresults"><%=raw t%></div>
                                 <br>
                                 <%end%>
+								</div>
                         <%rescue%>
                         <%end%>
 </div>

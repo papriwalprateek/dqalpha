@@ -12,9 +12,10 @@
 <div class="vm_results" id ="algo_description">
                         <%begin%>
                                 <%@defs.each do |t|%>
-                                <b><%= t.source%></b>
+                                <span style = "margin-bottom:5px;background-color:#ccc;color:#222;padding:4px;font-family:sans-serif;font-weight: 200;"><%= t.source%></span>
+                                <div style="padding:5px;">
                                 <div id = "searchresults"><%=raw t.content%></div>
-                                <hr>
+                                </div>
                                 <%end%>
                         <%rescue%>
                         <%end%>

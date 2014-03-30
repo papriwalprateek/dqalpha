@@ -345,8 +345,12 @@ margin-right: 5px;
 }
 
 div#searchresults{
-	font-family:Sans-serif;
+	line-height:1.5;
+	margin:0px 0px 1.5em;
+	text-align:left;
 	font-size:1.4em;
+	font-weight:400;
+	font-family:serif;
 }
 
 button#navi_result
