@@ -1,13 +1,12 @@
 #!/usr/local/bin/ruby
 # encoding: UTF-8
 
-
 count = 0 
-c = @corpus["Optimization algorithms"]
+c = @corpus["Tree (data structure)"]
 c.each do |d|
   w = Wikialgo.new
   w.title = d[0]
-  w.category = "Optimization algorithms"
+  w.category = "Tree (data structure)"
   w.save
   kt = d[1]
   kt.each do |kk|
@@ -24,15 +23,17 @@ c.each do |d|
   puts w.title
   puts w.pages.count
 end
-#@s =@dpdesc.to_a()
+#@s =@stringdesc.to_a()
 #@s.each do |s|
-  #puts s[0]
+#  puts s[0]
 #  w = Wikialgo.find_by(:title => "#{s[0]}")
+#  puts w.title
 #  tt = s[1].to_a
-#    d = Description.new  
+#   tt.each do |ttt|
+#    d = Description.new    
 #    d.content = ttt[1]
 #    d.source = ttt[0]
 #    d.wikialgo = w
 #    d.save
-#  end
+#end
 #end
