@@ -35,7 +35,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_search'
 gem 'mongoid_fulltext'
-gem 'dq-readability', '~> 1.0.6'
+gem 'dq-readability
 gem 'fastimage'
 gem 'rails_12factor', group: :production
   gem 'coffee-rails', '~> 3.2.1'
@@ -51,7 +51,7 @@ end
 
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt'
+ gem 'bcrypt-ruby', '~> 3.1.5'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
