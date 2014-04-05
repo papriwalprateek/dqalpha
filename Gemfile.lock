@@ -52,7 +52,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
-    dq-readability (1.0.2)
+    dq-readability (1.0.6)
       guess_html_encoding (>= 0.0.4)
       nokogiri (>= 1.4.2)
     ensure_valid_encoding (0.5.2)
