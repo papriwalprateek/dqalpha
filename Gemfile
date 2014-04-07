@@ -15,7 +15,7 @@ gem 'builder'
 gem 'albino'
 gem 'best_in_place'
 gem 'rdf'
-gem 'authlogic'
+gem 'authlogic' ,   '~> 3.4.0'
 gem 'will_paginate'
 gem 'json'
 gem 'gravatar-ultimate'
@@ -51,7 +51,7 @@ end
 
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt-ruby', '~> 3.1.5'
+ #gem 'bcrypt-ruby', '~> 3.1.5'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

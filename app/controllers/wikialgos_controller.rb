@@ -1,12 +1,25 @@
 class WikialgosController < ApplicationController
   # GET /wikialgos
   # GET /wikialgos.json
+  layout false, :only => :index_mobile
+  
   def index
     @wikialgos = Wikialgo.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @wikialgos }
+    end
+  end
+  def index_mobile
+    @wikialgos = []
+    Wikialgo.each do |w|
+      
+    wa = {"title"=>w.title,"category"=>w.category}
+    @wikialgos << wa
+    end
+    respond_to do |format|
+      format.html
     end
   end
 

@@ -40,7 +40,7 @@ Blog::Application.routes.draw do
   match '/geeks-link' => 'pages#geek'
   match '/feedback_submit' => 'pages#feedback_submit'
   match '/track_repo' => 'pages#track_repo'
- 
+  match '/wikialgos/index_mobile' => 'wikialgos#index_mobile'
 #get "users/new"
   #match 'users/:id/quests/:id' => 'quests#show', :via => [:get, :post]
   #match 'quests/:id/qs/:id' => 'qs#show', :via => [:get, :post]
