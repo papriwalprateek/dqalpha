@@ -44,7 +44,6 @@
 </div>
 
 <div class="quest_search_page" style ="margin-top:20px;" >
-
 <%= render "result"%>
 
 <%if @query==nil%>
@@ -60,7 +59,7 @@
 	
 <!--	<div style="padding:5px;background-color:#aaa;color:#fff;font-size:1.2em;text-align:center;cursor:pointer;">Contribute to repository</div> -->
 <div id="form_track">
-<p style="margin:0px;font-size:1.4em;color:#888;border-top:1px solid #888">
+<p style="margin-right:20px;font-size:1.4em;color:#888;border-top:1px solid #888">
 Track the repository for updates</p> 
 	
 <form data-remote ="true" id="track">
@@ -90,9 +89,13 @@ Track the repository for updates</p>
 <%@categories.each do |catg|%>
 <div id = "category_hdr"><a name="<%=catg.split(' ')[0]%>"><%=catg%></a></div>
 <div style="margin:20px;">
+<%begin%>
 <%Wikialgo.where(:category=>catg).each do |w|%>
 	<div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
 	<a href="/search?search=<%=w.title%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w.title %></a></div>
+<%end%>
+<%rescue Timeout::Error => te%>
+	<%%puts "Rescued from timeout : #{te}"%>
 <%end%>	
 </div>
 <br>
