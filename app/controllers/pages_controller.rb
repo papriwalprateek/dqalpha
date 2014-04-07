@@ -72,6 +72,7 @@ def scilab
   #one parameters are to be passed in future
   #in future if needed & could be first encoded %26 while entering and then subsequently decoded at server
   #webpages_read(params[:ad]) 
+  @mobile = false
   webpages_read(request.original_url.split("/read?ad=")[1])
     respond_to do |format|
       format.html { render "layouts/read"  }

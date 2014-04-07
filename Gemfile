@@ -35,7 +35,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_search'
 gem 'mongoid_fulltext'
-gem 'dq-readability'
+gem 'dq-readability', ' 1.0.5'
 gem 'fastimage'
 gem 'rails_12factor', group: :production
   gem 'coffee-rails', '~> 3.2.1'

@@ -45,7 +45,9 @@ def rhodes
     end
 end
  def rhodesread
-    webpages_read(params[:ad]) 
+    @mobile = true
+    a = (request.original_url.split("/rhodesread?ad=")[1])||(request.original_url.split("/rhodesread.json?ad=")[1])
+    webpages_read(a)  
     wa = {"title"=>@y_title,"content"=>@y}
     respond_to do |format|
       format.html      
