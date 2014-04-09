@@ -5,7 +5,7 @@ Blog::Application.routes.draw do
   
   match 'user_verifications/:id' => 'user_verifications_controller#show'
 
-  #resources :polls
+  resources :polls
     #get "pages/home"
   get '/quests/26', to: redirect('/')
   get '/quests/26/qs/:id', to: redirect('/')
@@ -19,9 +19,6 @@ Blog::Application.routes.draw do
  #match '/ranked' => 'algorithms#ranked'
  
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
-  match '/' => 'music#show', :constraints => { :subdomain => "music"}
-  match '/' => 'movie#show', :constraints => { :subdomain => "movie"}
-  
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'
   match '/leave_quest' => 'pages#leave_quest'   

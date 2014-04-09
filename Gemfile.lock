@@ -191,7 +191,7 @@ DEPENDENCIES
   builder
   ckeditor (= 4.0.6)
   coffee-rails (~> 3.2.1)
-  dq-readability
+  dq-readability (= 1.0.6)
   fastimage
   google_visualr
   gravatar-ultimate
