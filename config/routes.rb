@@ -18,6 +18,8 @@ Blog::Application.routes.draw do
  #match '/rank' => 'algorithms#rank'
  #match '/ranked' => 'algorithms#ranked'
  
+  match '/' => 'music#show', :constraints => { :subdomain => "music" }
+  match '/' => 'movie#show', :constraints => { :subdomain => "movie" }
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '' => 'pages#home'
