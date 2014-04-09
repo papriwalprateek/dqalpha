@@ -10,6 +10,7 @@ Blog::Application.routes.draw do
   get '/quests/26', to: redirect('/')
   get '/quests/26/qs/:id', to: redirect('/')
   match '/vinay' => 'algorithms#show'
+  match '/vinaym' => 'musics#show'
   #match '/dev_algo' => 'pages#dev_algo'
   match '/read' => 'pages#read'
  match '/rhodes' => 'algorithms#rhodes'

@@ -1,0 +1,44 @@
+<%if @song%>
+<div style="width: 900px;margin-left: 310px;padding: 2px;margin-top: 20px;">
+<div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;">
+	<%=@song.title%>
+</div>
+<div style="margin-bottom:50px;margin-right:10px;margin-top:5px;color:rgb(153,153,153);font-family:serif;font-size:1.3em;" >
+	<%=@song.artist%>
+</div>
+<h2>Audio</h2>
+<%@song.audio.each do |audi|%>
+<div id="song_audio">
+<iframe width="800" height="250" src="<%=audi%>" frameborder="0" allowfullscreen></iframe>
+</div>
+<%end%>
+<h2>Video</h2>
+<div id="song_video">
+<iframe width="520" height="300" src="<%=@song.official_video%>" frameborder="0" allowfullscreen></iframe>        	
+</div>
+<%if @lyrc%>
+<h2>Lyrics</h2>
+<div id="song_lyrics">
+	<%=raw @lyrc.encode!('UTF-8')%>
+</div>
+<%end%>
+<%end%>
+
+</div>
+<script>
+$(function() {
+<%if @songs%>
+ var song_tags = [<% for sng in @songs -%>
+"<%= raw sng %>"
+<%if sng==@songs.last%>
+<%else%>
+,<%end%>
+<% end -%>];
+
+ $( "input#search" ).autocomplete({
+	source: song_tags
+});
+});
+<%end%>
+
+</script> 

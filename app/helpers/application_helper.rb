@@ -858,4 +858,22 @@ def webpages_read(a)
   @y_title = "Article"
   end
   end
+def lyrics_read(a)
+  if !a.include?("http")
+   a = "http://" + a
+  end
+  @src = a
+  begin
+    begin
+      @lyrc = DQReadability::Document.new(a,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
+    rescue
+      source = URI.encode(a)
+      @lyrc = DQReadability::Document.new(source,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
+    end
+  rescue
+      source = URI.decode(a)
+      @lyrc = DQReadability::Document.new(source,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
+  end
+ end
+
 end
