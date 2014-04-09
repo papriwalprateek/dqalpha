@@ -10,8 +10,8 @@
    UserMailer.welcome_email(self)
   end
   
-	has_many :posts, :dependent => :destroy
-  has_many :gists
+	#has_many :posts, :dependent => :destroy
+  #has_many :gists
   has_many :notifications, :dependent => :destroy
   has_many :qmails
   has_many :involvements, :dependent => :destroy
