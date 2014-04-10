@@ -1,14 +1,7 @@
 class PagesController < ApplicationController
  #before_filter :require_user, :only => [:home] 
-   layout false, :only => [:geek,:read,:foundation]
+   layout false, :only => [:geek,:read]
  
-  def foundation
-   respond_to do |format|
-      format.html { render "layouts/application"  }
-    end
-
-  
-  end
   def about
   render :layout => false
 @title = "about"
@@ -27,10 +20,13 @@ class PagesController < ApplicationController
 
   def search
   @title = "search"  end
- 
+
   def home
   if(request.url.include?('localhost'))
-    redirect_to '/vinay'  
+    #redirect_to '/vinay'  
+    respond_to do |format|
+      format.html { render "layouts/application"  }
+    end
   elsif(request.url.include?('www'))
   redirect_to request.url.sub('www','algorithm')
   else
