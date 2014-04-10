@@ -38,14 +38,16 @@ gem 'mongoid_fulltext'
 gem 'dq-readability'
 gem 'fastimage'
 gem 'rails_12factor', group: :production
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'rails_layout', group: :development
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
  
-gem 'sass'
 gem 'foundation-rails'
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
+ 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
