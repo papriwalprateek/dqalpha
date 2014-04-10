@@ -23,6 +23,7 @@ Blog::Application.routes.draw do
   match '/' => 'movies#show', :constraints => { :subdomain => "movie" }
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
   match '/search' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
+  match '/search' => 'musics#show', :constraints => { :subdomain => "music" }  
   match '' => 'pages#home'
   match '/leave_quest' => 'pages#leave_quest'   
   match '/join_quest' => 'pages#join_quest' 

@@ -43,7 +43,7 @@
 	<%if @query==nil%>
 	
 	<div style="font-family:serif;float:right;margin-left:1050px;position:fixed;margin-top:20px;">
-		<p style="margin:0px;font-size:2.0em;color:#888;"><b style="color:#444;">600</b> Songs</p> 
+		<p style="margin:0px;font-size:2.0em;color:#888;"><b style="color:#444;"><%=@songs.count%></b> Songs</p> 
 		<p style="font-size:1.5em;color:#888;">from <b style="color:#444;">16</b> resources</p>
 		
 		
@@ -77,7 +77,18 @@
 
 <div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
 
-	</div>
+<div style="margin:20px;">
+<%begin%>
+<%@songs.each do |w|%>
+	<div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
+	<a href="/search?search=<%=w%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w %></a></div>
+<%end%>
+<%rescue Timeout::Error => te%>
+	<%%puts "Rescued from timeout : #{te}"%>
+<%end%>	
+</div>
+<br>
+</div>
 	
 	<%end%>	
 	

@@ -9,22 +9,25 @@
 <h2>Audio</h2>
 <%@song.audio.each do |audi|%>
 <div id="song_audio">
-<iframe width="800" height="250" src="<%=audi%>" frameborder="0" allowfullscreen></iframe>
+<iframe width="800" height="250" src="https://w.soundcloud.com/player/?url=<%=audi%>" frameborder="0" allowfullscreen></iframe>
 </div>
 <%end%>
 <h2>Video</h2>
+<%@song.video.each do |audi|%>
 <div id="song_video">
-<iframe width="520" height="300" src="<%=@song.official_video%>" frameborder="0" allowfullscreen></iframe>        	
+<iframe width="520" height="300" src="<%=audi%>" frameborder="0" allowfullscreen></iframe>        	
 </div>
+<%end%>
 <%if @lyrc%>
 <h2>Lyrics</h2>
 <div id="song_lyrics">
 	<%=raw @lyrc.encode!('UTF-8')%>
 </div>
 <%end%>
-<%end%>
 
 </div>
+<%end%>
+
 <script>
 $(function() {
 <%if @songs%>
