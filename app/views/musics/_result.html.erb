@@ -1,30 +1,38 @@
 <%if @song%>
-<div style="width: 900px;margin-left: 310px;padding: 2px;margin-top: 20px;">
+<div style="margin-left:200px;">
 <div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;">
 	<%=@song.title%>
 </div>
 <div style="margin-bottom:50px;margin-right:10px;margin-top:5px;color:rgb(153,153,153);font-family:serif;font-size:1.3em;" >
 	<%=@song.artist%>
 </div>
+<section class="grid">
+	<div class="grid2-1">
+	<div>
 <h2>Audio</h2>
 <%@song.audio.each do |audi|%>
 <div id="song_audio">
-<iframe width="800" height="250" src="https://w.soundcloud.com/player/?url=<%=audi%>" frameborder="0" allowfullscreen></iframe>
+<iframe width="700" height="200" src="https://w.soundcloud.com/player/?url=<%=audi%>" frameborder="0" allowfullscreen></iframe>
 </div>
 <%end%>
+
 <h2>Video</h2>
 <%@song.video.each do |audi|%>
 <div id="song_video">
 <iframe width="520" height="300" src="<%=audi%>" frameborder="0" allowfullscreen></iframe>        	
 </div>
 <%end%>
+</div>
+<div style="background-color:#efefef">
 <%if @lyrc%>
 <h2>Lyrics</h2>
 <div id="song_lyrics">
 	<%=raw @lyrc.encode!('UTF-8')%>
 </div>
 <%end%>
-
+</div>
+</div>
+</section>
 </div>
 <%end%>
 
