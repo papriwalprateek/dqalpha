@@ -23,7 +23,10 @@ class PagesController < ApplicationController
 
   def home
   if(request.url.include?('localhost'))
-    redirect_to '/vinay'  
+    #redirect_to '/vinay'  
+    respond_to do |format|
+      format.html { render "layouts/application"  }
+    end
   elsif(request.url.include?('www'))
   redirect_to request.url.sub('www','algorithm')
   else

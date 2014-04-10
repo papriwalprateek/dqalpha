@@ -18,7 +18,7 @@ Blog::Application.routes.draw do
  match '/cat_list' => 'algorithms#categorylist'
  #match '/rank' => 'algorithms#rank'
  #match '/ranked' => 'algorithms#ranked'
- 
+ match '/' => 'pages#home'
   match '/' => 'musics#show', :constraints => { :subdomain => "music" }
   match '/' => 'movies#show', :constraints => { :subdomain => "movie" }
   match '/' => 'algorithms#show', :constraints => { :subdomain => "algorithm" }
