@@ -875,5 +875,51 @@ def lyrics_read(a)
       @lyrc = DQReadability::Document.new(source,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
   end
  end
+def music_wiki(a)
 
+require 'nokogiri'
+  @doc = Nokogiri::HTML(open(a))
+
+@wiki_definition = []
+
+    x = @doc.css("table.ambox")
+    x.remove
+    x = @doc.css(".portal")
+    x.remove
+    x = @doc.css('table.vertical-navbox')
+    x.remove
+
+
+# @wiki_definition << @doc.css("p")[0]
+  @node = @doc.css("p")[0]
+  @stop = @doc.css("div#toc")[0]
+  @stop1 = @doc.css("h2 > span")[0].parent
+ 
+  while @node!=@stop and @node!=@stop1
+      @wiki_definition << @node
+      @node = @node.next
+  end
+ 
+  #if @doc.css("table.infobox")
+  #@wiki_definition << @doc.css("table.infobox")
+  #end
+
+end
+
+def sm_extract(a)
+  require 'nokogiri'
+
+#feed url from sgmean_sg into nokogiri
+
+@doc = Nokogiri::HTML(open(a))
+
+x = @doc.css('div.sign')
+x.remove
+
+x = @doc.css('ul.answers')
+x.remove
+
+@sm = @doc.css('div.text')
+
+end
 end

@@ -1,7 +1,4 @@
-#!/usr/local/bin/ruby
 # encoding: UTF-8
-
-
 
 count_l = 0
 count_i = 0
@@ -43,9 +40,10 @@ count_sm = 0
   d[1]['audio'].each do |ddd|
     arr_audio << ddd
   end
-  else
+  if d[1]['audio']==[]
   puts "no audio found "
   count_a = count_a+1
+  end
   end
   w.audio_sc = arr_audio
   arr_sm = []
@@ -53,9 +51,10 @@ count_sm = 0
     d[1]["sgmean_sm"].each do |ddd|
       arr_sm << ddd
     end
-  else
+  if d[1]["sgmean_sm"]==[]
     puts "no meaning for song"
     count_sm = count_sm+1
+  end
   end
   w.meaning = arr_sm
   w.save

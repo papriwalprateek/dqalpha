@@ -20,8 +20,13 @@
 	 <dl class="sub-nav">
 	 <dd data-magellan-arrival="audio" class="show-for-small-only"><a href="#audio">Audio</a></dd> 
 	 <dd data-magellan-arrival="video" class="show-for-small-only"><a href="#video">Video</a></dd> 
+	 <%if @wiki_definition%>
+	 <dd data-magellan-arrival="info"><a href="#info">Info</a></dd> <%end%>
 	 <%if @lyrc%>
 	 <dd data-magellan-arrival="lyrics"><a href="#lyrics">Lyrics</a></dd> <%end%>
+	 <%if @sm%>
+	 <dd data-magellan-arrival="sm"><a href="#sm">Interpretation</a></dd> <%end%>
+	 
 	 </div>
 
 </div>
@@ -47,6 +52,20 @@ No audio found
 </div>
 
 	<div class="medium-6 large-5 columns end">	
+<%if @wiki_definition%>
+<div  class="light_grey border_bottom panel">
+	<a name="info"></a>
+	<h4 data-magellan-destination="info">Info</h4>
+	
+	</div>
+<div class="panel border_less">
+
+<%@wiki_definition.each do |t|%>
+<%=raw t%>
+<%end%>
+</div>
+<%end%>
+
 <%if @lyrc%>
 <div  class="light_grey border_bottom panel">
 	<a name="lyrics"></a>
@@ -59,6 +78,18 @@ No audio found
 </div>
 <%end%>
 
+<%if @sm%>
+<div  class="light_grey border_bottom panel">
+	<a name="sm"></a>
+	<h4 data-magellan-destination="sm">Interpretation</h4>
+	
+	</div>
+<div class="panel border_less">
+
+<%= raw @sm%>
+
+</div>
+<%end%>
 
 </div>
 </div>
