@@ -8,4 +8,7 @@ class Song
   field :artist, type: String
   field :img_s, type: String
   field :img_m, type: String
+  field :wiki, type: String
+  field :wiki_artist, type: String
+  field :meaning, type: Array
 end
