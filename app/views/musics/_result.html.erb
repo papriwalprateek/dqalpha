@@ -1,38 +1,66 @@
 <%if @song%>
-<div style="margin-left:200px;">
-<div style="font-size:1.5em;font-family:chaparral-pro,serif;font-weight:600;border-bottom:1px solid rgb(205,205,205);line-height:1.3em;padding-bottom:0.5em;">
-	<%=@song.title%>
+  
+<div class="row">
+<div class="large-12 columns">
+
+<div  class="light_grey border_less panel" >
+	 <div style="width: 80px; display: inline-block;"><img src="<%=@song.img_m%>"style="margin-bottom:35px;"></div>
+	 
+	 <div style="display: inline-block;margin-left:8px;"><h3><%=@song.title%></h3> <%=@song.artist%></div></div>
+		 
+	
+	</div>
+	</div>
+
+	</div>
+
+<div class="row">
+	<div class="large-5 large-offset-5 medium-6 medium-offset-6">
+<div data-magellan-expedition="fixed" >
+	 <dl class="sub-nav">
+	 <dd data-magellan-arrival="audio" class="show-for-small-only"><a href="#auido">Audio</a></dd> 
+	 <dd data-magellan-arrival="video" class="show-for-small-only"><a href="#video">Video</a></dd> 
+	 <%if @lyrc%>
+	 <dd data-magellan-arrival="lyrics"><a href="#lyrics">Lyrics</a></dd> <%end%>
+	 </div>
+
 </div>
-<div style="margin-bottom:50px;margin-right:10px;margin-top:5px;color:rgb(153,153,153);font-family:serif;font-size:1.3em;" >
-	<%=@song.artist%>
+<div class="medium-6 large-5 columns">
+
+<div  class="light_grey border_bottom panel">
+	<a name="audio"></a>
+	<h4 data-magellan-destination="audio">Audio</h4>
+	</div>
+<%if @song.audio_sc[0]%>	
+<div class='flex-video'>
+<iframe width="700" height="200" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/<%=@song.audio_sc[0]%>" frameborder="0" allowfullscreen></iframe>
 </div>
-<section class="grid">
-	<div class="grid2-1">
-	<div>
-<h2>Audio</h2>
-<%@song.audio.each do |audi|%>
-<div id="song_audio">
-<iframe width="700" height="200" src="https://w.soundcloud.com/player/?url=<%=audi%>" frameborder="0" allowfullscreen></iframe>
+<%else%>
+No audio found	
+<%end%>
+<div  class="light_grey border_bottom panel">
+	<a name="video"></a>
+	<h4 data-magellan-destination="video">video</h4>
+	
+	</div>
+<div class="flex-video"> <iframe width="420" height="315" src="//www.youtube.com/embed/<%=@song.video_yt[0]%>" frameborder="0" allowfullscreen></iframe> </div>
+</div>
+
+	<div class="medium-6 large-5 columns end">	
+<%if @lyrc%>
+<div  class="light_grey border_bottom panel">
+	<a name="lyrics"></a>
+	<h4 data-magellan-destination="lyrics">Lyrics</h4>
+	
+	</div>
+<div class="panel border_less">
+	<%=raw @lyrc.encode!('UTF-8')%>
+
 </div>
 <%end%>
 
-<h2>Video</h2>
-<%@song.video.each do |audi|%>
-<div id="song_video">
-<iframe width="520" height="300" src="<%=audi%>" frameborder="0" allowfullscreen></iframe>        	
+
 </div>
-<%end%>
-</div>
-<div style="background-color:#efefef">
-<%if @lyrc%>
-<h2>Lyrics</h2>
-<div id="song_lyrics">
-	<%=raw @lyrc.encode!('UTF-8')%>
-</div>
-<%end%>
-</div>
-</div>
-</section>
 </div>
 <%end%>
 

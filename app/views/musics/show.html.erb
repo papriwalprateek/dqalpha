@@ -1,101 +1,54 @@
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	<!DOCTYPE html>
-	<html>
-	<head>
-	<!-- rzdpt2_bUF76kGnajCBG26nR6Qg -->
-	<title>
-	<%= title %></title>
-	<%= stylesheet_link_tag 'algorithm', :media => 'screen' %>
-	<%= javascript_include_tag "music" %>
-	<%= stylesheet_link_tag 'knacss',:media => 'screen'%>
-	 	<link rel="shortcut icon" href="/favicon.ico" />
-	 <style>
-	  .ui-tabs .ui-tabs-nav { padding:0px; }
-	  .ui-tabs-vertical { width: 100%; }
-	  .ui-tabs-vertical .ui-tabs-nav {  float: left;margin-top:50px; }
-	  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border: 0px; margin:0; }
-	  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-	  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border : 0px;}
-	  .ui-tabs-vertical .ui-tabs-panel { padding: 0em; }
-	  .ui-tabs .ui-tabs-nav li a { max-height:75px; white-space:normal;width: 250px;font-family: sans-serif;color:#333;font-size:1.0em;font-weight: 200;} 
-	  #tabs{border: 0px;}
-	  
-	  </style>
-	</head>
-	
-	<body>
-	<div class="dashboard">
-	
-	<div class= "dashboard_content_area">
-	<div id = "qwst_hdr">
-	<div><a  id = "logo" href ="/">daqwest</a></div>
-	<div style="float:left;display:inline;"> <%= form_tag({ :controller => "musics", :action => "show"}, :method => "get", :remote => true ) do %>
-		  <%= text_field_tag(:search, params[:search]) %>
-	  <%= submit_tag("",:id=> "submitbar") %>
-	 <% end %>
-	</div>
-	<div style="float:left;font-family:sans-serif;font-size:1.4em;color:#666;font-weight:200;margin-left:250px;margin-top:10px;"><a style="background-color:#cfc" href="/mission">About us</a></div>
-	</div>
-	
-	<div class="quest_search_page" style ="margin-top:20px;" >
-	<%= render "result"%>
 
-	<%if @query==nil%>
-	
-	<div style="font-family:serif;float:right;margin-left:1050px;position:fixed;margin-top:20px;">
-		<p style="margin:0px;font-size:2.0em;color:#888;"><b style="color:#444;"><%=@songs.count%></b> Songs</p> 
-		<p style="font-size:1.5em;color:#888;">from <b style="color:#444;">16</b> resources</p>
-		
-		
-	<!--	<div style="padding:5px;background-color:#aaa;color:#fff;font-size:1.2em;text-align:center;cursor:pointer;">Contribute to repository</div> -->
-	<div id="form_track">
-	<p style="margin-right:20px;font-size:1.4em;color:#888;border-top:1px solid #888">
-	Track the repository for updates</p> 
-		
-<form data-remote ="true" id="track">
-	  	
-	  <fieldset>
-	   <input type="text" id = "track_email" placeholder = "Your email address" class="text ui-widget-content ui-corner-all feedback-name" style="width:80%;" />
-	   <button id="track_email_button">Track</button>
-	  </fieldset>
-	
-	  </form>
-	</div>
-	  <script>$(function() {
-	 $('button#track_email_button').click(function(){
-	        	 $.ajax({
-				type: "POST",
-				url: "/track_repo",
-				data: { track_email: $('input#track_email').val()}
-				});
-	 });
-	});
-	
-	</script> 
-	
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div style="width:600px;margin-top:10px;margin-left:310px;border:1px solid rgba(136,136,136,0.48);border-radius:3px;">
+    <title><%= @title%></title>
 
-<div style="margin:20px;">
-<%begin%>
-<%@songs.each do |w|%>
-	<div id = "algo_list" style = "font-size:1.2em;"><img style= "padding-right:5px;width:16px;height:16px;float:left;padding-top:3px;" src = "/assets/algo_articles.png">
-	<a href="/search?search=<%=w%>" style = "line-height:1.3em;color:rgb(28,45,193);cursor:pointer;"><%= w %></a></div>
-<%end%>
-<%rescue Timeout::Error => te%>
-	<%%puts "Rescued from timeout : #{te}"%>
-<%end%>	
+    <%= stylesheet_link_tag    "responsive" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  <style>
+  .light_grey{
+  	background-color: #f2f2f2;
+  	
+  }
+  .border_less{
+  	border-width: 0px;
+  }
+  .border_bottom{
+  	border-width: 0px;
+  	border-color: #666;
+  	border-bottom-width: 2px;
+  
+  }
+  </style>
+<%= javascript_include_tag "responsive" %>
+  </head>
+
+  <body class="light_grey">
+<div class="row">
+<div class="large-2 small-4 columns">
+	<h3 style="color: orange;">Daqwest</h3>
 </div>
-<br>
+<div class="large-8 columns end">
+<%= form_tag({ :controller => "musics", :action => "show"}, :method => "get" ) do %>
+   <div class="raw collapse">
+    <div class="large-9 medium-8 columns">
+      
+   	  <%= text_field_tag(:search, params[:search]) %>
+	 
+      </div>
+    <div class="large-2 medium-4 columns">
+     <input class="button tiny" type="submit" value="Search"></input>
+	    </div>
+        </div>
+  <%end%>
 </div>
+</div><!-- header search bar-->
+   <%= render "result"%>
 	
-	<%end%>	
-	
-	
-	</div>
-	</div>
-	</div>
-	
-	</body>
+  </body>
+</html>

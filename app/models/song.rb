@@ -1,8 +1,11 @@
 class Song
   include Mongoid::Document
-  field :audio, type: Array
-  field :video, type: Array
+  field :audio_sc, type: Array
+  field :video_yt, type: Array
   field :lyrics, type: String
   field :title, type: String
+  field :lastfm_url, type: String
   field :artist, type: String
+  field :img_s, type: String
+  field :img_m, type: String
 end

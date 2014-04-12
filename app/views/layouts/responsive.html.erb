@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= @title%></title>
 
     <%= stylesheet_link_tag    "responsive" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -33,105 +33,22 @@
 	<h3 style="color: orange;">Daqwest</h3>
 </div>
 <div class="large-8 columns end">
-<form>
+<%= form_tag({ :controller => "musics", :action => "show"}, :method => "get" ) do %>
    <div class="raw collapse">
     <div class="large-9 medium-8 columns">
       
-        <input type="text" placeholder="" />
+   	  <%= text_field_tag(:search, params[:search]) %>
+	 
       </div>
     <div class="large-2 medium-4 columns">
-          <a href="#" class="button postfix">Go</a>
+     <input class="button" type="submit" value="Search"></input>
+	    </div>
         </div>
-        </div>
-  </form>
+  <%end%>
 </div>
 </div><!-- header search bar-->
-<div class="row">
-<div class="large-12 columns">
+   <%= render "result"%>
 
-<div  class="light_grey border_less panel" >
-	<h3 >Queens of the stone age </h3>
-	</div>
-	</div>
-
-	</div>
-
-<div class="row">
-<div class="medium-6 large-5 columns">
-<div  class="light_grey border_bottom panel">
-	<h4 >Audio</h4>
-	</div>
-	
-<div class='flex-video'>
-<iframe width="700" height="200" src="https://w.soundcloud.com/player/?url=http://soundcloud.com/johnlegend/all-of-me-3" frameborder="0" allowfullscreen></iframe>
-</div>	
-<div  class="light_grey border_bottom panel">
-	<h4 >Video</h4>
-	</div>
-<div class="flex-video"> <iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe> </div>
-</div>
-
-	<div class="medium-6 large-5 columns end">	
-
-<div  class="light_grey border_bottom panel">
-	<h4 >Lyrics</h4>
-	</div>
-<div class="panel border_less"><div>
-<p>[Verse]<br />
-What would I do without your smart mouth<br />
-Drawing me in, and you kicking me out<br />
-Got my head spinning, no kidding, I can't pin you down<br />
-What's going on in that beautiful mind<br />
-I'm on your magical mystery ride<br />
-And I'm so dizzy, don't know what hit me, but I'll be alright</p><p>[Bridge]<br />
-My head's underwater<br />
-But I'm breathing fire<br />
-You're crazy and I'm out of my mind</p><p>[Chorus]<br />
-Cause all of me<br />
-Loves all of you<br />
-Love your curves and all your edges<br />
-All your perfect imperfections<br />
-Give your all to me<br />
-I'll give my all to you<br />
-You're my end and my beginning<br />
-Even when I lose I'm winning<br />
-Cause I give you all of me<br />
-And you give me all of you, oh</p><p>[Verse]<br />
-How many times do I have to tell you<br />
-Even when you're crying you're beautiful too<br />
-The world is beating you down, I'm around through every mood<br />
-You're my downfall, you're my muse<br />
-My worst distraction, my rhythm and blues<br />
-I can't stop singing, it's ringing in my head for you</p><p>[Bridge]<br />
-My head's underwater<br />
-But I'm breathing fine<br />
-You're crazy and I'm out of my mind</p><p>[Chorus]<br />
-Cause all of me<br />
-Loves all of you<br />
-Love your curves and all your edges<br />
-All your perfect imperfections<br />
-Give your all to me<br />
-I'll give my all to you<br />
-You're my end and my beginning<br />
-Even when I lose I'm winning<br />
-Cause I give you all of me<br />
-And you give me all of you,oh<br />
-Give me all of you</p><p>[Bridge]<br />
-Cards on the table, we're both showing hearts<br />
-Risking it all, though it's hard</p><p>[Chorus]<br />
-Cause all of me<br />
-Loves all of you<br />
-Love your curves and all your edges<br />
-All your perfect imperfections<br />
-Give your all to me<br />
-I'll give my all to you<br />
-You're my end and my beginning<br />
-Even when I lose I'm winning<br />
-Cause I give you all of me<br />
-And you give me all of you</p><p>I give you all of me<br />
-And you give me all of you, ohh</p>	</div></div>
-</div>
-</div>
     <%= javascript_include_tag "responsive" %>
   </body>
 </html>

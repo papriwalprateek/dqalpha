@@ -3,9 +3,16 @@ class PagesController < ApplicationController
    layout false, :only => [:geek,:read,:foundation]
  
   def foundation
+   @title ="Music Repository"
+   @song = Song.first
+     if @song.lyrics 
+       puts @song.lyrics
+       lyrics_read(@song.lyrics) 
+     end
+     
    respond_to do |format|
       format.html { render "layouts/responsive"  }
-    end
+  end
 
   
   end
