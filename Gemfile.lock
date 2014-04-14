@@ -56,7 +56,6 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    expression_parser (0.9.0)
     fastimage (1.5.2)
     foundation-rails (5.2.2.0)
       railties (>= 3.1.0)
@@ -165,9 +164,6 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    wikicloth (0.8.0)
-      builder
-      expression_parser
     wikipedia-client (1.0.0)
     will_paginate (3.0.3)
 
@@ -206,6 +202,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sendgrid
   uglifier (>= 1.0.3)
-  wikicloth
   wikipedia-client
   will_paginate

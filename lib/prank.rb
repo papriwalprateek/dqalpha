@@ -3,7 +3,6 @@
 #if found increment it's value by 1
 #go to next page
  require 'rubygems'
-  require 'wikicloth'
     require 'media_wiki'
     require 'nokogiri'
     require 'open-uri'
