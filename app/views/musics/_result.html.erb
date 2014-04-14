@@ -29,6 +29,7 @@
 	 
 	 <%if @sm%>
 	 <dd data-magellan-arrival="sm"><a href="#sm">Interpretation</a></dd> <%end%>
+	 <dd data-magellan-arrival="news"><a href="#news">News</a></dd> </dl>
 	 
 	 </div>
 
@@ -111,8 +112,34 @@ No audio found
 </div>
 <%end%>
 
+<div  class="light_grey border_bottom panel">
+	<a name="news"></a>
+	<h4 data-magellan-destination="news">News</h4>
+	
+	</div>
+
+<div class="panel border_less">
+  <ul class="listview">
+ <%@news.each do |n|%>
+    <li >
+    <a href="<%=n[0]%>">
+     <div >
+		<img src="<%=n[1]%>">
+      </div>
+      <%=n[2]%><br>
+      <p class="show-for-large-only"><%=n[3]%></p>
+           <p style="color:rgba(182, 109, 109, 1)"><%=n[4]%></p>
+      </a>
+    </li>
+    <hr>
+ <%end%>       
+  </ul>
 </div>
-</div>
+
+</div><!-- left tabs div on large screen-->
+
+
+</div><!-- outer raw div-->
 <%end%>
 
 <script>

@@ -6,6 +6,8 @@ class MusicsController < ApplicationController
      if params[:search]
      @query = params[:search]
      @song = Song.find_by('title'=>/#{@query}/i)   
+      usatoday(@song.usa_today_url)
+    
      if @song.lyrics 
        puts @song.lyrics
        lyrics_read(@song.lyrics) 

@@ -12,4 +12,11 @@ class Song
   field :wiki_artist, type: String
   field :meaning, type: Array
   field :facts, type: String
+#  field :usa_today_url, type: String
+  def usa_today_url
+    if artist
+     require 'open-uri'
+    return "http://www.usatoday.com/search/"+URI.encode(artist)+'/'
+    end
+  end
 end

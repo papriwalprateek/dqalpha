@@ -11,3 +11,37 @@
  *= require foundation
  *= require mediaelement_rails 
  */
+
+ul.listview {
+  list-style-type: none;
+  margin: 0px;
+  }
+ 
+ul.listview li h3{
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+ul.listview li div  {
+ width: 80px; height: 100px; overflow: hidden; 
+ 
+  float: left;
+  margin: 0 15px 0 0;
+} 
+ul.listview li div img {
+ width: 100%; 
+ height: 80px;
+  }
+ 
+ul.listview  li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  color: #666;
+}
+ 
+ul.listview li {
+  padding: 0px;
+  overflow: auto;
+}
+ 
+ul.listview li:hover {
+  background: #eee;
+  cursor: pointer;
+}

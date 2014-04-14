@@ -930,4 +930,42 @@ def sf_extract(a)
         @sf.delete(@sf[0])
      end
 end
+def usatoday(url)
+ puts url
+@news = []
+@doc = Nokogiri::HTML(open(url))
+results = @doc.css('li.search-result-item')
+labels = ['TV', 'Music', 'Theatre']
+results.each do |r|
+if labels.include?(r.css('span.parent-label').text)
+begin
+newsurl = "http://www.usatoday.com"+r.css('a')[0]['href']
+rescue
+newsurl = nil
+end
+begin
+img = r.css('figure > img')[0]['src']
+rescue
+img = nil
+end
+begin
+headline = r.css('div.back > h3').text
+rescue
+headline = nil
+end
+begin
+desc = r.css('div.back > p.text').text
+rescue
+desc = nil
+end
+begin
+date = r.css('span.date-created')[0].text
+rescue
+date = nil
+end
+@news << [newsurl,img,headline,desc,date]
+
+end
+end
+end
 end
