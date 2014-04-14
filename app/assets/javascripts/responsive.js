@@ -15,4 +15,5 @@
 //= require jquery-ujs
 //= require jquery-ui
 //= require foundation.min
+//= require mediaelement_rails
 $(function(){ $(document).foundation(); });

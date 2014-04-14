@@ -922,4 +922,12 @@ x.remove
 @sm = @doc.css('div.text')
 
 end
+def sf_extract(a)
+  require 'nokogiri'
+    @doc = Nokogiri::HTML(open(a))
+    @sf = @doc.css('div.boxcontent')   
+   if @sf[0].text == 'View Lyrics'
+        @sf.delete(@sf[0])
+     end
+end
 end

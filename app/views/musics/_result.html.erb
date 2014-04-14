@@ -24,6 +24,9 @@
 	 <dd data-magellan-arrival="info"><a href="#info">Info</a></dd> <%end%>
 	 <%if @lyrc%>
 	 <dd data-magellan-arrival="lyrics"><a href="#lyrics">Lyrics</a></dd> <%end%>
+	 <%if @sf%>
+	 <dd data-magellan-arrival="facts"><a href="#facts">Facts</a></dd> <%end%>
+	 
 	 <%if @sm%>
 	 <dd data-magellan-arrival="sm"><a href="#sm">Interpretation</a></dd> <%end%>
 	 
@@ -78,6 +81,21 @@ No audio found
 </div>
 <%end%>
 
+<%if @sf%>
+<div  class="light_grey border_bottom panel">
+	<a name="facts"></a>
+	<h4 data-magellan-destination="facts">Facts</h4>
+	
+	</div>
+<div class="panel border_less">
+	<% @sf.each do |ss|%>
+		<%=raw ss%>
+		<br>
+	<%end%>
+
+</div>
+<%end%>
+
 <%if @sm%>
 <div  class="light_grey border_bottom panel">
 	<a name="sm"></a>
@@ -85,8 +103,10 @@ No audio found
 	
 	</div>
 <div class="panel border_less">
-
-<%= raw @sm%>
+<% @sm.each do |ss|%>
+		<%=raw ss%>
+		<br>
+	<%end%>
 
 </div>
 <%end%>

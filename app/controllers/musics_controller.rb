@@ -2,10 +2,10 @@ class MusicsController < ApplicationController
   layout false
  def show
      @title = "Music Repository"
-     @songs = Song.where(:lyrics.ne=>nil).where(:wiki.ne=>nil).where(:meaning.ne=>nil).limit(50).pluck(:title)
+     @songs = Song.where(:lyrics.ne=>nil).where(:wiki.ne=>nil).where(:meaning.ne=>nil).where(:facts.ne=>nil).limit(50).pluck(:title)
      if params[:search]
      @query = params[:search]
-     @song = Song.find_by('title'=>@query)   
+     @song = Song.find_by('title'=>/#{@query}/i)   
      if @song.lyrics 
        puts @song.lyrics
        lyrics_read(@song.lyrics) 
@@ -15,6 +15,9 @@ class MusicsController < ApplicationController
      end
      if @song.wiki
        music_wiki(@song.wiki)
+     end
+     if @song.facts
+       sf_extract(@song.facts)
      end
      end 
    

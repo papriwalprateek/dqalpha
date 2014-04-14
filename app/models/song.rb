@@ -11,4 +11,5 @@ class Song
   field :wiki, type: String
   field :wiki_artist, type: String
   field :meaning, type: Array
+  field :facts, type: String
 end

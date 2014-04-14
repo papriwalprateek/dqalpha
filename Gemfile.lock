@@ -81,6 +81,9 @@ GEM
       treetop (~> 1.4.8)
     marc (0.5.0)
     mediacloth (0.0.3)
+    mediaelement_rails (0.8.0)
+      jquery-rails (>= 1.0)
+      railties (>= 3.1)
     mediawiki-gateway (0.5.0)
       activesupport
       rest-client (>= 1.3.0)
@@ -201,6 +204,7 @@ DEPENDENCIES
   gravatar-ultimate
   json
   mediacloth
+  mediaelement_rails
   mediawiki-gateway
   mongoid
   mongoid_fulltext
