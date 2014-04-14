@@ -14,10 +14,8 @@
 //= require jquery-migrate
 //= require jquery-ujs
 //= require custom
-//= require bjqs
 //= require highlight.pack
 //= require jquery-ui
-//= require jquery_adapter
 //= require jquery.purr
 //= require best_in_place
 //= require intro
