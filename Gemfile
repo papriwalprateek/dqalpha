@@ -44,7 +44,7 @@ gem 'rails_12factor', group: :production
 # in production environments by default.
 group :assets do
  
-gem 'sass'
+gem 'sass', '3.2.13'
 gem 'foundation-rails'
   gem 'sass-rails',   '~> 3.2.3'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
