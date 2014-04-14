@@ -15,8 +15,6 @@
 //= require jquery-ujs
 //= require custom
 //= require bjqs
-//= require ckeditor/init
-//= require ckeditor/config
 //= require highlight.pack
 //= require jquery-ui
 //= require jquery_adapter
@@ -24,4 +22,3 @@
 //= require best_in_place
 //= require intro
 //= require jquery.truncator
-//= require_tree ./ckeditor

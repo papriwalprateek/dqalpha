@@ -7,7 +7,7 @@ gem 'rails', '3.2.16'
 #group :test do
 #  gem 'sqlite3-ruby', :require => 'sqlite3'
 #group :production do
-  gem 'ckeditor', '4.0.6'
+ # gem 'ckeditor', '4.0.6'
 #end
 gem 'rack-timeout'
 gem 'redcarpet'

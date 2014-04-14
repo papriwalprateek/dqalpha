@@ -210,8 +210,8 @@ $form.append('<textarea name ="qmail_content_edit"/>');
 
 $form.append('<input class="qmail_submit" type="submit" value="Save it!" >');
 ($form).insertBefore(content);
-$($form).children("textarea").ckeditor();
-CKEDITOR.instances.qmail_content_edit.setData($(content).html());
+//$($form).children("textarea").ckeditor();
+//CKEDITOR.instances.qmail_content_edit.setData($(content).html());
 $('button.edit_qmail').hide();
 $(content).hide();
 $(editable).append('<a href='+form_url+' class="live_link">Cancel</a>');

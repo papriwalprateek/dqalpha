@@ -12,8 +12,6 @@ javascripts:
   - jquery.layout
   - jquery.layout.pseudoClose
   - bjqs
-  - ckeditor/init
-  - ckeditor/config
   - jquery.jscrollpane
   - jquery.mousewheel
   - application

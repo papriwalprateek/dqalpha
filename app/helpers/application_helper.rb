@@ -60,7 +60,7 @@ def wiki_content(a)
  if a
     
     require 'rubygems'
-  require 'wikicloth'
+  #require 'wikicloth'
     require 'media_wiki'
     require 'nokogiri'
     require 'open-uri'
@@ -366,7 +366,7 @@ def algorithm_wiki(a)
     require 'media_wiki'
     require 'nokogiri'
     require 'open-uri'
-    require 'wikicloth'
+    #require 'wikicloth'
    puts a
     @catch = false
     begin
