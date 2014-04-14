@@ -1,10 +1,10 @@
 class Geekslink
   include Mongoid::Document
 #  include Mongoid::Search
-  include Mongoid::FullTextSearch
+  #include Mongoid::FullTextSearch
 
 
-  fulltext_search_in :htag
+#  fulltext_search_in :htag
 
   field :link, type: String
   field :htag, type: String
