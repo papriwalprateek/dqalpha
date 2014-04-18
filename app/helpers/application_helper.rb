@@ -859,7 +859,7 @@ def webpages_read(a)
   end
   end
   def lyrics_extract(a)
-    if a.include('lyricsmint')
+    if a.include?('lyricsmint.com')
       lyricsmint(a)
     else
       lyrics_read(a)
