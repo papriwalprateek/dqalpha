@@ -858,6 +858,13 @@ def webpages_read(a)
   @y_title = "Article"
   end
   end
+  def lyrics_extract(a)
+    if a.include('lyricsmint')
+      lyricsmint(a)
+    else
+      lyrics_read(a)
+    end
+  end
 def lyrics_read(a)
   if !a.include?("http")
    a = "http://" + a
@@ -1004,5 +1011,12 @@ def indiatoday(url)
    
     end
 
+end
+def lyricsmint(url)
+    @doc = Nokogiri::HTML(open(url))
+    @lyrics = @doc.css('div#lyric')
+    x = @lyrics.css('h2')
+    x.remove
+    return @lyrics
 end
 end

@@ -9,7 +9,12 @@
 	 <div style="display: inline-block;margin-left:8px;"><h3><%=@song.title%></h3> 
 	 	
 	 	<%@song.artists.each do |artst|%>	 	
-	 	<%=artst%> <%end%></div></div>
+	 	<%=artst%> <%end%>
+	 	<%if @song.album%>
+	 	,<%=@song.album%>
+	 	<%end%>
+	 	
+	 	</div></div>
 		 
 	
 	</div>

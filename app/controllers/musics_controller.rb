@@ -17,7 +17,7 @@ class MusicsController < ApplicationController
        
      if @song.lyrics 
        puts @song.lyrics
-       lyrics_read(@song.lyrics) 
+       lyrics_extract(@song.lyrics) 
      end
      
      if @song.meaning[0]
