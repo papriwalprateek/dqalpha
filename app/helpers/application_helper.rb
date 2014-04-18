@@ -863,17 +863,7 @@ def lyrics_read(a)
    a = "http://" + a
   end
   @src = a
-  begin
-    begin
       @lyrc = DQReadability::Document.new(a,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
-    rescue
-      source = URI.encode(a)
-      @lyrc = DQReadability::Document.new(source,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
-    end
-  rescue
-      source = URI.decode(a)
-      @lyrc = DQReadability::Document.new(source,:tags=>%w[div  p h1 h2 h3 h4 img br  ul ol center br hr blockquote em strong sub sup font  span  ], :attributes=>%w[align width color height], :math=>false).content
-  end
  end
 def music_wiki(a)
 
@@ -967,5 +957,52 @@ end
 
 end
 end
+end
+def indiatoday(url)
+    @news = []
+   
+    @doc = Nokogiri::HTML(open(url))
+    results = @doc.css('div#article-search')
+   
+    i = 0
+    results.each do |r|
+   
+    begin
+    newsurl = r.css('div.serchheadlien a')[0]['href']
+    rescue
+    newsurl = nil
+    end
+    begin
+    img = r.css('img')[0]['src']
+    rescue
+    img = nil
+    end
+    begin
+    headline = r.css('div.serchheadlien')[0].text
+    rescue
+    headline = nil
+    end
+    begin
+    desc = r.css('div.searchticker')[0].text
+    rescue
+    desc = nil
+    end
+    begin
+    date = r.css('div.searchtime')[0].text
+    rescue
+    date = nil
+    end
+   
+    puts [newsurl,img,headline,desc,date]
+   
+    @news << [newsurl,img,headline,desc,date]
+   
+    i = i + 1
+    if i > 8
+        break
+    end
+   
+    end
+
 end
 end

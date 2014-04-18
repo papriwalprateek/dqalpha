@@ -3,15 +3,23 @@ class MusicsController < ApplicationController
  def show
      @title = "Music Repository"
      @songs = Song.where(:lyrics.ne=>nil).where(:wiki.ne=>nil).where(:meaning.ne=>nil).where(:facts.ne=>nil).limit(50).pluck(:title)
+     @songs = @songs + Song.where(:lang=>"hindi").pluck(:title)
+     
      if params[:search]
      @query = params[:search]
      @song = Song.find_by('title'=>/#{@query}/i)   
+     
+     if @song.lang=="english"
       usatoday(@song.usa_today_url)
-    
+     elsif @song.lang=="hindi"
+      indiatoday(@song.india_today_url)
+     end
+       
      if @song.lyrics 
        puts @song.lyrics
        lyrics_read(@song.lyrics) 
      end
+     
      if @song.meaning[0]
      sm_extract(@song.meaning[0])
      end

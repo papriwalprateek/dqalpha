@@ -1,3 +1,4 @@
+# encoding: UTF-8
 
 
 count_l = 0
@@ -6,13 +7,22 @@ count_a = 0
 count_w = 0
 count_sm = 0
 count_sf = 0
-@base.each do |d|
+@bollycorpus.each do |d|
   w = Song.new
+  
   w.title = d[0]
-  w.lang = "english"
-  artst =[]
-  artst << d[1]['artist']
-
+  w.lang = "hindi"
+  
+  if d[1]['album']
+    w.album = d[1]['album']
+  end
+ 
+  artst = []
+  if d[1]['artists']
+    d[1]['artists'].each do |art|
+      artst << art
+    end   
+  end
   w.artists = artst
     
   if d[1]['song_wiki']
@@ -25,8 +35,8 @@ count_sf = 0
     w.wiki_artist = d[1]['artist_wiki']
   end 
   
-  if d[1]['lyrics']
-  w.lyrics = d[1]['lyrics']
+  if d[1]['lyric_url']
+  w.lyrics = d[1]['lyric_url']
   else
   puts "no lyrics"
   count_l = count_l+1
@@ -48,17 +58,21 @@ count_sf = 0
   puts "no image"
   count_i = count_i+1
   end
-  
-  arr_video = []
-  arr_video << d[1]['off_vid']
+    
+  arr_video = []  
+  if d[1]['video_yt']
+  d[1]['video_yt'].each do |ddd|
+    arr_video << ddd
+  end  
+  end
   w.video_yt = arr_video
-  arr_audio = []
   
-  if d[1]['audio']
-  d[1]['audio'].each do |ddd|
+  arr_audio = []  
+  if d[1]['audio_sc']
+  d[1]['audio_sc'].each do |ddd|
     arr_audio << ddd
   end
-  if d[1]['audio']==[]
+  if d[1]['audio_sc']==[]
   puts "no audio found "
   count_a = count_a+1
   end

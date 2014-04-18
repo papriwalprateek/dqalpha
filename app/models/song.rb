@@ -4,8 +4,10 @@ class Song
   field :video_yt, type: Array
   field :lyrics, type: String
   field :title, type: String
+  field :lang, type: String #hindi english
+  field :album, type: String
   field :lastfm_url, type: String
-  field :artist, type: String
+  field :artists, type: Array
   field :img_s, type: String
   field :img_m, type: String
   field :wiki, type: String
@@ -19,4 +21,11 @@ class Song
     return "http://www.usatoday.com/search/"+URI.encode(artist)+'/'
     end
   end
+  
+  def india_today_url
+    if album
+    return 'http://indiatoday.intoday.in/advanced_search.jsp?option=com_search&searchword=' + album.gsub(' ','+')
+    end
+  end
+  
 end
