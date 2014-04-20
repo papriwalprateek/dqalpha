@@ -18,7 +18,7 @@ class Song
   def usa_today_url
     if artist
      require 'open-uri'
-    return "http://www.usatoday.com/search/"+URI.encode(artist)+'/'
+    return "http://www.usatoday.com/search/"+URI.encode(artists[0])+'/'
     end
   end
   
