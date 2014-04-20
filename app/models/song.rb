@@ -16,7 +16,7 @@ class Song
   field :facts, type: String
 #  field :usa_today_url, type: String
   def usa_today_url
-    if artist
+    if artists
      require 'open-uri'
     return "http://www.usatoday.com/search/"+URI.encode(artists[0])+'/'
     end
