@@ -560,8 +560,11 @@ def algorithm_wiki(a)
     @pseudocode = []
     @node = @doc.css("h2 > span")[htag].parent
     @stop1 = @doc.css("h2 > span")[htag+1].parent
-    @stop = @doc.css("h2 > span")[htag+2].parent
-    
+    begin
+    	@stop = @doc.css("h2 > span")[htag+2].parent
+    rescue
+    	@stop = nil
+    end
     editsec = @doc.css("span.mw-editsection")
     editsec.remove
     
