@@ -7,7 +7,6 @@ class AlgorithmsController < ApplicationController
     @title = "Algorithms Repository"
     if params[:search]
      @query = params[:search]
-       
       vmsa =["algorithm_webpages","algorithm_rosetta","corpus_extract"]
       
       vmsa.each do |vm|

@@ -688,7 +688,7 @@ def article_classify(d)
    #   @article << {"link" => "/geeks-link?ad="+d.link,"title" => d.title, "source" => "geeksforgeeks.org"} 
    elsif(d.link.include?("stackoverflow"))
    elsif(d.link.include?("rosettacode"))
-     algorithm_rosetta(d.link)
+   #  algorithm_rosetta(d.link)
    elsif(d.link.include?("www.youtube.com"))
      @embed_vid<<[d.title,d.link]
    elsif(d.link.include?("github"))
